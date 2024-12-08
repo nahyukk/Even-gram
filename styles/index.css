@@ -100,6 +100,47 @@
     flex-direction: column;
 }
 
+.main-content-icon {
+    display: grid;
+    margin: 4px 0;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+}
+
+.main-content-icon-left {
+    display: flex;
+}
+
+.main-content-icon-right {
+    margin-left: auto;
+}
+
+.content-icon-slot {
+    display: flex;
+    margin: 8px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.icon-heart {
+    width: 24px;
+    height: 24px;
+    background-image: url(/assets/icons/heart.png);
+}
+
+.icon-msg {
+    width: 24px;
+    height: 24px;
+    background-image: url(/assets/icons/msg.png);
+}
+
+.icon-dm {
+    width: 24px;
+    height: 24px;
+    background-image: url(/assets/icons/dm.png);
+}
+
 /* 임시 */
 /* 메인 사이드바 컨테이너 (임시) */
 .aside-container {
