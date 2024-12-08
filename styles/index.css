@@ -1,4 +1,8 @@
 /* 메인 전체 레이아웃 */
+main {
+    font-size: 14px;
+}
+
 .main-warpper {
     display: flex;
     width: 100%;
@@ -99,7 +103,7 @@
     display: flex;
     flex-direction: column;
 }
-
+/* 메인 컨텐츠 내용 아이콘 부분 */
 .main-content-icon {
     display: grid;
     margin: 4px 0;
@@ -146,6 +150,23 @@
     height: 24px;
     background-image: url(/assets/icons/bookmark.png);
     cursor: pointer;
+}
+/* 메인 컨텐츠 내용 본문 부분 */
+.main-content-text span {
+    margin-right: 4px;
+}
+
+/* 유틸리티 클래스 */
+.st-bold {
+    font-weight: bold;
+}
+
+.st-gray {
+    color: #737373;
+}
+
+.st-mg-t-8 {
+    margin-top: 8px;
 }
 
 /* 임시 */
