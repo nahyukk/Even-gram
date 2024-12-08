@@ -141,6 +141,13 @@
     background-image: url(/assets/icons/dm.png);
 }
 
+.icon-bookmark {
+    width: 24px;
+    height: 24px;
+    background-image: url(/assets/icons/bookmark.png);
+    cursor: pointer;
+}
+
 /* 임시 */
 /* 메인 사이드바 컨테이너 (임시) */
 .aside-container {
