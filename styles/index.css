@@ -1,0 +1,54 @@
+/* 메인 전체 레이아웃 */
+.main-warpper {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+}
+
+/* 메인 컨테이너 */
+.main-container {
+    width: 100%;
+    max-width: 630px;
+    margin-top: 16px;
+}
+
+.main-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-section-inner {
+    display: flex;
+    width: min(470px, 100vw);
+    max-width: 100%;
+    flex-direction: column;
+}
+
+.main-contents {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10307px;
+    background-color: #737373;
+    color: #FFF;
+}
+
+/* 임시 */
+/* 메인 사이드바 컨테이너 (임시) */
+.aside-container {
+    width: 320px;
+    height: 100vh;
+    margin-top: 16px; /* 이후 삭제하거나 조정 필요 */
+    margin-left: 64px; /* 이후 padding-left 로 변경 필요 */
+    color: #FFF;
+    background-color: #737373;
+}
+
+/* 메인 스토리 (임시) */
+.main-story {
+    height: 100px;
+    color: #FFF;
+    background-color: #737373;
+}
