@@ -27,12 +27,63 @@
     flex-direction: column;
 }
 
-.main-contents {
+/* 메인 컨텐츠 시작 */
+.main-contents-list {
     display: flex;
     flex-direction: column;
     padding-bottom: 10307px;
-    background-color: #737373;
-    color: #FFF;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgb(219, 219, 219);
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+}
+
+.main-content-profile {
+    padding-bottom: 12px;
+    padding-left: 4px;
+}
+
+/* 메인 컨텐츠 프로필 부분 */
+.main-content-profile-flex {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.main-profile-image {
+    margin-right: 12px;
+}
+
+.main-profile-image span {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+}
+
+.main-profile-image span img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.main-profile-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.main-profile-more-icon {
+    width: 24px;
+    height: 24px;
+    background-image: url(/assets/icons/more.png);
 }
 
 /* 임시 */
