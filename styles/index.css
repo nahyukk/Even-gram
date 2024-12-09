@@ -52,6 +52,7 @@ main {
 }
 
 /* 메인 컨텐츠 프로필 부분 */
+/* 프로필 이미지 */
 .main-content-profile-flex {
     display: flex;
     width: 100%;
@@ -63,8 +64,8 @@ main {
 }
 
 .main-profile-image span {
-    width: 42px;
-    height: 42px;
+    width: 38px;
+    height: 38px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -74,13 +75,14 @@ main {
 }
 
 .main-profile-image span img {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     border: 1px solid #737373;
     outline: 2px solid #FFF;
 }
 
+/* 프로필 정보 */
 .main-profile-info {
     width: 100%;
     display: flex;
@@ -92,7 +94,24 @@ main {
     width: 24px;
     height: 24px;
     background-image: url(/assets/icons/more.png);
+    cursor: pointer;
 }
+
+.main-profile-meta {
+    display: flex;
+    flex-direction: row;
+}
+
+.main-profile-date {
+    color: #737373;
+    text-decoration: none;
+}
+
+.main-profile-site {
+    font-size: 12px;
+}
+
+
 
 /* 메인 컨텐츠 슬라이더 부분 (임시) */
 .main-content-slider {
@@ -104,12 +123,14 @@ main {
     background-size: contain;
 }
 
+
 /* 메인 컨텐츠 내용 부분 */
 .main-content-inner {
     height: 100%;
     display: flex;
     flex-direction: column;
 }
+
 
 /* 메인 컨텐츠 내용 아이콘 부분 */
 .main-content-icon {
@@ -159,10 +180,14 @@ main {
     background-image: url(/assets/icons/bookmark.png);
     cursor: pointer;
 }
+
+
 /* 메인 컨텐츠 내용 본문 부분 */
 .main-content-text span {
     margin-right: 4px;
 }
+
+
 
 /* 유틸리티 클래스 */
 .st-bold {
@@ -176,6 +201,8 @@ main {
 .st-mg-t-8 {
     margin-top: 8px;
 }
+
+
 
 /* 임시 */
 /* 메인 사이드바 컨테이너 (임시) */
