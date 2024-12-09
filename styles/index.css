@@ -194,7 +194,6 @@ main {
 }
 
 
-
 /* 유틸리티 클래스 */
 .st-bold {
     font-weight: bold;
@@ -226,4 +225,11 @@ main {
     height: 100px;
     color: #FFF;
     background-color: #737373;
+}
+
+/* 오른쪽 사이드 바 (임시) */
+@media (max-width: 1159px) {
+    .aside-container {
+        display: none;
+    }
 }
