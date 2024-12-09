@@ -1,0 +1,29 @@
+.left-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 250px;
+    height: 100vh;
+    background-color: #ffffff;
+    border-right: 1px solid #dbdbdb;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 8px 20px 12px 12px;
+    box-sizing: border-box;
+}
+
+/* 로고 */
+.logo-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px 0 0 12px;
+    margin-bottom: 30px;
+}
+
+.logo-container img {
+    width: 100px;
+    height: auto;
+}
