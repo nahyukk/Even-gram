@@ -194,3 +194,64 @@
     margin-left: 120px;
     padding-bottom: 3px;
 }
+/* 여기서부터는 다크모드 스위치 부분 */
+.menu {
+    padding: 15px;
+    margin-top: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 15px;
+    font-size: 14px;
+}
+
+.menu:hover {
+    background-color: #f7f7f7;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 20px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #dbdbdb;
+    border-radius: 20px;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: '';
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+input:checked+.slider {
+    background-color: white;
+}
+
+input:checked+.slider:before {
+    transform: translateX(14px);
+    background-color: black;
+}
