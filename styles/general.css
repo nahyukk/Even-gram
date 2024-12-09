@@ -7,3 +7,15 @@ style attribute {
 	--ei-width-small: 767px;
 	--ei-width-medium: 1262px;
 }
+
+:root {
+	--primary: #57aef9;
+	--tag: #01376b;
+	--base-background-color: #ffffff;
+	--base-secondary-background-color: #efefef;
+	--text-color: #000000;
+	--secondary-text-color: #737373;
+	--tertiary-text-color: #c7c7c7;
+	--always-black: #000000;
+	--always-white: #ffffff;
+}
