@@ -292,3 +292,20 @@ input:checked+.slider:before {
     transform: translateX(14px);
     background-color: black;
 }
+
+/* 연동하는 부분 */
+a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+a:hover {
+    color: inherit;
+}
+
+/* 아이콘과 텍스트 간격 설정 */
+.middle-item a {
+    gap: 0px; 
+}
