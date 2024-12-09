@@ -72,6 +72,7 @@ main {
     border: 2px solid transparent;
     border-radius: 50%;
     background: radial-gradient(circle at bottom left, red 20%, orange, #8309c9);
+    cursor: pointer;
 }
 
 .main-profile-image span img {
@@ -102,6 +103,10 @@ main {
     flex-direction: row;
 }
 
+.main-profile-name {
+    cursor: pointer;
+}
+
 .main-profile-date {
     color: #737373;
     text-decoration: none;
@@ -109,6 +114,7 @@ main {
 
 .main-profile-site {
     font-size: 12px;
+    cursor: pointer;
 }
 
 
