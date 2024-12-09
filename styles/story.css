@@ -32,7 +32,7 @@
 	left: 0;
   z-index: 1; 
 }
-
+/* 스토리 상단 */
 #story-top-container {
 	position: relative;
   width: calc(100% - 32px);
@@ -115,15 +115,63 @@
 	padding: 8px;
 }
 
+/* 스토리 하단 */
 #story-bottom {
   position: absolute;
-  bottom: 10px;
-  left: 10px;
-  width: calc(100% - 20px);
+	bottom: 0;
+  padding: 0 16px 16px 16px ;
+  width: calc(100% - 32px);
+	
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 1000; 
+	gap: 8px;
+  z-index: 10; 
+}
+#story-bottom-dm {
+	margin: 0;
+	height: 42px;
+	width: 100%;
+	border: 0.5px solid;
+	border-radius: 30px;
+	padding: 0 8px 0 11px;
+	display: flex;
+	align-items: center;
+}
+
+#story-dm-form {
+	background-color: transparent;
+	border: none;
+	height: 18px !important;
+	margin: 0 4px 0 0;
+	padding: 8px 9px;
+	color: white;
+}
+
+#story-dm-form:focus {
+	border: none !important;
+	outline: none;
+}
+#story-dm-form::placeholder {
+	color: white;
+}
+
+#story-bottom-btns {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	margin-left: auto;
+	height: auto;
+}
+
+#story-btn-heart{
+	padding: 8px;
+	cursor: pointer;
+}
+#story-btn-dm{
+	padding: 8px;
+	cursor: pointer;
 }
 
 /* 작은 사이즈 스토리 */
