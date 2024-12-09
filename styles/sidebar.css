@@ -1,3 +1,40 @@
+/* 전체 레이아웃 스타일링 */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* dropdown 메뉴 다크모드 적용 시 호버 부분 */
+body.dark-mode .dropdown-item {
+    color: #ffffff;
+}
+body.dark-mode .dropdown-item:hover {
+    background-color: #444444;
+}
+body:not(.dark-mode) .dropdown-item:hover {
+    background-color: #f7f7f7;
+}
+
+/* modemenu 메뉴 다크모드 적용 시 변환하는 부분 */
+body.dark-mode .menu:hover {
+    background-color: #444444;
+}
+body:not(.dark-mode) .menu:hover {
+    background-color: #f7f7f7;
+}
+body.dark-mode .menu:hover {
+    background-color: #444444;
+}
+
+
+/* middle & bottom item 다크모드 적용 시 호버 부분 */
+body.dark-mode .middle-item:hover {
+    background-color: #222222;
+}
+body.dark-mode .bottom-item:hover {
+    background-color: #222222;
+}
+
 .left-container {
     display: flex;
     flex-direction: column;
