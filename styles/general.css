@@ -1,3 +1,9 @@
 body {
 	font-family: -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
 }
+
+style attribute {
+	--ei-min-width: 574px;
+	--ei-width-small: 767px;
+	--ei-width-medium: 1262px;
+}
