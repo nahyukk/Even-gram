@@ -62,3 +62,37 @@
 .middle-item {
     width: 190px;
 }
+/* bottom, 더보기 섹션 */
+.bottom {
+    width: 220px;
+}
+
+.bottom-container {
+    width: 100%;
+
+}
+
+.bottom-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.bottom-container li {
+    display: flex;
+    align-items: center;
+    padding: 15px 15px 15px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.bottom-container li:hover {
+    background-color: #f7f7f7;
+    border-radius: 8px;
+}
+
+.bottom-container li img {
+    width: 24px;
+    height: 24px;
+    margin-right: 15px;
+}
