@@ -63,18 +63,22 @@ main {
 }
 
 .main-profile-image span {
-    width: 38px;
-    height: 38px;
+    width: 42px;
+    height: 42px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid black;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    background: radial-gradient(circle at bottom left, red 20%, orange, #8309c9);
 }
 
 .main-profile-image span img {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
+    border: 1px solid #737373;
+    outline: 2px solid #FFF;
 }
 
 .main-profile-info {
@@ -93,8 +97,11 @@ main {
 /* 메인 컨텐츠 슬라이더 부분 (임시) */
 .main-content-slider {
     width: 100%;
-    height: 400px;
+    padding-bottom: 100%;
     background-color: aqua;
+    background-image: url(/assets/images/1-1\ aeoni.jpg);
+    object-fit: cover;
+    background-size: contain;
 }
 
 /* 메인 컨텐츠 내용 부분 */
@@ -103,6 +110,7 @@ main {
     display: flex;
     flex-direction: column;
 }
+
 /* 메인 컨텐츠 내용 아이콘 부분 */
 .main-content-icon {
     display: grid;
