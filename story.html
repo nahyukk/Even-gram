@@ -3,12 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="color-scheme" content="dark">
   <title>Story</title>
   <link rel="stylesheet" href="./styles/general.css">
   <link rel="stylesheet" href="./styles/story.css">
 </head>
 <body>
-  <div>Story</div>
+	<!-- 큰 창 -->
+  <div id="story-container">
+		<div class="story">
+			<div id="story-main-img">
+				<img id=story-main-img-img src="https://file3.instiz.net/data/cached_img/upload/2021/01/11/3/a08bb91dd43fba14606b0f82bcc3fdb9.jpg" alt="story-image"/>
+			</div>	
+			<div id="story-top-container">
+				<div id="story-loading-bar-container"> 
+					<div id="story-loading-bar"></div>
+				</div>
+				<div id="story-top">
+					<div id="story-top-left">
+						<div id="story-profile-img">
+							<img src="./assets/images/story_profile_john.webp"/>
+						</div>
+						<div id="story-profile-name">john</div>
+						<div id="story-upload-time">1시간</div>
+					</div>
+					<div id="story-top-right">
+						<button id="story-btn-play">
+							<svg aria-label="재생" class="x1lliihq x1n2onr6 xq3z1fi" fill="currentColor" height="16" role="img" viewBox="0 0 24 24" width="16"><title>재생</title><path d="M5.888 22.5a3.46 3.46 0 0 1-1.721-.46l-.003-.002a3.451 3.451 0 0 1-1.72-2.982V4.943a3.445 3.445 0 0 1 5.163-2.987l12.226 7.059a3.444 3.444 0 0 1-.001 5.967l-12.22 7.056a3.462 3.462 0 0 1-1.724.462Z"></path></svg>
+						</button>
+						<button id="story-btn-meatball">
+							<svg aria-label="메뉴" class="x1lliihq x1n2onr6 x1g9anri" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>메뉴</title><circle cx="12" cy="12" r="2.75"></circle><circle cx="19.5" cy="12" r="2.75"></circle><circle cx="4.5" cy="12" r="2.75"></circle></svg>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div id="story-bottom">
+				<div id="story-bottom-dm"></div>
+				<div id="story-bottom-btns">
+					<div id="story-btn-heart"></div>
+					<div id="story-btn-dm"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 작은 창 -->
+	<div class="mini-story-container">
+
+	</div>
   <script src="./js/story.js"></script>
 </body>
 </html>
