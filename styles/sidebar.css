@@ -27,3 +27,38 @@
     width: 100px;
     height: auto;
 }
+
+/* 중앙 기능들 부분 입니다. */
+.middle-container {
+    width: 100%;
+}
+
+.middle-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.middle-container li {
+    display: flex;
+    align-items: center;
+    padding: 17px 15px 15px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.middle-container li:hover {
+    background-color: #f7f7f7;
+    border-radius: 8px;
+}
+
+.middle-container li img {
+    width: 24px;
+    height: 24px;
+    margin-right: 19px;
+}
+
+.middle-item {
+    width: 190px;
+}
