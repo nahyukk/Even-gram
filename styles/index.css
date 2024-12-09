@@ -120,14 +120,99 @@ main {
 
 
 /* 메인 컨텐츠 슬라이더 부분 (임시) */
-.main-content-slider {
-    width: 100%;
-    padding-bottom: 100%;
-    background-color: aqua;
-    background-image: url(/assets/images/1-1\ aeoni.jpg);
-    object-fit: cover;
-    background-size: contain;
+
+/* 캐러셀 전체 구조  */
+.carousel_main {
+    width: 100%; /* 이미지 크기 설정  */
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    user-select: none;
 }
+
+.carousel_wrapper {
+    display: flex;
+    transition: transform 1s;
+}
+
+.carousel_slide {
+    flex: 0 0 100%; /* 이미지 크기 설정  */
+    position: relative;
+}
+
+.carousel_slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* 캐러셀 사이드 버튼 */
+.carousel_button_container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.carousel_button {
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.carousel_prev {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.carousel_next {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+/* 캐러셀 중앙 버튼 */
+.carousel_pagination {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.carousel_circle {
+    width: 10px;
+    height: 10px;
+    background-color: #aaa;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.carousel_circle.active {
+    background-color: #333;
+}
+
 
 
 /* 메인 컨텐츠 내용 부분 */
