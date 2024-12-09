@@ -292,3 +292,19 @@ input:checked+.slider:before {
     transform: translateX(14px);
     background-color: black;
 }
+
+/* a 태그 속성 변경 */
+a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+a:hover {
+    color: inherit;
+}
+
+.middle-item a {
+    gap: 0px;
+}
