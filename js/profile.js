@@ -1,6 +1,8 @@
 
 function getRandomImageURL() {
-	return `https://picsum.photos/300/300?random=${Math.random()}`;
+	const randomId = Math.floor(Math.random() * 1000); // 0~999의 랜덤 ID
+	return `https://picsum.photos/id/${randomId}/300/300`;
+}
 }
 
 function fetchUser() {
