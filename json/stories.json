@@ -1,0 +1,36 @@
+{
+  "stories": [
+    {
+      "userId": 1,
+      "username": "john_doe",
+      "profileImage": "assets/images/story_profile_john.webp",
+      "stories": [
+        {
+          "storyId": 101,
+          "mediaType": "image",
+          "mediaUrl": "https://file3.instiz.net/data/cached_img/upload/2021/01/11/3/a08bb91dd43fba14606b0f82bcc3fdb9.jpg",
+          "timestamp": "2024-12-09T08:00:00Z"
+        },
+        {
+          "storyId": 102,
+          "mediaType": "image",
+          "mediaUrl": "https://image.xportsnews.com/contents/images/upload/article/2022/0901/mb_1662022719895714.jpg",
+          "timestamp": "2024-12-09T08:10:00Z"
+        }
+      ]
+    },
+    {
+      "userId": 2,
+      "username": "jane_smith",
+      "profileImage": "assets/images/story_profile_jane.webp",
+      "stories": [
+        {
+          "storyId": 201,
+          "mediaType": "image",
+          "mediaUrl": "https://gogumafarm.kr/wp-content/uploads/2023/10/%EC%9D%B8%EC%8A%A4%ED%83%80%EA%B7%B8%EB%9E%A8-%EC%83%88%EB%A1%9C%EA%B5%AC%EB%AF%B8-%EC%8A%A4%EA%B3%B5-%ED%99%9C%EC%9A%A9-%EA%B2%8C%EC%8B%9C%EB%AC%BC.jpeg",
+          "timestamp": "2024-12-09T09:00:00Z"
+        }
+      ]
+    }
+  ]
+}
