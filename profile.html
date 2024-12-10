@@ -1,14 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profile</title>
-  <link rel="stylesheet" href="./styles/general.css">
-  <link rel="stylesheet" href="./styles/profile.css">
-</head>
-<body>
-  <div>Profile</div>
-  <script src="./js/profile.js"></script>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Profile</title>
+		<link rel="stylesheet" href="./styles/general.css" />
+		<link rel="stylesheet" href="./styles/profile.css" />
+		<script src="./js/profile.js" defer></script>
+	</head>
+	<body>
+		<nav>
+			<div class="nav__container">
+				<button class="profile__image_button">
+					<img src="./assets/icons/setting.png" alt="setting" />
+				</button>
+				<span>mmin__ee__</span>
+				<button class="profile__image_button">
+					<img src="./assets/icons/thread.png" alt="thread" />
+				</button>
+			</div>
+		</nav>
+		<div class="profile-tab-container">
+			<div class="profile__section_container">
+				<img
+					class="profile__image"
+					src="http://via.placeholder.com/300"
+					alt="profile_image"
+				/>
+				<div class="profile__section-container">
+					<div class="profile__info-container">
+						<p class="profile__name">mmin__ee__</p>
+						<div class="profile__button_container">
+							<button id="edit_profile" class="profile__colored-button">
+								프로필 편집
+							</button>
+							<button id="stored-story" class="profile__colored-button">
+								보관된 스토리 보기
+							</button>
+						</div>
+						<button class="profile__image_button">
+							<img src="./assets/icons/setting.png" alt="setting" />
+						</button>
+					</div>
+					<div class="profile__post-info-container">
+						<div class="profile__post-info">
+							<button class="profile__post-info-button">게시물 9</button>
+						</div>
+						<div class="profile__post-info">
+							<button class="profile__post-info-button">팔로워 9</button>
+						</div>
+						<div class="profile__post-info">
+							<button class="profile__post-info-button">팔로우 9</button>
+						</div>
+					</div>
+					<div class="profile__description-container">
+						<span class="profile__description-title">Seongmin Kim</span>
+						<span class="profile__description-sub-title">
+							머시기저시기안녕하시오 @mmin_ee_
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
