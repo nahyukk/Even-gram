@@ -169,24 +169,26 @@ main {
 }
 
 .carousel_prev {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(231, 231, 231, 0.3);
     border: 0px;
     padding-top: 5px;
     padding-bottom: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 50%;
     cursor: pointer;
 }
 
 .carousel_next {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(231, 231, 231, 0.3);
     border: 0px;
     padding-top: 5px;
     padding-bottom: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 50%;
     cursor: pointer;
 }
 
@@ -201,16 +203,16 @@ main {
 }
 
 .carousel_circle {
-    width: 10px;
-    height: 10px;
-    background-color: #aaa;
+    width: 6px;
+    height: 6px;
+    background-color: #929292;
     border-radius: 50%;
-    margin: 0 5px;
+    margin: 0 3px;
     cursor: pointer;
 }
 
 .carousel_circle.active {
-    background-color: #333;
+    background-color: #fff;
 }
 
 
