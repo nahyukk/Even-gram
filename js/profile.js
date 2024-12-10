@@ -35,6 +35,7 @@ function fetchUser() {
 function renderUser(user) {
 	const profileImage = getCachedImageURL("profileImage", 1)[0];
 	console.log(profileImage);
+	document.querySelector(".nav__profile-name").textContent = user.nickName;
 	document.querySelector(".profile__image").src = profileImage;
 	document.querySelector(".profile__name").textContent = user.nickName;
 	document.querySelector("#profile__post-info-posts").textContent =
