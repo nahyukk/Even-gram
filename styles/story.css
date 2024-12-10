@@ -1,9 +1,9 @@
 /* 큰 사이즈 스토리 */
 
 #story-container {
-	display: flex;
+	/* display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: center; */
 	width: 100%;
 	height: 100%;
 	position: relative;
@@ -177,5 +177,66 @@
 	padding: 8px;
 	cursor: pointer;
 }
+
+/* 스토리 미트볼 버튼 모달 */
+#story-meatball-modal {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 400px;
+	z-index: 2000;
+	background-color: rgb(38,38,38);
+	border: none !important;
+	border-radius: 10px;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+#story-modal-content {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+#story-modal-content a {
+	color: #F5F5F5;
+	text-decoration: none;
+}
+#story-modal-content a:active, 
+#story-modal-content a:focus, 
+#story-modal-content a:visited {
+	color: #F5F5F5;
+	text-decoration: none;
+}
+
+#story-modal-content ul {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-top: 1px solid rgb(54, 54, 54);
+	width: 100%;
+	height: 48px;
+	margin: 0;
+	padding: 4px 8px;
+	font-size: 14px;
+	box-sizing: border-box;
+	
+	
+}
+#신고 {
+	width: 100%;
+}
+#신고 a {
+	color: #ED4956 !important; 
+}
+
+#정보 {
+	width: 100%;
+	
+}
+
 
 /* 작은 사이즈 스토리 */
