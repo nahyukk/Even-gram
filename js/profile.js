@@ -15,6 +15,9 @@ function fetchUser() {
 			console.log(data);
 			renderUser(data.user);
 			renderPosts(data.user.posts);
+		})
+		.catch((error) => {
+			console.log("JSON Fetching Error: ", error);
 		});
 }
 
