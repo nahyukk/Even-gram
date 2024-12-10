@@ -182,7 +182,7 @@ body {
 	width: 100%;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	row-gap: 2px;
+	row-gap: 4px;
 	column-gap: 5px;
 }
 
