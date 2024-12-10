@@ -34,14 +34,16 @@
 
 .profile-tab-container {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	padding: 30px 20px 0 20px;
+	margin: 0 79.5px 30px;
 }
 
 .profile__section_container {
-  display: flex;
-  justify-content: left;
-  gap: 60px;
+	display: flex;
+	justify-content: left;
+	gap: 60px;
 }
 
 .profile__image {
