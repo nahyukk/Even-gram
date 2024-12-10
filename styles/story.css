@@ -84,6 +84,10 @@
 	border-radius: 50%;
 
 }
+#story-profile-name {
+	text-decoration: none;
+	color: white;
+}
 
 #story-upload-time {
 	opacity: 0.6;
