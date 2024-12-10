@@ -21,6 +21,17 @@ fetch('./json/stories.json')
 function updateStory(storyData) {
 
 }
+
+// 로고, x 클릭시 홈으로 이동 - 추후 링크 변화시 수정 필요
+document.getElementById("story-out-logo").addEventListener("click", () =>{
+	window.location.href = "index.html";
+});
+
+document.getElementById("story-out-btn").addEventListener("click", () =>{
+	window.location.href = "index.html";
+});
+
+
 // 재생 - 일시정지 버튼 
 let isPlaying = true;
 
