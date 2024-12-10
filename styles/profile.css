@@ -186,8 +186,58 @@ body {
 	column-gap: 5px;
 }
 
+.profile__post_item-container {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	overflow: hidden;
+}
+
 .profile__post_image {
 	width: 100%;
 	aspect-ratio: 1 / 1;
 	object-fit: cover;
+	cursor: pointer;
+	z-index: 1;
+}
+
+/* 포스트 호버 */
+.profile__post-hover-container {
+	position: absolute;
+	z-index: 2;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.4);
+	display: none;
+	transition: display 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+.profile__post-hover-item {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.profile__post-hover-item img {
+	width: 20px;
+	height: 20px;
+	margin: 0 2px 0 8px;
+}
+
+.profile__post-hover-item span {
+	color: var(--always-white);
+	font-size: 16px;
+	font-weight: 600;
+	align-items: center;
+	justify-content: center;
+	margin: 0 16px 0 4px;
+}
+
+.profile__post_item-container:hover .profile__post-hover-container {
+	display: flex;
 }
