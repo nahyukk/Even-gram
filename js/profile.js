@@ -1,4 +1,7 @@
-const randomImageURL = "https://picsum.photos/300/300";
+
+function getRandomImageURL() {
+	return `https://picsum.photos/300/300?random=${Math.random()}`;
+}
 
 function fetchUser() {
 	fetch("../json/profile.json")
@@ -16,7 +19,7 @@ function fetchUser() {
 }
 
 function renderUser(user) {
-	document.querySelector(".profile__image").src = randomImageURL;
+	document.querySelector(".profile__image").src = getRandomImageURL();
 	document.querySelector(".profile__name").textContent = user.nickName;
 	document.querySelector("#profile__post-info-posts").textContent =
 		"게시물 " + user.posts.length;
@@ -40,7 +43,7 @@ function renderPosts(posts) {
 		postElement.innerHTML = `
       <img
         class="profile__post_image"
-        src=${randomImageURL}
+        src=${getRandomImageURL()}
         alt="profile_image"
       />
       <div class="profile__post-hover-container">
