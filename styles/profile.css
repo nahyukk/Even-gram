@@ -198,6 +198,15 @@ body {
 	aspect-ratio: 1 / 1;
 	object-fit: cover;
 	cursor: pointer;
+	z-index: 0;
+}
+
+.profile__post_image-multiple {
+	position: absolute;
+	width: 16px;
+	height: auto;
+	top: 8px;
+	right: 8px;
 	z-index: 1;
 }
 

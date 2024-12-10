@@ -67,6 +67,14 @@ function renderPosts(posts) {
 		postImage.src = cachedPostImages[index];
 		postImage.alt = "post_image";
 
+		if (post.image_count > 1) {
+			const postImage = document.createElement("img");
+			postImage.className = "profile__post_image-multiple";
+			postImage.src = "./assets/icons/profile_post_multiple.png";
+			postImage.alt = "post_image_multiple";
+			postElement.append(postImage);
+		}
+
 		const hoverContainer = document.createElement("div");
 		hoverContainer.className = "profile__post-hover-container";
 
