@@ -1,0 +1,22 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.nav__container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height: 45px;
+	padding: 0 16px;
+	color: var(--text-color);
+	background-color: var(--base-background-color);
+	border-bottom: 1px solid var(--tertiary-text-color);
+}
+
+.nav__container span {
+	font-size: 14px;
+	font-weight: 600;
+}
