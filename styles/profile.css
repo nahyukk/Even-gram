@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: var(--base-background-color);
+	background-color: var(--base-background-color);
 }
 
 .nav__container {
@@ -40,7 +40,8 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	padding: 30px 20px 0 20px;
-	margin: 0 79.5px 30px;
+	margin: 0 auto 30px auto;
+	max-width: 935px;
 }
 
 .profile__section_container {
