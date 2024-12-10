@@ -3,6 +3,15 @@ function getRandomImageURL() {
 	const randomId = Math.floor(Math.random() * 1000); // 0~999의 랜덤 ID
 	return `https://picsum.photos/id/${randomId}/300/300`;
 }
+
+function getCachedImageURL(key, count) {
+	let cachedImages = JSON.parse(localStorage.getItem(key));
+	// 캐싱된 이미지가 없거나 개수가 부족하면 새로 생성
+	if (!cachedImages || cachedImages.length < count) {
+		cachedImages = Array.from({ length: count }, () => getRandomImageURL());
+		localStorage.setItem(key, JSON.stringify(cachedImages));
+	}
+	return cachedImages;
 }
 
 function fetchUser() {
@@ -24,7 +33,9 @@ function fetchUser() {
 }
 
 function renderUser(user) {
-	document.querySelector(".profile__image").src = getRandomImageURL();
+	const profileImage = getCachedImageURL("profileImage", 1)[0];
+	console.log(profileImage);
+	document.querySelector(".profile__image").src = profileImage;
 	document.querySelector(".profile__name").textContent = user.nickName;
 	document.querySelector("#profile__post-info-posts").textContent =
 		"게시물 " + user.posts.length;
@@ -42,16 +53,17 @@ function renderPosts(posts) {
 	const postContainer = document.querySelector(
 		".profile__post-section-container"
 	);
+
+	const cachedPostImages = getCachedImageURL("postImages", posts.length);
+
 	postContainer.innerHTML = ""; // 기존 데이터 초기화
-	posts.forEach((post) => {
+	posts.forEach((post, index) => {
 		const postElement = document.createElement("div");
 		postElement.className = "profile__post_item-container";
 
-		const randomImage = getRandomImageURL();
-
 		const postImage = document.createElement("img");
 		postImage.className = "profile__post_image";
-		postImage.src = randomImage;
+		postImage.src = cachedPostImages[index];
 		postImage.alt = "post_image";
 
 		const hoverContainer = document.createElement("div");
