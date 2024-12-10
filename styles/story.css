@@ -179,6 +179,24 @@
 }
 
 /* 스토리 미트볼 버튼 모달 */
+#story-modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.6); /* 어두운 배경 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+}
+
+.modal-hidden {
+	display: none !important;
+}
+
+
 #story-meatball-modal {
 	position: absolute;
 	top: 50%;
@@ -192,6 +210,7 @@
 	overflow: hidden;
 	box-sizing: border-box;
 }
+
 #story-modal-content {
 	width: 100%;
 	display: flex;
@@ -201,41 +220,25 @@
 	text-align: center;
 }
 
-#story-modal-content a {
+#story-modal-content button {
+	background: none;
+	border: none;
 	color: #F5F5F5;
-	text-decoration: none;
-}
-#story-modal-content a:active, 
-#story-modal-content a:focus, 
-#story-modal-content a:visited {
-	color: #F5F5F5;
-	text-decoration: none;
-}
-
-#story-modal-content ul {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-top: 1px solid rgb(54, 54, 54);
+	font-size: 14px;
 	width: 100%;
 	height: 48px;
 	margin: 0;
 	padding: 4px 8px;
-	font-size: 14px;
-	box-sizing: border-box;
-	
-	
-}
-#신고 {
-	width: 100%;
-}
-#신고 a {
-	color: #ED4956 !important; 
+	cursor: pointer;
+	border-top: 1px solid rgb(54, 54, 54);
 }
 
-#정보 {
-	width: 100%;
-	
+#story-modal-content button:active {
+	background-color: #1c1e21;
+}
+
+#btn-신고 {
+	color: #ED4956 !important; 
 }
 
 
