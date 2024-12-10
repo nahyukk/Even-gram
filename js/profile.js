@@ -40,24 +40,44 @@ function renderPosts(posts) {
 	const postContainer = document.querySelector(
 		".profile__post-section-container"
 	);
+	postContainer.innerHTML = ""; // 기존 데이터 초기화
 	posts.forEach((post) => {
 		const postElement = document.createElement("div");
 		postElement.className = "profile__post_item-container";
-		postElement.innerHTML = `
-      <img
-        class="profile__post_image"
-        src=${getRandomImageURL()}
-        alt="profile_image"
-      />
-      <div class="profile__post-hover-container">
-        <div class="profile__post-hover-item">
-          <img src="./assets/icons/profile_post_like.png" />
-          <span>${post.likes}</span>
-          <img src="./assets/icons/profile_post_comment.png" />
-          <span>${post.comments}</span>
-        </div>
-      </div>
-    `;
+
+		const randomImage = getRandomImageURL();
+
+		const postImage = document.createElement("img");
+		postImage.className = "profile__post_image";
+		postImage.src = randomImage;
+		postImage.alt = "post_image";
+
+		const hoverContainer = document.createElement("div");
+		hoverContainer.className = "profile__post-hover-container";
+
+		const hoverItem = document.createElement("div");
+		hoverItem.className = "profile__post-hover-item";
+
+		const likeIcon = document.createElement("img");
+		likeIcon.src = "./assets/icons/profile_post_like.png";
+		const likeSpan = document.createElement("span");
+		likeSpan.textContent = post.likes;
+
+		const commentIcon = document.createElement("img");
+		commentIcon.src = "./assets/icons/profile_post_comment.png";
+		const commentSpan = document.createElement("span");
+		commentSpan.textContent = post.comments;
+
+		hoverItem.appendChild(likeIcon);
+		hoverItem.appendChild(likeSpan);
+		hoverItem.appendChild(commentIcon);
+		hoverItem.appendChild(commentSpan);
+
+		hoverContainer.appendChild(hoverItem);
+
+		postElement.append(postImage);
+		postElement.append(hoverContainer);
+
 		postContainer.appendChild(postElement);
 	});
 }
