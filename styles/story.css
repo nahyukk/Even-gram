@@ -1,5 +1,9 @@
-/* 큰 사이즈 스토리 */
+body {
+	margin: 0;
+	padding: 0;
+}
 
+/* 큰 사이즈 스토리 */
 #story-container {
 	/* display: flex;
 	justify-content: center;
@@ -9,6 +13,43 @@
 	position: relative;
 	z-index: 1;
 }
+#story-out-container {	
+	position: fixed;
+	width: 100%;
+	z-index: 2;
+	display: flex;
+	justify-content: space-between;
+	margin: 0;
+}
+#story-out-logo-div{
+	width: 103px;
+	height: 33px;
+}
+#story-out-logo {
+	background-color: transparent;
+	padding: 0;
+	border: none;
+	margin-top: 16px;
+	margin-bottom: 16px;
+	margin-left: 16px;
+	cursor: pointer;
+}
+
+#story-out-logo img {
+	width: 103px;
+	height: 29px;
+}
+
+#story-out-btn {
+	background-color: transparent;
+	padding: 8px;
+	border: none;
+	margin-top: 16px;
+	margin-bottom: 16px;
+	margin-right: 16px;
+	cursor: pointer;
+}
+
 .story {
 	width: 386px;
 	height: 686px;
@@ -18,7 +59,7 @@
 	border-radius: 10px;
 	margin: 0 auto;
 	background-color: gray;
-	z-index: 2;
+	z-index: 3;
 }
 
 
