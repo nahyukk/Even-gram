@@ -31,3 +31,16 @@
 	width: 24px;
 	height: 24px;
 }
+
+.profile-tab-container {
+	display: flex;
+	justify-content: center;
+	padding: 30px 20px 0 20px;
+	gap: 60px;
+}
+
+.profile__image {
+	max-width: 150px;
+	max-height: 150px;
+	border-radius: 50%;
+}
