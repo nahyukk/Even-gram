@@ -132,7 +132,7 @@ main {
 
 .carousel_wrapper {
     display: flex;
-    transition: transform 0.5s;
+    transition: all 0.25s ease;
 }
 
 .carousel_slide {
@@ -288,17 +288,36 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
-
 
 .main-content-textbox {
     width: 100%;
     height: 18px;
+    font-size: 14px;
+    padding-left: 0;
     border: 0;
 }
 
 .main-content-textbox:focus {
     outline: none;
+}
+
+.main-content-textbox::placeholder {
+    font-size: 14px;
+}
+
+.main-content-text-upload {
+    width: 30px;
+    height: 18px;
+    margin: 0 8px;
+    font-weight: bold;
+    color: #0095f6;
+    cursor: pointer;
+}
+
+.main-content-text-upload:hover {
+    color: #00376b;
 }
 
 
