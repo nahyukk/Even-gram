@@ -124,3 +124,48 @@
 	font-weight: 400;
 	color: var(--text-color);
 }
+
+/* Tab */
+.profile__tab-section-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 80px;
+	gap: 40px;
+	border-top: 1px solid var(--tertiary-text-color);
+}
+
+.profile__tab-section-container {
+	position: relative;
+}
+
+.profile__tab-button-indicator {
+	/* display: none; */
+	height: 1px;
+	width: 100%;
+	background-color: var(--text-color);
+	margin-top: -1px;
+}
+
+.profile__tab-button {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	border: none;
+	background: transparent;
+	padding: 16px 0px;
+	cursor: pointer;
+	color: var(--secondary-text-color);
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.profile__tab-button img {
+	width: 14px;
+	height: 14px;
+}
+
+/* js 작업할때  */
+.profile__tab-button.active + .profile__tab-button-indicator {
+	display: block;
+}
