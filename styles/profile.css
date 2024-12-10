@@ -174,3 +174,19 @@ body {
 .profile__tab-button.active + .profile__tab-button-indicator {
 	display: block;
 }
+
+/* 이미지 그리드 */
+.profile__post-section-container {
+	padding: 0 4px;
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	row-gap: 2px;
+	column-gap: 5px;
+}
+
+.profile__post_image {
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	object-fit: cover;
+}
