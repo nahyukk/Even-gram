@@ -96,4 +96,6 @@ function renderPosts(posts) {
 	});
 }
 
-fetchUser();
+document.addEventListener("DOMContentLoaded", () => {
+	fetchUser();
+});
