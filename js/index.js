@@ -61,3 +61,33 @@ bullets.forEach((bullet, index) => {
 });
 
 showSlide(0);
+
+// 텍스트 박스 호버 시 게시 버튼이 나타나는 스크립트 (완성)
+document.addEventListener("DOMContentLoaded", () => {
+    const showDiv = document.querySelector(".main-content-text-upload");
+    const commentBox = document.querySelector(".main-content-textbox");
+    
+    if (commentBox && showDiv) {
+        commentBox.addEventListener("focus", () => {
+            if (commentBox.value.trim() === "") {
+                showDiv.style.display = "none"
+            } else {
+                showDiv.style.display = "block";
+            }
+        });
+        commentBox.addEventListener("input", () => {
+            if (commentBox.value.trim() !== "") {
+                showDiv.style.display = "block";
+            } else {
+                showDiv.style.display = "none";
+            }
+        });
+        commentBox.addEventListener("blur", () => {
+            if (commentBox.value.trim() === "") {
+                showDiv.style.display = "none"
+            } else {
+                showDiv.style.display = "block";
+            }
+        });
+    }
+});
