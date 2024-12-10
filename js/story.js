@@ -38,6 +38,26 @@ function togglePlayPause() {
 
 document.getElementById("story-btn-play").addEventListener("click", togglePlayPause);
 
+// 모달 열기
+function modalOpen() {
+	const modal = document.getElementById("story-modal-overlay");
+	modal.classList.remove("modal-hidden");
+}
+
+document.getElementById("story-btn-meatball").addEventListener("click", modalOpen);
+
+// 모달 닫기 - 취소 버튼
+document.querySelector("#btn-취소").addEventListener("click", () => {
+	document.getElementById("story-modal-overlay").classList.add("modal-hidden");
+})
+
+// 모달 닫기 - 외부 영역
+window.addEventListener("click", (event) => {
+	const modal = document.getElementById("story-modal-overlay");
+	if (event.target === modal) {
+		modal.classList.add("modal-hidden")
+	}
+})
 
 // 이미지 ui 작업 예정
 // function renderImages(stories) {
