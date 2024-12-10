@@ -1,0 +1,362 @@
+/* 메인 전체 레이아웃 */
+main {
+    font-size: 14px;
+}
+
+.main-warpper {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+}
+
+/* 메인 컨테이너 */
+.main-container {
+    width: 100%;
+    max-width: 630px;
+    margin-top: 16px;
+}
+
+.main-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-section-inner {
+    display: flex;
+    width: min(470px, 100vw);
+    max-width: 100%;
+    flex-direction: column;
+}
+
+/* 메인 컨텐츠 시작 */
+.main-contents-list {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgb(219, 219, 219);
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+}
+
+.main-content-profile {
+    padding-bottom: 12px;
+    padding-left: 4px;
+}
+
+/* 메인 컨텐츠 프로필 부분 */
+/* 프로필 이미지 */
+.main-content-profile-flex {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.main-profile-image {
+    margin-right: 12px;
+}
+
+.main-profile-image span {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    background: radial-gradient(circle at bottom left, red 20%, orange, #8309c9);
+    cursor: pointer;
+}
+
+.main-profile-image span img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #737373;
+    outline: 2px solid #FFF;
+}
+
+/* 프로필 정보 */
+.main-profile-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.main-profile-more-icon {
+    width: 24px;
+    height: 24px;
+    background-image: url(/assets/icons/more.png);
+    cursor: pointer;
+}
+
+.main-profile-meta {
+    display: flex;
+    flex-direction: row;
+}
+
+.main-profile-name {
+    cursor: pointer;
+}
+
+.main-profile-date {
+    color: #737373;
+    text-decoration: none;
+}
+
+.main-profile-site {
+    font-size: 12px;
+    cursor: pointer;
+}
+
+
+
+/* 메인 컨텐츠 슬라이더 부분 (임시) */
+
+/* 캐러셀 전체 구조  */
+.carousel_main {
+    width: 100%; /* 이미지 크기 설정  */
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    user-select: none;
+}
+
+.carousel_wrapper {
+    display: flex;
+    transition: all 0.25s ease;
+}
+
+.carousel_slide {
+    flex: 0 0 100%; /* 이미지 크기 설정  */
+    position: relative;
+}
+
+.carousel_slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* 캐러셀 사이드 버튼 */
+.carousel_button_container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.carousel_button {
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.carousel_prev {
+    background-color: rgba(231, 231, 231, 0.3);
+    border: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.carousel_next {
+    background-color: rgba(231, 231, 231, 0.3);
+    border: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+
+/* 캐러셀 중앙 버튼 */
+.carousel_pagination {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.carousel_circle {
+    width: 6px;
+    height: 6px;
+    background-color: #bdbdbd;
+    border-radius: 50%;
+    margin: 0 3px;
+    cursor: pointer;
+}
+
+.carousel_circle.active {
+    background-color: #fff;
+}
+
+
+
+/* 메인 컨텐츠 내용 부분 */
+.main-content-inner {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* 메인 컨텐츠 내용 아이콘 부분 */
+.main-content-icon {
+    display: grid;
+    margin: 4px 0;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+}
+
+.main-content-icon-left {
+    display: flex;
+}
+
+.main-content-icon-right {
+    margin-left: auto;
+}
+
+.content-icon-slot {
+    display: flex;
+    margin: 8px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.icon-heart {
+    width: 24px;
+    height: 24px;
+    background-image: url(/assets/icons/heart.png);
+}
+
+.icon-msg {
+    width: 24px;
+    height: 24px;
+    background-image: url(/assets/icons/msg.png);
+}
+
+.icon-dm {
+    width: 24px;
+    height: 24px;
+    background-image: url(/assets/icons/dm.png);
+}
+
+.icon-bookmark {
+    width: 24px;
+    height: 24px;
+    background-image: url(/assets/icons/bookmark.png);
+    cursor: pointer;
+}
+
+
+/* 메인 컨텐츠 내용 본문 부분 */
+.main-content-text span {
+    margin-right: 4px;
+}
+
+
+/* 메인 컨텐츠 내용 댓글 부분 */
+.main-content-input-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-content-textbox {
+    width: 100%;
+    height: 18px;
+    font-size: 14px;
+    padding-left: 0;
+    border: 0;
+}
+
+.main-content-textbox:focus {
+    outline: none;
+}
+
+.main-content-textbox::placeholder {
+    font-size: 14px;
+}
+
+.main-content-text-upload {
+    width: 30px;
+    height: 18px;
+    margin: 0 8px;
+    font-weight: bold;
+    color: #0095f6;
+    cursor: pointer;
+}
+
+.main-content-text-upload:hover {
+    color: #00376b;
+}
+
+
+/* 유틸리티 클래스 */
+.st-bold {
+    font-weight: bold;
+}
+
+.st-gray {
+    color: #737373;
+}
+
+.st-mg-t-8 {
+    margin-top: 8px;
+}
+
+
+
+/* 임시 */
+/* 메인 사이드바 컨테이너 (임시) */
+.aside-container {
+    width: 320px;
+    height: 100vh;
+    margin-top: 16px; /* 이후 삭제하거나 조정 필요 */
+    margin-left: 64px; /* 이후 padding-left 로 변경 필요 */
+    color: #FFF;
+    background-color: #737373;
+}
+
+/* 메인 스토리 (임시) */
+.main-story {
+    height: 100px;
+    color: #FFF;
+    background-color: #737373;
+}
+
+/* 오른쪽 사이드 바 (임시) */
+@media (max-width: 1159px) {
+    .aside-container {
+        display: none;
+    }
+}
