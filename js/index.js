@@ -179,18 +179,18 @@ function renderFeed(feed) {
             )
             .join("")}
           </div>
-          <div class="carousel_button_container">
-            <button type="button" class="carousel_prev">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chevron-double-left">
-                <path d="M0.243 0.157a0.025 0.025 0 0 0 -0.035 0L0.082 0.283a0.025 0.025 0 0 0 0 0.035l0.125 0.125a0.025 0.025 0 0 0 0.035 0 0.025 0.025 0 0 0 0 -0.035L0.135 0.3 0.243 0.193a0.025 0.025 0 0 0 0 -0.035"/>
-              </svg>
-            </button>
-            <button type="button" class="carousel_next">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chevron-double-right">
-                <path d="M0.243 0.157a0.025 0.025 0 0 0 -0.035 0L0.082 0.283a0.025 0.025 0 0 0 0 0.035l0.125 0.125a0.025 0.025 0 0 0 0.035 0 0.025 0.025 0 0 0 0 -0.035L0.135 0.3 0.243 0.193a0.025 0.025 0 0 0 0 -0.035"/>    
-              </svg>
-            </button>
-          </div>
+            <div class="carousel_button_container">
+              <button type="button" class="carousel_prev">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="-0.133 0 0.6 0.6" class="bi bi-chevron-double-left">
+                  <path d="M0.243 0.157a0.025 0.025 0 0 0 -0.035 0L0.082 0.283a0.025 0.025 0 0 0 0 0.035l0.125 0.125a0.025 0.025 0 0 0 0.035 0 0.025 0.025 0 0 0 0 -0.035L0.135 0.3 0.243 0.193a0.025 0.025 0 0 0 0 -0.035"/>
+                </svg>
+              </button>
+              <button type="button" class="carousel_next">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="-0.133 0 0.6 0.6" transform="scale(-1 1)" class="bi bi-chevron-double-left">
+                  <path d="M0.243 0.157a0.025 0.025 0 0 0 -0.035 0L0.082 0.283a0.025 0.025 0 0 0 0 0.035l0.125 0.125a0.025 0.025 0 0 0 0.035 0 0.025 0.025 0 0 0 0 -0.035L0.135 0.3 0.243 0.193a0.025 0.025 0 0 0 0 -0.035"/>
+                </svg>
+              </button>
+            </div>
           <div class="carousel_pagination">
             ${feed.postImages
             .map((_, index) => `<div class="carousel_circle" data-index="${index}"></div>`)

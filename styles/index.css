@@ -356,6 +356,7 @@ main {
     height: 100px;
     color: #FFF;
     background-color: #737373;
+    margin-bottom: 24px;
 }
 
 /* 오른쪽 사이드 바 (임시) */
