@@ -1,6 +1,7 @@
 body {
 	margin: 0;
 	padding: 0;
+	overflow: hidden;
 }
 
 /* 큰 사이즈 스토리 */
@@ -524,12 +525,14 @@ body {
   position: relative;
   width: fit-content;
   height: fit-content;
+	border-radius: 7px;
 }
 
 #story-side-stories-left2 {
   position: relative;
   width: fit-content;
   height: fit-content;
+	border-radius: 7px;
 }
 
 #story-side-left-container {
@@ -547,6 +550,7 @@ body {
   aspect-ratio: 386 / 686;
   height: auto;
   object-fit: contain;
+	border-radius: 7px;
 }
 
 #story-side-left-user {
@@ -559,16 +563,6 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1;
-}
-
-#dark-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
   z-index: 1;
 }
 
@@ -616,12 +610,14 @@ body {
   position: relative;
   width: fit-content;
   height: fit-content;
+	
 }
 
 #story-side-stories-right4 {
   position: relative;
   width: fit-content;
   height: fit-content;
+	border-radius: 7px;
 }
 
 #story-side-right-container {
@@ -632,6 +628,7 @@ body {
 	background-color: #aeaeae;
 	border-radius: 7px;
 	cursor: pointer;
+	border-radius: 7px;
 }
 
 #story-side-right-img {
@@ -639,7 +636,7 @@ body {
   aspect-ratio: 386 / 686;
   height: auto;
   object-fit: contain;
-
+	border-radius: 7px;
 }
 
 #story-side-right-user {
@@ -661,8 +658,9 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3); 
+  background-color: rgba(0, 0, 0, 0.6); 
   z-index: 1;
+	border-radius: 7px;
 }
 
 #story-side-right-userimg-container {

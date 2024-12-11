@@ -37,6 +37,51 @@
           "timestamp": "2024-12-11T09:00:00Z"
         }
       ]
-    }
+    },
+		{
+			"userId": 3,
+			"username": "emma_wilson",
+			"profileImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAn2-E4jcUWHLhczn1SacIwFBtWIDlGN_Jbw&s",
+			"stories": [
+				{
+					"storyId": 301,
+					"mediaType": "image",
+					"mediaUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrLBoLaaiPSG0OPCVktgsGguO-Dcbt1845lQ&s",
+					"timestamp": "2024-12-11T01:00:00Z"
+				}
+			]
+		},
+		{
+			"userId": 4,
+			"username": "oliver_james",
+			"profileImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRTMtWuVfaJrf_aVERiq874gNRnIrIw8ZYqQ&s",
+			"stories": [
+				{
+					"storyId": 401,
+					"mediaType": "image",
+					"mediaUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQPIfdYoiQG4BdOG-DMktG_MzJiQhB7LHFcA&s",
+					"timestamp": "2024-12-11T08:10:00Z"
+				},
+				{
+					"storyId": 402,
+					"mediaType": "image",
+					"mediaUrl": "https://blog.kakaocdn.net/dn/tVDzp/btqCUb5kIyG/GwHB7zZN7e5vrPzEyOBkp0/img.jpg",
+					"timestamp": "2024-12-11T09:30:00Z"
+				}
+			]
+		},
+		{
+			"userId": 5,
+			"username": "sophia_martin",
+			"profileImage": "https://contents.kyobobook.co.kr/sih/fit-in/400x0/pdt/9791191347296.jpg",
+			"stories": [
+				{
+					"storyId": 501,
+					"mediaType": "image",
+					"mediaUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJrln1AzzNxuZDjy1njZM4zzmu9g6qKprE5Q&s",
+					"timestamp": "2024-12-11T10:00:00Z"
+				}
+			]
+		}
   ]
 }

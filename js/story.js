@@ -1,14 +1,12 @@
-// id로 요소 가져오기 작업예정
-// const storyMainImg = document.getElementById("story-main-img");
-// const storyProfileImg = document.getElementById("story-profile-img");
-// const storyProfileName = document.getElementById("story-profile-name");
-// const storyUploadTime = document.getElementById("story-upload-time");
+// 작업할 때 일시정지 끄기
+// let isPlaying = false; 
+let isPlaying = true;
 
+// json 데이터 가져오기
 let currentStoryIndex = 0;
 let currentMediaIndex = 0;
 let storiesData = [];
 
-// json 데이터 가져오기
 fetch("./json/stories.json")
   .then((response) => {
     if (!response.ok) {
@@ -18,11 +16,40 @@ fetch("./json/stories.json")
   })
   .then((data) => {
     storiesData = data.stories;
-    updateStories(currentStoryIndex, currentMediaIndex);
+    initializeStories();
   })
   .catch((error) => {
     console.error("JSON Fetching Error", error);
   });
+
+function initializeStories() {
+  if (storiesData.length === 0) {
+    return;
+  }
+
+  updateStories(currentStoryIndex, currentMediaIndex);
+
+  const prevUserIndex1 =
+    (currentStoryIndex - 2 + storiesData.length) % storiesData.length;
+  const prevUserIndex2 =
+    (currentStoryIndex - 1 + storiesData.length) % storiesData.length;
+  const nextUserIndex1 = (currentStoryIndex + 1) % storiesData.length;
+  const nextUserIndex2 = (currentStoryIndex + 2) % storiesData.length;
+
+  if (storiesData[prevUserIndex1]) {
+    updateSideStory("story-side-stories-left1", prevUserIndex1, 0);
+  }
+  if (storiesData[prevUserIndex2]) {
+    updateSideStory("story-side-stories-left2", prevUserIndex2, 0);
+  }
+
+  if (storiesData[nextUserIndex1]) {
+    updateSideStory("story-side-stories-right3", nextUserIndex1, 0);
+  }
+  if (storiesData[nextUserIndex2]) {
+    updateSideStory("story-side-stories-right4", nextUserIndex2, 0);
+  }
+}
 
 // json 데이터 가져오고 출력
 function updateStories(userIndex, mediaIndex) {
@@ -35,6 +62,18 @@ function updateStories(userIndex, mediaIndex) {
   document.querySelector("#story-upload-time").textContent = formatTimestamp(
     story.timestamp
   );
+
+  function updateSideStory(containerId, userIndex, mediaIndex) {
+    const user = storiesData[userIndex];
+    const story = user.stories[mediaIndex];
+
+    const container = document.getElementById(containerId);
+    container.querySelector('img[id$="user-img"]').src = user.profileImage;
+    container.querySelector('div[id$="username"]').textContent = user.username;
+    container.querySelector('div[id$="upload-time"]').textContent =
+      formatTimestamp(story.timestamp);
+    container.querySelector('img[id$="img"]').src = story.mediaUrl;
+  }
 }
 
 // 시간 스탬프 계산
@@ -62,7 +101,6 @@ document.getElementById("story-out-btn").addEventListener("click", () => {
 
 // 재생 - 일시정지 버튼
 // let isPlaying = true;
-let isPlaying = false;
 
 function togglePlayPause() {
   isPlaying = !isPlaying;
@@ -296,6 +334,7 @@ function moveToNextStory() {
     }
   }
   updateStories(currentStoryIndex, currentMediaIndex);
+  updateSideStories();
 }
 // 이전 스토리 이동
 document
@@ -312,11 +351,10 @@ function moveToPrevStory() {
     if (currentStoryIndex < 0) {
       currentStoryIndex = storiesData.length - 1;
     }
-    const currentUserStories = storiesData[currentStoryIndex]?.stories;
-
-    currentMediaIndex = currentUserStories.length - 1;
+		currentMediaIndex = 0;
   }
   updateStories(currentStoryIndex, currentMediaIndex);
+  updateSideStories();
 }
 
 function updateStories(userIndex, mediaIndex) {
@@ -333,6 +371,32 @@ function updateStories(userIndex, mediaIndex) {
   createLoadingBars();
   updateLoadingBar(mediaIndex);
   if (isPlaying) startAutoPlay();
+}
+
+function updateSideStories() {
+  const prevUserIndex1 =
+    (currentStoryIndex - 2 + storiesData.length) % storiesData.length;
+  const prevUserIndex2 =
+    (currentStoryIndex - 1 + storiesData.length) % storiesData.length;
+  const nextUserIndex1 = (currentStoryIndex + 1) % storiesData.length;
+  const nextUserIndex2 = (currentStoryIndex + 2) % storiesData.length;
+
+  updateSideStory("story-side-stories-left1", prevUserIndex1, 0);
+  updateSideStory("story-side-stories-left2", prevUserIndex2, 0);
+  updateSideStory("story-side-stories-right3", nextUserIndex1, 0);
+  updateSideStory("story-side-stories-right4", nextUserIndex2, 0);
+}
+
+function updateSideStory(containerId, userIndex, mediaIndex) {
+  const user = storiesData[userIndex];
+  const story = user.stories[mediaIndex];
+
+  const container = document.getElementById(containerId);
+  container.querySelector('img[id$="user-img"]').src = user.profileImage;
+  container.querySelector('div[id$="username"]').textContent = user.username;
+  container.querySelector('div[id$="upload-time"]').textContent =
+    formatTimestamp(story.timestamp);
+  container.querySelector('img[id$="img"]').src = story.mediaUrl;
 }
 
 // 재생 시간 바 생성
