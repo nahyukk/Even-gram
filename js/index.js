@@ -326,6 +326,7 @@ window.addEventListener("scroll", () => {
 // 초기 로드
 loadMoreFeeds();
 
+
 // 좋아요 버튼 토글 기능
 document.addEventListener("DOMContentLoaded", () => {
     const mainContentsList = document.querySelector(".main-contents-list");
@@ -354,6 +355,43 @@ document.addEventListener("DOMContentLoaded", () => {
                 likesElement.textContent = `좋아요 ${currentLikes + 1}개`;
                 heartIcon.classList.add("liked");
             }
+        }
+    });
+
+    // 북마크 버튼 토글 기능
+    // 북마크 버튼 클릭 이벤트 위임
+    mainContentsList.addEventListener("click", (event) => {
+        const bookmarkIcon = event.target.closest(".icon-bookmark");
+        if (bookmarkIcon) {
+            // 북마크 토글 상태 확인 (클래스를 통해 상태를 저장)
+            const isBookmark = bookmarkIcon.classList.contains("liked");
+
+            if (isBookmark) {
+                // 북마크 취소
+                bookmarkIcon.classList.remove("liked");
+            } else {
+                bookmarkIcon.classList.add("liked");
+            }
+        }
+    });
+});
+
+// 좋아요 하트 통통이
+document.addEventListener("DOMContentLoaded", () => {
+    const mainContentsList = document.querySelector(".main-contents-list");
+
+    // 좋아요 애니메이션 트리거
+    mainContentsList.addEventListener("click", (event) => {
+        // 클릭된 요소가 .icon-heart인지 확인
+        const heartIcon = event.target.closest(".icon-heart");
+
+        if (heartIcon) {
+            console.log("Triggering animation for", heartIcon);
+
+            // 애니메이션 트리거
+            heartIcon.classList.remove("animate"); // 기존 애니메이션 클래스 제거
+            void heartIcon.offsetWidth; // 리플로우 발생 (애니메이션 초기화)
+            heartIcon.classList.add("animate"); // 애니메이션 클래스 다시 추가
         }
     });
 });

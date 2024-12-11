@@ -98,6 +98,13 @@ main {
     cursor: pointer;
 }
 
+.main-profile-more-icon:active {
+    width: 24px;
+    height: 24px;
+    background-image: url(../assets/icons/more_active.png);
+    cursor: pointer;
+}
+
 .main-profile-meta {
     display: flex;
     flex-direction: row;
@@ -119,8 +126,7 @@ main {
 
 
 
-/* 메인 컨텐츠 슬라이더 부분 (임시) */
-
+/* 메인 컨텐츠 슬라이더 부분 */
 /* 캐러셀 전체 구조  */
 .carousel_main {
     width: 100%; /* 이미지 크기 설정  */
@@ -256,16 +262,43 @@ main {
     background-image: url(../assets/icons/heart.png);
 }
 
+.icon-heart.animate {
+    animation: heart-scale 0.45s ease-in-out;
+}
+
+.icon-heart:hover {
+    background-image: url(../assets/icons/heart_hover.png);
+}
+.icon-heart:active {
+    background-image: url(../assets/icons/heart_active.png);
+}
+
 .icon-heart.liked {
-    background-image: url(../assets/icons/heart-fill.png);
+    background-image: url(../assets/icons/heart_fill.png);
+}
+
+.icon-heart.liked:active {
+    background-image: url(../assets/icons/heart_fill_active.png);
 }
 
 .icon-msg {
     background-image: url(../assets/icons/msg.png);
 }
 
+.icon-msg:hover {
+    background-image: url(../assets/icons/msg_hover.png);
+}
+
+.icon-msg:active {
+    background-image: url(../assets/icons/msg_active.png);
+}
+
 .icon-dm {
     background-image: url(../assets/icons/dm.png);
+}
+
+.icon-dm:hover {
+    background-image: url(../assets/icons/dm_hover.png);
 }
 
 .icon-bookmark {
@@ -278,6 +311,15 @@ main {
 
 .icon-bookmark:active {
     background-image: url(../assets/icons/bookmark_active.png);
+}
+
+.icon-bookmark.liked,
+.icon-bookmark.liked:hover {
+    background-image: url(../assets/icons/bookmark_fill.png);
+}
+
+.icon-bookmark.liked:active {
+    background-image: url(../assets/icons/bookmark_fill_hover.png);
 }
 
 
@@ -377,4 +419,19 @@ main {
     width: 250px;
     margin-right: 64px;
     z-index: -1;
+}
+
+@keyframes heart-scale {
+    0% {
+        transform: scale(1)
+    }
+    25% {
+        transform: scale(1.2)
+    }
+    50% {
+        transform: scale(.95)
+    }
+    100% {
+        transform: scale(1)
+    }
 }
