@@ -88,7 +88,7 @@ document.getElementById("story-btn-meatball").addEventListener("click", modalOpe
 
 // 모달 닫기 - 취소 버튼
 document.querySelector("#btn-취소").addEventListener("click", () => {
-	document.getElementById("story-modal-overlay").classList.add("modal-hidden");
+document.getElementById("story-modal-overlay").classList.add("modal-hidden");
 })
 
 // 모달 닫기 - 외부 영역
@@ -106,7 +106,6 @@ const heartButton = document.getElementById("story-btn-heart");
 const dmButton = document.getElementById("story-btn-dm");
 
 // 디엠 input form
-
 // placeholder
 function handlePlaceholder() {
   if (dmInput.textContent.trim() === "") {
@@ -128,11 +127,17 @@ dmInput.addEventListener("focus", () => {
 	dmContainer.classList.add("dm-expand");
 })
 
-dmInput.addEventListener("blur", () => {
+dmInput.addEventListener("blur", (event) => {
+
+	if (event.relatedTarget === sendButton) {
+		return;
+	}
+
 	dmOverlay.style.opacity = "0";
 	heartButton.classList.remove("btn-hidden");
 	dmButton.classList.remove("btn-hidden");
 	dmContainer.classList.remove("dm-expand");
+	dmContainer.classList.remove("send-btn-active");
 })
 
 // 보내기 버튼
@@ -143,8 +148,20 @@ function handleSend() {
     dmContainer.classList.add("send-btn-active");
   }
 }
-handleSend();
 dmInput.addEventListener("input", handleSend);
+
+// 보내기 버튼 클릭
+const sendButton = document.getElementById("story-send-btn");
+sendButton.addEventListener("click", (event) => {
+	event.stopPropagation();
+	dmInput.textContent="";
+	dmContainer.classList.remove("send-btn-active");
+	dmContainer.classList.remove("dm-expand");
+	heartButton.classList.remove("btn-hidden");
+	dmButton.classList.remove("btn-hidden");
+	dmInput.classList.add("placeholder-active");
+	dmInput.blur();
+})
 
 
 // 하트 버튼
