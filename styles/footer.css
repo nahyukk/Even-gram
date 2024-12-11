@@ -1,0 +1,68 @@
+.main-footer-container {
+    background-color: var(--base-background-color);
+    color: var(--secondary-text-color);
+    padding: 0 16px;
+    position: relative;
+    font-size: 12px;
+}
+
+.main-footer-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    margin-bottom: 52px;
+    background-color: transparent;
+}
+
+/* 메인 푸터 첫번째 줄 */
+.main-footer-first {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.main-footer-textarea {
+    display: flex;
+}
+
+.main-footer-textarea a {
+    color: var(--secondary-text-color);
+    line-height: 16px;
+    margin: 0 8px;
+    margin-bottom: 12px;
+    text-decoration: none;
+}
+
+.main-footer-textarea a:hover {
+    text-decoration: underline;
+}
+
+/* 메인 푸터 두번째 줄 */
+.main-footer-second {
+    display: flex;
+    margin: 12px 0;
+    justify-content: center;
+}
+
+.main-footer-lang {
+    cursor: pointer;
+}
+
+.main-footer-lang-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.lang {
+    width: 12px;
+    height: 12px;
+    margin-left: 4px;
+    background-image: url(../assets/icons/arrow.png);
+}
+
+.main-footer-meta {
+    margin-left: 16px;
+}
