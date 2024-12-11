@@ -112,6 +112,7 @@ const feedData = [
         username: "hwiwoo_coffee",
         location: "고양시",
         profileImage: "./assets/images/1_hwiwoo.jpg",
+        update: "1시간",
         postImages: [
             "./assets/images/1-1_hwiwoo.jpg",
             "./assets/images/1-2_hwiwoo.jpg",
@@ -126,6 +127,7 @@ const feedData = [
     {
         username: "nolimitcoffeebar",
         location: "서울 용산구",
+        update: "1일",
         profileImage: "./assets/images/2_nolimit.jpg",
         postImages: [
             "./assets/images/2-1_nolimit.jpg",
@@ -140,6 +142,7 @@ const feedData = [
     {
         username: "__nutten",
         location: "서울 서초구",
+        update: "1주",
         profileImage: "./assets/images/4_nutten.jpg",
         postImages: [
             "./assets/images/4-1_nutten.jpg",
@@ -176,7 +179,7 @@ function renderFeed(feed) {
             <div class="main-profile-meta">
               <div class="main-profile-name st-bold">${feed.username}</div>
               <span style="margin: 0 4px; color: #737373;">•</span>
-              <a class="main-profile-date" href="#">1일</a>
+              <a class="main-profile-date" href="#">${feed.update}</a>
             </div>
             <div class="main-profile-site">${feed.location}</div>
           </div>
