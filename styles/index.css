@@ -257,6 +257,10 @@ main {
     background-image: url(/assets/icons/heart.png);
 }
 
+.icon-heart.liked {
+    background-image: url(/assets/icons/heart-fill.png);
+}
+
 .icon-msg {
     width: 24px;
     height: 24px;
@@ -352,6 +356,7 @@ main {
     height: 100px;
     color: #FFF;
     background-color: #737373;
+    margin-bottom: 24px;
 }
 
 /* 오른쪽 사이드 바 (임시) */
@@ -359,4 +364,11 @@ main {
     .aside-container {
         display: none;
     }
+}
+
+/* 왼쪽 사이드 바 자리 (임시) */
+.left-side-container {
+    width: 250px;
+    margin-right: 64px;
+    z-index: -1;
 }
