@@ -1,6 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
+	toggleNavContainer();
 	renderRightSidebar();
 	fetchUser();
+});
+
+window.addEventListener("resize", () => {
+	toggleNavContainer();
 });
 
 /* 우측 사이드바 */
@@ -268,4 +273,14 @@ function createSavedCoveredContainer() {
 	coveredContainer.appendChild(allPostsLabel);
 
 	return coveredContainer;
+}
+
+// 상단 네비게이션 미디어쿼리
+function toggleNavContainer() {
+	const navContainer = document.querySelector(".nav__container");
+	if (window.innerWidth <= 574) {
+		navContainer.style.display = "flex";
+	} else {
+		navContainer.style.display = "none";
+	}
 }
