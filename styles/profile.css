@@ -146,7 +146,7 @@ body {
 }
 
 .profile__tab-button-indicator {
-	/* display: none; */
+	display: none;
 	height: 1px;
 	width: 100%;
 	background-color: var(--text-color);
@@ -171,8 +171,12 @@ body {
 	height: 14px;
 }
 
-/* js 작업할때  */
-.profile__tab-button.active + .profile__tab-button-indicator {
+/* 탭 active */
+.profile__tab-button-container.active span {
+	color: var(--text-color);
+}
+
+.profile__tab-button-container.active .profile__tab-button-indicator {
 	display: block;
 }
 
