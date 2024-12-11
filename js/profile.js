@@ -25,7 +25,7 @@ function fetchUser() {
 		.then((data) => {
 			console.log(data);
 			renderUser(data.user);
-			renderPosts(data.user.posts);
+			initializeTabs(".profile__tab-button-container", data.user.post);
 		})
 		.catch((error) => {
 			console.log("JSON Fetching Error: ", error);
@@ -39,7 +39,7 @@ function renderUser(user) {
 	document.querySelector(".profile__image").src = profileImage;
 	document.querySelector(".profile__name").textContent = user.nickName;
 	document.querySelector("#profile__post-info-posts").textContent =
-		"게시물 " + user.posts.length;
+		"게시물 " + user.post.posts.length;
 	document.querySelector("#profile__post-info-followers").textContent =
 		"팔로워 " + user.follower;
 	document.querySelector("#profile__post-info-following").textContent =
@@ -50,12 +50,12 @@ function renderUser(user) {
 		user.description;
 }
 
-function renderPosts(posts) {
+function renderPosts(posts, type) {
 	const postContainer = document.querySelector(
 		".profile__post-section-container"
 	);
 
-	const cachedPostImages = getCachedImageURL("postImages", posts.length);
+	const cachedPostImages = getCachedImageURL(`${type}Images`, posts.length);
 
 	postContainer.innerHTML = ""; // 기존 데이터 초기화
 	posts.forEach((post, index) => {
@@ -65,7 +65,7 @@ function renderPosts(posts) {
 		const postImage = document.createElement("img");
 		postImage.className = "profile__post_image";
 		postImage.src = cachedPostImages[index];
-		postImage.alt = "post_image";
+		postImage.alt = `${type}_image`;
 
 		if (post.image_count > 1) {
 			const postImage = document.createElement("img");
@@ -107,25 +107,18 @@ function renderPosts(posts) {
 
 document.addEventListener("DOMContentLoaded", () => {
 	fetchUser();
-	initializeTabs(".profile__tab-button-container");
 });
 
 /* 프로필 탭 클릭 */
 
-/*
-	버튼 3개 중 클릭한 버튼 외에는 inactive
-	renderPosts를 새로 가져와야 함
-	 -> json 수정 필요?
-	버튼 하나 릴스 -> 저장됨으로 바꾸기.. 아이콘도 ㅠ
-*/
-
-function initializeTabs(selector, defaultIndex = 0) {
+function initializeTabs(selector, posts, defaultIndex = 0) {
 	const tabContainer = document.querySelectorAll(selector);
 
 	// 초기값 지정
 	tabContainer.forEach((tab, index) => {
 		if (index === defaultIndex) {
 			tab.classList.add("active");
+			renderPosts(getFilteredPosts(posts, "posts"));
 		} else {
 			tab.classList.remove("active");
 		}
@@ -136,6 +129,17 @@ function initializeTabs(selector, defaultIndex = 0) {
 			console.log(tab);
 			tabContainer.forEach((t) => t.classList.remove("active"));
 			tab.classList.add("active");
+			const dataType = tab.getAttribute("data-type");
+			const filteredPosts = getFilteredPosts(posts, dataType);
+			 renderPosts(filteredPosts, dataType)
 		});
 	});
+}
+
+function getFilteredPosts(postlist, type) {
+	console.log(postlist);
+	if (!postlist || !postlist[type]) {
+		return [];
+	}
+	return postlist[type];
 }
