@@ -94,7 +94,7 @@ main {
 .main-profile-more-icon {
     width: 24px;
     height: 24px;
-    background-image: url(/assets/icons/more.png);
+    background-image: url(../assets/icons/more.png);
     cursor: pointer;
 }
 
@@ -254,29 +254,29 @@ main {
 .icon-heart {
     width: 24px;
     height: 24px;
-    background-image: url(/assets/icons/heart.png);
+    background-image: url(../assets/icons/heart.png);
 }
 
 .icon-heart.liked {
-    background-image: url(/assets/icons/heart-fill.png);
+    background-image: url(../assets/icons/heart-fill.png);
 }
 
 .icon-msg {
     width: 24px;
     height: 24px;
-    background-image: url(/assets/icons/msg.png);
+    background-image: url(../assets/icons/msg.png);
 }
 
 .icon-dm {
     width: 24px;
     height: 24px;
-    background-image: url(/assets/icons/dm.png);
+    background-image: url(../assets/icons/dm.png);
 }
 
 .icon-bookmark {
     width: 24px;
     height: 24px;
-    background-image: url(/assets/icons/bookmark.png);
+    background-image: url(../assets/icons/bookmark.png);
     cursor: pointer;
 }
 
