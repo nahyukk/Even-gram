@@ -24,6 +24,7 @@
 			</button>
 		</div>
 		<div class="story">
+			<div id="story-dm-overlay"></div>
 			<div id="story-main-img">
 				<img id=story-main-img-img src="https://file3.instiz.net/data/cached_img/upload/2021/01/11/3/a08bb91dd43fba14606b0f82bcc3fdb9.jpg" alt="story-image"/>
 			</div>	
@@ -51,7 +52,8 @@
 			</div>
 			<div id="story-bottom">
 				<div id="story-bottom-dm">
-					<input id="story-dm-form" placeholder="user님에게 답장하기..."/>
+					<div id="story-dm-form" class="editable" contenteditable="true" placeholder="user님에게 답장하기..."></div>
+					<button id="story-send-btn">보내기</button>
 				</div>
 				<div id="story-bottom-btns">
 					<div id="story-btn-heart">

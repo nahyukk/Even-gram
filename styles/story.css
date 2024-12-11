@@ -175,40 +175,75 @@ body {
 	bottom: 0;
   padding: 0 16px 16px 16px ;
   width: calc(100% - 32px);
-	
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
 	gap: 8px;
   z-index: 10; 
 }
+
+/* 스토리 디엠 */
 #story-bottom-dm {
-	margin: 0;
-	height: 42px;
-	width: 100%;
+	flex-grow: 1;
+	height: auto;
+	min-height: 42px;
 	border: 0.5px solid;
 	border-radius: 30px;
 	padding: 0 8px 0 11px;
 	display: flex;
 	align-items: center;
+	transition: height 0.2s ease;
+	overflow: hidden;
 }
 
 #story-dm-form {
+	display: flex;
+	align-items: center;
 	background-color: transparent;
 	border: none;
-	height: 18px !important;
+	width: 100%;
+	height: auto;
+	color: white;
+	/* height: 18px !important; */
 	margin: 0 4px 0 0;
 	padding: 8px 9px;
-	color: white;
+	white-space: pre-wrap;
+  word-wrap: break-word;
+	text-align: left;
+	display: block;
+	overflow: hidden;
+	font-size: 14px;
+	caret-color: #aeaeae;
 }
 
 #story-dm-form:focus {
 	border: none !important;
 	outline: none;
+	
 }
-#story-dm-form::placeholder {
-	color: white;
+.placeholder-active::before {
+  content: attr(placeholder);
+	position: absolute;
+  color: white;
+	font-size: 14px;
+	pointer-events: none;
 }
+
+/* 스토리 이미지 어둡게 설정 */
+#story-dm-overlay {
+	position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(41, 41, 41, 0.5); /* 어두운 투명 배경 */
+  opacity: 0; /* 기본 상태에서 숨김 */
+  transition: opacity 0.3s ease; /* 부드러운 전환 */
+  pointer-events: none; /* 클릭 방지 */
+  z-index: 2; /* 이미지 위 */
+}
+
+
 
 #story-bottom-btns {
 	display: flex;
@@ -222,10 +257,47 @@ body {
 #story-btn-heart{
 	padding: 8px;
 	cursor: pointer;
+	transition: all 0.3s ease;
 }
+
+#story-btn-heart:hover svg{
+	color: #a7a7a7;
+}
+
+#story-btn-heart:active svg{
+	transform: scale(1.2);
+	transition: all 0.2s ease;
+}
+
+.heart-btn-clicked svg{
+	fill: rgb(255, 48, 64);
+}
+
 #story-btn-dm{
 	padding: 8px;
 	cursor: pointer;
+}
+#story-send-btn {
+	background-color: transparent;
+	border: none;
+	right: 0;
+	font-size: 14px;
+	color: white;
+	font-weight: 600;
+	white-space: nowrap;
+	cursor: pointer;
+	display: none;
+}
+
+.btn-hidden {
+	display: none !important;
+}
+
+/* .dm-expand #story-send-btn {
+	display: block !important;
+} */
+#story-bottom-dm.send-btn-active #story-send-btn {
+	display: block !important;
 }
 
 /* 스토리 미트볼 버튼 모달 */
