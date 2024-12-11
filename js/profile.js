@@ -108,3 +108,33 @@ function renderPosts(posts) {
 document.addEventListener("DOMContentLoaded", () => {
 	fetchUser();
 });
+
+/* 프로필 탭 클릭 */
+
+/*
+	버튼 3개 중 클릭한 버튼 외에는 inactive
+	renderPosts를 새로 가져와야 함
+	 -> json 수정 필요?
+	버튼 하나 릴스 -> 저장됨으로 바꾸기.. 아이콘도 ㅠ
+*/
+
+const tabContainer = document.querySelectorAll(
+	".profile__tab-button-container"
+);
+
+// 초기값 지정
+tabContainer.forEach((tab, index) => {
+	if (index === 0) {
+		tab.classList.add("active");
+	} else {
+		tab.classList.remove("active");
+	}
+});
+
+tabContainer.forEach((tab) => {
+	tab.addEventListener("click", () => {
+		console.log(tab);
+		tabContainer.forEach((tab) => tab.classList.remove("active"));
+		tab.classList.add("active");
+	});
+});
