@@ -108,6 +108,8 @@ const dmContainer = document.getElementById("story-bottom-dm");
 const dmInput = document.getElementById("story-dm-form");
 const heartButton = document.getElementById("story-btn-heart");
 const dmButton = document.getElementById("story-btn-dm");
+const quickemotionBtn = document.querySelectorAll(".quickemotion-btns button");
+console.log("quickemotionBtn 초기화:", quickemotionBtn);
 
 // 디엠 input form
 // placeholder
@@ -123,16 +125,19 @@ dmInput.addEventListener("input", handlePlaceholder);
 
 // 입력창 focus 시 img 어둡게, 버튼 숨기고 입력창 확장
 const dmOverlay = document.getElementById("story-dm-overlay");
+const quickEmotion = document.getElementById("story-dm-quickemotion");
 
 dmInput.addEventListener("focus", () => {
   dmOverlay.style.opacity = "1";
   heartButton.classList.add("btn-hidden");
   dmButton.classList.add("btn-hidden");
   dmContainer.classList.add("dm-expand");
+  quickEmotion.classList.remove("quickemotion-hidden");
 });
 
 dmInput.addEventListener("blur", (event) => {
-  if (event.relatedTarget === sendButton) {
+  const allButtons = [sendButton, ...Array.from(quickemotionBtn)];
+  if (event.relatedTarget && allButtons.includes(event.relatedTarget)) {
     return;
   }
 
@@ -141,6 +146,7 @@ dmInput.addEventListener("blur", (event) => {
   dmButton.classList.remove("btn-hidden");
   dmContainer.classList.remove("dm-expand");
   dmContainer.classList.remove("send-btn-active");
+  quickEmotion.classList.add("quickemotion-hidden");
 });
 
 // 보내기 버튼
@@ -165,6 +171,7 @@ sendButton.addEventListener("click", (event) => {
   heartButton.classList.remove("btn-hidden");
   dmButton.classList.remove("btn-hidden");
   dmInput.classList.add("placeholder-active");
+	quickEmotion.classList.add("quickemotion-hidden");
   dmInput.blur();
   sendModal.classList.add("send-modal-visible");
   sendModal.classList.remove("send-modal-hidden");
@@ -172,6 +179,26 @@ sendButton.addEventListener("click", (event) => {
     sendModal.classList.remove("send-modal-visible");
     sendModal.classList.add("send-modal-hidden");
   }, 1000);
+});
+
+// 빠른 공감 버튼 클릭
+quickemotionBtn.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    sendModal.classList.add("send-modal-visible");
+    sendModal.classList.remove("send-modal-hidden");
+    dmOverlay.style.opacity = "0";
+    heartButton.classList.remove("btn-hidden");
+    dmButton.classList.remove("btn-hidden");
+    dmContainer.classList.remove("dm-expand");
+    dmContainer.classList.remove("send-btn-active");
+    quickEmotion.classList.add("quickemotion-hidden");
+    dmInput.blur();
+
+    setTimeout(() => {
+      sendModal.classList.remove("send-modal-visible");
+      sendModal.classList.add("send-modal-hidden");
+    }, 1000);
+  });
 });
 
 // 하트 버튼

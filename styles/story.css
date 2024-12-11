@@ -423,6 +423,10 @@ body {
 }
 
 /* 빠른 공감 모달  */
+.quickemotion-hidden {
+	display: none !important;
+}
+
 #story-dm-quickemotion {
 	display: flex;
 	flex-direction: column;
@@ -436,7 +440,6 @@ body {
 	background-color: transparent;
 	border: none !important;
 	width: 50%;
-
 }
 
 #quickemotion-text {
@@ -444,7 +447,7 @@ body {
 	font-weight: 600;
 }
 
-#quickemotion-btns {
+.quickemotion-btns {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
@@ -459,6 +462,7 @@ body {
 	padding: 0;
 	margin: 3px 5px;
 }
+
 
 
 /* 작은 사이즈 스토리 */
