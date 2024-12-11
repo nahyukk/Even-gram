@@ -274,3 +274,53 @@ buttons.forEach((btn) => {
     });
   });
 });
+
+// 다음 스토리 이동
+document.getElementById("story-next-btn").addEventListener("click", () => {
+  moveToNextStory();
+});
+
+function moveToNextStory() {
+	if (storiesData.length === 0) return;
+
+	currentMediaIndex++;
+
+	if (currentMediaIndex >= storiesData[currentStoryIndex].stories.length) {
+		currentMediaIndex = 0;
+		currentStoryIndex++;
+		if (currentStoryIndex >= storiesData.length) {
+			currentStoryIndex = 0;
+		}
+	}
+	updateStories(currentStoryIndex, currentMediaIndex)
+}
+// 이전 스토리 이동
+document.getElementById("story-prev-btn").addEventListener("click", moveToPrevStory);
+
+function moveToPrevStory() {
+	if (storiesData.length === 0) return;
+
+	currentMediaIndex--;
+
+	if (currentMediaIndex < 0) {
+		currentStoryIndex--;
+		if (currentStoryIndex < 0) {
+			currentStoryIndex = storiesData.length - 1;
+		}
+		const currentUserStories = storiesData[currentStoryIndex]?.stories;
+    
+    currentMediaIndex = currentUserStories.length - 1;
+	}
+	updateStories(currentStoryIndex, currentMediaIndex)
+}
+
+function updateStories(userIndex, mediaIndex) {
+  const user = storiesData[userIndex];
+  const story = user.stories[mediaIndex];
+
+  document.getElementById("story-main-img-img").src = story.mediaUrl;
+  document.querySelector("#story-profile-img img").src = user.profileImage;
+  document.querySelector("#story-profile-name").textContent = user.username;
+  document.querySelector("#story-upload-time").textContent = formatTimestamp(story.timestamp);
+}
+
