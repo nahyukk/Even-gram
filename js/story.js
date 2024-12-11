@@ -90,6 +90,29 @@ function formatTimestamp(timestamp) {
   }
 }
 
+// 사이드 스토리 클릭시 이동
+const storyContainers = {
+  "story-side-stories-left1": -2,
+  "story-side-stories-left2": -1,
+  "story-side-stories-right3": 1,
+  "story-side-stories-right4": 2,
+};
+
+Object.entries(storyContainers).forEach(([containerId, offset]) => {
+  const container = document.getElementById(containerId);
+  container.addEventListener("click", () => handleStoryClick(offset));
+});
+
+
+function handleStoryClick(offset) {
+  currentStoryIndex =
+    (currentStoryIndex + offset + storiesData.length) % storiesData.length;
+  currentMediaIndex = 0;
+
+  updateStories(currentStoryIndex, currentMediaIndex);
+  updateSideStories();
+}
+
 // 로고, x 클릭시 홈으로 이동 - 추후 링크 변화시 수정 필요
 document.getElementById("story-out-logo").addEventListener("click", () => {
   window.location.href = "index.html";
