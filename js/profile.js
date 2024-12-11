@@ -41,7 +41,11 @@ function initializeTabs(selector, posts, defaultIndex = 0) {
 			tab.classList.add("active");
 			const dataType = tab.getAttribute("data-type");
 			const filteredPosts = getFilteredPosts(posts, dataType);
-			renderPosts(filteredPosts, dataType);
+			if (dataType === "saved") {
+				createSavedPostContainer(filteredPosts);
+			} else {
+				renderPosts(filteredPosts, dataType);
+			}
 		});
 	});
 }
@@ -130,6 +134,49 @@ function createHoverContainer(post) {
 
 	hoverContainer.appendChild(hoverItem);
 	return hoverContainer;
+}
+
+function createSavedPostContainer(posts) {
+	const postContainer = document.querySelector(
+		".profile__post-section-container"
+	);
+	postContainer.innerHTML = ""; // 기존 데이터 초기화
+
+	const cachedPostImages = getCachedImageURL(`savedImages`, posts.length);
+
+	const savedPostContainer = document.createElement("div");
+	savedPostContainer.className = "profile__post-section-saved-container";
+
+	const infoLabel = document.createElement("span");
+	infoLabel.textContent = "저장한 내용은 회원님만 볼 수 있습니다."
+	savedPostContainer.appendChild(infoLabel);
+
+	const savedPostItemsContainer = document.createElement("div");
+	savedPostItemsContainer.className = "profile__post-section-saved-items-container";
+
+	posts.forEach((post, index) => {
+		const postElement = document.createElement("div");
+		postElement.className = "profile__post_item-container";
+
+		const postImage = document.createElement("img");
+		postImage.className = "profile__post_image";
+		postImage.src = cachedPostImages[index];
+		postImage.alt = `saved_image`;
+		postElement.append(postImage);
+
+		savedPostItemsContainer.appendChild(postElement);
+	});
+
+	const coveredContainer = document.createElement("div");
+	coveredContainer.className = "profile__post-section-covered-container";
+
+	const allPostsLabel = document.createElement("span");
+	allPostsLabel.textContent = "모든 게시물";
+	coveredContainer.appendChild(allPostsLabel);
+
+	savedPostItemsContainer.appendChild(coveredContainer);
+	savedPostContainer.appendChild(savedPostItemsContainer);
+	postContainer.appendChild(savedPostContainer);
 }
 
 function getRandomImageURL() {
