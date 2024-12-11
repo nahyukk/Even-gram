@@ -331,6 +331,10 @@ body {
 	.profile-tab-container {
 		padding: 30px 0 0 0;
 	}
+
+	.profile__post-saved_description {
+		align-items: center;
+	}
 }
 
 @media (min-width: 767px) and (max-width: 575px) {
@@ -340,5 +344,9 @@ body {
 
 	.profile-tab-container {
 		padding: 30px 20px 0 20px;
+	}
+
+	.profile__post-saved_description {
+		align-items: left;
 	}
 }
