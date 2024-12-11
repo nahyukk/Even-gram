@@ -110,26 +110,59 @@ function renderPosts(posts, type) {
 	const postContainer = document.querySelector(
 		".profile__post-section-container"
 	);
-
+	const insertedDescripotion = document.querySelector(
+		".profile__post-saved_description"
+	);
 	const cachedPostImages = getCachedImageURL(`${type}Images`, posts.length);
 
 	postContainer.innerHTML = ""; // 기존 데이터 초기화
 
 	if (type === "saved") {
+		renderSavedPosts(
+			posts,
+			cachedPostImages,
+			postContainer,
+			insertedDescripotion
+		);
+	} else {
+		renderNormalPosts(
+			posts,
+			cachedPostImages,
+			postContainer,
+			insertedDescripotion,
+			type
+		);
+	}
+}
+
+function renderSavedPosts(
+	posts,
+	cachedPostImages,
+	postContainer,
+	insertedDescription
+) {
+	if (!insertedDescription) {
 		const savedDescription = createSavedDescription();
 		postContainer.parentNode.insertBefore(savedDescription, postContainer);
-		const savedContainer = createSavedPostContainer(posts, cachedPostImages);
-		postContainer.appendChild(savedContainer);
-	} else {
-		posts.forEach((post, index) => {
-			const postElement = createPostElement(
-				post,
-				cachedPostImages[index],
-				type
-			);
-			postContainer.appendChild(postElement);
-		});
 	}
+	const savedContainer = createSavedPostContainer(posts, cachedPostImages);
+	postContainer.appendChild(savedContainer);
+}
+
+function renderNormalPosts(
+	posts,
+	cachedPostImages,
+	postContainer,
+	insertedDescription,
+	type
+) {
+	if (insertedDescription) {
+		insertedDescription.remove();
+	}
+	posts.forEach((post, index) => {
+		const postElement = createPostElement(post, cachedPostImages[index], type);
+		postContainer.appendChild(postElement);
+	});
 }
 
 function createSavedDescription() {
