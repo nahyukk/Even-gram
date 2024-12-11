@@ -222,12 +222,12 @@ function renderFeed(feed) {
       <div class="main-content-inner">
         <div class="main-content-icon">
           <div class="main-content-icon-left">
-            <span style="margin-left: -8px;"><div class="content-icon-slot"><div class="icon-heart"></div></div></span>
-            <span><div class="content-icon-slot"><div class="icon-msg"></div></div></span>
-            <span><div class="content-icon-slot"><div class="icon-dm"></div></div></span>
+            <span style="margin-left: -8px;"><div class="content-icon-slot"><div class="icon-heart icon-box"></div></div></span>
+            <span><div class="content-icon-slot"><div class="icon-msg icon-box"></div></div></span>
+            <span><div class="content-icon-slot"><div class="icon-dm icon-box"></div></div></span>
           </div>
           <div class="main-content-icon-right">
-            <div class="icon-bookmark"></div>
+            <div class="icon-bookmark icon-box"></div>
           </div>
         </div>
         <div class="main-content-like st-bold">좋아요 ${feed.likes}개</div>
