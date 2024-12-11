@@ -1,0 +1,48 @@
+{
+	"user": {
+		"id": 20241206,
+		"profileImage": "image_profile.jpg",
+		"nickName": "even_code",
+		"title": "코이븐",
+		"follower": 337,
+		"following": 331,
+		"description": "2팀 코드가 이븐하네 화이팅",
+		"posts": [
+			{
+				"image_count": 1,
+				"likes": 100,
+				"comments": 34
+			},
+			{
+				"image_count": 3,
+				"likes": 10,
+				"comments": 7
+			},
+			{
+				"image_count": 5,
+				"likes": 10,
+				"comments": 12
+			},
+			{
+				"image_count": 1,
+				"likes": 10,
+				"comments": 34
+			},
+			{
+				"image_count": 2,
+				"likes": 10,
+				"comments": 56
+			},
+			{
+				"image_count": 2,
+				"likes": 0,
+				"comments": 0
+			},
+			{
+				"image_count": 2,
+				"likes": 101,
+				"comments": 677
+			}
+		]
+	}
+}
