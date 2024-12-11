@@ -257,6 +257,10 @@ main {
     background-image: url(/assets/icons/heart.png);
 }
 
+.icon-heart.liked {
+    background-image: url(/assets/icons/heart-fill.png);
+}
+
 .icon-msg {
     width: 24px;
     height: 24px;
@@ -359,4 +363,11 @@ main {
     .aside-container {
         display: none;
     }
+}
+
+/* 왼쪽 사이드 바 자리 (임시) */
+.left-side-container {
+    width: 250px;
+    margin-right: 64px;
+    z-index: -1;
 }
