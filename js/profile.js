@@ -96,6 +96,8 @@ function renderPosts(posts, type) {
 	postContainer.innerHTML = ""; // 기존 데이터 초기화
 
 	if (type === "saved") {
+		const savedDescription = createSavedDescription();
+		postContainer.parentNode.insertBefore(savedDescription, postContainer);
 		const savedContainer = createSavedPostContainer(posts, cachedPostImages);
 		postContainer.appendChild(savedContainer);
 	} else {
@@ -108,6 +110,16 @@ function renderPosts(posts, type) {
 			postContainer.appendChild(postElement);
 		});
 	}
+}
+
+function createSavedDescription() {
+	const savedDescription = document.createElement("div");
+	savedDescription.className = "profile__post-saved_description";
+
+	const infoLabel = document.createElement("span");
+	infoLabel.textContent = "저장한 내용은 회원님만 볼 수 있습니다.";
+	savedDescription.appendChild(infoLabel);
+	return savedDescription;
 }
 
 function createPostElement(post, imageUrl, type) {
@@ -176,13 +188,6 @@ function createHoverItem(iconSrc, textContent) {
 }
 
 function createSavedPostContainer(posts, cachedPostImages) {
-	const savedContainer = document.createElement("div");
-	savedContainer.className = "profile__post-section-saved-container";
-
-	const infoLabel = document.createElement("span");
-	infoLabel.textContent = "저장한 내용은 회원님만 볼 수 있습니다.";
-	savedContainer.appendChild(infoLabel);
-
 	const savedItemsContainer = document.createElement("div");
 	savedItemsContainer.className = "profile__post-section-saved-items-container";
 
@@ -195,12 +200,10 @@ function createSavedPostContainer(posts, cachedPostImages) {
 		savedItemsContainer.appendChild(postElement);
 	});
 
-	savedContainer.appendChild(savedItemsContainer);
-
 	const coveredContainer = createSavedCoveredContainer();
 	savedItemsContainer.appendChild(coveredContainer);
 
-	return savedContainer;
+	return savedItemsContainer;
 }
 
 function createSavedCoveredContainer() {
