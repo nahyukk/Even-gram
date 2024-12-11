@@ -422,5 +422,43 @@ body {
 	color: #dfdfdf;
 }
 
+/* 빠른 공감 모달  */
+#story-dm-quickemotion {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	bottom: 5%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2000;
+	background-color: transparent;
+	border: none !important;
+	width: 50%;
+
+}
+
+#quickemotion-text {
+	padding-bottom: 15px;
+	font-weight: 600;
+}
+
+#quickemotion-btns {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: 12rem;
+}
+
+#quickemotion-btn {
+	font-size: 29px;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	margin: 3px 5px;
+}
+
 
 /* 작은 사이즈 스토리 */
