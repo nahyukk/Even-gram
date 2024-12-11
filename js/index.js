@@ -117,6 +117,7 @@ const feedData = [
             "./assets/images/1-2_hwiwoo.jpg",
             "./assets/images/1-3_hwiwoo.jpg",
             "./assets/images/1-4_hwiwoo.jpg",
+            "./assets/images/1-1_hwiwoo.jpg",
         ],
         likes: 95,
         caption: "크리스마스에는 함께 휘우카페 어떠신가요 !",
@@ -136,6 +137,23 @@ const feedData = [
         caption: "노리밋커피바에 놀러오세요~",
         comments: 32,
     },
+    {
+        username: "__nutten",
+        location: "서울 서초구",
+        profileImage: "./assets/images/4_nutten.jpg",
+        postImages: [
+            "./assets/images/4-1_nutten.jpg",
+            "./assets/images/4-2_nutten.jpg",
+            "./assets/images/4-3_nutten.jpg",
+            "./assets/images/4-4_nutten.jpg",
+            "./assets/images/4-5_nutten.jpg",
+            "./assets/images/4-6_nutten.jpg",
+        ],
+        likes: 52,
+        caption: "힐링하기 좋은 환하고 따뜻한 카페 누뗀!",
+        comments: 61,
+    }
+
 ];
 
 // 메인 컨텐츠 리스트를 가져옵니다.
@@ -230,12 +248,23 @@ function renderFeed(feed) {
     initializeCarousel(article.querySelector(".carousel_main"));
 }
 
-// 슬라이더 초기화 함수
 function initializeCarousel(carousel) {
     const wrapper = carousel.querySelector(".carousel_wrapper");
     const prevButton = carousel.querySelector(".carousel_prev");
     const nextButton = carousel.querySelector(".carousel_next");
-    const bullets = carousel.querySelectorAll(".carousel_circle");
+    const pagination = carousel.querySelector(".carousel_pagination");
+    const slides = wrapper.querySelectorAll(".carousel_slide");
+
+    // 기존 점 제거 후 새 점 생성
+    pagination.innerHTML = ""; // 점 초기화
+    slides.forEach((_, index) => {
+        const bullet = document.createElement("div");
+        bullet.classList.add("carousel_circle");
+        bullet.setAttribute("data-index", index);
+        pagination.appendChild(bullet);
+    });
+
+    const bullets = pagination.querySelectorAll(".carousel_circle");
 
     let currentSlide = 0;
 
@@ -247,32 +276,47 @@ function initializeCarousel(carousel) {
         });
     }
 
-    prevButton.addEventListener("click", () => {
-        if (currentSlide > 0) showSlide(currentSlide - 1);
-    });
+    // 슬라이더 버튼 이벤트 연결
+    if (prevButton && nextButton) {
+        prevButton.addEventListener("click", () => {
+            if (currentSlide > 0) showSlide(currentSlide - 1);
+        });
 
-    nextButton.addEventListener("click", () => {
-        if (currentSlide < bullets.length - 1) showSlide(currentSlide + 1);
-    });
+        nextButton.addEventListener("click", () => {
+            if (currentSlide < slides.length - 1) showSlide(currentSlide + 1);
+        });
+    }
 
+    // 점 클릭 이벤트 연결
     bullets.forEach((bullet, index) => {
         bullet.addEventListener("click", () => showSlide(index));
     });
 
+    // 첫 슬라이드로 초기화
     showSlide(0);
 }
 
 // 무한 스크롤 이벤트 추가
 function loadMoreFeeds() {
     const feedsToRender = [feedData[Math.floor(Math.random() * feedData.length)]]; // 랜덤으로 하나씩 추가
-    feedsToRender.forEach(renderFeed);
+    feedsToRender.forEach((feed) => {
+        renderFeed(feed); // 피드를 렌더링
+        const newCarousel = mainContentsList
+            .lastElementChild // 가장 마지막으로 추가된 피드
+            .querySelector(".carousel_main"); // 해당 피드의 슬라이더
+
+        if (newCarousel) {
+            initializeCarousel(newCarousel); // 슬라이더 초기화
+        }
+    });
 }
 
+// 무한 스크롤 이벤트 연결
 window.addEventListener("scroll", () => {
     if (
         window.innerHeight + window.scrollY >= document.body.offsetHeight - 100
     ) {
-        loadMoreFeeds();
+        loadMoreFeeds(); // 추가된 피드와 함께 슬라이더 초기화
     }
 });
 
