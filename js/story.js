@@ -322,5 +322,43 @@ function updateStories(userIndex, mediaIndex) {
   document.querySelector("#story-profile-img img").src = user.profileImage;
   document.querySelector("#story-profile-name").textContent = user.username;
   document.querySelector("#story-upload-time").textContent = formatTimestamp(story.timestamp);
+
+	createLoadingBars();
+  updateLoadingBar(mediaIndex);
+}
+
+// 재생 시간 바 생성
+function createLoadingBars() {
+	const barContainer = document.getElementById("story-loading-bar-container");
+  barContainer.innerHTML = "";
+
+	const currentUserStories = storiesData[currentStoryIndex].stories;
+  currentUserStories.forEach((_, index) => {
+    const bar = document.createElement("div");
+    bar.classList.add("story-loading-bar");
+    bar.style.flex = `1`;
+    bar.style.marginRight = index < currentUserStories.length - 1 ? "3px" : "0";
+    barContainer.appendChild(bar);
+  });
+}
+
+function updateLoadingBar(mediaIndex) {
+  const bars = document.querySelectorAll(".story-loading-bar");
+
+  bars.forEach((bar, index) => {
+    if (index < mediaIndex) {
+      bar.style.width = "100%";
+      bar.classList.add("active");
+    } else if (index === mediaIndex) {
+      bar.style.width = "0%"; 
+      setTimeout(() => {
+        bar.style.width = "100%";
+        bar.classList.add("active");
+      }, 10);
+    } else {
+      bar.style.width = "0%";
+      bar.classList.remove("active");
+    }
+  });
 }
 
