@@ -24,19 +24,18 @@ body {
 	font-weight: 600;
 }
 
-.profile__image_button {
-	background: transparent;
-	border: none;
-	cursor: pointer;
+.profile-container {
+	display: flex;
 }
 
-.profile__image_button img {
-	width: 24px;
-	height: 24px;
+#right-side-bar {
+	width: 200px;
+	display: flex;
 }
 
 .profile-tab-container {
 	display: flex;
+	flex: 1;
 	flex-direction: column;
 	justify-content: center;
 	padding: 30px 20px 0 20px;
@@ -73,6 +72,17 @@ body {
 	margin-left: 12px;
 	display: flex;
 	gap: 8px;
+}
+
+.profile__image_button {
+	background: transparent;
+	border: none;
+	cursor: pointer;
+}
+
+.profile__image_button img {
+	width: 24px;
+	height: 24px;
 }
 
 .profile__name {
