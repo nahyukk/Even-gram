@@ -68,41 +68,54 @@ function renderPosts(posts, type) {
 		postImage.alt = `${type}_image`;
 
 		if (post.image_count > 1) {
-			const postImage = document.createElement("img");
-			postImage.className = "profile__post_image-multiple";
-			postImage.src = "./assets/icons/profile_post_multiple.png";
-			postImage.alt = "post_image_multiple";
+			const postImage = createMultipleImageIcon();
 			postElement.append(postImage);
 		}
 
-		const hoverContainer = document.createElement("div");
-		hoverContainer.className = "profile__post-hover-container";
-
-		const hoverItem = document.createElement("div");
-		hoverItem.className = "profile__post-hover-item";
-
-		const likeIcon = document.createElement("img");
-		likeIcon.src = "./assets/icons/profile_post_like.png";
-		const likeSpan = document.createElement("span");
-		likeSpan.textContent = post.likes;
-
-		const commentIcon = document.createElement("img");
-		commentIcon.src = "./assets/icons/profile_post_comment.png";
-		const commentSpan = document.createElement("span");
-		commentSpan.textContent = post.comments;
-
-		hoverItem.appendChild(likeIcon);
-		hoverItem.appendChild(likeSpan);
-		hoverItem.appendChild(commentIcon);
-		hoverItem.appendChild(commentSpan);
-
-		hoverContainer.appendChild(hoverItem);
+		if (type === "posts") {
+			const hoverContainer = createHoverContainer(post);
+			postElement.appendChild(hoverContainer);
+		}
 
 		postElement.append(postImage);
-		postElement.append(hoverContainer);
 
 		postContainer.appendChild(postElement);
 	});
+}
+
+function createMultipleImageIcon() {
+	const postImage = document.createElement("img");
+	postImage.className = "profile__post_image-multiple";
+	postImage.src = "./assets/icons/profile_post_multiple.png";
+	postImage.alt = "post_image_multiple";
+
+	return postImage;
+}
+
+function createHoverContainer(post) {
+	const hoverContainer = document.createElement("div");
+	hoverContainer.className = "profile__post-hover-container";
+
+	const hoverItem = document.createElement("div");
+	hoverItem.className = "profile__post-hover-item";
+
+	const likeIcon = document.createElement("img");
+	likeIcon.src = "./assets/icons/profile_post_like.png";
+	const likeSpan = document.createElement("span");
+	likeSpan.textContent = post.likes;
+
+	const commentIcon = document.createElement("img");
+	commentIcon.src = "./assets/icons/profile_post_comment.png";
+	const commentSpan = document.createElement("span");
+	commentSpan.textContent = post.comments;
+
+	hoverItem.appendChild(likeIcon);
+	hoverItem.appendChild(likeSpan);
+	hoverItem.appendChild(commentIcon);
+	hoverItem.appendChild(commentSpan);
+
+	hoverContainer.appendChild(hoverItem);
+	return hoverContainer;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -118,7 +131,8 @@ function initializeTabs(selector, posts, defaultIndex = 0) {
 	tabContainer.forEach((tab, index) => {
 		if (index === defaultIndex) {
 			tab.classList.add("active");
-			renderPosts(getFilteredPosts(posts, "posts"));
+			const filteredPosts = getFilteredPosts(posts, "posts");
+			renderPosts(filteredPosts, "posts");
 		} else {
 			tab.classList.remove("active");
 		}
@@ -131,7 +145,7 @@ function initializeTabs(selector, posts, defaultIndex = 0) {
 			tab.classList.add("active");
 			const dataType = tab.getAttribute("data-type");
 			const filteredPosts = getFilteredPosts(posts, dataType);
-			 renderPosts(filteredPosts, dataType)
+			renderPosts(filteredPosts, dataType);
 		});
 	});
 }
