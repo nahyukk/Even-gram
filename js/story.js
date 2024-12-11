@@ -4,6 +4,9 @@
 // const storyProfileName = document.getElementById("story-profile-name");
 // const storyUploadTime = document.getElementById("story-upload-time");
 
+let currentStoryIndex = 0;
+let currentMediaIndex = 0;
+let storiesData = [];
 
 // json 데이터 가져오기
 fetch('./json/stories.json')
@@ -15,12 +18,38 @@ fetch('./json/stories.json')
 	})
 	.then(data => {
 		console.log("story", data);
+		storiesData = data.stories;
+		updateStories(currentStoryIndex, currentMediaIndex)
+	})
+	.catch(error => {
+		console.error("JSON Fetching Error", error);
 	})
 
 // json 데이터 가져오고 출력
-function updateStory(storyData) {
+function updateStories(userIndex, mediaIndex) {
+	const user = storiesData[userIndex];
+	const story = user.stories[mediaIndex];
 
+	document.getElementById("story-main-img-img").src = story.mediaUrl;
+	document.querySelector("#story-profile-img img").src = user.profileImage;
+	document.querySelector("#story-profile-name").textContent = user.username;
+	document.querySelector("#story-upload-time").textContent = formatTimestamp(story.timestamp);
 }
+
+// 시간 스탬프 계산
+function formatTimestamp(timestamp) {
+	const timeDiff = new Date() - new Date(timestamp);
+	const minutes = Math.floor(timeDiff / (1000 * 60));
+	const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+	if (hours > 0) {
+		return `${hours}시간 전`;
+	} else if (minutes > 0) {
+		return `${minutes}분 전`;
+	} else {
+		return `방금 전`;
+	}
+
+	}
 
 // 로고, x 클릭시 홈으로 이동 - 추후 링크 변화시 수정 필요
 document.getElementById("story-out-logo").addEventListener("click", () =>{
