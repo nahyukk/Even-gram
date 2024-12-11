@@ -322,3 +322,15 @@ body {
 	.profile__post-section-covered-container {
 	display: none;
 }
+
+@media (max-width: 574px) {
+	#right-side-bar {
+		display: none;
+	}
+}
+
+@media (min-width: 767px) and (max-width: 575px) {
+	#right-side-bar {
+		display: flex;
+	}
+}
