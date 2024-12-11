@@ -41,11 +41,7 @@ function initializeTabs(selector, posts, defaultIndex = 0) {
 			tab.classList.add("active");
 			const dataType = tab.getAttribute("data-type");
 			const filteredPosts = getFilteredPosts(posts, dataType);
-			if (dataType === "saved") {
-				createSavedPostContainer(filteredPosts);
-			} else {
-				renderPosts(filteredPosts, dataType);
-			}
+			renderPosts(filteredPosts, dataType);
 		});
 	});
 }
@@ -68,117 +64,6 @@ function renderUser(user) {
 		user.description;
 }
 
-function renderPosts(posts, type) {
-	const postContainer = document.querySelector(
-		".profile__post-section-container"
-	);
-
-	const cachedPostImages = getCachedImageURL(`${type}Images`, posts.length);
-
-	postContainer.innerHTML = ""; // 기존 데이터 초기화
-	posts.forEach((post, index) => {
-		const postElement = document.createElement("div");
-		postElement.className = "profile__post_item-container";
-
-		const postImage = document.createElement("img");
-		postImage.className = "profile__post_image";
-		postImage.src = cachedPostImages[index];
-		postImage.alt = `${type}_image`;
-
-		if (post.image_count > 1) {
-			const postImage = createMultipleImageIcon();
-			postElement.append(postImage);
-		}
-
-		if (type === "posts") {
-			const hoverContainer = createHoverContainer(post);
-			postElement.appendChild(hoverContainer);
-		}
-
-		postElement.append(postImage);
-
-		postContainer.appendChild(postElement);
-	});
-}
-
-function createMultipleImageIcon() {
-	const postImage = document.createElement("img");
-	postImage.className = "profile__post_image-multiple";
-	postImage.src = "./assets/icons/profile_post_multiple.png";
-	postImage.alt = "post_image_multiple";
-
-	return postImage;
-}
-
-function createHoverContainer(post) {
-	const hoverContainer = document.createElement("div");
-	hoverContainer.className = "profile__post-hover-container";
-
-	const hoverItem = document.createElement("div");
-	hoverItem.className = "profile__post-hover-item";
-
-	const likeIcon = document.createElement("img");
-	likeIcon.src = "./assets/icons/profile_post_like.png";
-	const likeSpan = document.createElement("span");
-	likeSpan.textContent = post.likes;
-
-	const commentIcon = document.createElement("img");
-	commentIcon.src = "./assets/icons/profile_post_comment.png";
-	const commentSpan = document.createElement("span");
-	commentSpan.textContent = post.comments;
-
-	hoverItem.appendChild(likeIcon);
-	hoverItem.appendChild(likeSpan);
-	hoverItem.appendChild(commentIcon);
-	hoverItem.appendChild(commentSpan);
-
-	hoverContainer.appendChild(hoverItem);
-	return hoverContainer;
-}
-
-function createSavedPostContainer(posts) {
-	const postContainer = document.querySelector(
-		".profile__post-section-container"
-	);
-	postContainer.innerHTML = ""; // 기존 데이터 초기화
-
-	const cachedPostImages = getCachedImageURL(`savedImages`, posts.length);
-
-	const savedPostContainer = document.createElement("div");
-	savedPostContainer.className = "profile__post-section-saved-container";
-
-	const infoLabel = document.createElement("span");
-	infoLabel.textContent = "저장한 내용은 회원님만 볼 수 있습니다."
-	savedPostContainer.appendChild(infoLabel);
-
-	const savedPostItemsContainer = document.createElement("div");
-	savedPostItemsContainer.className = "profile__post-section-saved-items-container";
-
-	posts.forEach((post, index) => {
-		const postElement = document.createElement("div");
-		postElement.className = "profile__post_item-container";
-
-		const postImage = document.createElement("img");
-		postImage.className = "profile__post_image";
-		postImage.src = cachedPostImages[index];
-		postImage.alt = `saved_image`;
-		postElement.append(postImage);
-
-		savedPostItemsContainer.appendChild(postElement);
-	});
-
-	const coveredContainer = document.createElement("div");
-	coveredContainer.className = "profile__post-section-covered-container";
-
-	const allPostsLabel = document.createElement("span");
-	allPostsLabel.textContent = "모든 게시물";
-	coveredContainer.appendChild(allPostsLabel);
-
-	savedPostItemsContainer.appendChild(coveredContainer);
-	savedPostContainer.appendChild(savedPostItemsContainer);
-	postContainer.appendChild(savedPostContainer);
-}
-
 function getRandomImageURL() {
 	const randomId = Math.floor(Math.random() * 1000); // 0~999의 랜덤 ID
 	return `https://picsum.photos/id/${randomId}/300/300`;
@@ -199,4 +84,132 @@ function getFilteredPosts(postlist, type) {
 		return [];
 	}
 	return postlist[type];
+}
+
+function renderPosts(posts, type) {
+	const postContainer = document.querySelector(
+		".profile__post-section-container"
+	);
+
+	const cachedPostImages = getCachedImageURL(`${type}Images`, posts.length);
+
+	postContainer.innerHTML = ""; // 기존 데이터 초기화
+
+	if (type === "saved") {
+		const savedContainer = createSavedPostContainer(posts, cachedPostImages);
+		postContainer.appendChild(savedContainer);
+	} else {
+		posts.forEach((post, index) => {
+			const postElement = createPostElement(
+				post,
+				cachedPostImages[index],
+				type
+			);
+			postContainer.appendChild(postElement);
+		});
+	}
+}
+
+function createPostElement(post, imageUrl, type) {
+	const postElement = document.createElement("div");
+	postElement.className = "profile__post_item-container";
+
+	const postImage = document.createElement("img");
+	postImage.className = "profile__post_image";
+	postImage.src = imageUrl;
+	postImage.alt = `${type}_image`;
+
+	postElement.appendChild(postImage);
+
+	if (post.image_count > 1) {
+		const multipleIcon = createMultipleImageIcon();
+		postElement.appendChild(multipleIcon);
+	}
+
+	if (type === "posts") {
+		const hoverContainer = createHoverContainer(post);
+		postElement.appendChild(hoverContainer);
+	}
+
+	return postElement;
+}
+
+function createMultipleImageIcon() {
+	const multipleIcon = document.createElement("img");
+	multipleIcon.className = "profile__post_image-multiple";
+	multipleIcon.src = "./assets/icons/profile_post_multiple.png";
+	multipleIcon.alt = "post_image_multiple";
+
+	return multipleIcon;
+}
+
+function createHoverContainer(post) {
+	const hoverContainer = document.createElement("div");
+	hoverContainer.className = "profile__post-hover-container";
+
+	const hoverItem = document.createElement("div");
+	hoverItem.className = "profile__post-hover-item";
+
+	hoverItem.appendChild(
+		createHoverItem("./assets/icons/profile_post_like.png", post.likes)
+	);
+	hoverItem.appendChild(
+		createHoverItem("./assets/icons/profile_post_comment.png", post.comments)
+	);
+
+	hoverContainer.appendChild(hoverItem);
+	return hoverContainer;
+}
+
+function createHoverItem(iconSrc, textContent) {
+	const icon = document.createElement("img");
+	icon.src = iconSrc;
+
+	const span = document.createElement("span");
+	span.textContent = textContent || 0;
+
+	const container = document.createElement("div");
+	container.appendChild(icon);
+	container.appendChild(span);
+
+	return container;
+}
+
+function createSavedPostContainer(posts, cachedPostImages) {
+	const savedContainer = document.createElement("div");
+	savedContainer.className = "profile__post-section-saved-container";
+
+	const infoLabel = document.createElement("span");
+	infoLabel.textContent = "저장한 내용은 회원님만 볼 수 있습니다.";
+	savedContainer.appendChild(infoLabel);
+
+	const savedItemsContainer = document.createElement("div");
+	savedItemsContainer.className = "profile__post-section-saved-items-container";
+
+	posts.forEach((post, index) => {
+		const postElement = createPostElement(
+			post,
+			cachedPostImages[index],
+			"saved"
+		);
+		savedItemsContainer.appendChild(postElement);
+	});
+
+	savedContainer.appendChild(savedItemsContainer);
+
+	const coveredContainer = createSavedCoveredContainer();
+	savedItemsContainer.appendChild(coveredContainer);
+
+	return savedContainer;
+}
+
+function createSavedCoveredContainer() {
+	const coveredContainer = document.createElement("div");
+	coveredContainer.className = "profile__post-section-covered-container";
+
+	const allPostsLabel = document.createElement("span");
+	allPostsLabel.textContent = "모든 게시물";
+	coveredContainer.appendChild(allPostsLabel);
+
+	return coveredContainer;
 }

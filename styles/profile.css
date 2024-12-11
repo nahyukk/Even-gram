@@ -232,6 +232,10 @@ body {
 
 .profile__post-hover-item {
 	display: flex;
+}
+
+.profile__post-hover-item div {
+	display: flex;
 	justify-content: center;
 	align-items: center;
 }
