@@ -278,3 +278,35 @@ window.addEventListener("scroll", () => {
 
 // 초기 로드
 loadMoreFeeds();
+
+// 좋아요 버튼 토글 기능
+document.addEventListener("DOMContentLoaded", () => {
+    const mainContentsList = document.querySelector(".main-contents-list");
+
+    // 좋아요 버튼 클릭 이벤트 위임
+    mainContentsList.addEventListener("click", (event) => {
+        const heartIcon = event.target.closest(".icon-heart");
+        if (heartIcon) {
+            // 클릭된 heart 아이콘을 기준으로 관련 요소 탐색
+            const likesElement = heartIcon
+                .closest(".main-content-inner")
+                .querySelector(".main-content-like");
+            
+            // 현재 좋아요 숫자 추출
+            const currentLikes = parseInt(likesElement.textContent.match(/\d+/)[0], 10);
+
+            // 좋아요 토글 상태 확인 (클래스를 통해 상태를 저장)
+            const isLiked = heartIcon.classList.contains("liked");
+
+            if (isLiked) {
+                // 좋아요 취소
+                likesElement.textContent = `좋아요 ${currentLikes - 1}개`;
+                heartIcon.classList.remove("liked");
+            } else {
+                // 좋아요 추가
+                likesElement.textContent = `좋아요 ${currentLikes + 1}개`;
+                heartIcon.classList.add("liked");
+            }
+        }
+    });
+});
