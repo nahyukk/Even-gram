@@ -39,7 +39,7 @@ function fetchUser() {
 		.then((data) => {
 			console.log(data);
 			renderUser(data.user);
-			initializeTabs(".profile__tab-button-container", data.user.post);
+			initializeTabs(".profile__tab-button", data.user.post);
 		})
 		.catch((error) => {
 			console.log("JSON Fetching Error: ", error);
@@ -61,7 +61,8 @@ function initializeTabs(selector, posts, defaultIndex = 0) {
 	});
 
 	tabContainer.forEach((tab) => {
-		tab.addEventListener("click", () => {
+		tab.addEventListener("click", (event) => {
+			event.preventDefault();
 			tabContainer.forEach((t) => t.classList.remove("active"));
 			tab.classList.add("active");
 			const dataType = tab.getAttribute("data-type");
