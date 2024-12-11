@@ -107,6 +107,7 @@ function renderPosts(posts) {
 
 document.addEventListener("DOMContentLoaded", () => {
 	fetchUser();
+	initializeTabs(".profile__tab-button-container");
 });
 
 /* 프로필 탭 클릭 */
@@ -118,23 +119,23 @@ document.addEventListener("DOMContentLoaded", () => {
 	버튼 하나 릴스 -> 저장됨으로 바꾸기.. 아이콘도 ㅠ
 */
 
-const tabContainer = document.querySelectorAll(
-	".profile__tab-button-container"
-);
+function initializeTabs(selector, defaultIndex = 0) {
+	const tabContainer = document.querySelectorAll(selector);
 
-// 초기값 지정
-tabContainer.forEach((tab, index) => {
-	if (index === 0) {
-		tab.classList.add("active");
-	} else {
-		tab.classList.remove("active");
-	}
-});
-
-tabContainer.forEach((tab) => {
-	tab.addEventListener("click", () => {
-		console.log(tab);
-		tabContainer.forEach((tab) => tab.classList.remove("active"));
-		tab.classList.add("active");
+	// 초기값 지정
+	tabContainer.forEach((tab, index) => {
+		if (index === defaultIndex) {
+			tab.classList.add("active");
+		} else {
+			tab.classList.remove("active");
+		}
 	});
-});
+
+	tabContainer.forEach((tab) => {
+		tab.addEventListener("click", () => {
+			console.log(tab);
+			tabContainer.forEach((t) => t.classList.remove("active"));
+			tab.classList.add("active");
+		});
+	});
+}
