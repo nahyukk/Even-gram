@@ -327,10 +327,18 @@ body {
 	#right-side-bar {
 		display: none;
 	}
+
+	.profile-tab-container {
+		padding: 30px 0 0 0;
+	}
 }
 
 @media (min-width: 767px) and (max-width: 575px) {
 	#right-side-bar {
 		display: flex;
+	}
+
+	.profile-tab-container {
+		padding: 30px 20px 0 20px;
 	}
 }
