@@ -1,18 +1,7 @@
-
-function getRandomImageURL() {
-	const randomId = Math.floor(Math.random() * 1000); // 0~999의 랜덤 ID
-	return `https://picsum.photos/id/${randomId}/300/300`;
-}
-
-function getCachedImageURL(key, count) {
-	let cachedImages = JSON.parse(localStorage.getItem(key));
-	// 캐싱된 이미지가 없거나 개수가 부족하면 새로 생성
-	if (!cachedImages || cachedImages.length < count) {
-		cachedImages = Array.from({ length: count }, () => getRandomImageURL());
-		localStorage.setItem(key, JSON.stringify(cachedImages));
-	}
-	return cachedImages;
-}
+document.addEventListener("DOMContentLoaded", () => {
+	// renderRightSidebar();
+	fetchUser();
+});
 
 function fetchUser() {
 	fetch("../json/profile.json")
@@ -30,6 +19,31 @@ function fetchUser() {
 		.catch((error) => {
 			console.log("JSON Fetching Error: ", error);
 		});
+}
+
+function initializeTabs(selector, posts, defaultIndex = 0) {
+	const tabContainer = document.querySelectorAll(selector);
+
+	// 초기값 지정
+	tabContainer.forEach((tab, index) => {
+		if (index === defaultIndex) {
+			tab.classList.add("active");
+			const filteredPosts = getFilteredPosts(posts, "posts");
+			renderPosts(filteredPosts, "posts");
+		} else {
+			tab.classList.remove("active");
+		}
+	});
+
+	tabContainer.forEach((tab) => {
+		tab.addEventListener("click", () => {
+			tabContainer.forEach((t) => t.classList.remove("active"));
+			tab.classList.add("active");
+			const dataType = tab.getAttribute("data-type");
+			const filteredPosts = getFilteredPosts(posts, dataType);
+			renderPosts(filteredPosts, dataType);
+		});
+	});
 }
 
 function renderUser(user) {
@@ -118,40 +132,22 @@ function createHoverContainer(post) {
 	return hoverContainer;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-	fetchUser();
-});
+function getRandomImageURL() {
+	const randomId = Math.floor(Math.random() * 1000); // 0~999의 랜덤 ID
+	return `https://picsum.photos/id/${randomId}/300/300`;
+}
 
-/* 프로필 탭 클릭 */
-
-function initializeTabs(selector, posts, defaultIndex = 0) {
-	const tabContainer = document.querySelectorAll(selector);
-
-	// 초기값 지정
-	tabContainer.forEach((tab, index) => {
-		if (index === defaultIndex) {
-			tab.classList.add("active");
-			const filteredPosts = getFilteredPosts(posts, "posts");
-			renderPosts(filteredPosts, "posts");
-		} else {
-			tab.classList.remove("active");
-		}
-	});
-
-	tabContainer.forEach((tab) => {
-		tab.addEventListener("click", () => {
-			console.log(tab);
-			tabContainer.forEach((t) => t.classList.remove("active"));
-			tab.classList.add("active");
-			const dataType = tab.getAttribute("data-type");
-			const filteredPosts = getFilteredPosts(posts, dataType);
-			renderPosts(filteredPosts, dataType);
-		});
-	});
+function getCachedImageURL(key, count) {
+	let cachedImages = JSON.parse(localStorage.getItem(key));
+	// 캐싱된 이미지가 없거나 개수가 부족하면 새로 생성
+	if (!cachedImages || cachedImages.length < count) {
+		cachedImages = Array.from({ length: count }, () => getRandomImageURL());
+		localStorage.setItem(key, JSON.stringify(cachedImages));
+	}
+	return cachedImages;
 }
 
 function getFilteredPosts(postlist, type) {
-	console.log(postlist);
 	if (!postlist || !postlist[type]) {
 		return [];
 	}
