@@ -61,7 +61,8 @@ document.getElementById("story-out-btn").addEventListener("click", () => {
 });
 
 // 재생 - 일시정지 버튼
-let isPlaying = true;
+// let isPlaying = true;
+let isPlaying = false;
 
 function togglePlayPause() {
   isPlaying = !isPlaying;
@@ -70,10 +71,10 @@ function togglePlayPause() {
 
   if (isPlaying) {
     storyPlayButton.innerHTML = `<svg aria-label="일시 정지" class="x1lliihq x1n2onr6 xq3z1fi" fill="currentColor" height="16" role="img" viewBox="0 0 48 48" width="16"><title>일시 정지</title><path d="M15 1c-3.3 0-6 1.3-6 3v40c0 1.7 2.7 3 6 3s6-1.3 6-3V4c0-1.7-2.7-3-6-3zm18 0c-3.3 0-6 1.3-6 3v40c0 1.7 2.7 3 6 3s6-1.3 6-3V4c0-1.7-2.7-3-6-3z"></path></svg>`;
-		startAutoPlay();
+    startAutoPlay();
   } else {
     storyPlayButton.innerHTML = `<svg aria-label="재생" class="x1lliihq x1n2onr6 xq3z1fi" fill="currentColor" height="16" role="img" viewBox="0 0 24 24" width="16"><title>재생</title><path d="M5.888 22.5a3.46 3.46 0 0 1-1.721-.46l-.003-.002a3.451 3.451 0 0 1-1.72-2.982V4.943a3.445 3.445 0 0 1 5.163-2.987l12.226 7.059a3.444 3.444 0 0 1-.001 5.967l-12.22 7.056a3.462 3.462 0 0 1-1.724.462Z"></path></svg>`;
-		clearTimeout(timer);
+    clearTimeout(timer);
     clearInterval(progressInterval);
   }
 }
@@ -172,7 +173,7 @@ sendButton.addEventListener("click", (event) => {
   heartButton.classList.remove("btn-hidden");
   dmButton.classList.remove("btn-hidden");
   dmInput.classList.add("placeholder-active");
-	quickEmotion.classList.add("quickemotion-hidden");
+  quickEmotion.classList.add("quickemotion-hidden");
   dmInput.blur();
   sendModal.classList.add("send-modal-visible");
   sendModal.classList.remove("send-modal-hidden");
@@ -245,22 +246,21 @@ heartButton.addEventListener("mouseleave", () => {
 heartButton.addEventListener("click", toggleHeartIcon);
 
 // 양옆 < > 버튼 width: calc(var(--story-width) + 100px); 적용을 위한 코드
-const story = document.querySelector('.story');
+const story = document.querySelector(".story");
 const root = document.documentElement;
 
 function updateStoryWidth() {
-  const storyWidth = story.offsetHeight * (386 / 686); 
-  root.style.setProperty('--story-width', `${storyWidth}px`); 
+  const storyWidth = story.offsetHeight * (386 / 686);
+  root.style.setProperty("--story-width", `${storyWidth}px`);
   story.style.width = `${storyWidth}px`;
 }
 
 updateStoryWidth();
-window.addEventListener('resize', updateStoryWidth);
+window.addEventListener("resize", updateStoryWidth);
 
 // 양옆 < > 버튼 동시 hover
 const prevBtn = document.getElementById("story-prev-btn");
 const nextBtn = document.getElementById("story-next-btn");
-
 
 const buttons = [prevBtn, nextBtn];
 
@@ -284,37 +284,39 @@ document.getElementById("story-next-btn").addEventListener("click", () => {
 });
 
 function moveToNextStory() {
-	if (storiesData.length === 0) return;
+  if (storiesData.length === 0) return;
 
-	currentMediaIndex++;
+  currentMediaIndex++;
 
-	if (currentMediaIndex >= storiesData[currentStoryIndex].stories.length) {
-		currentMediaIndex = 0;
-		currentStoryIndex++;
-		if (currentStoryIndex >= storiesData.length) {
-			currentStoryIndex = 0;
-		}
-	}
-	updateStories(currentStoryIndex, currentMediaIndex)
+  if (currentMediaIndex >= storiesData[currentStoryIndex].stories.length) {
+    currentMediaIndex = 0;
+    currentStoryIndex++;
+    if (currentStoryIndex >= storiesData.length) {
+      currentStoryIndex = 0;
+    }
+  }
+  updateStories(currentStoryIndex, currentMediaIndex);
 }
 // 이전 스토리 이동
-document.getElementById("story-prev-btn").addEventListener("click", moveToPrevStory);
+document
+  .getElementById("story-prev-btn")
+  .addEventListener("click", moveToPrevStory);
 
 function moveToPrevStory() {
-	if (storiesData.length === 0) return;
+  if (storiesData.length === 0) return;
 
-	currentMediaIndex--;
+  currentMediaIndex--;
 
-	if (currentMediaIndex < 0) {
-		currentStoryIndex--;
-		if (currentStoryIndex < 0) {
-			currentStoryIndex = storiesData.length - 1;
-		}
-		const currentUserStories = storiesData[currentStoryIndex]?.stories;
-    
+  if (currentMediaIndex < 0) {
+    currentStoryIndex--;
+    if (currentStoryIndex < 0) {
+      currentStoryIndex = storiesData.length - 1;
+    }
+    const currentUserStories = storiesData[currentStoryIndex]?.stories;
+
     currentMediaIndex = currentUserStories.length - 1;
-	}
-	updateStories(currentStoryIndex, currentMediaIndex)
+  }
+  updateStories(currentStoryIndex, currentMediaIndex);
 }
 
 function updateStories(userIndex, mediaIndex) {
@@ -324,19 +326,21 @@ function updateStories(userIndex, mediaIndex) {
   document.getElementById("story-main-img-img").src = story.mediaUrl;
   document.querySelector("#story-profile-img img").src = user.profileImage;
   document.querySelector("#story-profile-name").textContent = user.username;
-  document.querySelector("#story-upload-time").textContent = formatTimestamp(story.timestamp);
+  document.querySelector("#story-upload-time").textContent = formatTimestamp(
+    story.timestamp
+  );
 
-	createLoadingBars();
+  createLoadingBars();
   updateLoadingBar(mediaIndex);
-	if (isPlaying) startAutoPlay();
+  if (isPlaying) startAutoPlay();
 }
 
 // 재생 시간 바 생성
 function createLoadingBars() {
-	const barContainer = document.getElementById("story-loading-bar-container");
+  const barContainer = document.getElementById("story-loading-bar-container");
   barContainer.innerHTML = "";
 
-	const currentUserStories = storiesData[currentStoryIndex].stories;
+  const currentUserStories = storiesData[currentStoryIndex].stories;
   currentUserStories.forEach((_, index) => {
     const bar = document.createElement("div");
     bar.classList.add("story-loading-bar");
@@ -354,7 +358,7 @@ function updateLoadingBar(mediaIndex) {
       bar.style.width = "100%";
       bar.classList.add("active");
     } else if (index === mediaIndex) {
-      bar.style.width = "0%"; 
+      bar.style.width = "0%";
       setTimeout(() => {
         bar.style.width = "100%";
         bar.classList.add("active");
@@ -367,7 +371,7 @@ function updateLoadingBar(mediaIndex) {
 }
 
 // 자동 재생 구현
-let timer;            
+let timer;
 let progressInterval;
 const STORY_DURATION = 4000;
 
@@ -375,17 +379,17 @@ function startAutoPlay() {
   if (!isPlaying) return;
 
   clearTimeout(timer);
-  clearInterval(progressInterval); 
+  clearInterval(progressInterval);
 
   // 현재 바 애니메이션 시작
-  const currentBar = document.querySelectorAll(".story-loading-bar")[currentMediaIndex];
+  const currentBar =
+    document.querySelectorAll(".story-loading-bar")[currentMediaIndex];
   currentBar.style.transition = `width ${STORY_DURATION}ms linear`;
   currentBar.style.width = "100%";
 
   // 사진 전환 설정
   timer = setTimeout(() => {
     moveToNextStory();
-    startAutoPlay(); 
+    startAutoPlay();
   }, STORY_DURATION);
 }
-

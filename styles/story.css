@@ -92,6 +92,21 @@ body {
 #story-next-prev-btns button:active {
   opacity: 0.5;
 }
+/* 스토리 부분 */
+#stories {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	width: 125vw;
+	position: relative;
+	left: 50%;
+	transform: translate(-50%);
+}
+
+#stories > div {
+	margin: 0;
+}
+
 
 .story {
 	height: calc(100vh - 40px);
@@ -502,6 +517,192 @@ body {
 	cursor: pointer;
 	padding: 0;
 	margin: 3px 5px;
+}
+
+/* 사이드 스토리 */
+#story-side-stories-left1 {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+}
+
+#story-side-stories-left2 {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+}
+
+#story-side-left-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #aeaeae;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+#story-side-left-img {
+  width: calc(var(--story-width) * 0.4);
+  aspect-ratio: 386 / 686;
+  height: auto;
+  object-fit: contain;
+}
+
+#story-side-left-user {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+#dark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+#story-side-left-userimg-container {
+  position: relative;
+  width: 66px;
+  height: 66px;
+  margin-bottom: 8px;
+}
+
+#story-side-left-user-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+#story-side-left-user-img {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+#story-side-left-username {
+  font-weight: 600;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+#story-side-left-username, #story-side-left-upload-time {
+  color: white;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 0;
+}
+
+#story-side-stories-right3 {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+}
+
+#story-side-stories-right4 {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+}
+
+#story-side-right-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+	background-color: #aeaeae;
+	border-radius: 7px;
+	cursor: pointer;
+}
+
+#story-side-right-img {
+  width: calc(var(--story-width) * 0.4); 
+  aspect-ratio: 386 / 686;
+  height: auto;
+  object-fit: contain;
+
+}
+
+#story-side-right-user {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+#dark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); 
+  z-index: 1;
+}
+
+#story-side-right-userimg-container {
+  position: relative;
+  width: 66px;
+  height: 66px;
+	margin-bottom: 8px;
+}
+
+#story-side-right-user-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+#story-side-right-user-img {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+#story-side-right-username {
+	font-weight: 600;
+	padding: 0;
+	margin-bottom: 0;
+}
+
+#story-side-right-username, #story-side-right-upload-time {
+  color: white;
+  font-size: 14px;
+  text-align: center;
+	margin-top: 0;
 }
 
 
