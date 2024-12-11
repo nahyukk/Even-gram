@@ -9,7 +9,7 @@
 		<script src="./js/profile.js" defer></script>
 	</head>
 	<body>
-		<nav>
+		<header>
 			<div class="nav__container">
 				<button class="profile__image_button">
 					<img src="./assets/icons/profile_setting.png" alt="setting" />
@@ -19,7 +19,7 @@
 					<img src="./assets/icons/profile_thread.png" alt="thread" />
 				</button>
 			</div>
-		</nav>
+		</header>
 		<div class="profile-tab-container">
 			<div class="profile__section_container">
 				<img
@@ -69,21 +69,21 @@
 				</div>
 			</div>
 			<div class="profile__tab-section-container">
-				<div class="profile__tab-button-container">
+				<div class="profile__tab-button-container" data-type="posts">
 					<div class="profile__tab-button-indicator"></div>
 					<button class="profile__tab-button">
 						<img src="./assets/icons/profile_grid.png" alt="grid" />
 						<span>게시물</span>
 					</button>
 				</div>
-				<div class="profile__tab-button-container">
+				<div class="profile__tab-button-container" data-type="saved">
 					<div class="profile__tab-button-indicator"></div>
 					<button class="profile__tab-button">
-						<img src="./assets/icons/profile_reels.png" alt="grid" />
-						<span>릴스</span>
+						<img src="./assets/icons/profile_post_saved.png" alt="grid" />
+						<span>저장됨</span>
 					</button>
 				</div>
-				<div class="profile__tab-button-container">
+				<div class="profile__tab-button-container" data-type="tagged">
 					<div class="profile__tab-button-indicator"></div>
 					<button class="profile__tab-button">
 						<img src="./assets/icons/profile_tagged.png" alt="grid" />
