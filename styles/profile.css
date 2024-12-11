@@ -329,16 +329,24 @@ body {
 		gap: 0;
 	}
 
-@media (min-width: 767px) and (max-width: 575px) {
-	#right-side-bar {
-		display: flex;
+	.profile__tab-button {
+		flex: 1 1 auto;
 	}
 
-	.profile-tab-container {
-		padding: 30px 20px 0 20px;
+	.profile__tab-button img {
+		width: 24px;
+		height: 24px;
+	}
+
+	.profile__tab-button span {
+		display: none;
 	}
 
 	.profile__post-saved_description {
-		align-items: left;
+		align-items: center;
 	}
+}
+
+@media (min-width: 767px) and (max-width: 575px) {
+
 }
