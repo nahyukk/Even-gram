@@ -17,7 +17,6 @@ fetch("./json/stories.json")
     return response.json();
   })
   .then((data) => {
-    console.log("story", data);
     storiesData = data.stories;
     updateStories(currentStoryIndex, currentMediaIndex);
   })
@@ -109,7 +108,6 @@ const dmInput = document.getElementById("story-dm-form");
 const heartButton = document.getElementById("story-btn-heart");
 const dmButton = document.getElementById("story-btn-dm");
 const quickemotionBtn = document.querySelectorAll(".quickemotion-btns button");
-console.log("quickemotionBtn 초기화:", quickemotionBtn);
 
 // 디엠 input form
 // placeholder
@@ -242,3 +240,37 @@ heartButton.addEventListener("mouseleave", () => {
 });
 
 heartButton.addEventListener("click", toggleHeartIcon);
+
+// 양옆 < > 버튼 width: calc(var(--story-width) + 100px); 적용을 위한 코드
+const story = document.querySelector('.story');
+const root = document.documentElement;
+
+function updateStoryWidth() {
+  const storyWidth = story.offsetHeight * (386 / 686); 
+  root.style.setProperty('--story-width', `${storyWidth}px`); 
+  story.style.width = `${storyWidth}px`;
+}
+
+updateStoryWidth();
+window.addEventListener('resize', updateStoryWidth);
+
+// 양옆 < > 버튼 동시 hover
+const prevBtn = document.getElementById("story-prev-btn");
+const nextBtn = document.getElementById("story-next-btn");
+
+
+const buttons = [prevBtn, nextBtn];
+
+buttons.forEach((btn) => {
+  btn.addEventListener("mouseenter", () => {
+    buttons.forEach((button) => {
+      button.classList.add("hovered");
+    });
+  });
+
+  btn.addEventListener("mouseleave", () => {
+    buttons.forEach((button) => {
+      button.classList.remove("hovered");
+    });
+  });
+});

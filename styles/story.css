@@ -62,8 +62,40 @@ body {
 	pointer-events: auto;
 }
 
+/* 다음 스토리, 이전 스토리 버튼 */
+#story-next-prev-btns {
+	display: flex;
+	justify-content: space-between;
+	position: absolute;
+	width: calc(var(--story-width) + 100px);
+	align-items: center;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2000;
+}
+
+#story-next-prev-btns button {
+	pointer-events: auto;
+	padding: 8px;
+	background-color: transparent;
+	border: none !important;
+	opacity: 0.2;
+	cursor: pointer;
+	transition: opacity 0.3s ease;
+}
+
+#story-next-prev-btns button.hovered {
+  opacity: 1;
+}
+
+#story-next-prev-btns button:active {
+  opacity: 0.5;
+}
+
 .story {
 	height: calc(100vh - 40px);
+	width: var(--story-width);
 	top: 20px;
 	bottom: 20px;
 	aspect-ratio: 386 / 686;
