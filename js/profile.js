@@ -78,12 +78,9 @@ function renderUser(user) {
 	document.querySelector(".nav__profile-name").textContent = user.nickName;
 	document.querySelector(".profile__image").src = profileImage;
 	document.querySelector(".profile__name").textContent = user.nickName;
-	document.querySelector("#profile__post-info-posts").textContent =
-		"게시물 " + user.post.posts.length;
-	document.querySelector("#profile__post-info-followers").textContent =
-		"팔로워 " + user.follower;
-	document.querySelector("#profile__post-info-following").textContent =
-		"팔로잉 " + user.following;
+	document.querySelector("#post_count").textContent = user.post.posts.length;
+	document.querySelector("#follower_count").textContent = user.follower;
+	document.querySelector("#following_count").textContent = user.following;
 	document.querySelector(".profile__description-title").textContent =
 		user.title;
 	document.querySelector(".profile__description-sub-title").textContent =
