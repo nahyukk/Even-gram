@@ -2,6 +2,13 @@
 // let isPlaying = false; 
 let isPlaying = true;
 
+// 하단부 액션 - 엘리멘트 호출
+const dmContainer = document.getElementById("story-bottom-dm");
+const dmInput = document.getElementById("story-dm-form");
+const heartButton = document.getElementById("story-btn-heart");
+const dmButton = document.getElementById("story-btn-dm");
+const quickemotionBtn = document.querySelectorAll(".quickemotion-btns button");
+
 // json 데이터 가져오기
 let currentStoryIndex = 0;
 let currentMediaIndex = 0;
@@ -50,19 +57,19 @@ function initializeStories() {
     updateSideStory("story-side-stories-right4", nextUserIndex2, 0);
   }
 }
-
-// json 데이터 가져오고 출력
-function updateStories(userIndex, mediaIndex) {
-  const user = storiesData[userIndex];
-  const story = user.stories[mediaIndex];
-
-  document.getElementById("story-main-img-img").src = story.mediaUrl;
-  document.querySelector("#story-profile-img img").src = user.profileImage;
-  document.querySelector("#story-profile-name").textContent = user.username;
-  document.querySelector("#story-upload-time").textContent = formatTimestamp(
-    story.timestamp
-	);
+// placeholder
+function handlePlaceholder() {
+  if (dmInput.textContent.trim() === "") {
+    dmInput.classList.add("placeholder-active");
+  } else {
+    dmInput.classList.remove("placeholder-active");
+  }
 }
+
+handlePlaceholder();
+dmInput.addEventListener("input", handlePlaceholder);
+// json 데이터 가져오고 출력
+
 
 
 function updateSideStory(containerId, userIndex, mediaIndex) {
@@ -169,24 +176,10 @@ window.addEventListener("click", (event) => {
   }
 });
 
-// 하단부 액션
-const dmContainer = document.getElementById("story-bottom-dm");
-const dmInput = document.getElementById("story-dm-form");
-const heartButton = document.getElementById("story-btn-heart");
-const dmButton = document.getElementById("story-btn-dm");
-const quickemotionBtn = document.querySelectorAll(".quickemotion-btns button");
+
 
 // 디엠 input form
-// placeholder
-function handlePlaceholder() {
-  if (dmInput.textContent.trim() === "") {
-    dmInput.classList.add("placeholder-active");
-  } else {
-    dmInput.classList.remove("placeholder-active");
-  }
-}
-handlePlaceholder();
-dmInput.addEventListener("input", handlePlaceholder);
+
 
 // 입력창 focus 시 img 어둡게, 버튼 숨기고 입력창 확장
 const dmOverlay = document.getElementById("story-dm-overlay");
@@ -410,6 +403,7 @@ function updateStories(userIndex, mediaIndex) {
   document.querySelector("#story-upload-time").textContent = formatTimestamp(
     story.timestamp
   );
+	dmInput.setAttribute("placeholder", `${user.username}님에게 답장하기...`);
 
   createLoadingBars();
   updateLoadingBar(mediaIndex);
