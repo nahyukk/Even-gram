@@ -49,10 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // 다크 모드 변환 시 바뀌는 부분
     darkModeToggle.addEventListener('change', (event) => {
         const isDarkMode = event.target.checked;
-        const icons = document.querySelectorAll('.logo-container img, .middle-container img, .bottom-container img, .mode-menu img, .dropdown-menu img');    //sidebar의 아이콘 변경
+        const icons = document.querySelectorAll('.logo-container img, .middle-container img, .bottom-container img, .mode-menu img, .dropdown-menu img, .min-bottom-btn img');    //sidebar의 아이콘 변경
         const menus = document.querySelectorAll('.dropdown-menu, .mode-menu');
         const body = document.body;
-        const sidebar = document.querySelector('.left-container');
+        const sidebar = document.querySelector('.left-container, .sidebar-min-botttom-content');
         const hrEle = document.querySelectorAll('#moreMenu hr, #menu-header hr');
 
         body.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff";   // body 적용 부분
@@ -88,3 +88,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+function toggleSearch(isFocused) {
+    const searchBar = document.querySelector('.min-search-box');
+    const clearIcon = document.getElementById('clear-icon');
+    const iconSection = document.getElementById('icon-section');
+
+    if (isFocused) {
+        searchBar.classList.add('focused');
+        iconSection.classList.add('focused');
+        clearIcon.style.display = 'block';
+        if(iconSection) iconSection.style.display = 'none';
+    }else {
+        searchBar.classList.remove('focused');
+        clearIcon.style.display = 'none';
+        if(iconSection) iconSection.style.display = 'flex';
+    }
+}
+
+function clearSearch() {
+    const searchInput = document.getElementById('search-input');
+    searchInput.value = ''
+    searchInput.blur();
+    toggleSearch(false);
+}
