@@ -364,14 +364,29 @@ body {
 }
 
 @media (min-width: 767px) and (max-width: 575px) {
+}
 
 @media (max-width: 574px) {
 	.profile__section_container {
 		padding: 16px 16px 0 16px;
+		align-items: start;
+		row-gap: 1.5rem;
+	}
+
+	.profile__image-container {
+		margin-right: 24px;
+		grid-row: 1;
+	}
 
 	.profile__image {
 		width: 77px;
 		height: 77px;
+	}
+
+	.profile__description-container {
+		grid-column: 1 / 2;
+		grid-row: 2;
+		order: 1;
 	}
 
 	.profile__info-container {
@@ -400,5 +415,45 @@ body {
 		grid-column: 2 / 3;
 		grid-row: 2;
 		width: 100%;
+	}
+
+	.profile__post-info-container {
+		order: 1;
+		grid-row: 3;
+		grid-column: 1 / -1;
+		width: 100%;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.profile__post-info-container ul {
+		display: flex;
+		text-align: center;
+		justify-content: space-around;
+		padding: 12px 0;
+		position: relative;
+	}
+
+	.profile__post-info-container ul::before,
+	.profile__post-info-container ul::after {
+		content: "";
+		position: absolute;
+		top: 0; 
+		left: -16px;
+		right: -16px;
+		height: 1px;
+		background-color: var(--base-secondary-background-color);
+		box-sizing: border-box;
+		z-index: -1;
+	}
+
+	.profile__post-info-container ul::after {
+		top: auto; /* 아래쪽 border */
+		bottom: 0; /* 아래쪽 위치 */
+	}
+
+	.profile__post-info::before {
+		content: "";
+		display: block;
 	}
 }
