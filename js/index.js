@@ -354,19 +354,31 @@ function initializeCarousel(carousel) {
 }
 
 // 무한 스크롤 이벤트 추가
-let lastFeedIndex = -1; // 이전에 추가된 피드의 인덱스 저장
+let shuffledFeeds = shuffle([...feedData]); // 초기 셔플된 배열
+let currentFeedIndex = 0; // 현재 피드 위치 추적
 
+// 배열을 셔플하는 함수 (Fisher-Yates 알고리즘)
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // 두 요소 교환
+    }
+    return array;
+}
+
+// 피드를 로드하는 함수
 function loadMoreFeeds() {
-    let newFeedIndex;
+    // 모든 피드를 순회했으면 다시 셔플
+    if (currentFeedIndex >= shuffledFeeds.length) {
+        shuffledFeeds = shuffle([...feedData]); // feedData를 셔플
+        currentFeedIndex = 0; // 인덱스 초기화
+        console.log("Feeds reshuffled");
+    }
 
-    // 새 피드가 이전 피드와 다를 때까지 반복
-    do {
-        newFeedIndex = Math.floor(Math.random() * feedData.length);
-    } while (newFeedIndex === lastFeedIndex);
+    // 현재 인덱스의 피드 가져오기
+    const feedToRender = shuffledFeeds[currentFeedIndex];
+    currentFeedIndex++; // 다음 인덱스로 이동
 
-    lastFeedIndex = newFeedIndex; // 새로운 피드 인덱스를 저장
-
-    const feedToRender = feedData[newFeedIndex]; // 선택된 피드 데이터
     renderFeed(feedToRender); // 피드 렌더링
 
     // 가장 마지막으로 추가된 피드의 슬라이더 초기화
