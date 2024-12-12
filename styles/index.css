@@ -94,7 +94,14 @@ main {
 .main-profile-more-icon {
     width: 24px;
     height: 24px;
-    background-image: url(/assets/icons/more.png);
+    background-image: url(../assets/icons/more.png);
+    cursor: pointer;
+}
+
+.main-profile-more-icon:active {
+    width: 24px;
+    height: 24px;
+    background-image: url(../assets/icons/more_active.png);
     cursor: pointer;
 }
 
@@ -119,8 +126,7 @@ main {
 
 
 
-/* 메인 컨텐츠 슬라이더 부분 (임시) */
-
+/* 메인 컨텐츠 슬라이더 부분 */
 /* 캐러셀 전체 구조  */
 .carousel_main {
     width: 100%; /* 이미지 크기 설정  */
@@ -169,7 +175,7 @@ main {
 }
 
 .carousel_prev {
-    background-color: rgba(231, 231, 231, 0.3);
+    background-color: rgba(231, 231, 231, 0.4);
     border: 0px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -182,7 +188,7 @@ main {
 }
 
 .carousel_next {
-    background-color: rgba(231, 231, 231, 0.3);
+    background-color: rgba(231, 231, 231, 0.4);
     border: 0px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -251,33 +257,69 @@ main {
     cursor: pointer;
 }
 
+/* 아이콘 */
 .icon-heart {
-    width: 24px;
-    height: 24px;
-    background-image: url(/assets/icons/heart.png);
+    background-image: url(../assets/icons/heart.png);
+}
+
+.icon-heart.animate {
+    animation: heart-scale 0.45s ease-in-out;
+}
+
+.icon-heart:hover {
+    background-image: url(../assets/icons/heart_hover.png);
+}
+.icon-heart:active {
+    background-image: url(../assets/icons/heart_active.png);
 }
 
 .icon-heart.liked {
-    background-image: url(/assets/icons/heart-fill.png);
+    background-image: url(../assets/icons/heart_fill.png);
+}
+
+.icon-heart.liked:active {
+    background-image: url(../assets/icons/heart_fill_active.png);
 }
 
 .icon-msg {
-    width: 24px;
-    height: 24px;
-    background-image: url(/assets/icons/msg.png);
+    background-image: url(../assets/icons/msg.png);
+}
+
+.icon-msg:hover {
+    background-image: url(../assets/icons/msg_hover.png);
+}
+
+.icon-msg:active {
+    background-image: url(../assets/icons/msg_active.png);
 }
 
 .icon-dm {
-    width: 24px;
-    height: 24px;
-    background-image: url(/assets/icons/dm.png);
+    background-image: url(../assets/icons/dm.png);
+}
+
+.icon-dm:hover {
+    background-image: url(../assets/icons/dm_hover.png);
 }
 
 .icon-bookmark {
-    width: 24px;
-    height: 24px;
-    background-image: url(/assets/icons/bookmark.png);
-    cursor: pointer;
+    background-image: url(../assets/icons/bookmark.png);
+}
+
+.icon-bookmark:hover {
+    background-image: url(../assets/icons/bookmark_hover.png);
+}
+
+.icon-bookmark:active {
+    background-image: url(../assets/icons/bookmark_active.png);
+}
+
+.icon-bookmark.liked,
+.icon-bookmark.liked:hover {
+    background-image: url(../assets/icons/bookmark_fill.png);
+}
+
+.icon-bookmark.liked:active {
+    background-image: url(../assets/icons/bookmark_fill_hover.png);
 }
 
 
@@ -338,6 +380,12 @@ main {
     margin-top: 8px;
 }
 
+.icon-box {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
 
 
 /* 임시 */
@@ -371,4 +419,19 @@ main {
     width: 250px;
     margin-right: 64px;
     z-index: -1;
+}
+
+@keyframes heart-scale {
+    0% {
+        transform: scale(1)
+    }
+    25% {
+        transform: scale(1.2)
+    }
+    50% {
+        transform: scale(.95)
+    }
+    100% {
+        transform: scale(1)
+    }
 }

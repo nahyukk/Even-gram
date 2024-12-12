@@ -112,6 +112,7 @@ const feedData = [
         username: "hwiwoo_coffee",
         location: "고양시",
         profileImage: "./assets/images/1_hwiwoo.jpg",
+        update: "1시간",
         postImages: [
             "./assets/images/1-1_hwiwoo.jpg",
             "./assets/images/1-2_hwiwoo.jpg",
@@ -126,6 +127,7 @@ const feedData = [
     {
         username: "nolimitcoffeebar",
         location: "서울 용산구",
+        update: "1일",
         profileImage: "./assets/images/2_nolimit.jpg",
         postImages: [
             "./assets/images/2-1_nolimit.jpg",
@@ -140,6 +142,7 @@ const feedData = [
     {
         username: "__nutten",
         location: "서울 서초구",
+        update: "1주",
         profileImage: "./assets/images/4_nutten.jpg",
         postImages: [
             "./assets/images/4-1_nutten.jpg",
@@ -176,7 +179,7 @@ function renderFeed(feed) {
             <div class="main-profile-meta">
               <div class="main-profile-name st-bold">${feed.username}</div>
               <span style="margin: 0 4px; color: #737373;">•</span>
-              <a class="main-profile-date" href="#">1일</a>
+              <a class="main-profile-date" href="#">${feed.update}</a>
             </div>
             <div class="main-profile-site">${feed.location}</div>
           </div>
@@ -219,12 +222,12 @@ function renderFeed(feed) {
       <div class="main-content-inner">
         <div class="main-content-icon">
           <div class="main-content-icon-left">
-            <span style="margin-left: -8px;"><div class="content-icon-slot"><div class="icon-heart"></div></div></span>
-            <span><div class="content-icon-slot"><div class="icon-msg"></div></div></span>
-            <span><div class="content-icon-slot"><div class="icon-dm"></div></div></span>
+            <span style="margin-left: -8px;"><div class="content-icon-slot"><div class="icon-heart icon-box"></div></div></span>
+            <span><div class="content-icon-slot"><div class="icon-msg icon-box"></div></div></span>
+            <span><div class="content-icon-slot"><div class="icon-dm icon-box"></div></div></span>
           </div>
           <div class="main-content-icon-right">
-            <div class="icon-bookmark"></div>
+            <div class="icon-bookmark icon-box"></div>
           </div>
         </div>
         <div class="main-content-like st-bold">좋아요 ${feed.likes}개</div>
@@ -323,6 +326,7 @@ window.addEventListener("scroll", () => {
 // 초기 로드
 loadMoreFeeds();
 
+
 // 좋아요 버튼 토글 기능
 document.addEventListener("DOMContentLoaded", () => {
     const mainContentsList = document.querySelector(".main-contents-list");
@@ -351,6 +355,43 @@ document.addEventListener("DOMContentLoaded", () => {
                 likesElement.textContent = `좋아요 ${currentLikes + 1}개`;
                 heartIcon.classList.add("liked");
             }
+        }
+    });
+
+    // 북마크 버튼 토글 기능
+    // 북마크 버튼 클릭 이벤트 위임
+    mainContentsList.addEventListener("click", (event) => {
+        const bookmarkIcon = event.target.closest(".icon-bookmark");
+        if (bookmarkIcon) {
+            // 북마크 토글 상태 확인 (클래스를 통해 상태를 저장)
+            const isBookmark = bookmarkIcon.classList.contains("liked");
+
+            if (isBookmark) {
+                // 북마크 취소
+                bookmarkIcon.classList.remove("liked");
+            } else {
+                bookmarkIcon.classList.add("liked");
+            }
+        }
+    });
+});
+
+// 좋아요 하트 통통이
+document.addEventListener("DOMContentLoaded", () => {
+    const mainContentsList = document.querySelector(".main-contents-list");
+
+    // 좋아요 애니메이션 트리거
+    mainContentsList.addEventListener("click", (event) => {
+        // 클릭된 요소가 .icon-heart인지 확인
+        const heartIcon = event.target.closest(".icon-heart");
+
+        if (heartIcon) {
+            console.log("Triggering animation for", heartIcon);
+
+            // 애니메이션 트리거
+            heartIcon.classList.remove("animate"); // 기존 애니메이션 클래스 제거
+            void heartIcon.offsetWidth; // 리플로우 발생 (애니메이션 초기화)
+            heartIcon.classList.add("animate"); // 애니메이션 클래스 다시 추가
         }
     });
 });
