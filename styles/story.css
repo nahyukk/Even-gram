@@ -772,10 +772,10 @@ body {
 	}
 
 	.story {
-		max-width: 500px;
-		max-height: calc(100vh - 40px);
+		/* max-width: 500px; */
+		/* max-height: calc(100vh - 40px); */
 		height: auto;
-		width: auto;
+		/* width: auto; */
 		aspect-ratio: 386 / 686;
 		border-radius: 10px;
 
@@ -810,7 +810,7 @@ body {
     border-radius: 10px;
     overflow: hidden;
     width: 30vw;
-    max-width: 400px;
+    /* max-width: 700px; */
     height: auto;
 		/* transform: translateY(5%); */
   }
@@ -866,6 +866,5 @@ body {
     overflow: hidden;
     width: 80vw;
     height: auto;
-	
   }
 }
