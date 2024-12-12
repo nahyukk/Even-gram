@@ -125,6 +125,7 @@ body {
 }
 
 .profile__post-info-container li {
+	color: var(--text-color);
 	font-size: 14px;
 	font-weight: 600;
 }
