@@ -1,5 +1,5 @@
 // 작업할 때 일시정지 끄기
-// let isPlaying = false; 
+// let isPlaying = false;
 let isPlaying = true;
 
 // 하단부 액션 - 엘리멘트 호출
@@ -70,20 +70,17 @@ handlePlaceholder();
 dmInput.addEventListener("input", handlePlaceholder);
 // json 데이터 가져오고 출력
 
-
-
 function updateSideStory(containerId, userIndex, mediaIndex) {
-	const user = storiesData[userIndex];
-	const story = user.stories[mediaIndex];
+  const user = storiesData[userIndex];
+  const story = user.stories[mediaIndex];
 
-	const container = document.getElementById(containerId);
-	container.querySelector('img[id$="user-img"]').src = user.profileImage;
-	container.querySelector('div[id$="username"]').textContent = user.username;
-	container.querySelector('div[id$="upload-time"]').textContent =
-		formatTimestamp(story.timestamp);
-	container.querySelector('img[id$="img"]').src = story.mediaUrl;
+  const container = document.getElementById(containerId);
+  container.querySelector('img[id$="user-img"]').src = user.profileImage;
+  container.querySelector('div[id$="username"]').textContent = user.username;
+  container.querySelector('div[id$="upload-time"]').textContent =
+    formatTimestamp(story.timestamp);
+  container.querySelector('img[id$="img"]').src = story.mediaUrl;
 }
-
 
 // 시간 스탬프 계산
 function formatTimestamp(timestamp) {
@@ -111,7 +108,6 @@ Object.entries(storyContainers).forEach(([containerId, offset]) => {
   const container = document.getElementById(containerId);
   container.addEventListener("click", () => handleStoryClick(offset));
 });
-
 
 function handleStoryClick(offset) {
   currentStoryIndex =
@@ -176,10 +172,7 @@ window.addEventListener("click", (event) => {
   }
 });
 
-
-
 // 디엠 input form
-
 
 // 입력창 focus 시 img 어둡게, 버튼 숨기고 입력창 확장
 const dmOverlay = document.getElementById("story-dm-overlay");
@@ -190,12 +183,12 @@ dmInput.addEventListener("focus", () => {
   heartButton.classList.add("btn-hidden");
   dmButton.classList.add("btn-hidden");
   dmContainer.classList.add("dm-expand");
-	if (dmInput.textContent.trim() !== "") {
-		dmContainer.classList.add("send-btn-active");
-		quickEmotion.classList.add("quickemotion-hidden");
-	} else {
-		quickEmotion.classList.remove("quickemotion-hidden");
-	}
+  if (dmInput.textContent.trim() !== "") {
+    dmContainer.classList.add("send-btn-active");
+    quickEmotion.classList.add("quickemotion-hidden");
+  } else {
+    quickEmotion.classList.remove("quickemotion-hidden");
+  }
 });
 
 dmInput.addEventListener("blur", (event) => {
@@ -209,9 +202,9 @@ dmInput.addEventListener("blur", (event) => {
   dmContainer.classList.remove("dm-expand");
   dmContainer.classList.remove("send-btn-active");
   quickEmotion.classList.add("quickemotion-hidden");
-	if (dmInput.textContent.trim() !== "") {
-		dmContainer.classList.add("send-btn-active");
-	}
+  if (dmInput.textContent.trim() !== "") {
+    dmContainer.classList.add("send-btn-active");
+  }
 });
 
 // 보내기 버튼
@@ -249,7 +242,7 @@ sendButton.addEventListener("click", (event) => {
 // 빠른 공감 버튼
 function handleQuickEmotion() {
   if (dmInput.textContent.trim() === "") {
-		quickEmotion.classList.remove("quickemotion-hidden");
+    quickEmotion.classList.remove("quickemotion-hidden");
   } else {
     quickEmotion.classList.add("quickemotion-hidden");
   }
@@ -268,7 +261,6 @@ quickemotionBtn.forEach((btn) => {
     dmContainer.classList.remove("send-btn-active");
     quickEmotion.classList.add("quickemotion-hidden");
     dmInput.blur();
-
 
     setTimeout(() => {
       sendModal.classList.remove("send-modal-visible");
@@ -387,7 +379,7 @@ function moveToPrevStory() {
     if (currentStoryIndex < 0) {
       currentStoryIndex = storiesData.length - 1;
     }
-		currentMediaIndex = 0;
+    currentMediaIndex = 0;
   }
   updateStories(currentStoryIndex, currentMediaIndex);
   updateSideStories();
@@ -403,7 +395,7 @@ function updateStories(userIndex, mediaIndex) {
   document.querySelector("#story-upload-time").textContent = formatTimestamp(
     story.timestamp
   );
-	dmInput.setAttribute("placeholder", `${user.username}님에게 답장하기...`);
+  dmInput.setAttribute("placeholder", `${user.username}님에게 답장하기...`);
 
   createLoadingBars();
   updateLoadingBar(mediaIndex);
@@ -494,3 +486,37 @@ function startAutoPlay() {
     startAutoPlay();
   }, STORY_DURATION);
 }
+
+function adjustStorySize() {
+  const story = document.querySelector(".story");
+  const aspectRatio = 386 / 686; // 스토리의 가로/세로 비율
+
+  const windowWidth = window.innerWidth;
+  const windowHeight = window.innerHeight;
+
+  if (windowWidth / windowHeight > aspectRatio) {
+    // 창의 가로가 더 넓은 경우
+    const calculatedWidth = windowHeight * aspectRatio;
+    story.style.width = `${calculatedWidth}px`;
+    story.style.height = `${windowHeight}px`;
+    story.style.transform = "translate(-50%, 0)"; // X, Y축 모두 중앙
+  } else {
+    // 창의 세로가 더 높은 경우
+    const calculatedHeight = windowWidth / aspectRatio;
+    story.style.width = `${windowWidth}px`;
+    story.style.height = `${calculatedHeight}px`;
+    story.style.transform = "translate(-50%, 0)";
+  }
+
+  // 중앙 정렬 설정
+  story.style.position = "absolute";
+  story.style.top = "50%";
+  story.style.left = "50%";
+  story.style.margin = "0";
+}
+
+// 초기 실행
+adjustStorySize();
+
+// // 창 크기가 변경될 때마다 실행
+window.addEventListener("resize", adjustStorySize);
