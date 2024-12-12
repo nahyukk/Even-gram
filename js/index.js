@@ -354,18 +354,29 @@ function initializeCarousel(carousel) {
 }
 
 // 무한 스크롤 이벤트 추가
-function loadMoreFeeds() {
-    const feedsToRender = [feedData[Math.floor(Math.random() * feedData.length)]]; // 랜덤으로 하나씩 추가
-    feedsToRender.forEach((feed) => {
-        renderFeed(feed); // 피드를 렌더링
-        const newCarousel = mainContentsList
-            .lastElementChild // 가장 마지막으로 추가된 피드
-            .querySelector(".carousel_main"); // 해당 피드의 슬라이더
+let lastFeedIndex = -1; // 이전에 추가된 피드의 인덱스 저장
 
-        if (newCarousel) {
-            initializeCarousel(newCarousel); // 슬라이더 초기화
-        }
-    });
+function loadMoreFeeds() {
+    let newFeedIndex;
+
+    // 새 피드가 이전 피드와 다를 때까지 반복
+    do {
+        newFeedIndex = Math.floor(Math.random() * feedData.length);
+    } while (newFeedIndex === lastFeedIndex);
+
+    lastFeedIndex = newFeedIndex; // 새로운 피드 인덱스를 저장
+
+    const feedToRender = feedData[newFeedIndex]; // 선택된 피드 데이터
+    renderFeed(feedToRender); // 피드 렌더링
+
+    // 가장 마지막으로 추가된 피드의 슬라이더 초기화
+    const newCarousel = mainContentsList
+        .lastElementChild // 가장 마지막으로 추가된 피드
+        .querySelector(".carousel_main"); // 해당 피드의 슬라이더
+
+    if (newCarousel) {
+        initializeCarousel(newCarousel); // 슬라이더 초기화
+    }
 }
 
 // 무한 스크롤 이벤트 연결
