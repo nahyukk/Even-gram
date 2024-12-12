@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 다크 모드 변환 시 바뀌는 부분
     darkModeToggle.addEventListener('change', (event) => {
         const isDarkMode = event.target.checked;
-        const icons = document.querySelectorAll('.logo-container img, .middle-container img, .bottom-container img, .mode-menu img');    //sidebar의 아이콘 변경
+        const icons = document.querySelectorAll('.logo-container img, .middle-container img, .bottom-container img, .mode-menu img, .dropdown-menu img');    //sidebar의 아이콘 변경
         const menus = document.querySelectorAll('.dropdown-menu, .mode-menu');
         const body = document.body;
         const sidebar = document.querySelector('.left-container');

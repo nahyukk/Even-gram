@@ -44,7 +44,7 @@ body.dark-mode .bottom-item:hover {
     height: 100vh;
     background-color: #ffffff;
     border-right: 1px solid #dbdbdb;
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     padding: 8px 20px 12px 12px;
@@ -63,6 +63,12 @@ body.dark-mode .bottom-item:hover {
 .logo-container img {
     width: 100px;
     height: auto;
+}
+
+.insta-logo2 img {
+    width: 22px;
+    height: 22px;
+    margin-left: 5px;
 }
 
 /* 중앙 기능들 부분 입니다. */
@@ -160,14 +166,18 @@ body.dark-mode .bottom-item:hover {
 }
 
 /* 드롭다운 아이템 */
+.dropdown-toggle {
+    display: contents;
+}
+
 .dropdown-item {
     color: black;
     display: flex;
-    align-items: center;
-    border-radius: 18px;
+    align-items: flex-start;
+    border-radius: 10px;
     font-size: 15px;
-    padding: 0;
-    margin: 3px;
+    padding: 13px;
+    margin: 6px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -179,6 +189,7 @@ body.dark-mode .bottom-item:hover {
 .dropdown-menu li img {
     width: 22px;
     height: 22px;
+    margin-right: 10px;
 }
 
 /* 숨겨진 서브메뉴 */
