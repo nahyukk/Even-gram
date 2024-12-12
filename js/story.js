@@ -2,6 +2,13 @@
 // let isPlaying = false; 
 let isPlaying = true;
 
+// 하단부 액션 - 엘리멘트 호출
+const dmContainer = document.getElementById("story-bottom-dm");
+const dmInput = document.getElementById("story-dm-form");
+const heartButton = document.getElementById("story-btn-heart");
+const dmButton = document.getElementById("story-btn-dm");
+const quickemotionBtn = document.querySelectorAll(".quickemotion-btns button");
+
 // json 데이터 가져오기
 let currentStoryIndex = 0;
 let currentMediaIndex = 0;
@@ -50,31 +57,33 @@ function initializeStories() {
     updateSideStory("story-side-stories-right4", nextUserIndex2, 0);
   }
 }
-
-// json 데이터 가져오고 출력
-function updateStories(userIndex, mediaIndex) {
-  const user = storiesData[userIndex];
-  const story = user.stories[mediaIndex];
-
-  document.getElementById("story-main-img-img").src = story.mediaUrl;
-  document.querySelector("#story-profile-img img").src = user.profileImage;
-  document.querySelector("#story-profile-name").textContent = user.username;
-  document.querySelector("#story-upload-time").textContent = formatTimestamp(
-    story.timestamp
-  );
-
-  function updateSideStory(containerId, userIndex, mediaIndex) {
-    const user = storiesData[userIndex];
-    const story = user.stories[mediaIndex];
-
-    const container = document.getElementById(containerId);
-    container.querySelector('img[id$="user-img"]').src = user.profileImage;
-    container.querySelector('div[id$="username"]').textContent = user.username;
-    container.querySelector('div[id$="upload-time"]').textContent =
-      formatTimestamp(story.timestamp);
-    container.querySelector('img[id$="img"]').src = story.mediaUrl;
+// placeholder
+function handlePlaceholder() {
+  if (dmInput.textContent.trim() === "") {
+    dmInput.classList.add("placeholder-active");
+  } else {
+    dmInput.classList.remove("placeholder-active");
   }
 }
+
+handlePlaceholder();
+dmInput.addEventListener("input", handlePlaceholder);
+// json 데이터 가져오고 출력
+
+
+
+function updateSideStory(containerId, userIndex, mediaIndex) {
+	const user = storiesData[userIndex];
+	const story = user.stories[mediaIndex];
+
+	const container = document.getElementById(containerId);
+	container.querySelector('img[id$="user-img"]').src = user.profileImage;
+	container.querySelector('div[id$="username"]').textContent = user.username;
+	container.querySelector('div[id$="upload-time"]').textContent =
+		formatTimestamp(story.timestamp);
+	container.querySelector('img[id$="img"]').src = story.mediaUrl;
+}
+
 
 // 시간 스탬프 계산
 function formatTimestamp(timestamp) {
@@ -167,24 +176,10 @@ window.addEventListener("click", (event) => {
   }
 });
 
-// 하단부 액션
-const dmContainer = document.getElementById("story-bottom-dm");
-const dmInput = document.getElementById("story-dm-form");
-const heartButton = document.getElementById("story-btn-heart");
-const dmButton = document.getElementById("story-btn-dm");
-const quickemotionBtn = document.querySelectorAll(".quickemotion-btns button");
+
 
 // 디엠 input form
-// placeholder
-function handlePlaceholder() {
-  if (dmInput.textContent.trim() === "") {
-    dmInput.classList.add("placeholder-active");
-  } else {
-    dmInput.classList.remove("placeholder-active");
-  }
-}
-handlePlaceholder();
-dmInput.addEventListener("input", handlePlaceholder);
+
 
 // 입력창 focus 시 img 어둡게, 버튼 숨기고 입력창 확장
 const dmOverlay = document.getElementById("story-dm-overlay");
@@ -195,7 +190,12 @@ dmInput.addEventListener("focus", () => {
   heartButton.classList.add("btn-hidden");
   dmButton.classList.add("btn-hidden");
   dmContainer.classList.add("dm-expand");
-  quickEmotion.classList.remove("quickemotion-hidden");
+	if (dmInput.textContent.trim() !== "") {
+		dmContainer.classList.add("send-btn-active");
+		quickEmotion.classList.add("quickemotion-hidden");
+	} else {
+		quickEmotion.classList.remove("quickemotion-hidden");
+	}
 });
 
 dmInput.addEventListener("blur", (event) => {
@@ -203,13 +203,15 @@ dmInput.addEventListener("blur", (event) => {
   if (event.relatedTarget && allButtons.includes(event.relatedTarget)) {
     return;
   }
-
   dmOverlay.style.opacity = "0";
   heartButton.classList.remove("btn-hidden");
   dmButton.classList.remove("btn-hidden");
   dmContainer.classList.remove("dm-expand");
   dmContainer.classList.remove("send-btn-active");
   quickEmotion.classList.add("quickemotion-hidden");
+	if (dmInput.textContent.trim() !== "") {
+		dmContainer.classList.add("send-btn-active");
+	}
 });
 
 // 보내기 버튼
@@ -244,6 +246,16 @@ sendButton.addEventListener("click", (event) => {
   }, 1000);
 });
 
+// 빠른 공감 버튼
+function handleQuickEmotion() {
+  if (dmInput.textContent.trim() === "") {
+		quickEmotion.classList.remove("quickemotion-hidden");
+  } else {
+    quickEmotion.classList.add("quickemotion-hidden");
+  }
+}
+dmInput.addEventListener("input", handleQuickEmotion);
+
 // 빠른 공감 버튼 클릭
 quickemotionBtn.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -256,6 +268,7 @@ quickemotionBtn.forEach((btn) => {
     dmContainer.classList.remove("send-btn-active");
     quickEmotion.classList.add("quickemotion-hidden");
     dmInput.blur();
+
 
     setTimeout(() => {
       sendModal.classList.remove("send-modal-visible");
@@ -390,6 +403,7 @@ function updateStories(userIndex, mediaIndex) {
   document.querySelector("#story-upload-time").textContent = formatTimestamp(
     story.timestamp
   );
+	dmInput.setAttribute("placeholder", `${user.username}님에게 답장하기...`);
 
   createLoadingBars();
   updateLoadingBar(mediaIndex);
