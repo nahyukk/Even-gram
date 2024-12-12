@@ -487,59 +487,194 @@ function startAutoPlay() {
   }, STORY_DURATION);
 }
 
-function adjustStorySize() {
+function resizeStories() {
   const story = document.querySelector(".story");
-  const aspectRatio = 386 / 686; // 스토리의 가로/세로 비율
+  const windowHeight = window.innerHeight;
+  const maxWidth = 50;
 
+  const calculatedWidth = (window.innerWidth * maxWidth) / 100;
+  const calculatedHeight = calculatedWidth * (686 / 386);
+
+  if (calculatedHeight > windowHeight) {
+    story.style.width = `${(windowHeight * 386) / 686}px`;
+    story.style.height = `${windowHeight}px`;
+  } else {
+    story.style.width = `${calculatedWidth}px`;
+    story.style.height = `${calculatedHeight}px`;
+  }
+}
+
+resizeStories();
+window.addEventListener("resize", resizeStories);
+
+// 큰사이즈
+function adjustStoriesForLargeScreens() {
+  const centerStory = document.querySelector(".story");
+  const leftStory1 = document.querySelector("#story-side-stories-left1");
+  const leftStory2 = document.querySelector("#story-side-stories-left2");
+  const rightStory3 = document.querySelector("#story-side-stories-right3");
+  const rightStory4 = document.querySelector("#story-side-stories-right4");
+
+  const aspectRatio = 386 / 686; // 스토리의 가로/세로 비율
   const windowWidth = window.innerWidth;
   const windowHeight = window.innerHeight;
 
-  if (windowWidth / windowHeight > aspectRatio) {
-    // 창의 가로가 더 넓은 경우
-    const calculatedWidth = windowHeight * aspectRatio;
-    story.style.width = `${calculatedWidth}px`;
-    story.style.height = `${windowHeight}px`;
-    story.style.transform = "translate(-50%, 0)"; // X, Y축 모두 중앙
-  } else {
-    // 창의 세로가 더 높은 경우
-    const calculatedHeight = windowWidth / aspectRatio;
-    story.style.width = `${windowWidth}px`;
-    story.style.height = `${calculatedHeight}px`;
-    story.style.transform = "translate(-50%, 0)";
-  }
+  if (windowWidth >= 1400) {
+    // 중앙 스토리 크기 계산
+    let centerStoryWidth = Math.min(windowWidth * 0.3, 800);
+    let centerStoryHeight = centerStoryWidth / aspectRatio;
+    if (centerStoryHeight > windowHeight * 0.8) {
+      centerStoryHeight = windowHeight * 0.8;
+      centerStoryWidth = centerStoryHeight * aspectRatio;
+    }
 
-  // 중앙 정렬 설정
-  story.style.position = "absolute";
-  story.style.top = "50%";
-  story.style.left = "50%";
-  story.style.margin = "0";
-}
+    // 중앙 스토리 적용
+    centerStory.style.width = `${centerStoryWidth}px`;
+    centerStory.style.height = `${centerStoryHeight}px`;
+    centerStory.style.aspectRatio = `${aspectRatio}`;
+    centerStory.style.overflow = "hidden";
+    centerStory.querySelector("img").style.objectFit = "cover";
 
-// 미디어 쿼리 조건에 따라 함수 실행
-const mediaQuery767 = window.matchMedia("(max-width: 767px)");
+    // 양쪽 스토리 크기 계산
+    let sideStoryWidth = centerStoryWidth * 0.4;
+    let sideStoryHeight = sideStoryWidth / aspectRatio;
 
-function handleMediaChange(e) {
-  if (e.matches) {
-    // max-width: 767px일 때
-    adjustStorySize();
-    window.addEventListener("resize", adjustStorySize);
-  } else {
-    // max-width: 767px를 벗어날 때, 초기화
-    const story = document.querySelector(".story");
-    story.style.width = "";
-    story.style.height = "";
-    story.style.transform = "";
-    story.style.position = "";
-    story.style.top = "";
-    story.style.left = "";
-    story.style.margin = "";
 
-    window.removeEventListener("resize", adjustStorySize);
+    [leftStory1, leftStory2].forEach((story) => {
+      if (story) {
+        story.style.width = `${sideStoryWidth}px`;
+        story.style.height = `${sideStoryHeight}px`;
+        story.style.aspectRatio = `${aspectRatio}`;
+        story.style.overflow = "hidden";
+        const img = story.querySelector("img");
+        if (img) img.style.objectFit = "cover";
+      }
+    });
+
+    [rightStory3, rightStory4].forEach((story) => {
+      if (story) {
+        story.style.width = `${sideStoryWidth}px`;
+        story.style.height = `${sideStoryHeight}px`;
+        story.style.aspectRatio = `${aspectRatio}`;
+        story.style.overflow = "hidden";
+        const img = story.querySelector("img");
+        if (img) img.style.objectFit = "cover";
+      }
+    });
   }
 }
 
 // 초기 실행
-handleMediaChange(mediaQuery767);
+adjustStoriesForLargeScreens();
 
-// 미디어 쿼리 변화 감지
-mediaQuery767.addEventListener("change", handleMediaChange);
+// 창 크기가 변경될 때마다 실행
+window.addEventListener("resize", adjustStoriesForLargeScreens);
+
+
+// 5개 크기, 3개 크기 마진
+function adjustStoriesForMediumScreens() {
+  const centerStory = document.querySelector(".story");
+  const aspectRatio = 386 / 686; // 스토리의 가로/세로 비율
+  const windowWidth = window.innerWidth;
+  const windowHeight = window.innerHeight;
+
+  if (windowWidth >= 1023 && windowWidth <= 1399) {
+    // 중앙 스토리 크기 설정
+    let centerStoryHeight = Math.min(windowHeight * 0.9, 1000); 
+    let centerStoryWidth = centerStoryHeight * aspectRatio;
+
+    const topBottomMargin = (windowHeight - centerStoryHeight) / 10; // 위아래 마진 추가 (10% 여유)
+
+    centerStory.style.height = `${centerStoryHeight}px`;
+    centerStory.style.width = `${centerStoryWidth}px`;
+    centerStory.style.marginTop = `${topBottomMargin}px`;
+    centerStory.style.marginBottom = `${topBottomMargin}px`;
+    centerStory.style.position = "relative";
+  } else if (windowWidth >= 768 && windowWidth <= 1022) {
+    // 중앙 스토리 크기 설정
+    let centerStoryHeight = Math.min(windowHeight * 0.9, 1000); // 높이 90% 또는 최대 500px
+    let centerStoryWidth = centerStoryHeight * aspectRatio;
+
+    const topBottomMargin = (windowHeight - centerStoryHeight) / 15; // 위아래 마진 추가 (7.5% 여유)
+
+    centerStory.style.height = `${centerStoryHeight}px`;
+    centerStory.style.width = `${centerStoryWidth}px`;
+    centerStory.style.marginTop = `${topBottomMargin}px`;
+    centerStory.style.marginBottom = `${topBottomMargin}px`;
+    centerStory.style.position = "relative";
+  }
+}
+
+// 초기 실행
+adjustStoriesForMediumScreens();
+
+// 창 크기 변경 시 적용
+window.addEventListener("resize", adjustStoriesForMediumScreens);
+
+
+
+// 작은 사이즈
+function adjustStoriesForSmallScreens() {
+  const centerStory = document.querySelector(".story");
+  const aspectRatio = 386 / 686; // 스토리의 가로/세로 비율
+  const windowWidth = window.innerWidth;
+  const windowHeight = window.innerHeight;
+
+  if (windowWidth <= 767) {
+    let storyWidth, storyHeight;
+
+    if (windowWidth / windowHeight > aspectRatio) {
+      // 화면이 더 넓은 경우, 높이를 기준으로 크기 설정
+      storyHeight = windowHeight;
+      storyWidth = storyHeight * aspectRatio;
+    } else {
+      // 화면이 더 좁은 경우, 너비를 기준으로 크기 설정
+      storyWidth = windowWidth;
+      storyHeight = storyWidth / aspectRatio;
+    }
+
+    centerStory.style.width = `${storyWidth}px`;
+    centerStory.style.height = `${storyHeight}px`;
+  }
+}
+
+// 초기 실행
+adjustStoriesForSmallScreens();
+
+// 창 크기가 변경될 때마다 실행
+window.addEventListener("resize", adjustStoriesForSmallScreens);
+
+
+
+
+function centerElements() {
+  const stories = document.querySelector('#stories');
+  const storyButtons = document.querySelector('#story-next-prev-btns');
+  
+  const windowHeight = window.innerHeight;
+
+  if (stories) {
+    const storiesHeight = stories.offsetHeight;
+    const storiesTop = (windowHeight - storiesHeight) / 2;
+    stories.style.position = 'absolute';
+    stories.style.top = `${storiesTop}px`;
+  }
+
+  if (storyButtons) {
+    const buttonsHeight = storyButtons.offsetHeight || 0;
+    const buttonsTop = (windowHeight - buttonsHeight) / 2;
+    storyButtons.style.position = 'absolute';
+    storyButtons.style.top = `${buttonsTop}px`;
+    storyButtons.style.left = '50%';
+    storyButtons.style.transform = 'translate(-50%, -50%)';
+  }
+}
+
+// 초기 실행
+centerElements();
+
+// 창 크기 변경 시 실행
+window.addEventListener('resize', centerElements);
+
+
+
