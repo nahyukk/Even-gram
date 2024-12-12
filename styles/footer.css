@@ -24,6 +24,8 @@
 
 .main-footer-textarea {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .main-footer-textarea a {
@@ -65,4 +67,10 @@
 
 .main-footer-meta {
     margin-left: 16px;
+}
+
+@media (max-width: 767px) {
+    .main-footer-container {
+        display: none;
+    }
 }
