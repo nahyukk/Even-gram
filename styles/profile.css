@@ -359,34 +359,6 @@ body {
 		order: 1;
 	}
 
-	.profile__info-container {
-		grid-template-columns: auto auto;
-		grid-template-rows: auto auto;
-	}
-
-	.profile__name {
-		grid-column: 1 / 2;
-		grid-row: 1;
-	}
-
-	#profile-setting {
-		grid-column: 2 / 3;
-		grid-row: 1;
-		justify-self: start;
-	}
-
-	#edit-profile {
-		grid-column: 1 / 2;
-		grid-row: 2;
-		width: 100%;
-	}
-
-	#stored-story {
-		grid-column: 2 / 3;
-		grid-row: 2;
-		width: 100%;
-	}
-
 	/* 게시물, 팔로워, 팔로우 */
 	.profile__post-info-container {
 		order: 1;
@@ -453,6 +425,36 @@ body {
 
 	.profile__post-saved_description {
 		align-items: center;
+	}
+}
+
+@media (max-width: 736px) {
+	.profile__info-container {
+		grid-template-columns: auto auto;
+		grid-template-rows: auto auto;
+	}
+
+	.profile__name {
+		grid-column: 1 / 2;
+		grid-row: 1;
+	}
+
+	#profile-setting {
+		grid-column: 2 / 3;
+		grid-row: 1;
+		justify-self: start;
+	}
+
+	#edit-profile {
+		grid-column: 1 / 2;
+		grid-row: 2;
+		width: 100%;
+	}
+
+	#stored-story {
+		grid-column: 2 / 3;
+		grid-row: 2;
+		width: 100%;
 	}
 }
 
