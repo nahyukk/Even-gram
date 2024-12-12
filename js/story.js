@@ -515,8 +515,31 @@ function adjustStorySize() {
   story.style.margin = "0";
 }
 
-// 초기 실행
-adjustStorySize();
+// 미디어 쿼리 조건에 따라 함수 실행
+const mediaQuery767 = window.matchMedia("(max-width: 767px)");
 
-// // 창 크기가 변경될 때마다 실행
-window.addEventListener("resize", adjustStorySize);
+function handleMediaChange(e) {
+  if (e.matches) {
+    // max-width: 767px일 때
+    adjustStorySize();
+    window.addEventListener("resize", adjustStorySize);
+  } else {
+    // max-width: 767px를 벗어날 때, 초기화
+    const story = document.querySelector(".story");
+    story.style.width = "";
+    story.style.height = "";
+    story.style.transform = "";
+    story.style.position = "";
+    story.style.top = "";
+    story.style.left = "";
+    story.style.margin = "";
+
+    window.removeEventListener("resize", adjustStorySize);
+  }
+}
+
+// 초기 실행
+handleMediaChange(mediaQuery767);
+
+// 미디어 쿼리 변화 감지
+mediaQuery767.addEventListener("change", handleMediaChange);
