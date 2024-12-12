@@ -352,6 +352,7 @@ body {
 		height: 77px;
 	}
 
+	/* 소개란 */
 	.profile__description-container {
 		grid-column: 1 / 2;
 		grid-row: 2;
@@ -386,6 +387,7 @@ body {
 		width: 100%;
 	}
 
+	/* 게시물, 팔로워, 팔로우 */
 	.profile__post-info-container {
 		order: 1;
 		grid-row: 3;
@@ -417,8 +419,8 @@ body {
 	}
 
 	.profile__post-info-container ul::after {
-		top: auto; /* 아래쪽 border */
-		bottom: 0; /* 아래쪽 위치 */
+		top: auto;
+		bottom: 0;
 	}
 
 	.profile__post-info::before {
@@ -426,6 +428,7 @@ body {
 		display: block;
 	}
 
+	/*  탭바  */
 	.profile-tab-container {
 		padding: 0;
 	}
