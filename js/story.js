@@ -61,20 +61,22 @@ function updateStories(userIndex, mediaIndex) {
   document.querySelector("#story-profile-name").textContent = user.username;
   document.querySelector("#story-upload-time").textContent = formatTimestamp(
     story.timestamp
-  );
-
-  function updateSideStory(containerId, userIndex, mediaIndex) {
-    const user = storiesData[userIndex];
-    const story = user.stories[mediaIndex];
-
-    const container = document.getElementById(containerId);
-    container.querySelector('img[id$="user-img"]').src = user.profileImage;
-    container.querySelector('div[id$="username"]').textContent = user.username;
-    container.querySelector('div[id$="upload-time"]').textContent =
-      formatTimestamp(story.timestamp);
-    container.querySelector('img[id$="img"]').src = story.mediaUrl;
-  }
+	);
 }
+
+
+function updateSideStory(containerId, userIndex, mediaIndex) {
+	const user = storiesData[userIndex];
+	const story = user.stories[mediaIndex];
+
+	const container = document.getElementById(containerId);
+	container.querySelector('img[id$="user-img"]').src = user.profileImage;
+	container.querySelector('div[id$="username"]').textContent = user.username;
+	container.querySelector('div[id$="upload-time"]').textContent =
+		formatTimestamp(story.timestamp);
+	container.querySelector('img[id$="img"]').src = story.mediaUrl;
+}
+
 
 // 시간 스탬프 계산
 function formatTimestamp(timestamp) {
@@ -195,7 +197,12 @@ dmInput.addEventListener("focus", () => {
   heartButton.classList.add("btn-hidden");
   dmButton.classList.add("btn-hidden");
   dmContainer.classList.add("dm-expand");
-  quickEmotion.classList.remove("quickemotion-hidden");
+	if (dmInput.textContent.trim() !== "") {
+		dmContainer.classList.add("send-btn-active");
+		quickEmotion.classList.add("quickemotion-hidden");
+	} else {
+		quickEmotion.classList.remove("quickemotion-hidden");
+	}
 });
 
 dmInput.addEventListener("blur", (event) => {
@@ -203,13 +210,15 @@ dmInput.addEventListener("blur", (event) => {
   if (event.relatedTarget && allButtons.includes(event.relatedTarget)) {
     return;
   }
-
   dmOverlay.style.opacity = "0";
   heartButton.classList.remove("btn-hidden");
   dmButton.classList.remove("btn-hidden");
   dmContainer.classList.remove("dm-expand");
   dmContainer.classList.remove("send-btn-active");
   quickEmotion.classList.add("quickemotion-hidden");
+	if (dmInput.textContent.trim() !== "") {
+		dmContainer.classList.add("send-btn-active");
+	}
 });
 
 // 보내기 버튼
@@ -244,6 +253,16 @@ sendButton.addEventListener("click", (event) => {
   }, 1000);
 });
 
+// 빠른 공감 버튼
+function handleQuickEmotion() {
+  if (dmInput.textContent.trim() === "") {
+		quickEmotion.classList.remove("quickemotion-hidden");
+  } else {
+    quickEmotion.classList.add("quickemotion-hidden");
+  }
+}
+dmInput.addEventListener("input", handleQuickEmotion);
+
 // 빠른 공감 버튼 클릭
 quickemotionBtn.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -256,6 +275,7 @@ quickemotionBtn.forEach((btn) => {
     dmContainer.classList.remove("send-btn-active");
     quickEmotion.classList.add("quickemotion-hidden");
     dmInput.blur();
+
 
     setTimeout(() => {
       sendModal.classList.remove("send-modal-visible");
