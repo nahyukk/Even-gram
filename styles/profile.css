@@ -336,37 +336,6 @@ body {
 		display: none;
 	}
 
-	.profile-tab-container {
-		padding: 0;
-	}
-
-	.profile__tab-section-container {
-		margin-top: 0;
-		gap: 0;
-	}
-
-	.profile__tab-button {
-		flex: 1 1 auto;
-	}
-
-	.profile__tab-button img {
-		width: 24px;
-		height: 24px;
-	}
-
-	.profile__tab-button span {
-		display: none;
-	}
-
-	.profile__post-saved_description {
-		align-items: center;
-	}
-}
-
-@media (min-width: 767px) and (max-width: 575px) {
-}
-
-@media (max-width: 574px) {
 	.profile__section_container {
 		padding: 16px 16px 0 16px;
 		align-items: start;
@@ -438,7 +407,7 @@ body {
 	.profile__post-info-container ul::after {
 		content: "";
 		position: absolute;
-		top: 0; 
+		top: 0;
 		left: -16px;
 		right: -16px;
 		height: 1px;
@@ -456,4 +425,33 @@ body {
 		content: "";
 		display: block;
 	}
+
+	.profile-tab-container {
+		padding: 0;
+	}
+
+	.profile__tab-section-container {
+		margin-top: 0;
+		gap: 0;
+	}
+
+	.profile__tab-button {
+		flex: 1 1 auto;
+	}
+
+	.profile__tab-button img {
+		width: 24px;
+		height: 24px;
+	}
+
+	.profile__tab-button span {
+		display: none;
+	}
+
+	.profile__post-saved_description {
+		align-items: center;
+	}
+}
+
+@media (min-width: 767px) and (max-width: 575px) {
 }
