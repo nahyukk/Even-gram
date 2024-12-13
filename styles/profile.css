@@ -189,9 +189,6 @@ body {
 /* 탭 active */
 .profile__tab-button.active {
 	color: var(--text-color);
-}
-
-.profile__tab-button.active {
 	border-top: 1px solid var(--text-color) !important;
 	margin-top: -1px !important;
 }
@@ -414,10 +411,14 @@ body {
 		flex: 1 1 auto;
 	}
 
-	/* .profile__tab-button img {
+	.profile__tab-icon {
 		width: 24px;
 		height: 24px;
-	} */
+	}
+
+	.profile__tab-button.active {
+		color: var(--primary);
+	}
 
 	.profile__tab-button span {
 		display: none;
