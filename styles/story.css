@@ -236,6 +236,7 @@ body {
 	padding: 8px;
 
 }
+
 .stop-hidden {
 	display: block;
 }
@@ -243,6 +244,7 @@ body {
 #story-btn-meatball {
 	padding: 8px;
 }
+
 .meatball-hidden {
 	display: none;
 }
@@ -771,7 +773,6 @@ body {
 		gap: 100px !important;
 		width: 100%;
 		position: relative;
-		margin: 20px 0;
 		box-sizing: border-box;
 	}
 
