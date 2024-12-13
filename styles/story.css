@@ -191,9 +191,14 @@ body {
 
 #story-top-left {
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 	gap: 10px;
+	overflow: hidden;
+}
+
+#story-upload-time {
+	white-space: nowrap;
 }
 
 #story-profile-img img {
@@ -275,26 +280,27 @@ body {
 	align-items: center;
 	transition: height 0.2s ease;
 	overflow: hidden;
+	word-break: break-word;
+	text-align: center;
 }
 
 #story-dm-form {
 	position: relative;
 	z-index: 10;
-	display: flex;
+	display: inline-block;
 	align-items: center;
 	background-color: transparent;
 	border: none;
 	width: 100%;
 	height: auto;
 	color: white;
-	/* height: 18px !important; */
 	margin: 0 4px 0 0;
 	padding: 8px 9px 8px 9px;
 	white-space: pre-wrap;
 	word-wrap: break-word;
 	text-align: left;
 	display: block;
-	overflow: hidden;
+	overflow: visible;
 	font-size: 14px;
 	caret-color: #aeaeae;
 }
@@ -305,9 +311,15 @@ body {
 
 }
 
+.placeholder-active {
+	position: relative;
+	overflow: visible;
+}
+
 .placeholder-active::before {
 	content: attr(placeholder);
-	position: absolute;
+	display: inline-block;
+	top: 0;
 	color: white;
 	font-size: 14px;
 	pointer-events: none;
