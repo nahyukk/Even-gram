@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.story-container {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    width: 80%;
+    max-width: 800px;
+}
+
+.story-list {
+    display: flex;
+    gap: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.story {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* 버튼을 스토리 내부에 배치하기 위해 설정 */
+    min-width: 75px;
+}
+
+.story img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #f03e73;
+    object-fit: cover;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+}
+
+.story img:hover {
+    border-color: gray;
+}
+
+.story p {
+    margin: 5px 0 0;
+    color: black;
+    font-size: 12px;
+    text-align: center;
+}
+
+.button {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.button.left {
+    left: 5%; /* 첫 번째 동그라미 내부 */
+}
+
+.button.right {
+    right: 1%; /* 마지막 동그라미 내부 */
+}
+
+.button:hover {
+    background-color: #f03e73;
+    color: white;
+}
