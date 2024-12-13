@@ -123,6 +123,11 @@ main {
     text-decoration: none;
 }
 
+.main-profile-date:hover {
+    color: var(--secondary-text-color);
+    text-decoration: none;
+}
+
 .main-profile-site {
     font-size: 12px;
     cursor: pointer;
@@ -179,7 +184,7 @@ main {
 }
 
 .carousel_prev {
-    background-color: rgba(231, 231, 231, 0.4);
+    background-color: transparent;
     border: 0px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -188,11 +193,11 @@ main {
     justify-content: center;
     border-radius: 50%;
     cursor: pointer;
-    margin-left: 10px;
+    margin-left: 5px;
 }
 
 .carousel_next {
-    background-color: rgba(231, 231, 231, 0.4);
+    background-color: transparent;
     border: 0px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -201,9 +206,13 @@ main {
     justify-content: center;
     border-radius: 50%;
     cursor: pointer;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
+.carousel_button_disabled {
+    opacity: 0; /* 버튼 투명하게 */
+    pointer-events: none; /* 클릭 불가 */
+}
 
 /* 캐러셀 중앙 버튼 */
 .carousel_pagination {
@@ -334,6 +343,10 @@ main {
 
 
 /* 메인 컨텐츠 내용 댓글 부분 */
+.main-content-comment {
+    cursor: pointer;
+}
+
 .main-content-input-flex {
     display: flex;
     flex-direction: row;
@@ -368,6 +381,16 @@ main {
 
 .main-content-text-upload:hover {
     color: var(--tag);
+}
+
+.comment-emoji {
+    fill: var(--secondary-text-color);
+    cursor: pointer;
+}
+
+.comment-emoji:hover {
+    fill: var(--tertiary-text-color);
+    cursor: pointer;
 }
 
 
@@ -438,4 +461,70 @@ main {
     100% {
         transform: scale(1)
     }
+}
+
+@media (prefers-color-scheme: dark) {
+    .icon-heart {
+        background-image: url(../assets/icons/dark_heart.png);
+    }
+    
+    .icon-heart.animate {
+        animation: heart-scale 0.45s ease-in-out;
+    }
+    
+    .icon-heart:hover {
+        background-image: url(../assets/icons/heart_hover.png);
+    }
+    .icon-heart:active {
+        background-image: url(../assets/icons/heart_active.png);
+    }
+    
+    .icon-heart.liked {
+        background-image: url(../assets/icons/heart_fill.png);
+    }
+    
+    .icon-heart.liked:active {
+        background-image: url(../assets/icons/heart_fill_active.png);
+    }
+    
+    .icon-msg {
+        background-image: url(../assets/icons/dark_msg.png);
+    }
+    
+    .icon-msg:hover {
+        background-image: url(../assets/icons/msg_hover.png);
+    }
+    
+    .icon-msg:active {
+        background-image: url(../assets/icons/msg_active.png);
+    }
+    
+    .icon-dm {
+        background-image: url(../assets/icons/dark_dm.png);
+    }
+    
+    .icon-dm:hover {
+        background-image: url(../assets/icons/dm_hover.png);
+    }
+    
+    .icon-bookmark {
+        background-image: url(../assets/icons/bookmark.png);
+    }
+    
+    .icon-bookmark:hover {
+        background-image: url(../assets/icons/bookmark_hover.png);
+    }
+    
+    .icon-bookmark:active {
+        background-image: url(../assets/icons/bookmark_active.png);
+    }
+    
+    .icon-bookmark.liked,
+    .icon-bookmark.liked:hover {
+        background-image: url(../assets/icons/bookmark_fill.png);
+    }
+    
+    .icon-bookmark.liked:active {
+        background-image: url(../assets/icons/bookmark_fill_hover.png);
+    } 
 }

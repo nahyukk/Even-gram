@@ -232,7 +232,7 @@ function renderFeed(feed) {
           <div class="main-profile-info">
             <div class="main-profile-meta">
               <div class="main-profile-name st-bold">${feed.username}</div>
-              <span style="margin: 0 4px; color: #737373;">•</span>
+              <span style="margin: 0 4px; color: var(--secondary-text-color);">•</span>
               <a class="main-profile-date" href="#">${feed.update}</a>
             </div>
             <div class="main-profile-site">${feed.location}</div>
@@ -256,13 +256,13 @@ function renderFeed(feed) {
           </div>
             <div class="carousel_button_container">
               <button type="button" class="carousel_prev">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="-0.133 0 0.6 0.6" class="bi bi-chevron-double-left">
-                  <path d="M0.243 0.157a0.025 0.025 0 0 0 -0.035 0L0.082 0.283a0.025 0.025 0 0 0 0 0.035l0.125 0.125a0.025 0.025 0 0 0 0.035 0 0.025 0.025 0 0 0 0 -0.035L0.135 0.3 0.243 0.193a0.025 0.025 0 0 0 0 -0.035"/>
+                <svg aria-label="이전" class="x1lliihq x1n2onr6 xq3z1fi" fill="#fff" opacity=".75" height="26" viewBox="0 0 24 24" width="26" xmlns="http://www.w3.org/2000/svg" transform="rotate(180)">
+                <path d="M12.005.503a11.5 11.5 0 1 0 11.5 11.5 11.513 11.513 0 0 0-11.5-11.5m3.707 12.22-4.5 4.488A1 1 0 0 1 9.8 15.795l3.792-3.783L9.798 8.21a1 1 0 1 1 1.416-1.412l4.5 4.511a1 1 0 0 1-.002 1.414"/>
                 </svg>
               </button>
               <button type="button" class="carousel_next">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="-0.133 0 0.6 0.6" transform="scale(-1 1)" class="bi bi-chevron-double-left">
-                  <path d="M0.243 0.157a0.025 0.025 0 0 0 -0.035 0L0.082 0.283a0.025 0.025 0 0 0 0 0.035l0.125 0.125a0.025 0.025 0 0 0 0.035 0 0.025 0.025 0 0 0 0 -0.035L0.135 0.3 0.243 0.193a0.025 0.025 0 0 0 0 -0.035"/>
+                <svg aria-label="다음" class="x1lliihq x1n2onr6 xq3z1fi" fill="#fff" opacity=".75" height="26" viewBox="0 0 24 24" width="26">
+                <path d="M12.005.503a11.5 11.5 0 1 0 11.5 11.5 11.513 11.513 0 0 0-11.5-11.5m3.707 12.22-4.5 4.488A1 1 0 0 1 9.8 15.795l3.792-3.783L9.798 8.21a1 1 0 1 1 1.416-1.412l4.5 4.511a1 1 0 0 1-.002 1.414"/>
                 </svg>
               </button>
             </div>
@@ -293,7 +293,7 @@ function renderFeed(feed) {
           <div class="main-content-input-flex">
             <input class="main-content-textbox" placeholder="댓글 달기..." autocomplete="off" autocorrect="off">
               <div class="main-content-text-upload" style="display: none;">게시</div>
-                <svg aria-label="이모티콘" style="cursor: pointer;" fill="#737373" height="13" viewBox="0 0 24 24" width="13">
+                <svg aria-label="이모티콘" class="comment-emoji" height="13" viewBox="0 0 24 24" width="13">
                 <path d="M15.83 10.997a1.167 1.167 0 1 0 1.167 1.167 1.167 1.167 0 0 0-1.167-1.167m-6.5 1.167a1.167 1.167 0 1 0-1.166 1.167 1.167 1.167 0 0 0 1.166-1.167m5.163 3.24a3.406 3.406 0 0 1-4.982.007 1 1 0 1 0-1.557 1.256 5.397 5.397 0 0 0 8.09 0 1 1 0 0 0-1.55-1.263ZM12 .503a11.5 11.5 0 1 0 11.5 11.5A11.513 11.513 0 0 0 12 .503m0 21a9.5 9.5 0 1 1 9.5-9.5 9.51 9.51 0 0 1-9.5 9.5"/>
                 </svg>
               </div>        
@@ -325,12 +325,31 @@ function initializeCarousel(carousel) {
 
     let currentSlide = 0;
 
+    function updateButtonVisibility() {
+        // 첫 번째 슬라이드에서는 이전 버튼을 비활성화
+        if (currentSlide === 0) {
+            prevButton.classList.add("carousel_button_disabled");
+        } else {
+            prevButton.classList.remove("carousel_button_disabled");
+        }
+
+        // 마지막 슬라이드에서는 다음 버튼을 비활성화
+        if (currentSlide === slides.length - 1) {
+            nextButton.classList.add("carousel_button_disabled");
+        } else {
+            nextButton.classList.remove("carousel_button_disabled");
+        }
+    }
+
     function showSlide(index) {
         currentSlide = index;
         wrapper.style.transform = `translateX(-${index * 100}%)`;
+
         bullets.forEach((bullet, idx) => {
             bullet.classList.toggle("active", idx === index);
         });
+
+        updateButtonVisibility(); // 버튼 상태 업데이트
     }
 
     // 슬라이더 버튼 이벤트 연결
@@ -349,8 +368,9 @@ function initializeCarousel(carousel) {
         bullet.addEventListener("click", () => showSlide(index));
     });
 
-    // 첫 슬라이드로 초기화
+    // 초기 상태 업데이트
     showSlide(0);
+    updateButtonVisibility(); // 초기 버튼 상태 업데이트
 }
 
 // 무한 스크롤 이벤트 추가
