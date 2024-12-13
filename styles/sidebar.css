@@ -49,7 +49,7 @@ body.dark-mode .bottom-item:hover {
     height: 100vh;
     background-color: #ffffff;
     border-right: 1px solid #dbdbdb;
-    position: relative;
+    position: fixed;
     top: 0;
     left: 0;
     padding: 8px 20px 12px 12px;
