@@ -169,11 +169,6 @@ body {
 	gap: 40px;
 }
 
-.profile__tab-button img {
-	width: 9px;
-	height: 9px;
-}
-
 .profile__tab-button {
 	display: flex !important;
 	gap: 4px;
@@ -188,12 +183,11 @@ body {
 }
 
 .profile__tab-button:hover {
-	text-decoration: none;
-	color: inherit;
+	color: var(--secondary-text-color);
 }
 
 /* 탭 active */
-.profile__tab-button.active span {
+.profile__tab-button.active {
 	color: var(--text-color);
 }
 
@@ -420,10 +414,10 @@ body {
 		flex: 1 1 auto;
 	}
 
-	.profile__tab-button img {
+	/* .profile__tab-button img {
 		width: 24px;
 		height: 24px;
-	}
+	} */
 
 	.profile__tab-button span {
 		display: none;
