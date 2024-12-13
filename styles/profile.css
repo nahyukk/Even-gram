@@ -94,6 +94,7 @@ body {
 .profile__image_button {
 	background: transparent;
 	border: none;
+	color: var(--text-color);
 	cursor: pointer;
 }
 
