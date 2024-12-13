@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 	toggleNavContainer();
-	renderRightSidebar();
+	renderHTML("right-side-bar", "./components/sidebar.html");
+	renderHTML("footer-container", "./components/footer.html");
 	fetchUser();
 });
 
@@ -8,15 +9,13 @@ window.addEventListener("resize", () => {
 	toggleNavContainer();
 });
 
-/* 우측 사이드바 */
-function renderRightSidebar() {
-	const sidebarContainer = document.getElementById("right-side-bar");
+function renderHTML(id, html) {
+	const sidebarContainer = document.getElementById(id);
 
-	// sidebar.html 로드
-	fetch("./components/sidebar.html")
+	fetch(html)
 		.then((response) => {
 			if (!response.ok) {
-				throw new Error("Failed to load sidebar.html");
+				throw new Error(`Failed to load ${html}`);
 			}
 			return response.text();
 		})
