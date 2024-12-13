@@ -672,10 +672,12 @@ window.addEventListener("resize", centerElements);
 // 작은 미디어(767px 이하)일 때 클릭 시 next, prev 함수 호출
 document.querySelector("#story-main-img").addEventListener("click", (event) => {
   const clickX = event.offsetX;
-
-  if (clickX > event.currentTarget.clientWidth * (1 / 4)) {
-    moveToNextStory();
-  } else {
-    moveToPrevStory();
-  }
+	const windowWidth = window.innerWidth;
+	if (windowWidth < 768) {
+    if (clickX > event.currentTarget.clientWidth * (1 / 4)) {
+      moveToNextStory();
+    } else {
+      moveToPrevStory();
+    }
+	}
 });
