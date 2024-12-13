@@ -96,28 +96,6 @@ function formatTimestamp(timestamp) {
   }
 }
 
-// 사이드 스토리 클릭시 이동
-const storyContainers = {
-  "story-side-stories-left1": -2,
-  "story-side-stories-left2": -1,
-  "story-side-stories-right3": 1,
-  "story-side-stories-right4": 2,
-};
-
-Object.entries(storyContainers).forEach(([containerId, offset]) => {
-  const container = document.getElementById(containerId);
-  container.addEventListener("click", () => handleStoryClick(offset));
-});
-
-function handleStoryClick(offset) {
-  currentStoryIndex =
-    (currentStoryIndex + offset + storiesData.length) % storiesData.length;
-  currentMediaIndex = 0;
-
-  updateStories(currentStoryIndex, currentMediaIndex);
-  updateSideStories();
-}
-
 // 로고, x 클릭시 홈으로 이동 - 추후 링크 변화시 수정 필요
 document.getElementById("story-out-logo").addEventListener("click", () => {
   window.location.href = "index.html";
@@ -126,6 +104,41 @@ document.getElementById("story-out-logo").addEventListener("click", () => {
 document.getElementById("story-out-btn").addEventListener("click", () => {
   window.location.href = "index.html";
 });
+
+// 재생 시간 바 생성
+function createLoadingBars() {
+  const barContainer = document.getElementById("story-loading-bar-container");
+  barContainer.innerHTML = "";
+
+  const currentUserStories = storiesData[currentStoryIndex].stories;
+  currentUserStories.forEach((_, index) => {
+    const bar = document.createElement("div");
+    bar.classList.add("story-loading-bar");
+    bar.style.flex = `1`;
+    bar.style.marginRight = index < currentUserStories.length - 1 ? "3px" : "0";
+    barContainer.appendChild(bar);
+  });
+}
+
+function updateLoadingBar(mediaIndex) {
+  const bars = document.querySelectorAll(".story-loading-bar");
+
+  bars.forEach((bar, index) => {
+    if (index < mediaIndex) {
+      bar.style.width = "100%";
+      bar.classList.add("active");
+    } else if (index === mediaIndex) {
+      bar.style.width = "0%";
+      setTimeout(() => {
+        bar.style.width = "100%";
+        bar.classList.add("active");
+      }, 10);
+    } else {
+      bar.style.width = "0%";
+      bar.classList.remove("active");
+    }
+  });
+}
 
 // 재생 - 일시정지 버튼
 // let isPlaying = true;
@@ -148,6 +161,30 @@ function togglePlayPause() {
 document
   .getElementById("story-btn-play")
   .addEventListener("click", togglePlayPause);
+
+// 자동 재생 구현
+let timer;
+let progressInterval;
+const STORY_DURATION = 4000;
+
+function startAutoPlay() {
+  if (!isPlaying) return;
+
+  clearTimeout(timer);
+  clearInterval(progressInterval);
+
+  // 현재 바 애니메이션 시작
+  const currentBar =
+    document.querySelectorAll(".story-loading-bar")[currentMediaIndex];
+  currentBar.style.transition = `width ${STORY_DURATION}ms linear`;
+  currentBar.style.width = "100%";
+
+  // 사진 전환 설정
+  timer = setTimeout(() => {
+    moveToNextStory();
+    startAutoPlay();
+  }, STORY_DURATION);
+}
 
 // 모달 열기
 function modalOpen() {
@@ -428,63 +465,39 @@ function updateSideStory(containerId, userIndex, mediaIndex) {
   container.querySelector('img[id$="img"]').src = story.mediaUrl;
 }
 
-// 재생 시간 바 생성
-function createLoadingBars() {
-  const barContainer = document.getElementById("story-loading-bar-container");
-  barContainer.innerHTML = "";
-
-  const currentUserStories = storiesData[currentStoryIndex].stories;
-  currentUserStories.forEach((_, index) => {
-    const bar = document.createElement("div");
-    bar.classList.add("story-loading-bar");
-    bar.style.flex = `1`;
-    bar.style.marginRight = index < currentUserStories.length - 1 ? "3px" : "0";
-    barContainer.appendChild(bar);
-  });
-}
-
-function updateLoadingBar(mediaIndex) {
-  const bars = document.querySelectorAll(".story-loading-bar");
-
-  bars.forEach((bar, index) => {
-    if (index < mediaIndex) {
-      bar.style.width = "100%";
-      bar.classList.add("active");
-    } else if (index === mediaIndex) {
-      bar.style.width = "0%";
-      setTimeout(() => {
-        bar.style.width = "100%";
-        bar.classList.add("active");
-      }, 10);
+// 작은 미디어(767px 이하)일 때 클릭 시 next, prev 함수 호출
+document.querySelector("#story-main-img").addEventListener("click", (event) => {
+  const clickX = event.offsetX;
+  const windowWidth = window.innerWidth;
+  if (windowWidth < 768) {
+    if (clickX > event.currentTarget.clientWidth * (1 / 4)) {
+      moveToNextStory();
     } else {
-      bar.style.width = "0%";
-      bar.classList.remove("active");
+      moveToPrevStory();
     }
-  });
-}
+  }
+});
 
-// 자동 재생 구현
-let timer;
-let progressInterval;
-const STORY_DURATION = 4000;
+// 사이드 스토리 클릭시 이동
+const storyContainers = {
+  "story-side-stories-left1": -2,
+  "story-side-stories-left2": -1,
+  "story-side-stories-right3": 1,
+  "story-side-stories-right4": 2,
+};
 
-function startAutoPlay() {
-  if (!isPlaying) return;
+Object.entries(storyContainers).forEach(([containerId, offset]) => {
+  const container = document.getElementById(containerId);
+  container.addEventListener("click", () => handleStoryClick(offset));
+});
 
-  clearTimeout(timer);
-  clearInterval(progressInterval);
+function handleStoryClick(offset) {
+  currentStoryIndex =
+    (currentStoryIndex + offset + storiesData.length) % storiesData.length;
+  currentMediaIndex = 0;
 
-  // 현재 바 애니메이션 시작
-  const currentBar =
-    document.querySelectorAll(".story-loading-bar")[currentMediaIndex];
-  currentBar.style.transition = `width ${STORY_DURATION}ms linear`;
-  currentBar.style.width = "100%";
-
-  // 사진 전환 설정
-  timer = setTimeout(() => {
-    moveToNextStory();
-    startAutoPlay();
-  }, STORY_DURATION);
+  updateStories(currentStoryIndex, currentMediaIndex);
+  updateSideStories();
 }
 
 // 창 크기 변경 시 스토리 사이즈 조정
@@ -602,6 +615,8 @@ function adjustStoriesForSmallScreens() {
   const windowWidth = window.innerWidth;
   const windowHeight = window.innerHeight;
 
+  const storyPlayButton = document.getElementById("story-btn-play");
+
   if (windowWidth <= 767) {
     let storyWidth, storyHeight;
 
@@ -617,6 +632,13 @@ function adjustStoriesForSmallScreens() {
 
     centerStory.style.width = `${storyWidth}px`;
     centerStory.style.height = `${storyHeight}px`;
+
+    // 자동 재생 및 버튼
+    if (!isPlaying) {
+      isPlaying = true;
+      startAutoPlay();
+      storyPlayButton.innerHTML = `<svg aria-label="일시 정지" class="x1lliihq x1n2onr6 xq3z1fi" fill="currentColor" height="16" role="img" viewBox="0 0 48 48" width="16"><title>일시 정지</title><path d="M15 1c-3.3 0-6 1.3-6 3v40c0 1.7 2.7 3 6 3s6-1.3 6-3V4c0-1.7-2.7-3-6-3zm18 0c-3.3 0-6 1.3-6 3v40c0 1.7 2.7 3 6 3s6-1.3 6-3V4c0-1.7-2.7-3-6-3z"></path></svg>`;
+    }
   }
 }
 
@@ -649,26 +671,13 @@ const resizeFunctions = [
   adjustStoriesForLargeScreens,
   adjustStoriesForMediumScreens,
   adjustStoriesForSmallScreens,
-  centerElements
+  centerElements,
 ];
 
 // 초기 실행
-resizeFunctions.forEach(fn => fn());
+resizeFunctions.forEach((fn) => fn());
 
 // 창 크기 변경 시 함수 실행
 window.addEventListener("resize", () => {
-  resizeFunctions.forEach(fn => fn());
-});
-
-// 작은 미디어(767px 이하)일 때 클릭 시 next, prev 함수 호출
-document.querySelector("#story-main-img").addEventListener("click", (event) => {
-  const clickX = event.offsetX;
-  const windowWidth = window.innerWidth;
-  if (windowWidth < 768) {
-    if (clickX > event.currentTarget.clientWidth * (1 / 4)) {
-      moveToNextStory();
-    } else {
-      moveToPrevStory();
-    }
-  }
+  resizeFunctions.forEach((fn) => fn());
 });
