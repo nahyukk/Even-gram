@@ -108,6 +108,11 @@ body {
 	transform: translate(-50%)
 }
 
+#story-dm-overlay {
+	pointer-events: none;
+}
+
+
 #stories>div {
 	margin: 0;
 }
@@ -186,9 +191,14 @@ body {
 
 #story-top-left {
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 	gap: 10px;
+	overflow: hidden;
+}
+
+#story-upload-time {
+	white-space: nowrap;
 }
 
 #story-profile-img img {
@@ -232,8 +242,16 @@ body {
 
 }
 
+.stop-hidden {
+	display: block;
+}
+
 #story-btn-meatball {
 	padding: 8px;
+}
+
+.meatball-hidden {
+	display: none;
 }
 
 /* 스토리 하단 */
@@ -262,26 +280,27 @@ body {
 	align-items: center;
 	transition: height 0.2s ease;
 	overflow: hidden;
+	word-break: break-word;
+	text-align: center;
 }
 
 #story-dm-form {
 	position: relative;
 	z-index: 10;
-	display: flex;
+	display: inline-block;
 	align-items: center;
 	background-color: transparent;
 	border: none;
 	width: 100%;
 	height: auto;
 	color: white;
-	/* height: 18px !important; */
 	margin: 0 4px 0 0;
 	padding: 8px 9px 8px 9px;
 	white-space: pre-wrap;
 	word-wrap: break-word;
 	text-align: left;
 	display: block;
-	overflow: hidden;
+	overflow: visible;
 	font-size: 14px;
 	caret-color: #aeaeae;
 }
@@ -292,9 +311,15 @@ body {
 
 }
 
+.placeholder-active {
+	position: relative;
+	overflow: visible;
+}
+
 .placeholder-active::before {
 	content: attr(placeholder);
-	position: absolute;
+	display: inline-block;
+	top: 0;
 	color: white;
 	font-size: 14px;
 	pointer-events: none;
@@ -796,6 +821,36 @@ body {
 	}
 }
 
+@media (min-width: 1023px) and (max-width: 1399px) {
+
+	.story {
+		aspect-ratio: 386 / 686;
+		border-radius: 10px;
+		overflow: hidden;
+		height: auto;
+	}
+
+	#story-side-stories-left1 {
+		left: 0;
+		top: 50;
+	}
+
+	#story-side-stories-left2 {
+		left: 0;
+		top: 50;
+	}
+
+	#story-side-stories-right3 {
+		right: 0;
+		top: 50;
+	}
+
+	#story-side-stories-right4 {
+		right: 0;
+		top: 50;
+	}
+}
+
 @media (min-width: 1400px) {
 	#stories {
 		display: flex;
@@ -807,13 +862,14 @@ body {
 		left: 50%;
 		transform: translate(-50%)
 	}
+
 	.story {
-    aspect-ratio: 386 / 686;
-    border-radius: 10px;
-    overflow: hidden;
-    width: min(60vw, calc(100vh * 386 / 686));
+		aspect-ratio: 386 / 686;
+		border-radius: 10px;
+		overflow: hidden;
+		width: min(60vw, calc(100vh * 386 / 686));
 		max-width: 800px;
 		max-height: calc(100vh - 40px);
-    height: auto;
-  }
+		height: auto;
+	}
 }
