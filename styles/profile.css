@@ -30,7 +30,7 @@ body {
 
 #right-side-bar {
 	width: 200px;
-	display: flex;
+	z-index: 100;
 }
 
 .profile-tab-container {
@@ -41,6 +41,10 @@ body {
 	padding: 30px 20px 0 20px;
 	margin: 0 auto 30px auto;
 	max-width: 935px;
+}
+
+#footer-container {
+	margin: 20px auto 0 auto;
 }
 
 .profile__section_container {
@@ -333,6 +337,10 @@ body {
 
 @media (max-width: 574px) {
 	#right-side-bar {
+		display: none;
+	}
+
+	#footer-container {
 		display: none;
 	}
 
