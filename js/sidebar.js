@@ -52,13 +52,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const icons = document.querySelectorAll('.logo-container img, .middle-container img, .bottom-container img, .mode-menu img, .dropdown-menu img, .min-bottom-btn img');    //sidebar의 아이콘 변경
         const menus = document.querySelectorAll('.dropdown-menu, .mode-menu');
         const body = document.body;
-        const sidebar = document.querySelector('.left-container, .sidebar-min-botttom-content');
+        const sidebar = document.querySelector('.left-container');
+        const rightsidebars = document.querySelector('.right-side');
         const hrEle = document.querySelectorAll('#moreMenu hr, #menu-header hr');
 
         body.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff";   // body 적용 부분
         body.style.color = isDarkMode ? "#ffffff" : "#000000";
         sidebar.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff"; // 사이드바 부분 적용
         sidebar.style.borderColor = isDarkMode ? "#383838" : "#dbdbdb";    // 사이드바 border 부분 적용
+        rightsidebars.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff";
+
 
         // 드롭다운 메뉴들 다크모드 변경
         menus.forEach((menu) => {
