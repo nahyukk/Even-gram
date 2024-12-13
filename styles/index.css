@@ -395,12 +395,8 @@ main {
 /* 임시 */
 /* 메인 사이드바 컨테이너 (임시) */
 .aside-container {
-    width: 320px;
-    height: 100vh;
-    margin-top: 16px; /* 이후 삭제하거나 조정 필요 */
-    margin-left: 64px; /* 이후 padding-left 로 변경 필요 */
-    color: #FFF;
-    background-color: #737373;
+    margin-top: 16px; 
+    margin-left: 64px;
 }
 
 /* 메인 스토리 (임시) */
