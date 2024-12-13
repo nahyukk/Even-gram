@@ -51,6 +51,10 @@ main {
     padding-left: 4px;
 }
 
+.main-contents-list article:first-child {
+    display: none;
+}
+
 /* 메인 컨텐츠 프로필 부분 */
 /* 프로필 이미지 */
 .main-content-profile-flex {
@@ -115,7 +119,7 @@ main {
 }
 
 .main-profile-date {
-    color: #737373;
+    color: var(--secondary-text-color);
     text-decoration: none;
 }
 
@@ -363,7 +367,7 @@ main {
 }
 
 .main-content-text-upload:hover {
-    color: #00376b;
+    color: var(--tag);
 }
 
 
@@ -373,7 +377,7 @@ main {
 }
 
 .st-gray {
-    color: #737373;
+    color: var(--secondary-text-color);
 }
 
 .st-mg-t-8 {
