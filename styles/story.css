@@ -108,6 +108,11 @@ body {
 	transform: translate(-50%)
 }
 
+#story-dm-overlay {
+	pointer-events: none;
+}
+
+
 #stories>div {
 	margin: 0;
 }
@@ -800,16 +805,17 @@ body {
 @media (min-width: 1023px) and (max-width: 1399px) {
 
 	.story {
-    aspect-ratio: 386 / 686;
-    border-radius: 10px;
-    overflow: hidden;
-    height: auto;
-  }
+		aspect-ratio: 386 / 686;
+		border-radius: 10px;
+		overflow: hidden;
+		height: auto;
+	}
 
 	#story-side-stories-left1 {
 		left: 0;
 		top: 50;
 	}
+
 	#story-side-stories-left2 {
 		left: 0;
 		top: 50;
@@ -837,13 +843,14 @@ body {
 		left: 50%;
 		transform: translate(-50%)
 	}
+
 	.story {
-    aspect-ratio: 386 / 686;
-    border-radius: 10px;
-    overflow: hidden;
-    width: min(60vw, calc(100vh * 386 / 686));
+		aspect-ratio: 386 / 686;
+		border-radius: 10px;
+		overflow: hidden;
+		width: min(60vw, calc(100vh * 386 / 686));
 		max-width: 800px;
 		max-height: calc(100vh - 40px);
-    height: auto;
-  }
+		height: auto;
+	}
 }
