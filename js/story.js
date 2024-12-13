@@ -580,7 +580,7 @@ function adjustStoriesForMediumScreens() {
 
   if (windowWidth >= 1023 && windowWidth <= 1399) {
     // 중앙 스토리 크기 설정
-    let centerStoryHeight = Math.min(windowHeight * 0.9, 1000); 
+    let centerStoryHeight = Math.min(windowHeight * 0.9, 1000);
     let centerStoryWidth = centerStoryHeight * aspectRatio;
 
     const topBottomMargin = (windowHeight - centerStoryHeight) / 10; // 위아래 마진 추가 (10% 여유)
@@ -650,7 +650,7 @@ window.addEventListener("resize", adjustStoriesForSmallScreens);
 function centerElements() {
   const stories = document.querySelector('#stories');
   const storyButtons = document.querySelector('#story-next-prev-btns');
-  
+
   const windowHeight = window.innerHeight;
 
   if (stories) {
@@ -678,3 +678,20 @@ window.addEventListener('resize', centerElements);
 
 
 
+// 재생버튼을 미트볼로 변경
+window.addEventListener('resize', handleMeatballToggle);
+
+document.addEventListener('DOMContentLoaded', handleMeatballToggle);
+
+function handleMeatballToggle() {
+  const stopHidden = document.querySelector('.stop-hidden');
+  const meatballToggle = document.querySelector('.meatball-hidden');
+
+  if (window.innerWidth <= 767) {
+    stopHidden.style.display = 'none';
+    meatballToggle.style.display = 'block';
+  } else {
+    if (stopHidden) stopHidden.style.display = 'block';
+    if (meatballToggle) meatballToggle.style.display = 'none';
+  }
+}
