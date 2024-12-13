@@ -1,61 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="color-scheme" content="dark">
-  <title>Story</title>
-  <link rel="stylesheet" href="./styles/general.css">
-  <link rel="stylesheet" href="./styles/story.css">
-</head>
-<body>
-	<!-- 큰 창 -->
-  <div id="story-container">
-		<div class="story">
-			<div id="story-main-img">
-				<img id=story-main-img-img src="https://file3.instiz.net/data/cached_img/upload/2021/01/11/3/a08bb91dd43fba14606b0f82bcc3fdb9.jpg" alt="story-image"/>
-			</div>	
-			<div id="story-top-container">
-				<div id="story-loading-bar-container"> 
-					<div id="story-loading-bar"></div>
-				</div>
-				<div id="story-top">
-					<div id="story-top-left">
-						<div id="story-profile-img">
-							<img src="./assets/images/story_profile_john.webp"/>
-						</div>
-						<div id="story-profile-name">john</div>
-						<div id="story-upload-time">1시간</div>
-					</div>
-					<div id="story-top-right">
-						<button id="story-btn-play">
-							<svg aria-label="재생" class="x1lliihq x1n2onr6 xq3z1fi" fill="currentColor" height="16" role="img" viewBox="0 0 24 24" width="16"><title>재생</title><path d="M5.888 22.5a3.46 3.46 0 0 1-1.721-.46l-.003-.002a3.451 3.451 0 0 1-1.72-2.982V4.943a3.445 3.445 0 0 1 5.163-2.987l12.226 7.059a3.444 3.444 0 0 1-.001 5.967l-12.22 7.056a3.462 3.462 0 0 1-1.724.462Z"></path></svg>
-						</button>
-						<button id="story-btn-meatball">
-							<svg aria-label="메뉴" class="x1lliihq x1n2onr6 x1g9anri" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>메뉴</title><circle cx="12" cy="12" r="2.75"></circle><circle cx="19.5" cy="12" r="2.75"></circle><circle cx="4.5" cy="12" r="2.75"></circle></svg>
-						</button>
-					</div>
-				</div>
-			</div>
-			<div id="story-bottom">
-				<div id="story-bottom-dm">
-					<input id="story-dm-form" placeholder="user님에게 답장하기..."/>
-				</div>
-				<div id="story-bottom-btns">
-					<div id="story-btn-heart">
-						<svg aria-label="좋아요" class="x1lliihq x1n2onr6 xq3z1fi" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>좋아요</title><path d="M16.792 3.904A4.989 4.989 0 0 1 21.5 9.122c0 3.072-2.652 4.959-5.197 7.222-2.512 2.243-3.865 3.469-4.303 3.752-.477-.309-2.143-1.823-4.303-3.752C5.141 14.072 2.5 12.167 2.5 9.122a4.989 4.989 0 0 1 4.708-5.218 4.21 4.21 0 0 1 3.675 1.941c.84 1.175.98 1.763 1.12 1.763s.278-.588 1.11-1.766a4.17 4.17 0 0 1 3.679-1.938m0-2a6.04 6.04 0 0 0-4.797 2.127 6.052 6.052 0 0 0-4.787-2.127A6.985 6.985 0 0 0 .5 9.122c0 3.61 2.55 5.827 5.015 7.97.283.246.569.494.853.747l1.027.918a44.998 44.998 0 0 0 3.518 3.018 2 2 0 0 0 2.174 0 45.263 45.263 0 0 0 3.626-3.115l.922-.824c.293-.26.59-.519.885-.774 2.334-2.025 4.98-4.32 4.98-7.94a6.985 6.985 0 0 0-6.708-7.218Z"></path></svg>
-					</div>
-					<div id="story-btn-dm">
-						<svg aria-label="Direct로 보내기" class="x1lliihq x1n2onr6 x1g9anri" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Direct로 보내기</title><line fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" x1="22" x2="9.218" y1="3" y2="10.083"></line><polygon fill="none" points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></polygon></svg>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- 작은 창 -->
-	<div class="mini-story-container">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <title>Story</title>
+    <link rel="stylesheet" href="./styles/general.css" />
+    <link rel="stylesheet" href="./styles/story.css" />
+  </head>
+  <body>
+    <!-- 큰 창 -->
+    <div id="story-container">
+      <div id="story-out-container">
+        <div id="story-out-logo-div">
+          <button id="story-out-logo">
+            <img src="./assets/icons/dark_instalogo.png" alt="dark-logo" />
+          </button>
+        </div>
+        <div id="story-out-btn-div">
+          <button id="story-out-btn">
+            <svg
+              aria-label="닫기"
+              class="x1lliihq x1n2onr6 x9bdzbf"
+              fill="currentColor"
+              height="24"
+              role="img"
+              viewBox="0 0 24 24"
+              width="24"
+            >
+              <title>닫기</title>
+              <polyline
+                fill="none"
+                points="20.643 3.357 12 12 3.353 20.647"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="3"
+              ></polyline>
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="3"
+                x1="20.649"
+                x2="3.354"
+                y1="20.649"
+                y2="3.354"
+              ></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div id="story-next-prev-btns">
+        <button id="story-prev-btn">
+          <svg
+            aria-label="이전"
+            class="x1lliihq x1n2onr6 xq3z1fi"
+            fill="currentColor"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+          >
+            <title>이전</title>
+            <path
+              d="M12.005.503a11.5 11.5 0 1 0 11.5 11.5 11.513 11.513 0 0 0-11.5-11.5Zm2.207 15.294a1 1 0 1 1-1.416 1.412l-4.5-4.51a1 1 0 0 1 .002-1.415l4.5-4.489a1 1 0 0 1 1.412 1.416l-3.792 3.783Z"
+            ></path>
+          </svg>
+        </button>
+        <button id="story-next-btn">
+          <svg
+            aria-label="다음"
+            class="x1lliihq x1n2onr6 xq3z1fi"
+            fill="currentColor"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+          >
+            <title>다음</title>
+            <path
+              d="M12.005.503a11.5 11.5 0 1 0 11.5 11.5 11.513 11.513 0 0 0-11.5-11.5Zm3.707 12.22-4.5 4.488A1 1 0 0 1 9.8 15.795l3.792-3.783L9.798 8.21a1 1 0 1 1 1.416-1.412l4.5 4.511a1 1 0 0 1-.002 1.414Z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <div id="stories">
+        <!-- 사이드 부분 왼쪽 -->
+        <div id="story-side-stories-left1">
+          <div id="story-side-left-container">
+            <div id="dark-overlay"></div>
+            <img
+              id="story-side-left-img"
+              src="https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785"
+            />
+            <div id="story-side-left-user">
+              <div id="story-side-left-userimg-container">
+                <img
+                  id="story-side-left-user-img"
+                  src="./assets/images/1_hwiwoo.jpg"
+                />
+                <img
+                  id="story-side-left-user-ring"
+                  src="./assets/images/Instagram-Ring.png"
+                />
+              </div>
+              <div id="story-side-left-username">username</div>
+              <div id="story-side-left-upload-time">test시간</div>
+            </div>
+          </div>
+        </div>
+        <div id="story-side-stories-left2">
+          <div id="story-side-left-container">
+            <div id="dark-overlay"></div>
+            <img
+              id="story-side-left-img"
+              src="https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785"
+            />
+            <div id="story-side-left-user">
+              <div id="story-side-left-userimg-container">
+                <img
+                  id="story-side-left-user-img"
+                  src="./assets/images/1_hwiwoo.jpg"
+                />
+                <img
+                  id="story-side-left-user-ring"
+                  src="./assets/images/Instagram-Ring.png"
+                />
+              </div>
+              <div id="story-side-left-username">username</div>
+              <div id="story-side-left-upload-time">test시간</div>
+            </div>
+          </div>
+        </div>
+        <div class="story">
+          <div id="story-dm-overlay"></div>
+          <div id="story-main-img">
+            <img
+              id="story-main-img-img"
+              src="https://file3.instiz.net/data/cached_img/upload/2021/01/11/3/a08bb91dd43fba14606b0f82bcc3fdb9.jpg"
+              alt="story-image"
+            />
+          </div>
+          <div id="story-top-container">
+            <div id="story-loading-bar-container"></div>
+            <div id="story-top">
+              <div id="story-top-left">
+                <div id="story-profile-img">
+                  <img src="./assets/images/1-1_hwiwoo.jpg" />
+                </div>
+                <a href="#" id="story-profile-name">test</a>
+                <div id="story-upload-time">test시간</div>
+              </div>
+              <div id="story-top-right">
+                <button class="stop-hidden" id="story-btn-play">
+                  <svg
+                    aria-label="일시 정지"
+                    class="x1lliihq x1n2onr6 xq3z1fi"
+                    fill="currentColor"
+                    height="16"
+                    role="img"
+                    viewBox="0 0 48 48"
+                    width="16"
+                  >
+                    <title>일시 정지</title>
+                    <path
+                      d="M15 1c-3.3 0-6 1.3-6 3v40c0 1.7 2.7 3 6 3s6-1.3 6-3V4c0-1.7-2.7-3-6-3zm18 0c-3.3 0-6 1.3-6 3v40c0 1.7 2.7 3 6 3s6-1.3 6-3V4c0-1.7-2.7-3-6-3z"
+                    ></path>
+                  </svg>
+                </button>
+                <button id="story-btn-meatball" class="meatball-hidden"> 
+                  <svg
+                    aria-label="메뉴"
+                    class="x1lliihq x1n2onr6 x1g9anri"
+                    fill="currentColor"
+                    height="24"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="24"
+                  >
+                    <title>메뉴</title>
+                    <circle cx="12" cy="12" r="2.75"></circle>
+                    <circle cx="19.5" cy="12" r="2.75"></circle>
+                    <circle cx="4.5" cy="12" r="2.75"></circle>
+                  </svg>
+                </button>
+                <button id="story-btn-meatball">
+                  <svg
+                    aria-label="메뉴"
+                    class="x1lliihq x1n2onr6 x1g9anri"
+                    fill="currentColor"
+                    height="24"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="24"
+                  >
+                    <title>메뉴</title>
+                    <circle cx="12" cy="12" r="2.75"></circle>
+                    <circle cx="19.5" cy="12" r="2.75"></circle>
+                    <circle cx="4.5" cy="12" r="2.75"></circle>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div id="story-bottom">
+            <div id="story-bottom-dm">
+              <div
+                id="story-dm-form"
+                class="editable"
+                contenteditable="true"
+                ,
+                placeholder="user님에게 답장하기..."
+              ></div>
+              <button id="story-send-btn">보내기</button>
+            </div>
+            <div id="story-bottom-btns">
+              <div id="story-btn-heart">
+                <svg
+                  aria-label="좋아요"
+                  class="x1lliihq x1n2onr6 xq3z1fi"
+                  fill="currentColor"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                >
+                  <title>좋아요</title>
+                  <path
+                    d="M16.792 3.904A4.989 4.989 0 0 1 21.5 9.122c0 3.072-2.652 4.959-5.197 7.222-2.512 2.243-3.865 3.469-4.303 3.752-.477-.309-2.143-1.823-4.303-3.752C5.141 14.072 2.5 12.167 2.5 9.122a4.989 4.989 0 0 1 4.708-5.218 4.21 4.21 0 0 1 3.675 1.941c.84 1.175.98 1.763 1.12 1.763s.278-.588 1.11-1.766a4.17 4.17 0 0 1 3.679-1.938m0-2a6.04 6.04 0 0 0-4.797 2.127 6.052 6.052 0 0 0-4.787-2.127A6.985 6.985 0 0 0 .5 9.122c0 3.61 2.55 5.827 5.015 7.97.283.246.569.494.853.747l1.027.918a44.998 44.998 0 0 0 3.518 3.018 2 2 0 0 0 2.174 0 45.263 45.263 0 0 0 3.626-3.115l.922-.824c.293-.26.59-.519.885-.774 2.334-2.025 4.98-4.32 4.98-7.94a6.985 6.985 0 0 0-6.708-7.218Z"
+                  ></path>
+                </svg>
+              </div>
+              <div id="story-btn-dm">
+                <svg
+                  aria-label="Direct로 보내기"
+                  class="x1lliihq x1n2onr6 x1g9anri"
+                  fill="currentColor"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                >
+                  <title>Direct로 보내기</title>
+                  <line
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    x1="22"
+                    x2="9.218"
+                    y1="3"
+                    y2="10.083"
+                  ></line>
+                  <polygon
+                    fill="none"
+                    points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334"
+                    stroke="currentColor"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                  ></polygon>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 다른 유저 스토리, 사이드 부분 오른쪽-->
+        <div id="story-side-stories-right3">
+          <div id="story-side-right-container">
+            <div id="dark-overlay"></div>
+            <img
+              id="story-side-right-img"
+              src="https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785"
+            />
+            <div id="story-side-right-user">
+              <div id="story-side-right-userimg-container">
+                <img
+                  id="story-side-right-user-img"
+                  src="./assets/images/1_hwiwoo.jpg"
+                />
+                <img
+                  id="story-side-right-user-ring"
+                  src="./assets/images/Instagram-Ring.png"
+                />
+              </div>
+              <div id="story-side-right-username">username</div>
+              <div id="story-side-right-upload-time">test시간</div>
+            </div>
+          </div>
+        </div>
+        <div id="story-side-stories-right4">
+          <div id="story-side-right-container">
+            <div id="dark-overlay"></div>
+            <img
+              id="story-side-right-img"
+              src="https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785"
+            />
+            <div id="story-side-right-user">
+              <div id="story-side-right-userimg-container">
+                <img
+                  id="story-side-right-user-img"
+                  src="./assets/images/1_hwiwoo.jpg"
+                />
+                <img
+                  id="story-side-right-user-ring"
+                  src="./assets/images/Instagram-Ring.png"
+                />
+              </div>
+              <div id="story-side-right-username">username</div>
+              <div id="story-side-right-upload-time">test시간</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 스토리 미트볼 버튼 - 모달 -->
+      <div id="story-modal-overlay" class="modal-hidden">
+        <div id="story-meatball-modal">
+          <div id="story-modal-content">
+            <button id="btn-신고" type="button">부적절한 콘텐츠 신고</button>
+            <button id="btn-정보" type="button">이 계정 정보</button>
+            <button id="btn-취소" type="button">취소</button>
+          </div>
+        </div>
+      </div>
 
-	</div>
-  <script src="./js/story.js"></script>
-</body>
+      <!-- 보내기 버튼 - 전송됨 모달 -->
+      <div id="story-send-modal" class="send-modal-hidden">
+        <div id="story-send-modal-content">전송됨</div>
+      </div>
+
+      <!-- 디엠 focus - 빠른 공감 -->
+      <div id="story-dm-quickemotion" class="quickemotion-hidden">
+        <div id="quickemotion-text">빠른 공감</div>
+        <div class="quickemotion-btns">
+          <button id="quickemotion-btn">😂</button>
+          <button id="quickemotion-btn">😮</button>
+          <button id="quickemotion-btn">😍</button>
+          <button id="quickemotion-btn">🥲</button>
+          <button id="quickemotion-btn">👏</button>
+          <button id="quickemotion-btn">🔥</button>
+          <button id="quickemotion-btn">🎉</button>
+          <button id="quickemotion-btn">💯</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 작은 창 -->
+    <div class="mini-story-container"></div>
+    <script src="./js/story.js"></script>
+  </body>
 </html>

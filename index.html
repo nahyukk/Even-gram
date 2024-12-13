@@ -13,15 +13,64 @@
 <body>
   <div>Home</div>
   <nav id="right-side-bar"></nav>
-
-  </nav>
+  
   <main>
     <div class="main-warpper">
+      <div class="left-side-container"></div>
       <div class="main-container">
-        <div class="main-story">이곳은 스토리 자리 !!</div>
+        <div class="main-story">
+          <div class="story-main">
+						<div class="story-container">
+							<button class="story-button story-left">&lt;</button>
+							<div class="story-list">
+									<div class="story-item">
+											<img src="https://via.placeholder.com/60" alt="Story 1">
+											<p>user1</p>
+									</div>
+									<div class="story-item">
+											<img src="https://via.placeholder.com/60" alt="Story 2">
+											<p>user2</p>
+									</div>
+									<div class="story-item">
+											<img src="https://via.placeholder.com/60" alt="Story 3">
+											<p>user3</p>
+									</div>
+									<div class="story-item">
+											<img src="https://via.placeholder.com/60" alt="Story 4">
+											<p>user4</p>
+									</div>
+									<div class="story-item">
+											<img src="https://via.placeholder.com/60" alt="Story 5">
+											<p>user5</p>
+									</div>
+									<div class="story-item">
+											<img src="https://via.placeholder.com/60" alt="Story 6">
+											<p>user6</p>
+									</div>
+									<div class="story-item">
+											<img src="https://via.placeholder.com/60" alt="Story 7">
+											<p>user7</p>
+									</div>
+									<div class="story-item">
+											<img src="https://via.placeholder.com/60" alt="Story 8">
+											<p>user8</p>
+									</div>
+									<div class="story-item">
+											<img src="https://via.placeholder.com/60" alt="Story 9">
+											<p>user9</p>
+									</div>
+									<div class="story-item">
+											<img src="https://via.placeholder.com/60" alt="Story 10">
+											<p>user10</p>
+									</div>
+							</div>
+							<button class="story-button story-right">&gt;</button>
+						</div>
+					</div>
+        </div>
         <div class="main-section">
           <div class="main-section-inner">
-            <div class="main-contents-list">이곳은 메인 컨텐츠 자리 !!
+            <div class="main-contents-list">
               <article class="main-content">
                 <div class="main-content-profile">
                   <div class="main-content-profile-flex">
@@ -34,7 +83,7 @@
                       <div class="main-profile-meta">
                         <div class="main-profile-name st-bold">hwiwoo_coffee</div>
                         <span style="margin: 0 4px; color: #737373;">•</span>
-                        <a class="main-profile-date" href="#">1일</a>
+                        <a class="main-profile-date" href="#">1시간</a>
                       </div>
                       <div class="main-profile-site">고양시</div>
                     </div>
@@ -50,16 +99,16 @@
                     <!-- 캐러셀 이미지 삽입 -->
                     <div class="carousel_wrapper">
                       <div class="carousel_slide">
-                        <img src="./assets/images/1-1_hwiwoo.jpg" alt="#" />
+                        <img src="./assets/images/1-1_hwiwoo.jpeg" alt="#" />
                       </div>
                       <div class="carousel_slide">
-                        <img src="./assets/images/1-2_hwiwoo.jpg" alt="#" />
+                        <img src="./assets/images/1-2_hwiwoo.jpeg" alt="#" />
                       </div>
                       <div class="carousel_slide">
-                        <img src="./assets/images/1-3_hwiwoo.jpg" alt="#" />
+                        <img src="./assets/images/1-3_hwiwoo.jpeg" alt="#" />
                       </div>
                       <div class="carousel_slide">
-                        <img src="./assets/images/1-4_hwiwoo.jpg" alt="#" />
+                        <img src="./assets/images/1-4_hwiwoo.jpeg" alt="#" />
                       </div>
                     </div>
 
@@ -97,22 +146,22 @@
                     <div class="main-content-icon-left">
                       <span style="margin-left: -8px;"">
                         <div class=" content-icon-slot">
-                        <div class="icon-heart"></div>
+                        <div class="icon-heart icon-box"></div>
                     </div>
                     </span>
                     <span>
                       <div class="content-icon-slot">
-                        <div class="icon-msg"></div>
+                        <div class="icon-msg icon-box"></div>
                       </div>
                     </span>
                     <span>
                       <div class="content-icon-slot">
-                        <div class="icon-dm"></div>
+                        <div class="icon-dm icon-box"></div>
                       </div>
                     </span>
                   </div>
                   <div class="main-content-icon-right">
-                    <div class="icon-bookmark"></div>
+                    <div class="icon-bookmark icon-box"></div>
                   </div>
                 </div>
                 <div class="main-content-like st-bold">좋아요 95개</div>
@@ -242,6 +291,28 @@
 
   <script src="./js/index.js"></script>
   <script src="./js/sidebar.js"></script>
+
+  <script>
+		document.addEventListener("DOMContentLoaded", () => {
+				const storyList = document.querySelector(".story-list");
+				const leftButton = document.querySelector(".story-button.story-left");
+				const rightButton = document.querySelector(".story-button.story-right");
+
+				let currentIndex = 0; 
+				const storyWidth = 90; 
+
+				leftButton.addEventListener("click", () => {
+						currentIndex = Math.max(0, currentIndex - 1);
+						storyList.style.transform = `translateX(-${currentIndex * storyWidth}px)`;
+				});
+
+				rightButton.addEventListener("click", () => {
+						currentIndex = Math.min(storyList.children.length - 1, currentIndex + 1);
+						storyList.style.transform = `translateX(-${currentIndex * storyWidth}px)`;
+				});
+		});
+	</script>
 </body>
 
 </html>
+

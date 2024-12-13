@@ -51,6 +51,10 @@ main {
     padding-left: 4px;
 }
 
+.main-contents-list article:first-child {
+    display: none;
+}
+
 /* 메인 컨텐츠 프로필 부분 */
 /* 프로필 이미지 */
 .main-content-profile-flex {
@@ -94,7 +98,14 @@ main {
 .main-profile-more-icon {
     width: 24px;
     height: 24px;
-    background-image: url(/assets/icons/more.png);
+    background-image: url(../assets/icons/more.png);
+    cursor: pointer;
+}
+
+.main-profile-more-icon:active {
+    width: 24px;
+    height: 24px;
+    background-image: url(../assets/icons/more_active.png);
     cursor: pointer;
 }
 
@@ -108,7 +119,7 @@ main {
 }
 
 .main-profile-date {
-    color: #737373;
+    color: var(--secondary-text-color);
     text-decoration: none;
 }
 
@@ -119,8 +130,7 @@ main {
 
 
 
-/* 메인 컨텐츠 슬라이더 부분 (임시) */
-
+/* 메인 컨텐츠 슬라이더 부분 */
 /* 캐러셀 전체 구조  */
 .carousel_main {
     width: 100%; /* 이미지 크기 설정  */
@@ -169,7 +179,7 @@ main {
 }
 
 .carousel_prev {
-    background-color: rgba(231, 231, 231, 0.3);
+    background-color: rgba(231, 231, 231, 0.4);
     border: 0px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -182,7 +192,7 @@ main {
 }
 
 .carousel_next {
-    background-color: rgba(231, 231, 231, 0.3);
+    background-color: rgba(231, 231, 231, 0.4);
     border: 0px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -251,29 +261,69 @@ main {
     cursor: pointer;
 }
 
+/* 아이콘 */
 .icon-heart {
-    width: 24px;
-    height: 24px;
-    background-image: url(/assets/icons/heart.png);
+    background-image: url(../assets/icons/heart.png);
+}
+
+.icon-heart.animate {
+    animation: heart-scale 0.45s ease-in-out;
+}
+
+.icon-heart:hover {
+    background-image: url(../assets/icons/heart_hover.png);
+}
+.icon-heart:active {
+    background-image: url(../assets/icons/heart_active.png);
+}
+
+.icon-heart.liked {
+    background-image: url(../assets/icons/heart_fill.png);
+}
+
+.icon-heart.liked:active {
+    background-image: url(../assets/icons/heart_fill_active.png);
 }
 
 .icon-msg {
-    width: 24px;
-    height: 24px;
-    background-image: url(/assets/icons/msg.png);
+    background-image: url(../assets/icons/msg.png);
+}
+
+.icon-msg:hover {
+    background-image: url(../assets/icons/msg_hover.png);
+}
+
+.icon-msg:active {
+    background-image: url(../assets/icons/msg_active.png);
 }
 
 .icon-dm {
-    width: 24px;
-    height: 24px;
-    background-image: url(/assets/icons/dm.png);
+    background-image: url(../assets/icons/dm.png);
+}
+
+.icon-dm:hover {
+    background-image: url(../assets/icons/dm_hover.png);
 }
 
 .icon-bookmark {
-    width: 24px;
-    height: 24px;
-    background-image: url(/assets/icons/bookmark.png);
-    cursor: pointer;
+    background-image: url(../assets/icons/bookmark.png);
+}
+
+.icon-bookmark:hover {
+    background-image: url(../assets/icons/bookmark_hover.png);
+}
+
+.icon-bookmark:active {
+    background-image: url(../assets/icons/bookmark_active.png);
+}
+
+.icon-bookmark.liked,
+.icon-bookmark.liked:hover {
+    background-image: url(../assets/icons/bookmark_fill.png);
+}
+
+.icon-bookmark.liked:active {
+    background-image: url(../assets/icons/bookmark_fill_hover.png);
 }
 
 
@@ -317,7 +367,7 @@ main {
 }
 
 .main-content-text-upload:hover {
-    color: #00376b;
+    color: var(--tag);
 }
 
 
@@ -327,11 +377,17 @@ main {
 }
 
 .st-gray {
-    color: #737373;
+    color: var(--secondary-text-color);
 }
 
 .st-mg-t-8 {
     margin-top: 8px;
+}
+
+.icon-box {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
 }
 
 
@@ -348,6 +404,7 @@ main {
     height: 100px;
     color: #FFF;
     background-color: #737373;
+    margin-bottom: 24px;
 }
 
 /* 오른쪽 사이드 바 (임시) */
@@ -355,4 +412,101 @@ main {
     .aside-container {
         display: none;
     }
+}
+
+/* 왼쪽 사이드 바 자리 (임시) */
+.left-side-container {
+    width: 250px;
+    margin-right: 64px;
+    z-index: -1;
+}
+
+@keyframes heart-scale {
+    0% {
+        transform: scale(1)
+    }
+    25% {
+        transform: scale(1.2)
+    }
+    50% {
+        transform: scale(.95)
+    }
+    100% {
+        transform: scale(1)
+    }
+}
+
+/* 스토리 부분 */
+.story-container {
+	display: flex;
+	position: relative;
+	overflow: hidden;
+	width: 80%;
+	max-width: 800px;
+}
+
+.story-list {
+	display: flex;
+	gap: 15px;
+	transition: transform 0.3s ease-in-out;
+}
+
+.story-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+	min-width: 75px;
+}
+ 
+.story-item img {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	border: 2px solid #f03e73;
+	object-fit: cover;
+	transition: border-color 0.3s ease;
+	cursor: pointer;
+}
+
+.story-item img:hover {
+	border-color: gray;
+}
+
+.story-item p {
+	margin: 5px 0 0;
+	color: black;
+	font-size: 12px;
+	text-align: center;
+}
+
+.story-button {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 30px;
+	height: 30px;
+	background-color: rgba(255, 255, 255, 0.8);
+	color: black;
+	border: none;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 18px;
+	cursor: pointer;
+	z-index: 10;
+}
+
+.story-button.story-left {
+	left: 5%;
+}
+
+.story-button.story-right {
+	right: 1%;
+}
+
+.story-button:hover {
+	background-color: #f03e73;
+	color: white;
 }
