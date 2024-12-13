@@ -13,14 +13,61 @@
 <body>
   <div>Home</div>
   <nav id="right-side-bar"></nav>
-
-  </nav>
+  
   <main>
     <div class="main-warpper">
       <div class="left-side-container"></div>
       <div class="main-container">
-        <div class="main-story">작업하고 이 부분 삭제해주세요! - 스토리로 가는 버튼일 뿐
-					<button class="story-btn"><a href="story.html">스토리 화면으로 가기</a></button></div>
+        <div class="main-story">
+          <div class="story-main">
+						<div class="story-container">
+							<button class="story-button story-left">&lt;</button>
+							<div class="story-list">
+									<div class="story-item">
+											<img src="https://via.placeholder.com/60" alt="Story 1">
+											<p>user1</p>
+									</div>
+									<div class="story-item">
+											<img src="https://via.placeholder.com/60" alt="Story 2">
+											<p>user2</p>
+									</div>
+									<div class="story-item">
+											<img src="https://via.placeholder.com/60" alt="Story 3">
+											<p>user3</p>
+									</div>
+									<div class="story-item">
+											<img src="https://via.placeholder.com/60" alt="Story 4">
+											<p>user4</p>
+									</div>
+									<div class="story-item">
+											<img src="https://via.placeholder.com/60" alt="Story 5">
+											<p>user5</p>
+									</div>
+									<div class="story-item">
+											<img src="https://via.placeholder.com/60" alt="Story 6">
+											<p>user6</p>
+									</div>
+									<div class="story-item">
+											<img src="https://via.placeholder.com/60" alt="Story 7">
+											<p>user7</p>
+									</div>
+									<div class="story-item">
+											<img src="https://via.placeholder.com/60" alt="Story 8">
+											<p>user8</p>
+									</div>
+									<div class="story-item">
+											<img src="https://via.placeholder.com/60" alt="Story 9">
+											<p>user9</p>
+									</div>
+									<div class="story-item">
+											<img src="https://via.placeholder.com/60" alt="Story 10">
+											<p>user10</p>
+									</div>
+							</div>
+							<button class="story-button story-right">&gt;</button>
+						</div>
+					</div>
+        </div>
         <div class="main-section">
           <div class="main-section-inner">
             <div class="main-contents-list">
@@ -140,6 +187,28 @@
   </main>
 
   <script src="./js/index.js"></script>
+
+  <script>
+		document.addEventListener("DOMContentLoaded", () => {
+				const storyList = document.querySelector(".story-list");
+				const leftButton = document.querySelector(".story-button.story-left");
+				const rightButton = document.querySelector(".story-button.story-right");
+
+				let currentIndex = 0; 
+				const storyWidth = 90; 
+
+				leftButton.addEventListener("click", () => {
+						currentIndex = Math.max(0, currentIndex - 1);
+						storyList.style.transform = `translateX(-${currentIndex * storyWidth}px)`;
+				});
+
+				rightButton.addEventListener("click", () => {
+						currentIndex = Math.min(storyList.children.length - 1, currentIndex + 1);
+						storyList.style.transform = `translateX(-${currentIndex * storyWidth}px)`;
+				});
+		});
+	</script>
 </body>
 
 </html>
+
