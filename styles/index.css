@@ -403,14 +403,6 @@ main {
     background-color: #737373;
 }
 
-/* 메인 스토리 (임시) */
-.main-story {
-    height: 100px;
-    color: #FFF;
-    background-color: #737373;
-    margin-bottom: 24px;
-}
-
 /* 오른쪽 사이드 바 (임시) */
 @media (max-width: 1159px) {
     .aside-container {
@@ -441,12 +433,35 @@ main {
 }
 
 /* 스토리 부분 */
+.main-story {
+    margin-bottom: 24px;
+}
+
+.story-main {
+    padding: 8px 0;
+    margin-top: 16px;
+    margin-bottom: 24px;
+    position: relative;
+    display: block;
+}
+
+.story-warpper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: relative;
+}
+
 .story-container {
+    height: 100%;
 	display: flex;
 	position: relative;
-	overflow: hidden;
-	width: 80%;
-	max-width: 800px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    align-items: stretch;
+    flex-direction: row;
 }
 
 .story-list {
