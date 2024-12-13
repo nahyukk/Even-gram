@@ -20,78 +20,66 @@
 				</button>
 			</div>
 		</header>
-		<div class="profile-tab-container">
-			<div class="profile__section_container">
-				<img
-					class="profile__image"
-					src="http://via.placeholder.com/300?text= "
-					alt="profile_image"
-				/>
-				<div class="profile__section-container">
+		<div class="profile-container">
+			<nav id="right-side-bar"></nav>
+			<div class="profile-tab-container">
+				<div class="profile__section_container">
+					<div class="profile__image-container">
+						<img
+							class="profile__image"
+							src="http://via.placeholder.com/300?text= "
+							alt="profile_image"
+						/>
+					</div>
 					<div class="profile__info-container">
 						<p class="profile__name"></p>
-						<div class="profile__button_container">
-							<button id="edit_profile" class="profile__colored-button">
-								프로필 편집
-							</button>
-							<button id="stored-story" class="profile__colored-button">
-								보관된 스토리 보기
-							</button>
-						</div>
-						<button class="profile__image_button">
+						<a id="edit-profile" class="profile__colored-button">
+							프로필 편집
+						</a>
+						<a id="stored-story" class="profile__colored-button">
+							보관된 스토리 보기
+						</a>
+						<button id="profile-setting" class="profile__image_button">
 							<img src="./assets/icons/profile_setting.png" alt="setting" />
 						</button>
 					</div>
 					<div class="profile__post-info-container">
-						<div class="profile__post-info">
-							<button
-								id="profile__post-info-posts"
-								class="profile__post-info-button"
-							></button>
-						</div>
-						<div class="profile__post-info">
-							<button
-								id="profile__post-info-followers"
-								class="profile__post-info-button"
-							></button>
-						</div>
-						<div class="profile__post-info">
-							<button
-								id="profile__post-info-following"
-								class="profile__post-info-button"
-							></button>
-						</div>
+						<ul>
+							<li>
+								게시물 <span class="profile__post-info" id="post_count"></span>
+							</li>
+							<li>
+								팔로워
+								<span class="profile__post-info" id="follower_count"></span>
+							</li>
+							<li>
+								팔로잉
+								<span class="profile__post-info" id="following_count"></span>
+							</li>
+						</ul>
 					</div>
 					<div class="profile__description-container">
 						<span class="profile__description-title"></span>
 						<span class="profile__description-sub-title"> </span>
 					</div>
 				</div>
-			</div>
-			<div class="profile__tab-section-container">
-				<div class="profile__tab-button-container" data-type="posts">
-					<div class="profile__tab-button-indicator"></div>
-					<button class="profile__tab-button">
+				<div class="profile__tab-section-container">
+					<a href="#" class="profile__tab-button" data-type="posts">
 						<img src="./assets/icons/profile_grid.png" alt="grid" />
 						<span>게시물</span>
-					</button>
-				</div>
-				<div class="profile__tab-button-container" data-type="saved">
-					<div class="profile__tab-button-indicator"></div>
-					<button class="profile__tab-button">
-						<img src="./assets/icons/profile_post_saved.png" alt="grid" />
+					</a>
+					<a href="#" class="profile__tab-button" data-type="saved">
+						<img src="./assets/icons/profile_post_saved.png" alt="saved" />
 						<span>저장됨</span>
-					</button>
-				</div>
-				<div class="profile__tab-button-container" data-type="tagged">
-					<div class="profile__tab-button-indicator"></div>
-					<button class="profile__tab-button">
-						<img src="./assets/icons/profile_tagged.png" alt="grid" />
+					</a>
+					<a href="#" class="profile__tab-button" data-type="tagged">
+						<img src="./assets/icons/profile_tagged.png" alt="tagged" />
 						<span>태그됨</span>
-					</button>
+					</a>
 				</div>
+				<article class="profile__post-section-container"></article>
+				<footer id="footer-container"></footer>
 			</div>
-			<article class="profile__post-section-container"></article>
 		</div>
 	</body>
 </html>

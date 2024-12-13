@@ -1,7 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
-	// renderRightSidebar();
+	toggleNavContainer();
+	renderHTML("right-side-bar", "./components/sidebar.html");
+	renderHTML("footer-container", "./components/footer.html");
 	fetchUser();
 });
+
+window.addEventListener("resize", () => {
+	toggleNavContainer();
+});
+
+function renderHTML(id, html) {
+	const sidebarContainer = document.getElementById(id);
+
+	fetch(html)
+		.then((response) => {
+			if (!response.ok) {
+				throw new Error(`Failed to load ${html}`);
+			}
+			return response.text();
+		})
+		.then((html) => {
+			sidebarContainer.innerHTML = html;
+		})
+		.catch((error) => {
+			console.error("Error loading sidebar:", error);
+		});
+}
 
 function fetchUser() {
 	fetch("../json/profile.json")
@@ -14,7 +38,7 @@ function fetchUser() {
 		.then((data) => {
 			console.log(data);
 			renderUser(data.user);
-			initializeTabs(".profile__tab-button-container", data.user.post);
+			initializeTabs(".profile__tab-button", data.user.post);
 		})
 		.catch((error) => {
 			console.log("JSON Fetching Error: ", error);
@@ -36,7 +60,8 @@ function initializeTabs(selector, posts, defaultIndex = 0) {
 	});
 
 	tabContainer.forEach((tab) => {
-		tab.addEventListener("click", () => {
+		tab.addEventListener("click", (event) => {
+			event.preventDefault();
 			tabContainer.forEach((t) => t.classList.remove("active"));
 			tab.classList.add("active");
 			const dataType = tab.getAttribute("data-type");
@@ -52,12 +77,9 @@ function renderUser(user) {
 	document.querySelector(".nav__profile-name").textContent = user.nickName;
 	document.querySelector(".profile__image").src = profileImage;
 	document.querySelector(".profile__name").textContent = user.nickName;
-	document.querySelector("#profile__post-info-posts").textContent =
-		"게시물 " + user.post.posts.length;
-	document.querySelector("#profile__post-info-followers").textContent =
-		"팔로워 " + user.follower;
-	document.querySelector("#profile__post-info-following").textContent =
-		"팔로잉 " + user.following;
+	document.querySelector("#post_count").textContent = user.post.posts.length;
+	document.querySelector("#follower_count").textContent = user.follower;
+	document.querySelector("#following_count").textContent = user.following;
 	document.querySelector(".profile__description-title").textContent =
 		user.title;
 	document.querySelector(".profile__description-sub-title").textContent =
@@ -90,24 +112,69 @@ function renderPosts(posts, type) {
 	const postContainer = document.querySelector(
 		".profile__post-section-container"
 	);
-
+	const insertedDescripotion = document.querySelector(
+		".profile__post-saved_description"
+	);
 	const cachedPostImages = getCachedImageURL(`${type}Images`, posts.length);
 
 	postContainer.innerHTML = ""; // 기존 데이터 초기화
 
 	if (type === "saved") {
-		const savedContainer = createSavedPostContainer(posts, cachedPostImages);
-		postContainer.appendChild(savedContainer);
+		renderSavedPosts(
+			posts,
+			cachedPostImages,
+			postContainer,
+			insertedDescripotion
+		);
 	} else {
-		posts.forEach((post, index) => {
-			const postElement = createPostElement(
-				post,
-				cachedPostImages[index],
-				type
-			);
-			postContainer.appendChild(postElement);
-		});
+		renderNormalPosts(
+			posts,
+			cachedPostImages,
+			postContainer,
+			insertedDescripotion,
+			type
+		);
 	}
+}
+
+function renderSavedPosts(
+	posts,
+	cachedPostImages,
+	postContainer,
+	insertedDescription
+) {
+	if (!insertedDescription) {
+		const savedDescription = createSavedDescription();
+		postContainer.parentNode.insertBefore(savedDescription, postContainer);
+	}
+	const savedContainer = createSavedPostContainer(posts, cachedPostImages);
+	postContainer.appendChild(savedContainer);
+}
+
+function renderNormalPosts(
+	posts,
+	cachedPostImages,
+	postContainer,
+	insertedDescription,
+	type
+) {
+	if (insertedDescription) {
+		insertedDescription.remove();
+	}
+	posts.forEach((post, index) => {
+		const postElement = createPostElement(post, cachedPostImages[index], type);
+		postContainer.appendChild(postElement);
+	});
+}
+
+function createSavedDescription() {
+	const savedDescription = document.createElement("div");
+	savedDescription.className = "profile__post-saved_description";
+
+	const infoLabel = document.createElement("span");
+	infoLabel.textContent = "저장한 내용은 회원님만 볼 수 있습니다.";
+	savedDescription.appendChild(infoLabel);
+	return savedDescription;
 }
 
 function createPostElement(post, imageUrl, type) {
@@ -176,13 +243,6 @@ function createHoverItem(iconSrc, textContent) {
 }
 
 function createSavedPostContainer(posts, cachedPostImages) {
-	const savedContainer = document.createElement("div");
-	savedContainer.className = "profile__post-section-saved-container";
-
-	const infoLabel = document.createElement("span");
-	infoLabel.textContent = "저장한 내용은 회원님만 볼 수 있습니다.";
-	savedContainer.appendChild(infoLabel);
-
 	const savedItemsContainer = document.createElement("div");
 	savedItemsContainer.className = "profile__post-section-saved-items-container";
 
@@ -195,12 +255,10 @@ function createSavedPostContainer(posts, cachedPostImages) {
 		savedItemsContainer.appendChild(postElement);
 	});
 
-	savedContainer.appendChild(savedItemsContainer);
-
 	const coveredContainer = createSavedCoveredContainer();
 	savedItemsContainer.appendChild(coveredContainer);
 
-	return savedContainer;
+	return savedItemsContainer;
 }
 
 function createSavedCoveredContainer() {
@@ -212,4 +270,14 @@ function createSavedCoveredContainer() {
 	coveredContainer.appendChild(allPostsLabel);
 
 	return coveredContainer;
+}
+
+// 상단 네비게이션 미디어쿼리
+function toggleNavContainer() {
+	const navContainer = document.querySelector(".nav__container");
+	if (window.innerWidth <= 574) {
+		navContainer.style.display = "flex";
+	} else {
+		navContainer.style.display = "none";
+	}
 }

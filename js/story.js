@@ -1,5 +1,5 @@
 // 작업할 때 일시정지 끄기
-// let isPlaying = false; 
+// let isPlaying = false;
 let isPlaying = true;
 
 // 하단부 액션 - 엘리멘트 호출
@@ -70,20 +70,17 @@ handlePlaceholder();
 dmInput.addEventListener("input", handlePlaceholder);
 // json 데이터 가져오고 출력
 
-
-
 function updateSideStory(containerId, userIndex, mediaIndex) {
-	const user = storiesData[userIndex];
-	const story = user.stories[mediaIndex];
+  const user = storiesData[userIndex];
+  const story = user.stories[mediaIndex];
 
-	const container = document.getElementById(containerId);
-	container.querySelector('img[id$="user-img"]').src = user.profileImage;
-	container.querySelector('div[id$="username"]').textContent = user.username;
-	container.querySelector('div[id$="upload-time"]').textContent =
-		formatTimestamp(story.timestamp);
-	container.querySelector('img[id$="img"]').src = story.mediaUrl;
+  const container = document.getElementById(containerId);
+  container.querySelector('img[id$="user-img"]').src = user.profileImage;
+  container.querySelector('div[id$="username"]').textContent = user.username;
+  container.querySelector('div[id$="upload-time"]').textContent =
+    formatTimestamp(story.timestamp);
+  container.querySelector('img[id$="img"]').src = story.mediaUrl;
 }
-
 
 // 시간 스탬프 계산
 function formatTimestamp(timestamp) {
@@ -111,7 +108,6 @@ Object.entries(storyContainers).forEach(([containerId, offset]) => {
   const container = document.getElementById(containerId);
   container.addEventListener("click", () => handleStoryClick(offset));
 });
-
 
 function handleStoryClick(offset) {
   currentStoryIndex =
@@ -176,10 +172,7 @@ window.addEventListener("click", (event) => {
   }
 });
 
-
-
 // 디엠 input form
-
 
 // 입력창 focus 시 img 어둡게, 버튼 숨기고 입력창 확장
 const dmOverlay = document.getElementById("story-dm-overlay");
@@ -190,12 +183,12 @@ dmInput.addEventListener("focus", () => {
   heartButton.classList.add("btn-hidden");
   dmButton.classList.add("btn-hidden");
   dmContainer.classList.add("dm-expand");
-	if (dmInput.textContent.trim() !== "") {
-		dmContainer.classList.add("send-btn-active");
-		quickEmotion.classList.add("quickemotion-hidden");
-	} else {
-		quickEmotion.classList.remove("quickemotion-hidden");
-	}
+  if (dmInput.textContent.trim() !== "") {
+    dmContainer.classList.add("send-btn-active");
+    quickEmotion.classList.add("quickemotion-hidden");
+  } else {
+    quickEmotion.classList.remove("quickemotion-hidden");
+  }
 });
 
 dmInput.addEventListener("blur", (event) => {
@@ -209,9 +202,9 @@ dmInput.addEventListener("blur", (event) => {
   dmContainer.classList.remove("dm-expand");
   dmContainer.classList.remove("send-btn-active");
   quickEmotion.classList.add("quickemotion-hidden");
-	if (dmInput.textContent.trim() !== "") {
-		dmContainer.classList.add("send-btn-active");
-	}
+  if (dmInput.textContent.trim() !== "") {
+    dmContainer.classList.add("send-btn-active");
+  }
 });
 
 // 보내기 버튼
@@ -249,7 +242,7 @@ sendButton.addEventListener("click", (event) => {
 // 빠른 공감 버튼
 function handleQuickEmotion() {
   if (dmInput.textContent.trim() === "") {
-		quickEmotion.classList.remove("quickemotion-hidden");
+    quickEmotion.classList.remove("quickemotion-hidden");
   } else {
     quickEmotion.classList.add("quickemotion-hidden");
   }
@@ -268,7 +261,6 @@ quickemotionBtn.forEach((btn) => {
     dmContainer.classList.remove("send-btn-active");
     quickEmotion.classList.add("quickemotion-hidden");
     dmInput.blur();
-
 
     setTimeout(() => {
       sendModal.classList.remove("send-modal-visible");
@@ -387,7 +379,7 @@ function moveToPrevStory() {
     if (currentStoryIndex < 0) {
       currentStoryIndex = storiesData.length - 1;
     }
-		currentMediaIndex = 0;
+    currentMediaIndex = 0;
   }
   updateStories(currentStoryIndex, currentMediaIndex);
   updateSideStories();
@@ -403,7 +395,7 @@ function updateStories(userIndex, mediaIndex) {
   document.querySelector("#story-upload-time").textContent = formatTimestamp(
     story.timestamp
   );
-	dmInput.setAttribute("placeholder", `${user.username}님에게 답장하기...`);
+  dmInput.setAttribute("placeholder", `${user.username}님에게 답장하기...`);
 
   createLoadingBars();
   updateLoadingBar(mediaIndex);
@@ -494,3 +486,195 @@ function startAutoPlay() {
     startAutoPlay();
   }, STORY_DURATION);
 }
+
+function resizeStories() {
+  const story = document.querySelector(".story");
+  const windowHeight = window.innerHeight;
+  const maxWidth = 50;
+
+  const calculatedWidth = (window.innerWidth * maxWidth) / 100;
+  const calculatedHeight = calculatedWidth * (686 / 386);
+
+  if (calculatedHeight > windowHeight) {
+    story.style.width = `${(windowHeight * 386) / 686}px`;
+    story.style.height = `${windowHeight}px`;
+  } else {
+    story.style.width = `${calculatedWidth}px`;
+    story.style.height = `${calculatedHeight}px`;
+  }
+}
+
+resizeStories();
+window.addEventListener("resize", resizeStories);
+
+// 큰사이즈
+function adjustStoriesForLargeScreens() {
+  const centerStory = document.querySelector(".story");
+  const leftStory1 = document.querySelector("#story-side-stories-left1");
+  const leftStory2 = document.querySelector("#story-side-stories-left2");
+  const rightStory3 = document.querySelector("#story-side-stories-right3");
+  const rightStory4 = document.querySelector("#story-side-stories-right4");
+
+  const aspectRatio = 386 / 686; // 스토리의 가로/세로 비율
+  const windowWidth = window.innerWidth;
+  const windowHeight = window.innerHeight;
+
+  if (windowWidth >= 1400) {
+    // 중앙 스토리 크기 계산
+    let centerStoryWidth = Math.min(windowWidth * 0.3, 800);
+    let centerStoryHeight = centerStoryWidth / aspectRatio;
+    if (centerStoryHeight > windowHeight * 0.8) {
+      centerStoryHeight = windowHeight * 0.8;
+      centerStoryWidth = centerStoryHeight * aspectRatio;
+    }
+
+    // 중앙 스토리 적용
+    centerStory.style.width = `${centerStoryWidth}px`;
+    centerStory.style.height = `${centerStoryHeight}px`;
+    centerStory.style.aspectRatio = `${aspectRatio}`;
+    centerStory.style.overflow = "hidden";
+    centerStory.querySelector("img").style.objectFit = "cover";
+
+    // 양쪽 스토리 크기 계산
+    let sideStoryWidth = centerStoryWidth * 0.4;
+    let sideStoryHeight = sideStoryWidth / aspectRatio;
+
+
+    [leftStory1, leftStory2].forEach((story) => {
+      if (story) {
+        story.style.width = `${sideStoryWidth}px`;
+        story.style.height = `${sideStoryHeight}px`;
+        story.style.aspectRatio = `${aspectRatio}`;
+        story.style.overflow = "hidden";
+        const img = story.querySelector("img");
+        if (img) img.style.objectFit = "cover";
+      }
+    });
+
+    [rightStory3, rightStory4].forEach((story) => {
+      if (story) {
+        story.style.width = `${sideStoryWidth}px`;
+        story.style.height = `${sideStoryHeight}px`;
+        story.style.aspectRatio = `${aspectRatio}`;
+        story.style.overflow = "hidden";
+        const img = story.querySelector("img");
+        if (img) img.style.objectFit = "cover";
+      }
+    });
+  }
+}
+
+// 초기 실행
+adjustStoriesForLargeScreens();
+
+// 창 크기가 변경될 때마다 실행
+window.addEventListener("resize", adjustStoriesForLargeScreens);
+
+
+// 5개 크기, 3개 크기 마진
+function adjustStoriesForMediumScreens() {
+  const centerStory = document.querySelector(".story");
+  const aspectRatio = 386 / 686; // 스토리의 가로/세로 비율
+  const windowWidth = window.innerWidth;
+  const windowHeight = window.innerHeight;
+
+  if (windowWidth >= 1023 && windowWidth <= 1399) {
+    // 중앙 스토리 크기 설정
+    let centerStoryHeight = Math.min(windowHeight * 0.9, 1000); 
+    let centerStoryWidth = centerStoryHeight * aspectRatio;
+
+    const topBottomMargin = (windowHeight - centerStoryHeight) / 10; // 위아래 마진 추가 (10% 여유)
+
+    centerStory.style.height = `${centerStoryHeight}px`;
+    centerStory.style.width = `${centerStoryWidth}px`;
+    centerStory.style.marginTop = `${topBottomMargin}px`;
+    centerStory.style.marginBottom = `${topBottomMargin}px`;
+    centerStory.style.position = "relative";
+  } else if (windowWidth >= 768 && windowWidth <= 1022) {
+    // 중앙 스토리 크기 설정
+    let centerStoryHeight = Math.min(windowHeight * 0.9, 1000); // 높이 90% 또는 최대 500px
+    let centerStoryWidth = centerStoryHeight * aspectRatio;
+
+    const topBottomMargin = (windowHeight - centerStoryHeight) / 15; // 위아래 마진 추가 (7.5% 여유)
+
+    centerStory.style.height = `${centerStoryHeight}px`;
+    centerStory.style.width = `${centerStoryWidth}px`;
+    centerStory.style.marginTop = `${topBottomMargin}px`;
+    centerStory.style.marginBottom = `${topBottomMargin}px`;
+    centerStory.style.position = "relative";
+  }
+}
+
+// 초기 실행
+adjustStoriesForMediumScreens();
+
+// 창 크기 변경 시 적용
+window.addEventListener("resize", adjustStoriesForMediumScreens);
+
+
+
+// 작은 사이즈
+function adjustStoriesForSmallScreens() {
+  const centerStory = document.querySelector(".story");
+  const aspectRatio = 386 / 686; // 스토리의 가로/세로 비율
+  const windowWidth = window.innerWidth;
+  const windowHeight = window.innerHeight;
+
+  if (windowWidth <= 767) {
+    let storyWidth, storyHeight;
+
+    if (windowWidth / windowHeight > aspectRatio) {
+      // 화면이 더 넓은 경우, 높이를 기준으로 크기 설정
+      storyHeight = windowHeight;
+      storyWidth = storyHeight * aspectRatio;
+    } else {
+      // 화면이 더 좁은 경우, 너비를 기준으로 크기 설정
+      storyWidth = windowWidth;
+      storyHeight = storyWidth / aspectRatio;
+    }
+
+    centerStory.style.width = `${storyWidth}px`;
+    centerStory.style.height = `${storyHeight}px`;
+  }
+}
+
+// 초기 실행
+adjustStoriesForSmallScreens();
+
+// 창 크기가 변경될 때마다 실행
+window.addEventListener("resize", adjustStoriesForSmallScreens);
+
+
+
+
+function centerElements() {
+  const stories = document.querySelector('#stories');
+  const storyButtons = document.querySelector('#story-next-prev-btns');
+  
+  const windowHeight = window.innerHeight;
+
+  if (stories) {
+    const storiesHeight = stories.offsetHeight;
+    const storiesTop = (windowHeight - storiesHeight) / 2;
+    stories.style.position = 'absolute';
+    stories.style.top = `${storiesTop}px`;
+  }
+
+  if (storyButtons) {
+    const buttonsHeight = storyButtons.offsetHeight || 0;
+    const buttonsTop = (windowHeight - buttonsHeight) / 2;
+    storyButtons.style.position = 'absolute';
+    storyButtons.style.top = `${buttonsTop}px`;
+    storyButtons.style.left = '50%';
+    storyButtons.style.transform = 'translate(-50%, -50%)';
+  }
+}
+
+// 초기 실행
+centerElements();
+
+// 창 크기 변경 시 실행
+window.addEventListener('resize', centerElements);
+
+
+
