@@ -96,36 +96,51 @@ function formatTimestamp(timestamp) {
   }
 }
 
-// 사이드 스토리 클릭시 이동
-const storyContainers = {
-  "story-side-stories-left1": -2,
-  "story-side-stories-left2": -1,
-  "story-side-stories-right3": 1,
-  "story-side-stories-right4": 2,
-};
-
-Object.entries(storyContainers).forEach(([containerId, offset]) => {
-  const container = document.getElementById(containerId);
-  container.addEventListener("click", () => handleStoryClick(offset));
-});
-
-function handleStoryClick(offset) {
-  currentStoryIndex =
-    (currentStoryIndex + offset + storiesData.length) % storiesData.length;
-  currentMediaIndex = 0;
-
-  updateStories(currentStoryIndex, currentMediaIndex);
-  updateSideStories();
-}
-
 // 로고, x 클릭시 홈으로 이동 - 추후 링크 변화시 수정 필요
 document.getElementById("story-out-logo").addEventListener("click", () => {
   window.location.href = "index.html";
 });
 
-document.getElementById("story-out-btn").addEventListener("click", () => {
-  window.location.href = "index.html";
+document.querySelectorAll("#story-out-btn").forEach((button) => {
+  button.addEventListener("click", () => {
+    window.location.href = "index.html";
+  });
 });
+
+// 재생 시간 바 생성
+function createLoadingBars() {
+  const barContainer = document.getElementById("story-loading-bar-container");
+  barContainer.innerHTML = "";
+
+  const currentUserStories = storiesData[currentStoryIndex].stories;
+  currentUserStories.forEach((_, index) => {
+    const bar = document.createElement("div");
+    bar.classList.add("story-loading-bar");
+    bar.style.flex = `1`;
+    bar.style.marginRight = index < currentUserStories.length - 1 ? "3px" : "0";
+    barContainer.appendChild(bar);
+  });
+}
+
+function updateLoadingBar(mediaIndex) {
+  const bars = document.querySelectorAll(".story-loading-bar");
+
+  bars.forEach((bar, index) => {
+    if (index < mediaIndex) {
+      bar.style.width = "100%";
+      bar.classList.add("active");
+    } else if (index === mediaIndex) {
+      bar.style.width = "0%";
+      setTimeout(() => {
+        bar.style.width = "100%";
+        bar.classList.add("active");
+      }, 10);
+    } else {
+      bar.style.width = "0%";
+      bar.classList.remove("active");
+    }
+  });
+}
 
 // 재생 - 일시정지 버튼
 // let isPlaying = true;
@@ -149,15 +164,41 @@ document
   .getElementById("story-btn-play")
   .addEventListener("click", togglePlayPause);
 
+// 자동 재생 구현
+let timer;
+let progressInterval;
+const STORY_DURATION = 4000;
+
+function startAutoPlay() {
+  if (!isPlaying) return;
+
+  clearTimeout(timer);
+  clearInterval(progressInterval);
+
+  // 현재 바 애니메이션 시작
+  const currentBar =
+    document.querySelectorAll(".story-loading-bar")[currentMediaIndex];
+  currentBar.style.transition = `width ${STORY_DURATION}ms linear`;
+  currentBar.style.width = "100%";
+
+  // 사진 전환 설정
+  timer = setTimeout(() => {
+    moveToNextStory();
+    startAutoPlay();
+  }, STORY_DURATION);
+}
+
 // 모달 열기
 function modalOpen() {
   const modal = document.getElementById("story-modal-overlay");
   modal.classList.remove("modal-hidden");
 }
 
-document
-  .getElementById("story-btn-meatball")
-  .addEventListener("click", modalOpen);
+// 미디어 쿼리로 인해 미트볼 버튼 2개 작동
+const meatballButtons = document.querySelectorAll("#story-btn-meatball");
+meatballButtons.forEach((button) => {
+  button.addEventListener("click", modalOpen);
+});
 
 // 모달 닫기 - 취소 버튼
 document.querySelector("#btn-취소").addEventListener("click", () => {
@@ -173,7 +214,6 @@ window.addEventListener("click", (event) => {
 });
 
 // 디엠 input form
-
 // 입력창 focus 시 img 어둡게, 버튼 숨기고 입력창 확장
 const dmOverlay = document.getElementById("story-dm-overlay");
 const quickEmotion = document.getElementById("story-dm-quickemotion");
@@ -428,65 +468,42 @@ function updateSideStory(containerId, userIndex, mediaIndex) {
   container.querySelector('img[id$="img"]').src = story.mediaUrl;
 }
 
-// 재생 시간 바 생성
-function createLoadingBars() {
-  const barContainer = document.getElementById("story-loading-bar-container");
-  barContainer.innerHTML = "";
-
-  const currentUserStories = storiesData[currentStoryIndex].stories;
-  currentUserStories.forEach((_, index) => {
-    const bar = document.createElement("div");
-    bar.classList.add("story-loading-bar");
-    bar.style.flex = `1`;
-    bar.style.marginRight = index < currentUserStories.length - 1 ? "3px" : "0";
-    barContainer.appendChild(bar);
-  });
-}
-
-function updateLoadingBar(mediaIndex) {
-  const bars = document.querySelectorAll(".story-loading-bar");
-
-  bars.forEach((bar, index) => {
-    if (index < mediaIndex) {
-      bar.style.width = "100%";
-      bar.classList.add("active");
-    } else if (index === mediaIndex) {
-      bar.style.width = "0%";
-      setTimeout(() => {
-        bar.style.width = "100%";
-        bar.classList.add("active");
-      }, 10);
+// 작은 미디어(767px 이하)일 때 클릭 시 next, prev 함수 호출
+document.querySelector("#story-main-img").addEventListener("click", (event) => {
+  const clickX = event.offsetX;
+  const windowWidth = window.innerWidth;
+  if (windowWidth < 768) {
+    if (clickX > event.currentTarget.clientWidth * (1 / 4)) {
+      moveToNextStory();
     } else {
-      bar.style.width = "0%";
-      bar.classList.remove("active");
+      moveToPrevStory();
     }
-  });
+  }
+});
+
+// 사이드 스토리 클릭시 이동
+const storyContainers = {
+  "story-side-stories-left1": -2,
+  "story-side-stories-left2": -1,
+  "story-side-stories-right3": 1,
+  "story-side-stories-right4": 2,
+};
+
+Object.entries(storyContainers).forEach(([containerId, offset]) => {
+  const container = document.getElementById(containerId);
+  container.addEventListener("click", () => handleStoryClick(offset));
+});
+
+function handleStoryClick(offset) {
+  currentStoryIndex =
+    (currentStoryIndex + offset + storiesData.length) % storiesData.length;
+  currentMediaIndex = 0;
+
+  updateStories(currentStoryIndex, currentMediaIndex);
+  updateSideStories();
 }
 
-// 자동 재생 구현
-let timer;
-let progressInterval;
-const STORY_DURATION = 4000;
-
-function startAutoPlay() {
-  if (!isPlaying) return;
-
-  clearTimeout(timer);
-  clearInterval(progressInterval);
-
-  // 현재 바 애니메이션 시작
-  const currentBar =
-    document.querySelectorAll(".story-loading-bar")[currentMediaIndex];
-  currentBar.style.transition = `width ${STORY_DURATION}ms linear`;
-  currentBar.style.width = "100%";
-
-  // 사진 전환 설정
-  timer = setTimeout(() => {
-    moveToNextStory();
-    startAutoPlay();
-  }, STORY_DURATION);
-}
-
+// 창 크기 변경 시 스토리 사이즈 조정
 function resizeStories() {
   const story = document.querySelector(".story");
   const windowHeight = window.innerHeight;
@@ -503,9 +520,6 @@ function resizeStories() {
     story.style.height = `${calculatedHeight}px`;
   }
 }
-
-resizeStories();
-window.addEventListener("resize", resizeStories);
 
 // 큰사이즈
 function adjustStoriesForLargeScreens() {
@@ -539,7 +553,6 @@ function adjustStoriesForLargeScreens() {
     let sideStoryWidth = centerStoryWidth * 0.4;
     let sideStoryHeight = sideStoryWidth / aspectRatio;
 
-
     [leftStory1, leftStory2].forEach((story) => {
       if (story) {
         story.style.width = `${sideStoryWidth}px`;
@@ -563,13 +576,6 @@ function adjustStoriesForLargeScreens() {
     });
   }
 }
-
-// 초기 실행
-adjustStoriesForLargeScreens();
-
-// 창 크기가 변경될 때마다 실행
-window.addEventListener("resize", adjustStoriesForLargeScreens);
-
 
 // 5개 크기, 3개 크기 마진
 function adjustStoriesForMediumScreens() {
@@ -605,20 +611,14 @@ function adjustStoriesForMediumScreens() {
   }
 }
 
-// 초기 실행
-adjustStoriesForMediumScreens();
-
-// 창 크기 변경 시 적용
-window.addEventListener("resize", adjustStoriesForMediumScreens);
-
-
-
 // 작은 사이즈
 function adjustStoriesForSmallScreens() {
   const centerStory = document.querySelector(".story");
   const aspectRatio = 386 / 686; // 스토리의 가로/세로 비율
   const windowWidth = window.innerWidth;
   const windowHeight = window.innerHeight;
+
+  const storyPlayButton = document.getElementById("story-btn-play");
 
   if (windowWidth <= 767) {
     let storyWidth, storyHeight;
@@ -635,63 +635,69 @@ function adjustStoriesForSmallScreens() {
 
     centerStory.style.width = `${storyWidth}px`;
     centerStory.style.height = `${storyHeight}px`;
+
+    // 자동 재생 및 버튼
+    if (!isPlaying) {
+      isPlaying = true;
+      startAutoPlay();
+      storyPlayButton.innerHTML = `<svg aria-label="일시 정지" class="x1lliihq x1n2onr6 xq3z1fi" fill="currentColor" height="16" role="img" viewBox="0 0 48 48" width="16"><title>일시 정지</title><path d="M15 1c-3.3 0-6 1.3-6 3v40c0 1.7 2.7 3 6 3s6-1.3 6-3V4c0-1.7-2.7-3-6-3zm18 0c-3.3 0-6 1.3-6 3v40c0 1.7 2.7 3 6 3s6-1.3 6-3V4c0-1.7-2.7-3-6-3z"></path></svg>`;
+    }
   }
 }
 
-// 초기 실행
-adjustStoriesForSmallScreens();
-
-// 창 크기가 변경될 때마다 실행
-window.addEventListener("resize", adjustStoriesForSmallScreens);
-
-
-
-
 function centerElements() {
-  const stories = document.querySelector('#stories');
-  const storyButtons = document.querySelector('#story-next-prev-btns');
+  const stories = document.querySelector("#stories");
+  const storyButtons = document.querySelector("#story-next-prev-btns");
 
   const windowHeight = window.innerHeight;
 
   if (stories) {
     const storiesHeight = stories.offsetHeight;
     const storiesTop = (windowHeight - storiesHeight) / 2;
-    stories.style.position = 'absolute';
+    stories.style.position = "absolute";
     stories.style.top = `${storiesTop}px`;
   }
 
   if (storyButtons) {
     const buttonsHeight = storyButtons.offsetHeight || 0;
     const buttonsTop = (windowHeight - buttonsHeight) / 2;
-    storyButtons.style.position = 'absolute';
+    storyButtons.style.position = "absolute";
     storyButtons.style.top = `${buttonsTop}px`;
-    storyButtons.style.left = '50%';
-    storyButtons.style.transform = 'translate(-50%, -50%)';
+    storyButtons.style.left = "50%";
+    storyButtons.style.transform = "translate(-50%, -50%)";
   }
 }
 
+// 창 크기 변경시 호출할 함수 모음
+const resizeFunctions = [
+  resizeStories,
+  adjustStoriesForLargeScreens,
+  adjustStoriesForMediumScreens,
+  adjustStoriesForSmallScreens,
+  centerElements,
+  handleMeatballToggle,
+];
+
 // 초기 실행
-centerElements();
+resizeFunctions.forEach((fn) => fn());
 
-// 창 크기 변경 시 실행
-window.addEventListener('resize', centerElements);
-
-
+// 창 크기 변경 시 함수 실행
+window.addEventListener("resize", () => {
+  resizeFunctions.forEach((fn) => fn());
+});
 
 // 재생버튼을 미트볼로 변경
-window.addEventListener('resize', handleMeatballToggle);
-
-document.addEventListener('DOMContentLoaded', handleMeatballToggle);
+document.addEventListener("DOMContentLoaded", handleMeatballToggle);
 
 function handleMeatballToggle() {
-  const stopHidden = document.querySelector('.stop-hidden');
-  const meatballToggle = document.querySelector('.meatball-hidden');
+  const stopHidden = document.querySelector(".stop-hidden");
+  const meatballToggle = document.querySelector(".meatball-hidden");
 
   if (window.innerWidth <= 767) {
-    stopHidden.style.display = 'none';
-    meatballToggle.style.display = 'block';
+    stopHidden.style.display = "none";
+    meatballToggle.style.display = "block";
   } else {
-    if (stopHidden) stopHidden.style.display = 'block';
-    if (meatballToggle) meatballToggle.style.display = 'none';
+    if (stopHidden) stopHidden.style.display = "block";
+    if (meatballToggle) meatballToggle.style.display = "none";
   }
 }
