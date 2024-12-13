@@ -646,6 +646,7 @@ function centerElements() {
   const stories = document.querySelector("#stories");
   const storyButtons = document.querySelector("#story-next-prev-btns");
 
+
   const windowHeight = window.innerHeight;
 
   if (stories) {
@@ -677,7 +678,27 @@ const resizeFunctions = [
 // 초기 실행
 resizeFunctions.forEach((fn) => fn());
 
+
 // 창 크기 변경 시 함수 실행
 window.addEventListener("resize", () => {
   resizeFunctions.forEach((fn) => fn());
 });
+
+// 재생버튼을 미트볼로 변경
+window.addEventListener('resize', handleMeatballToggle);
+
+document.addEventListener('DOMContentLoaded', handleMeatballToggle);
+
+function handleMeatballToggle() {
+  const stopHidden = document.querySelector('.stop-hidden');
+  const meatballToggle = document.querySelector('.meatball-hidden');
+
+  if (window.innerWidth <= 767) {
+    stopHidden.style.display = 'none';
+    meatballToggle.style.display = 'block';
+  } else {
+    if (stopHidden) stopHidden.style.display = 'block';
+    if (meatballToggle) meatballToggle.style.display = 'none';
+  }
+}
+

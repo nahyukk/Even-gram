@@ -236,9 +236,15 @@ body {
 	padding: 8px;
 
 }
+.stop-hidden {
+	display: block;
+}
 
 #story-btn-meatball {
 	padding: 8px;
+}
+.meatball-hidden {
+	display: none;
 }
 
 /* 스토리 하단 */
