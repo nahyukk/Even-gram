@@ -760,6 +760,7 @@ body {
 		gap: 100px !important;
 		width: 100%;
 		position: relative;
+		margin: 20px 0;
 		box-sizing: border-box;
 	}
 
@@ -793,6 +794,35 @@ body {
 		right: 0;
 		top: 50;
 		transform: translateX(50%);
+	}
+}
+
+@media (min-width: 1023px) and (max-width: 1399px) {
+
+	.story {
+    aspect-ratio: 386 / 686;
+    border-radius: 10px;
+    overflow: hidden;
+    height: auto;
+  }
+
+	#story-side-stories-left1 {
+		left: 0;
+		top: 50;
+	}
+	#story-side-stories-left2 {
+		left: 0;
+		top: 50;
+	}
+
+	#story-side-stories-right3 {
+		right: 0;
+		top: 50;
+	}
+
+	#story-side-stories-right4 {
+		right: 0;
+		top: 50;
 	}
 }
 
