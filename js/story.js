@@ -487,6 +487,7 @@ function startAutoPlay() {
   }, STORY_DURATION);
 }
 
+// 창 크기 변경 시 스토리 사이즈 조정
 function resizeStories() {
   const story = document.querySelector(".story");
   const windowHeight = window.innerHeight;
@@ -503,9 +504,6 @@ function resizeStories() {
     story.style.height = `${calculatedHeight}px`;
   }
 }
-
-resizeStories();
-window.addEventListener("resize", resizeStories);
 
 // 큰사이즈
 function adjustStoriesForLargeScreens() {
@@ -563,12 +561,6 @@ function adjustStoriesForLargeScreens() {
   }
 }
 
-// 초기 실행
-adjustStoriesForLargeScreens();
-
-// 창 크기가 변경될 때마다 실행
-window.addEventListener("resize", adjustStoriesForLargeScreens);
-
 // 5개 크기, 3개 크기 마진
 function adjustStoriesForMediumScreens() {
   const centerStory = document.querySelector(".story");
@@ -603,12 +595,6 @@ function adjustStoriesForMediumScreens() {
   }
 }
 
-// 초기 실행
-adjustStoriesForMediumScreens();
-
-// 창 크기 변경 시 적용
-window.addEventListener("resize", adjustStoriesForMediumScreens);
-
 // 작은 사이즈
 function adjustStoriesForSmallScreens() {
   const centerStory = document.querySelector(".story");
@@ -634,12 +620,6 @@ function adjustStoriesForSmallScreens() {
   }
 }
 
-// 초기 실행
-adjustStoriesForSmallScreens();
-
-// 창 크기가 변경될 때마다 실행
-window.addEventListener("resize", adjustStoriesForSmallScreens);
-
 function centerElements() {
   const stories = document.querySelector("#stories");
   const storyButtons = document.querySelector("#story-next-prev-btns");
@@ -663,21 +643,32 @@ function centerElements() {
   }
 }
 
-// 초기 실행
-centerElements();
+// 창 크기 변경시 호출할 함수 모음
+const resizeFunctions = [
+  resizeStories,
+  adjustStoriesForLargeScreens,
+  adjustStoriesForMediumScreens,
+  adjustStoriesForSmallScreens,
+  centerElements
+];
 
-// 창 크기 변경 시 실행
-window.addEventListener("resize", centerElements);
+// 초기 실행
+resizeFunctions.forEach(fn => fn());
+
+// 창 크기 변경 시 함수 실행
+window.addEventListener("resize", () => {
+  resizeFunctions.forEach(fn => fn());
+});
 
 // 작은 미디어(767px 이하)일 때 클릭 시 next, prev 함수 호출
 document.querySelector("#story-main-img").addEventListener("click", (event) => {
   const clickX = event.offsetX;
-	const windowWidth = window.innerWidth;
-	if (windowWidth < 768) {
+  const windowWidth = window.innerWidth;
+  if (windowWidth < 768) {
     if (clickX > event.currentTarget.clientWidth * (1 / 4)) {
       moveToNextStory();
     } else {
       moveToPrevStory();
     }
-	}
+  }
 });
