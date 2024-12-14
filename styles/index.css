@@ -5,7 +5,7 @@ main {
 
 .main-warpper {
     display: flex;
-    width: 100%;
+    width: calc(100% + 340px);
     flex-direction: row;
     align-items: stretch;
     justify-content: center;
@@ -418,7 +418,7 @@ main {
 /* 임시 */
 /* 메인 사이드바 컨테이너 (임시) */
 .aside-container {
-    margin-top: 16px; 
+    margin-top: 36px; 
     margin-left: 64px;
 }
 

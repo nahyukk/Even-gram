@@ -716,7 +716,7 @@ a:hover {
     background-color: #ffffff;
     width: 400px;
     height: 100%;
-    left: 70%;
+    /*left: 70%;*/
     position: relative;
 }
 
