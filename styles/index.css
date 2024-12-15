@@ -15,7 +15,6 @@ main {
 .main-container {
     width: 100%;
     max-width: 630px;
-    margin-top: 16px;
 }
 
 .main-section {
@@ -418,7 +417,7 @@ main {
 /* 임시 */
 /* 메인 사이드바 컨테이너 (임시) */
 .aside-container {
-    margin-top: 36px; 
+    margin-top: 16px; 
     margin-left: 64px;
 }
 
@@ -532,12 +531,12 @@ main {
 }
 
 .story-warpper {
-    width: 100%;
-    height: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: stretch;
+    align-items: center;
+    justify-content: space-between;
     position: relative;
+    margin: 0 auto;
+    max-width: 600px;
 }
 
 .story-container {
@@ -552,7 +551,8 @@ main {
 
 .story-list {
 	display: flex;
-	gap: 15px;
+	gap: 10px;
+    width: calc(100% - 100px);
 	transition: transform 0.3s ease-in-out;
 }
 
@@ -587,11 +587,11 @@ main {
 
 .story-button {
 	position: absolute;
-	top: 50%;
+	top: 40%;
 	transform: translateY(-50%);
-	width: 30px;
-	height: 30px;
-	background-color: rgba(255, 255, 255, 0.8);
+	width: 40px;
+	height: 40px;
+	background-color: transparent;
 	color: black;
 	border: none;
 	border-radius: 50%;
@@ -604,14 +604,16 @@ main {
 }
 
 .story-button.story-left {
-	left: 5%;
+	left: 1%;
 }
 
 .story-button.story-right {
-	right: 1%;
+	right: 4%;
 }
 
-.story-button:hover {
-	background-color: #f03e73;
-	color: white;
-}
+.story-button svg {
+    width: 24px;
+    height: 24px;
+    opacity: 1;
+    fill: rgb(255, 255, 255);
+  }
