@@ -11,7 +11,6 @@
 </head>
 
 <body>
-  <div>Home</div>
   <div class="left-side-container"></div>
   <nav id="right-side-bar"></nav>
   <main>
@@ -305,24 +304,26 @@
   <script src="./js/sidebar.js"></script>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const storyList = document.querySelector(".story-list");
-      const leftButton = document.querySelector(".story-button.story-left");
-      const rightButton = document.querySelector(".story-button.story-right");
+const storyList = document.querySelector(".story-list");
+const leftButton = document.querySelector(".story-button.story-left");
+const rightButton = document.querySelector(".story-button.story-right");
 
-      let currentIndex = 0;
-      const storyWidth = 90;
+let currentIndex = 0;
+const storyWidth = 85;
+const storiesPerSlide = 2;
 
-      leftButton.addEventListener("click", () => {
-        currentIndex = Math.max(0, currentIndex - 1);
-        storyList.style.transform = `translateX(-${currentIndex * storyWidth}px)`;
-      });
+leftButton.addEventListener("click", () => {
+  currentIndex = Math.max(0, currentIndex - storiesPerSlide);
+  storyList.style.transform = `translateX(-${currentIndex * storyWidth}px)`;
+});
 
-      rightButton.addEventListener("click", () => {
-        currentIndex = Math.min(storyList.children.length - 1, currentIndex + 1);
-        storyList.style.transform = `translateX(-${currentIndex * storyWidth}px)`;
-      });
-    });
+rightButton.addEventListener("click", () => {
+  currentIndex = Math.min(
+    storyList.children.length - storiesPerSlide,
+    currentIndex + storiesPerSlide
+  );
+  storyList.style.transform = `translateX(-${currentIndex * storyWidth}px)`;
+});
   </script>
 </body>
 
