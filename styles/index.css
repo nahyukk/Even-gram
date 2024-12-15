@@ -450,7 +450,6 @@ main {
     }
 }
 
-
 @media (prefers-color-scheme: dark) {
     .icon-heart {
         background-image: url(../assets/icons/dark_heart.png);
@@ -461,10 +460,10 @@ main {
     }
     
     .icon-heart:hover {
-        background-image: url(../assets/icons/heart_hover.png);
+        background-image: url(../assets/icons/dark_heart_hover.png);
     }
     .icon-heart:active {
-        background-image: url(../assets/icons/heart_active.png);
+        background-image: url(../assets/icons/dark_heart_active.png);
     }
     
     .icon-heart.liked {
@@ -472,7 +471,7 @@ main {
     }
     
     .icon-heart.liked:active {
-        background-image: url(../assets/icons/heart_fill_active.png);
+        background-image: url(../assets/icons/dark_heart_fill_active.png);
     }
     
     .icon-msg {
@@ -480,11 +479,11 @@ main {
     }
     
     .icon-msg:hover {
-        background-image: url(../assets/icons/msg_hover.png);
+        background-image: url(../assets/icons/dark_msg_hover.png);
     }
     
     .icon-msg:active {
-        background-image: url(../assets/icons/msg_active.png);
+        background-image: url(../assets/icons/dark_msg_active.png);
     }
     
     .icon-dm {
@@ -492,29 +491,43 @@ main {
     }
     
     .icon-dm:hover {
-        background-image: url(../assets/icons/dm_hover.png);
+        background-image: url(../assets/icons/dark_dm_hover.png);
     }
     
     .icon-bookmark {
-        background-image: url(../assets/icons/bookmark.png);
+        background-image: url(../assets/icons/dark_bookmark.png);
     }
     
     .icon-bookmark:hover {
-        background-image: url(../assets/icons/bookmark_hover.png);
+        background-image: url(../assets/icons/dark_bookmark_hover.png);
     }
     
     .icon-bookmark:active {
-        background-image: url(../assets/icons/bookmark_active.png);
+        background-image: url(../assets/icons/dark_bookmark_active.png);
     }
     
     .icon-bookmark.liked,
     .icon-bookmark.liked:hover {
-        background-image: url(../assets/icons/bookmark_fill.png);
+        background-image: url(../assets/icons/dark_bookmark_fill.png);
     }
     
     .icon-bookmark.liked:active {
-        background-image: url(../assets/icons/bookmark_fill_hover.png);
-    } 
+        background-image: url(../assets/icons/dark_bookmark_fill_hover.png);
+    }
+
+    .main-profile-more-icon {
+        width: 24px;
+        height: 24px;
+        background-image: url(../assets/icons/dark_more.png);
+        cursor: pointer;
+    }
+
+    .main-profile-more-icon:active {
+        width: 24px;
+        height: 24px;
+        background-image: url(../assets/icons/dark_more_active.png);
+        cursor: pointer;
+    }
 }
 
 /* 스토리 부분 */
