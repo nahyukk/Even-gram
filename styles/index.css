@@ -5,7 +5,7 @@ main {
 
 .main-warpper {
     display: flex;
-    width: 100%;
+    width: calc(100% + 340px);
     flex-direction: row;
     align-items: stretch;
     justify-content: center;
@@ -15,7 +15,6 @@ main {
 .main-container {
     width: 100%;
     max-width: 630px;
-    margin-top: 16px;
 }
 
 .main-section {
@@ -123,6 +122,11 @@ main {
     text-decoration: none;
 }
 
+.main-profile-date:hover {
+    color: var(--secondary-text-color);
+    text-decoration: none;
+}
+
 .main-profile-site {
     font-size: 12px;
     cursor: pointer;
@@ -179,7 +183,7 @@ main {
 }
 
 .carousel_prev {
-    background-color: rgba(231, 231, 231, 0.4);
+    background-color: transparent;
     border: 0px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -188,11 +192,11 @@ main {
     justify-content: center;
     border-radius: 50%;
     cursor: pointer;
-    margin-left: 10px;
+    margin-left: 5px;
 }
 
 .carousel_next {
-    background-color: rgba(231, 231, 231, 0.4);
+    background-color: transparent;
     border: 0px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -201,9 +205,13 @@ main {
     justify-content: center;
     border-radius: 50%;
     cursor: pointer;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
+.carousel_button_disabled {
+    opacity: 0; /* 버튼 투명하게 */
+    pointer-events: none; /* 클릭 불가 */
+}
 
 /* 캐러셀 중앙 버튼 */
 .carousel_pagination {
@@ -334,6 +342,10 @@ main {
 
 
 /* 메인 컨텐츠 내용 댓글 부분 */
+.main-content-comment {
+    cursor: pointer;
+}
+
 .main-content-input-flex {
     display: flex;
     flex-direction: row;
@@ -370,6 +382,16 @@ main {
     color: var(--tag);
 }
 
+.comment-emoji {
+    fill: var(--secondary-text-color);
+    cursor: pointer;
+}
+
+.comment-emoji:hover {
+    fill: var(--tertiary-text-color);
+    cursor: pointer;
+}
+
 
 /* 유틸리티 클래스 */
 .st-bold {
@@ -397,14 +419,6 @@ main {
 .aside-container {
     margin-top: 16px; 
     margin-left: 64px;
-}
-
-/* 메인 스토리 (임시) */
-.main-story {
-    height: 100px;
-    color: #FFF;
-    background-color: #737373;
-    margin-bottom: 24px;
 }
 
 /* 오른쪽 사이드 바 (임시) */
@@ -436,18 +450,122 @@ main {
     }
 }
 
+@media (prefers-color-scheme: dark) {
+    .icon-heart {
+        background-image: url(../assets/icons/dark_heart.png);
+    }
+    
+    .icon-heart.animate {
+        animation: heart-scale 0.45s ease-in-out;
+    }
+    
+    .icon-heart:hover {
+        background-image: url(../assets/icons/dark_heart_hover.png);
+    }
+    .icon-heart:active {
+        background-image: url(../assets/icons/dark_heart_active.png);
+    }
+    
+    .icon-heart.liked {
+        background-image: url(../assets/icons/heart_fill.png);
+    }
+    
+    .icon-heart.liked:active {
+        background-image: url(../assets/icons/dark_heart_fill_active.png);
+    }
+    
+    .icon-msg {
+        background-image: url(../assets/icons/dark_msg.png);
+    }
+    
+    .icon-msg:hover {
+        background-image: url(../assets/icons/dark_msg_hover.png);
+    }
+    
+    .icon-msg:active {
+        background-image: url(../assets/icons/dark_msg_active.png);
+    }
+    
+    .icon-dm {
+        background-image: url(../assets/icons/dark_dm.png);
+    }
+    
+    .icon-dm:hover {
+        background-image: url(../assets/icons/dark_dm_hover.png);
+    }
+    
+    .icon-bookmark {
+        background-image: url(../assets/icons/dark_bookmark.png);
+    }
+    
+    .icon-bookmark:hover {
+        background-image: url(../assets/icons/dark_bookmark_hover.png);
+    }
+    
+    .icon-bookmark:active {
+        background-image: url(../assets/icons/dark_bookmark_active.png);
+    }
+    
+    .icon-bookmark.liked,
+    .icon-bookmark.liked:hover {
+        background-image: url(../assets/icons/dark_bookmark_fill.png);
+    }
+    
+    .icon-bookmark.liked:active {
+        background-image: url(../assets/icons/dark_bookmark_fill_hover.png);
+    }
+
+    .main-profile-more-icon {
+        width: 24px;
+        height: 24px;
+        background-image: url(../assets/icons/dark_more.png);
+        cursor: pointer;
+    }
+
+    .main-profile-more-icon:active {
+        width: 24px;
+        height: 24px;
+        background-image: url(../assets/icons/dark_more_active.png);
+        cursor: pointer;
+    }
+}
+
 /* 스토리 부분 */
+.main-story {
+    margin-bottom: 24px;
+}
+
+.story-main {
+    padding: 8px 0;
+    margin-top: 16px;
+    margin-bottom: 24px;
+    position: relative;
+    display: block;
+}
+
+.story-warpper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
 .story-container {
+    height: 100%;
 	display: flex;
 	position: relative;
-	overflow: hidden;
-	width: 80%;
-	max-width: 800px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    align-items: stretch;
+    flex-direction: row;
 }
 
 .story-list {
 	display: flex;
-	gap: 15px;
+	gap: 10px;
+    width: calc(100% - 100px);
 	transition: transform 0.3s ease-in-out;
 }
 
@@ -482,11 +600,11 @@ main {
 
 .story-button {
 	position: absolute;
-	top: 50%;
+	top: 40%;
 	transform: translateY(-50%);
-	width: 30px;
-	height: 30px;
-	background-color: rgba(255, 255, 255, 0.8);
+	width: 40px;
+	height: 40px;
+	background-color: transparent;
 	color: black;
 	border: none;
 	border-radius: 50%;
@@ -499,14 +617,16 @@ main {
 }
 
 .story-button.story-left {
-	left: 5%;
+	left: 1%;
 }
 
 .story-button.story-right {
-	right: 1%;
+	right: 4%;
 }
 
-.story-button:hover {
-	background-color: #f03e73;
-	color: white;
-}
+.story-button svg {
+    width: 24px;
+    height: 24px;
+    opacity: 1;
+    fill: rgb(255, 255, 255);
+  }
