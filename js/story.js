@@ -451,9 +451,6 @@ function updateStoryWidth() {
   story.style.width = `${storyWidth}px`;
 }
 
-updateStoryWidth();
-window.addEventListener("resize", updateStoryWidth);
-
 // 양옆 < > 버튼 동시 hover
 const prevBtn = document.getElementById("story-prev-btn");
 const nextBtn = document.getElementById("story-next-btn");
@@ -760,6 +757,7 @@ function centerElements() {
 
 // 창 크기 변경시 호출할 함수 모음
 const resizeFunctions = [
+  updateStoryWidth,
   resizeStories,
   adjustStoriesForLargeScreens,
   adjustStoriesForMediumScreens,
@@ -768,8 +766,14 @@ const resizeFunctions = [
   handleMeatballToggle,
 ];
 
-// 초기 실행
-resizeFunctions.forEach((fn) => fn());
+// 초기 실행: 페이지 로드 시 `resizeFunctions` 실행
+document.addEventListener("DOMContentLoaded", () => {
+  requestAnimationFrame(() => {
+    resizeFunctions.forEach((fn) => fn());
+    updateStoryWidth(); // 강제 업데이트
+    centerElements(); // 버튼 위치 재계산
+  });
+});
 
 // 창 크기 변경 시 함수 실행
 window.addEventListener("resize", () => {
