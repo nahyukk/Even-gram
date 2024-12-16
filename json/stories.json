@@ -17,7 +17,7 @@
           "mediaUrl": "https://file3.instiz.net/data/cached_img/upload/2021/01/11/3/a08bb91dd43fba14606b0f82bcc3fdb9.jpg",
           "timestamp": "2024-12-11T08:10:00Z"
         },
-				{
+        {
           "storyId": 103,
           "mediaType": "image",
           "mediaUrl": "https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785",
@@ -38,50 +38,139 @@
         }
       ]
     },
-		{
-			"userId": 3,
-			"username": "emma_wilson",
-			"profileImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAn2-E4jcUWHLhczn1SacIwFBtWIDlGN_Jbw&s",
-			"stories": [
-				{
-					"storyId": 301,
-					"mediaType": "image",
-					"mediaUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrLBoLaaiPSG0OPCVktgsGguO-Dcbt1845lQ&s",
-					"timestamp": "2024-12-11T01:00:00Z"
-				}
-			]
-		},
-		{
-			"userId": 4,
-			"username": "oliver_james",
-			"profileImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRTMtWuVfaJrf_aVERiq874gNRnIrIw8ZYqQ&s",
-			"stories": [
-				{
-					"storyId": 401,
-					"mediaType": "image",
-					"mediaUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQPIfdYoiQG4BdOG-DMktG_MzJiQhB7LHFcA&s",
-					"timestamp": "2024-12-11T08:10:00Z"
-				},
-				{
-					"storyId": 402,
-					"mediaType": "image",
-					"mediaUrl": "https://blog.kakaocdn.net/dn/tVDzp/btqCUb5kIyG/GwHB7zZN7e5vrPzEyOBkp0/img.jpg",
-					"timestamp": "2024-12-11T09:30:00Z"
-				}
-			]
-		},
-		{
-			"userId": 5,
-			"username": "sophia_martin",
-			"profileImage": "https://contents.kyobobook.co.kr/sih/fit-in/400x0/pdt/9791191347296.jpg",
-			"stories": [
-				{
-					"storyId": 501,
-					"mediaType": "image",
-					"mediaUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJrln1AzzNxuZDjy1njZM4zzmu9g6qKprE5Q&s",
-					"timestamp": "2024-12-11T10:00:00Z"
-				}
-			]
-		}
+    {
+      "userId": 3,
+      "username": "emma_wilson",
+      "profileImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAn2-E4jcUWHLhczn1SacIwFBtWIDlGN_Jbw&s",
+      "stories": [
+        {
+          "storyId": 301,
+          "mediaType": "image",
+          "mediaUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrLBoLaaiPSG0OPCVktgsGguO-Dcbt1845lQ&s",
+          "timestamp": "2024-12-11T01:00:00Z"
+        }
+      ]
+    },
+    {
+      "userId": 4,
+      "username": "oliver_james",
+      "profileImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRTMtWuVfaJrf_aVERiq874gNRnIrIw8ZYqQ&s",
+      "stories": [
+        {
+          "storyId": 401,
+          "mediaType": "image",
+          "mediaUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQPIfdYoiQG4BdOG-DMktG_MzJiQhB7LHFcA&s",
+          "timestamp": "2024-12-11T08:10:00Z"
+        },
+        {
+          "storyId": 402,
+          "mediaType": "image",
+          "mediaUrl": "https://blog.kakaocdn.net/dn/tVDzp/btqCUb5kIyG/GwHB7zZN7e5vrPzEyOBkp0/img.jpg",
+          "timestamp": "2024-12-11T09:30:00Z"
+        }
+      ]
+    },
+    {
+      "userId": 5,
+      "username": "sophia_martin",
+      "profileImage": "https://contents.kyobobook.co.kr/sih/fit-in/400x0/pdt/9791191347296.jpg",
+      "stories": [
+        {
+          "storyId": 501,
+          "mediaType": "image",
+          "mediaUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJrln1AzzNxuZDjy1njZM4zzmu9g6qKprE5Q&s",
+          "timestamp": "2024-12-11T10:00:00Z"
+        }
+      ]
+    },
+    {
+      "userId": 6,
+      "username": "michael_brown",
+      "profileImage": "https://picsum.photos/id/243/400/600",
+      "stories": [
+        {
+          "storyId": 601,
+          "mediaType": "image",
+          "mediaUrl": "https://picsum.photos/id/822/400/600",
+          "timestamp": "2024-12-11T19:00:16Z"
+        }
+      ]
+    },
+    {
+      "userId": 7,
+      "username": "lisa_johnson",
+      "profileImage": "https://picsum.photos/id/536/400/600",
+      "stories": [
+        {
+          "storyId": 701,
+          "mediaType": "image",
+          "mediaUrl": "https://picsum.photos/id/327/400/600",
+          "timestamp": "2024-12-11T13:09:27Z"
+        },
+        {
+          "storyId": 702,
+          "mediaType": "image",
+          "mediaUrl": "https://picsum.photos/id/637/400/600",
+          "timestamp": "2024-12-11T20:06:11Z"
+        },
+        {
+          "storyId": 703,
+          "mediaType": "image",
+          "mediaUrl": "https://picsum.photos/id/182/400/600",
+          "timestamp": "2024-12-11T19:20:03Z"
+        }
+      ]
+    },
+    {
+      "userId": 8,
+      "username": "william_clark",
+      "profileImage": "https://picsum.photos/id/833/400/600",
+      "stories": [
+        {
+          "storyId": 801,
+          "mediaType": "image",
+          "mediaUrl": "https://picsum.photos/id/616/400/600",
+          "timestamp": "2024-12-11T10:40:03Z"
+        }
+      ]
+    },
+    {
+      "userId": 9,
+      "username": "charlotte_davis",
+      "profileImage": "https://picsum.photos/id/403/400/600",
+      "stories": [
+        {
+          "storyId": 901,
+          "mediaType": "image",
+          "mediaUrl": "https://picsum.photos/id/935/400/600",
+          "timestamp": "2024-12-11T16:12:39Z"
+        },
+        {
+          "storyId": 902,
+          "mediaType": "image",
+          "mediaUrl": "https://picsum.photos/id/740/400/600",
+          "timestamp": "2024-12-11T12:19:08Z"
+        }
+      ]
+    },
+    {
+      "userId": 10,
+      "username": "henry_moore",
+      "profileImage": "https://picsum.photos/id/341/400/600",
+      "stories": [
+        {
+          "storyId": 1001,
+          "mediaType": "image",
+          "mediaUrl": "https://picsum.photos/id/574/400/600",
+          "timestamp": "2024-12-11T13:08:47Z"
+        },
+        {
+          "storyId": 1002,
+          "mediaType": "image",
+          "mediaUrl": "https://picsum.photos/id/447/400/600",
+          "timestamp": "2024-12-11T15:52:01Z"
+        }
+      ]
+    }
   ]
 }
