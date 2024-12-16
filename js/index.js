@@ -106,115 +106,24 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // 피드 반복 (무한스크롤)
-// 배열에 피드 데이터를 저장합니다.
-const feedData = [
-    {
-        username: "hwiwoo_coffee",
-        location: "고양시",
-        profileImage: "./assets/images/1_hwiwoo.jpg",
-        update: "1시간",
-        postImages: [
-            "./assets/images/1-1_hwiwoo.jpeg",
-            "./assets/images/1-2_hwiwoo.jpeg",
-            "./assets/images/1-3_hwiwoo.jpeg",
-            "./assets/images/1-4_hwiwoo.jpeg",
-            "./assets/images/1-5_hwiwoo.jpeg",
-            "./assets/images/1-6_hwiwoo.jpeg",
-            "./assets/images/1-7_hwiwoo.jpeg",
-            "./assets/images/1-8_hwiwoo.jpeg",
-            "./assets/images/1-9_hwiwoo.jpeg",
-            "./assets/images/1-10_hwiwoo.jpeg",
-        ],
-        likes: 95,
-        caption: "반려견과 편안하게 즐길 수 있는 휘우커피의 공간🐕",
-        comments: 48,
-    },
-    {
-        username: "nolimitcoffeebar",
-        location: "서울 용산구",
-        update: "1일",
-        profileImage: "./assets/images/2_nolimit.jpg",
-        postImages: [
-            "./assets/images/2-1_nolimit.jpeg",
-            "./assets/images/2-2_nolimit.jpeg",
-            "./assets/images/2-3_nolimit.jpeg",
-            "./assets/images/2-4_nolimit.jpeg",
-            "./assets/images/2-5_nolimit.jpeg",
-            "./assets/images/2-6_nolimit.jpeg",
-            "./assets/images/2-7_nolimit.jpeg",
-            "./assets/images/2-8_nolimit.jpeg",
-        ],
-        likes: 120,
-        caption: "커피, 편견없는 해석과 새로운 접근의 공간",
-        comments: 32,
-    },
-    {
-        username: "cafe_aeoni",
-        location: "서울 송파구, 송파나루역",
-        update: "1일",
-        profileImage: "./assets/images/3_aeoni.jpg",
-        postImages: [
-            "./assets/images/3-1_aeoni.jpeg",
-            "./assets/images/3-2_aeoni.jpg",
-            "./assets/images/3-3_aeoni.jpeg",
-            "./assets/images/3-4_aeoni.jpeg",
-            "./assets/images/3-5_aeoni.jpeg",
-            "./assets/images/3-6_aeoni.jpeg",
-            "./assets/images/3-7_aeoni.jpeg",
-            "./assets/images/3-8_aeoni.jpeg",
-            "./assets/images/3-9_aeoni.jpeg",
-            "./assets/images/3-10_aeoni.jpeg",
-        ],
-        likes: 48,
-        caption: "이번주 이오니에 준비된 다양한 스페셜티커피들을 소개드리겠습니다",
-        comments: 39,
-    },
-    {
-        username: "__nutten",
-        location: "서울 서초구",
-        update: "1주",
-        profileImage: "./assets/images/4_nutten.jpg",
-        postImages: [
-            "./assets/images/4-1_nutten.jpeg",
-            "./assets/images/4-2_nutten.jpeg",
-            "./assets/images/4-3_nutten.jpeg",
-            "./assets/images/4-4_nutten.jpeg",
-            "./assets/images/4-5_nutten.jpeg",
-            "./assets/images/4-6_nutten.jpeg",
-            "./assets/images/4-7_nutten.jpeg",
-            "./assets/images/4-8_nutten.jpeg",
-            "./assets/images/4-9_nutten.jpeg",
-            "./assets/images/4-10_nutten.jpeg",
-            "./assets/images/4-11_nutten.jpeg",
-        ],
-        likes: 52,
-        caption: "힐링하기 좋은 환하고 따뜻한 카페 누뗀!",
-        comments: 61,
-    },
-    {
-        username: "thanksoat",
-        location: "땡스오트, 안국",
-        update: "2주",
-        profileImage: "./assets/images/5_thanksoat.jpg",
-        postImages: [
-            "./assets/images/5-1_thanksoat.jpeg",
-            "./assets/images/5-2_thanksoat.jpeg",
-            "./assets/images/5-3_thanksoat.jpeg",
-            "./assets/images/5-4_thanksoat.jpeg",
-            "./assets/images/5-5_thanksoat.jpeg",
-            "./assets/images/5-6_thanksoat.jpeg",
-            "./assets/images/5-7_thanksoat.jpeg",
-            "./assets/images/5-8_thanksoat.jpeg",
-            "./assets/images/5-9_thanksoat.jpeg",
-        ],
-        likes: 77,
-        caption: "우푸 커피가 오트 커피로 바뀌었습니다!",
-        comments: 54,
-    },
-];
-
-// 메인 컨텐츠 리스트를 가져옵니다.
-const mainContentsList = document.querySelector(".main-contents-list");
+document.addEventListener("DOMContentLoaded", () => {
+    const mainContentsList = document.querySelector(".main-contents-list");
+  
+    // JSON 데이터 로드
+    fetch("./json/feed.json") // JSON 파일 경로
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to load feed.json");
+        }
+        return response.json(); // JSON 데이터를 JavaScript 객체로 변환
+      })
+      .then((data) => {
+        data.feeds.forEach((feed) => renderFeed(feed)); // 데이터를 순회하며 피드 렌더링
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  });
 
 // 피드를 렌더링하는 함수
 function renderFeed(feed) {
@@ -256,12 +165,12 @@ function renderFeed(feed) {
           </div>
             <div class="carousel_button_container">
               <button type="button" class="carousel_prev">
-                <svg aria-label="이전" class="x1lliihq x1n2onr6 xq3z1fi" fill="#fff" opacity=".75" height="26" viewBox="0 0 24 24" width="26" xmlns="http://www.w3.org/2000/svg" transform="rotate(180)">
+                <svg aria-label="이전" fill="#fff" opacity=".75" height="26" viewBox="0 0 24 24" width="26" xmlns="http://www.w3.org/2000/svg" transform="rotate(180)">
                 <path d="M12.005.503a11.5 11.5 0 1 0 11.5 11.5 11.513 11.513 0 0 0-11.5-11.5m3.707 12.22-4.5 4.488A1 1 0 0 1 9.8 15.795l3.792-3.783L9.798 8.21a1 1 0 1 1 1.416-1.412l4.5 4.511a1 1 0 0 1-.002 1.414"/>
                 </svg>
               </button>
               <button type="button" class="carousel_next">
-                <svg aria-label="다음" class="x1lliihq x1n2onr6 xq3z1fi" fill="#fff" opacity=".75" height="26" viewBox="0 0 24 24" width="26">
+                <svg aria-label="다음" fill="#fff" opacity=".75" height="26" viewBox="0 0 24 24" width="26">
                 <path d="M12.005.503a11.5 11.5 0 1 0 11.5 11.5 11.513 11.513 0 0 0-11.5-11.5m3.707 12.22-4.5 4.488A1 1 0 0 1 9.8 15.795l3.792-3.783L9.798 8.21a1 1 0 1 1 1.416-1.412l4.5 4.511a1 1 0 0 1-.002 1.414"/>
                 </svg>
               </button>
@@ -301,8 +210,12 @@ function renderFeed(feed) {
       </div>
     `;
 
-    mainContentsList.appendChild(article);
-    initializeCarousel(article.querySelector(".carousel_main"));
+  // 컨테이너에 추가
+  const mainContentsList = document.querySelector(".main-contents-list");
+  mainContentsList.appendChild(article);
+
+  // 슬라이더 초기화 (기존 코드 재사용)
+  initializeCarousel(article.querySelector(".carousel_main"));
 }
 
 function initializeCarousel(carousel) {
@@ -374,7 +287,7 @@ function initializeCarousel(carousel) {
 }
 
 // 무한 스크롤 이벤트 추가
-let shuffledFeeds = shuffle([...feedData]); // 초기 셔플된 배열
+let shuffledFeeds = []; // 셔플된 배열
 let currentFeedIndex = 0; // 현재 피드 위치 추적
 
 // 배열을 셔플하는 함수 (Fisher-Yates 알고리즘)
@@ -386,42 +299,87 @@ function shuffle(array) {
     return array;
 }
 
+// 첫 번째 피드 렌더링 및 초기화
+function renderAndInitializeFirstFeed() {
+    const mainContentsList = document.querySelector(".main-contents-list");
+
+    // 첫 번째 피드를 렌더링
+    const feedToRender = shuffledFeeds[currentFeedIndex]; // 현재 인덱스의 피드
+    renderFeed(feedToRender); // 렌더링
+    currentFeedIndex++; // 다음 인덱스로 이동
+
+    // 첫 번째 피드 슬라이더 초기화
+    const firstCarousel = mainContentsList
+        .lastElementChild // 가장 마지막으로 추가된 피드
+        .querySelector(".carousel_main");
+
+    if (firstCarousel) {
+        initializeCarousel(firstCarousel); // 슬라이더 초기화
+    }
+}
+
 // 피드를 로드하는 함수
 function loadMoreFeeds() {
+    const mainContentsList = document.querySelector(".main-contents-list");
+
     // 모든 피드를 순회했으면 다시 셔플
     if (currentFeedIndex >= shuffledFeeds.length) {
-        shuffledFeeds = shuffle([...feedData]); // feedData를 셔플
+        console.log("All feeds displayed. Reshuffling...");
+        shuffledFeeds = shuffle([...shuffledFeeds]); // 기존 배열 다시 셔플
         currentFeedIndex = 0; // 인덱스 초기화
-        console.log("Feeds reshuffled");
     }
 
     // 현재 인덱스의 피드 가져오기
     const feedToRender = shuffledFeeds[currentFeedIndex];
     currentFeedIndex++; // 다음 인덱스로 이동
 
-    renderFeed(feedToRender); // 피드 렌더링
+    renderFeed(feedToRender);
 
-    // 가장 마지막으로 추가된 피드의 슬라이더 초기화
+    // 마지막 추가된 피드 슬라이더 초기화
     const newCarousel = mainContentsList
         .lastElementChild // 가장 마지막으로 추가된 피드
-        .querySelector(".carousel_main"); // 해당 피드의 슬라이더
+        .querySelector(".carousel_main");
 
     if (newCarousel) {
         initializeCarousel(newCarousel); // 슬라이더 초기화
     }
 }
 
-// 무한 스크롤 이벤트 연결
-window.addEventListener("scroll", () => {
-    if (
-        window.innerHeight + window.scrollY >= document.body.offsetHeight - 100
-    ) {
-        loadMoreFeeds(); // 추가된 피드와 함께 슬라이더 초기화
-    }
+// JSON 데이터를 로드한 후 초기화
+function initializeFeedData(feedData) {
+    shuffledFeeds = shuffle([...feedData]); // feedData를 셔플
+    currentFeedIndex = 0; // 초기화
+
+    // 첫 번째 피드 렌더링 및 초기화
+    renderAndInitializeFirstFeed();
+
+    // 무한 스크롤 이벤트 연결
+    window.addEventListener("scroll", () => {
+        if (
+            window.innerHeight + window.scrollY >=
+            document.body.offsetHeight - 100
+        ) {
+            loadMoreFeeds(); // 추가된 피드를 렌더링
+        }
+    });
+}
+
+// 새로고침 시 항상 최상단에서 시작
+window.addEventListener("beforeunload", () => {
+    window.scrollTo(0, 0); // 스크롤을 최상단으로 이동
 });
+history.scrollRestoration = "manual"; // 스크롤 위치 저장 방지
 
 // 초기 로드
-loadMoreFeeds();
+fetch("./json/feed.json")
+    .then((response) => response.json())
+    .then((data) => {
+        initializeFeedData(data.feeds); // JSON 데이터를 기반으로 초기화
+    })
+    .catch((error) => console.error("Error loading JSON:", error));
+
+
+
 
 
 // 좋아요 버튼 토글 기능
