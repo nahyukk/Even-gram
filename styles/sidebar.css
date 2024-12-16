@@ -57,6 +57,19 @@ body.dark-mode .bottom-item:hover {
     background-color: #222222;
 }
 
+/* 최소화면일때 다크 모드 적용시 변환하는 부분 */
+body.dark-mode .left-sidebar-min-header::before {
+    background-color: #363636;
+}
+
+body.dark-mode .serachbox {
+    background-color: #363636;
+}
+
+body.dark-mode .sidebar-min-botttom {
+    border-color: #363636;
+}
+
 .left-container {
     display: flex;
     flex-direction: column;
@@ -358,6 +371,7 @@ a:hover {
     top: 0;
     z-index: 1;
     overflow: visible;
+    background-color: #ffffff;
 }
 
 .left-sidebar-min-header::before {
@@ -714,9 +728,9 @@ a:hover {
 /* 오른쪽 사이드바 부분 */
 .right-side {
     background-color: #ffffff;
-    width: 400px;
+    width: 383px;
     height: 100%;
-    left: 70%;
+    left: 0%;
     position: relative;
 }
 
@@ -727,13 +741,13 @@ a:hover {
 .right-side-name-style {
     display: flex;
     align-items: center;
-    margin: 20px;
+    margin: 18px;
 }
 
 
 .profile-box {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 70%;
     overflow: hidden;
 }
@@ -758,7 +772,7 @@ a:hover {
 }
 
 .name-id {
-    font-size: 13px;
+    font-size: 12px;
     padding: 0 10px;
     color: #737373;
     text-overflow: ellipsis;
@@ -779,7 +793,7 @@ a:hover {
     font-weight: bold;
     cursor: pointer;
     text-decoration: none;
-    margin-left: 42px;
+    margin-left: 5px;
 }
 
 .recommend-box {
@@ -801,7 +815,7 @@ a:hover {
     font-weight: 600;
     color: black;
     cursor: pointer;
-    margin-right: 13px;
+    margin-right: 20px;
 }
 
 .recommend-box-2:hover {
