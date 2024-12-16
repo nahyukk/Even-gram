@@ -86,12 +86,12 @@
     {
       "userId": 6,
       "username": "michael_brown",
-      "profileImage": "https://picsum.photos/id/243/400/600",
+      "profileImage": "https://fastly.picsum.photos/id/243/400/600.jpg?hmac=Hw3ISvisxElIaBCAlJK6l7fdWP7c58-E3rYVKwTn6NQ",
       "stories": [
         {
           "storyId": 601,
           "mediaType": "image",
-          "mediaUrl": "https://picsum.photos/id/822/400/600",
+          "mediaUrl": "https://fastly.picsum.photos/id/822/400/600.jpg?hmac=iz2c8gSyosZ0Sfpi8ltUmTvE-B8Yj7DOsdpo_A_aRrA",
           "timestamp": "2024-12-11T19:00:16Z"
         }
       ]
@@ -99,37 +99,43 @@
     {
       "userId": 7,
       "username": "lisa_johnson",
-      "profileImage": "https://picsum.photos/id/536/400/600",
+      "profileImage": "https://fastly.picsum.photos/id/536/400/600.jpg?hmac=UBphFLuP5rKuVGMIhhgJcDem4EXx_fx6ZedmkDgyfxM",
       "stories": [
         {
           "storyId": 701,
           "mediaType": "image",
-          "mediaUrl": "https://picsum.photos/id/327/400/600",
+          "mediaUrl": "https://fastly.picsum.photos/id/327/400/600.jpg?hmac=qlQxpvu4PihjyJbiNJC5GWgq_40dGtqEpBve_pB7e0E",
           "timestamp": "2024-12-11T13:09:27Z"
         },
         {
           "storyId": 702,
           "mediaType": "image",
-          "mediaUrl": "https://picsum.photos/id/637/400/600",
+          "mediaUrl": "https://fastly.picsum.photos/id/637/400/600.jpg?hmac=X5k24P4S9Trm6EKSSW5NJzeMMo7sVgNjfq2kMUxkQKk",
           "timestamp": "2024-12-11T20:06:11Z"
         },
         {
           "storyId": 703,
           "mediaType": "image",
-          "mediaUrl": "https://picsum.photos/id/182/400/600",
+          "mediaUrl": "https://fastly.picsum.photos/id/182/400/600.jpg?hmac=FsSDjjYBAXTbA3xYsMBYKDvTtKgaRK4z7POzB_wu8EM",
           "timestamp": "2024-12-11T19:20:03Z"
+        },
+        {
+          "storyId": 704,
+          "mediaType": "image",
+          "mediaUrl": "https://fastly.picsum.photos/id/695/400/600.jpg?hmac=6-XG9Uzy3S6TeLSYDtqKd_3B3ITLPU7Da_taPO66L1o",
+          "timestamp": "2024-12-11T19:20:06Z"
         }
       ]
     },
     {
       "userId": 8,
       "username": "william_clark",
-      "profileImage": "https://picsum.photos/id/833/400/600",
+      "profileImage": "https://fastly.picsum.photos/id/833/400/600.jpg?hmac=yA97mTJuqJB54eMUefI88deQGq73IJU3MgSg7PtCuGc",
       "stories": [
         {
           "storyId": 801,
           "mediaType": "image",
-          "mediaUrl": "https://picsum.photos/id/616/400/600",
+          "mediaUrl": "https://fastly.picsum.photos/id/616/400/600.jpg?hmac=sXkHTny_pHU5ae7OqovXA3Q_dM-1vrhfN7Nb2nRBNj4",
           "timestamp": "2024-12-11T10:40:03Z"
         }
       ]
@@ -137,18 +143,18 @@
     {
       "userId": 9,
       "username": "charlotte_davis",
-      "profileImage": "https://picsum.photos/id/403/400/600",
+      "profileImage": "https://fastly.picsum.photos/id/403/400/600.jpg?hmac=lPn0z1WbnYKuyGWwUNG-noTalBSJk69fzv6GEQ051Tw",
       "stories": [
         {
           "storyId": 901,
           "mediaType": "image",
-          "mediaUrl": "https://picsum.photos/id/935/400/600",
+          "mediaUrl": "https://fastly.picsum.photos/id/939/400/600.jpg?hmac=Vnc2PVFz6_d0Rhau3XPkZoRphlUaCq6SF6yvQA2wKLI",
           "timestamp": "2024-12-11T16:12:39Z"
         },
         {
           "storyId": 902,
           "mediaType": "image",
-          "mediaUrl": "https://picsum.photos/id/740/400/600",
+          "mediaUrl": "https://fastly.picsum.photos/id/740/400/600.jpg?hmac=swIb6cQVaIdmMK49W4qan8BWfvKl4mqEzsU7vQnb2i4",
           "timestamp": "2024-12-11T12:19:08Z"
         }
       ]
@@ -156,18 +162,18 @@
     {
       "userId": 10,
       "username": "henry_moore",
-      "profileImage": "https://picsum.photos/id/341/400/600",
+      "profileImage": "https://fastly.picsum.photos/id/341/400/600.jpg?hmac=t_Ehtv_LLy9pqI2ZLdBYDbnpRN0uLuWcHBW7ih9MFgY",
       "stories": [
         {
           "storyId": 1001,
           "mediaType": "image",
-          "mediaUrl": "https://picsum.photos/id/574/400/600",
+          "mediaUrl": "https://fastly.picsum.photos/id/574/400/600.jpg?hmac=b5UWXBmrj7fnHH2ukgpxKOB6Y-GqUE77FUVFM5DBq4c",
           "timestamp": "2024-12-11T13:08:47Z"
         },
         {
           "storyId": 1002,
           "mediaType": "image",
-          "mediaUrl": "https://picsum.photos/id/447/400/600",
+          "mediaUrl": "https://fastly.picsum.photos/id/447/400/600.jpg?hmac=wO9wSSnTvCgO4UG2Zs2IGJsTtRK6HqctQ5At34Xkd5U",
           "timestamp": "2024-12-11T15:52:01Z"
         }
       ]

@@ -3,6 +3,10 @@
 const params = new URLSearchParams(window.location.search);
 const userId = parseInt(params.get("userId")); // 숫자로 변환
 
+// 페이지 로드 시 실행
+loadStoryDetails();
+preloadImagesFromJSON(); // 데이터 로딩 + 초기화
+
 async function loadStoryDetails() {
   try {
     const response = await fetch("/json/stories.json");
@@ -35,9 +39,6 @@ function renderStoryDetails(story) {
   storyUploadTime.textContent = new Date(firstStory.timestamp).toLocaleString();
 }
 
-// 페이지 로드 시 실행
-loadStoryDetails();
-
 function renderStoryDetails(story) {
   const storyImg = document.getElementById("story-main-img-img");
   const storyUsername = document.getElementById("story-profile-name");
@@ -50,9 +51,6 @@ function renderStoryDetails(story) {
   storyUsername.textContent = story.username;
   storyUploadTime.textContent = new Date(firstStory.timestamp).toLocaleString();
 }
-
-// 페이지 로드 시 스토리 로드 실행
-loadStoryDetails();
 
 // 하단부 액션 - 엘리멘트 호출
 const dmContainer = document.getElementById("story-bottom-dm");
@@ -80,6 +78,37 @@ fetch("./json/stories.json")
   .catch((error) => {
     console.error("JSON Fetching Error", error);
   });
+
+// 이미지 미리 로딩 함수
+async function preloadImagesFromJSON() {
+  try {
+    const response = await fetch("./json/stories.json");
+    const data = await response.json();
+
+    // 모든 미디어 URL 수집
+    const imageUrls = data.stories.flatMap((story) =>
+      story.stories.map((item) => item.mediaUrl)
+    );
+
+    // 이미지 사전 로딩
+    const preloadPromises = imageUrls.map((url) => {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = url;
+        img.onload = resolve; // 성공 시
+        img.onerror = reject; // 실패 시
+      });
+    });
+
+    // 모든 이미지 로딩 후 데이터 저장 및 초기화
+    await Promise.all(preloadPromises);
+
+    storiesData = data.stories;
+    initializeStories(); // 초기화 실행
+  } catch (error) {
+    console.error("이미지 사전 로딩 실패:", error);
+  }
+}
 
 function initializeStories() {
   if (storiesData.length === 0) return;
@@ -117,6 +146,7 @@ function initializeStories() {
     updateSideStory("story-side-stories-right4", nextUserIndex2, 0);
   }
 }
+
 // placeholder
 function handlePlaceholder() {
   if (dmInput.textContent.trim() === "") {
@@ -128,8 +158,8 @@ function handlePlaceholder() {
 
 handlePlaceholder();
 dmInput.addEventListener("input", handlePlaceholder);
-// json 데이터 가져오고 출력
 
+// json 데이터 가져오고 출력
 function updateSideStory(containerId, userIndex, mediaIndex) {
   const user = storiesData[userIndex];
   const story = user.stories[mediaIndex];
