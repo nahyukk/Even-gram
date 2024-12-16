@@ -1,6 +1,58 @@
-// 작업할 때 일시정지 끄기
-// let isPlaying = false;
-let isPlaying = true;
+// 메인에서 스토리 이동
+// URL 매개변수 추출
+const params = new URLSearchParams(window.location.search);
+const userId = parseInt(params.get("userId")); // 숫자로 변환
+
+async function loadStoryDetails() {
+  try {
+    const response = await fetch("/json/stories.json");
+    const data = await response.json();
+    const stories = data.stories;
+
+    // userId 비교 시 숫자로 변환된 값을 사용
+    const story = stories.find((item) => item.userId === userId);
+    if (!story) {
+      console.error("해당 스토리를 찾을 수 없습니다.");
+      return;
+    }
+
+    renderStoryDetails(story);
+  } catch (error) {
+    console.error("스토리 로드 실패:", error);
+  }
+}
+
+function renderStoryDetails(story) {
+  const storyImg = document.getElementById("story-main-img-img");
+  const storyUsername = document.getElementById("story-profile-name");
+  const storyUploadTime = document.getElementById("story-upload-time");
+
+  // 첫 번째 스토리 미디어와 프로필 데이터 로드
+  const firstStory = story.stories[0];
+
+  storyImg.src = firstStory.mediaUrl;
+  storyUsername.textContent = story.username;
+  storyUploadTime.textContent = new Date(firstStory.timestamp).toLocaleString();
+}
+
+// 페이지 로드 시 실행
+loadStoryDetails();
+
+function renderStoryDetails(story) {
+  const storyImg = document.getElementById("story-main-img-img");
+  const storyUsername = document.getElementById("story-profile-name");
+  const storyUploadTime = document.getElementById("story-upload-time");
+
+  // 첫 번째 스토리 미디어와 프로필 데이터 로드
+  const firstStory = story.stories[0];
+
+  storyImg.src = firstStory.mediaUrl;
+  storyUsername.textContent = story.username;
+  storyUploadTime.textContent = new Date(firstStory.timestamp).toLocaleString();
+}
+
+// 페이지 로드 시 스토리 로드 실행
+loadStoryDetails();
 
 // 하단부 액션 - 엘리멘트 호출
 const dmContainer = document.getElementById("story-bottom-dm");
@@ -30,11 +82,19 @@ fetch("./json/stories.json")
   });
 
 function initializeStories() {
-  if (storiesData.length === 0) {
-    return;
+  if (storiesData.length === 0) return;
+
+  // URL의 userId 기반으로 currentStoryIndex 설정
+  const initialIndex = storiesData.findIndex(
+    (story) => story.userId === userId
+  );
+  if (initialIndex !== -1) {
+    currentStoryIndex = initialIndex;
+    currentMediaIndex = 0; // 항상 첫 번째 스토리부터 시작
   }
 
   updateStories(currentStoryIndex, currentMediaIndex);
+  updateSideStories();
 
   const prevUserIndex1 =
     (currentStoryIndex - 2 + storiesData.length) % storiesData.length;
@@ -143,7 +203,7 @@ function updateLoadingBar(mediaIndex) {
 }
 
 // 재생 - 일시정지 버튼
-// let isPlaying = true;
+let isPlaying = true;
 
 function togglePlayPause() {
   isPlaying = !isPlaying;
