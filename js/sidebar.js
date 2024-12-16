@@ -49,18 +49,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // 다크 모드 변환 시 바뀌는 부분
     darkModeToggle.addEventListener('change', (event) => {
         const isDarkMode = event.target.checked;
-        const icons = document.querySelectorAll('.logo-container img, .middle-container img, .bottom-container img, .mode-menu img, .dropdown-menu img, .min-bottom-btn img');    //sidebar의 아이콘 변경
+        const icons = document.querySelectorAll('.logo-container img, .middle-container img, .bottom-container img, .mode-menu img, .dropdown-menu img, .min-bottom-btn img, .left-sidebar-min-header img');    //sidebar의 아이콘 변경
         const menus = document.querySelectorAll('.dropdown-menu, .mode-menu');
         const body = document.body;
         const sidebar = document.querySelector('.left-container');
         const rightsidebars = document.querySelector('.right-side');
         const hrEle = document.querySelectorAll('#moreMenu hr, #menu-header hr');
+        const minisT = document.querySelector('.left-sidebar-min-header');
+        const minisB = document.querySelector('.sidebar-min-botttom-contents');
 
         body.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff";   // body 적용 부분
         body.style.color = isDarkMode ? "#ffffff" : "#000000";
         sidebar.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff"; // 사이드바 부분 적용
         sidebar.style.borderColor = isDarkMode ? "#383838" : "#dbdbdb";    // 사이드바 border 부분 적용
         rightsidebars.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff";
+        minisT.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff";  // 최소화면일때 상단 사이드바 부분
+        minisB.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff";
 
 
         // 드롭다운 메뉴들 다크모드 변경

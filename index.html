@@ -7,11 +7,235 @@
   <title>Home</title>
   <link rel="stylesheet" href="./styles/general.css">
   <link rel="stylesheet" href="./styles/index.css">
-
+  <link rel="stylesheet" href="./styles/sidebar.css">
 </head>
 
 <body>
-  <nav id="right-side-bar"></nav>
+  <nav class="left-container">
+		<div class="big">
+			<div class="small">
+				<!-- 로고 부분 입니다 -->
+				<div class="top">
+					<div class="logo-container">
+						<div class="logo-container-b" style="transform: scale(1);">
+							<a href="/index.html" class="insta-logo">
+								<img src="../assets/icons/instalogo.png" class="insta-logo" />
+							</a>
+							<a href="/index.html" class="insta-logo2">
+								<img src="../assets/icons/insta.png" class="insta-logo2" />
+							</a>
+						</div>
+					</div>
+				</div>
+				<!-- 사이드 기능 부분 입니다 -->
+				<div class="middle">
+					<div class="middle-container">
+						<ul>
+							<li class="middle-item">
+								<a href="/index.html">
+									<img class="home-icon" src="../assets/../assets/icons/home.png" />
+									<span>홈</span>
+								</a>
+							</li>
+							<li class="middle-item">
+								<img class="search-icon" src="../assets/icons/search.png"/>
+								<span>검색</span>
+							</li>
+							<li class="middle-item">
+								<img class="compass-icon" src="../assets/icons/compass.png" />
+								<span>탐색 탭</span>
+							</li>
+							<li class="middle-item">
+								<img class="reels-icon" src="../assets/icons/reels.png" />
+								<span>릴스</span>
+							</li>
+							<li class="middle-item">
+								<img class="dm-icon" src="../assets/icons/dm.png" />
+								<span>메시지</span>
+							</li>
+							<li class="middle-item">
+								<img class="heart-icon" src="../assets/icons/heart.png" />
+								<span>알림</span>
+							</li>
+							<li class="middle-item">
+								<img class="add-icon" src="../assets/icons/add.png" />
+								<span>만들기</span>
+							</li>
+							<li class="middle-item">
+								<a href="/profile.html">
+									<img class="home" src="../assets/icons/profile.png" />
+									<span>프로필</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 사이드 더보기 기능 부분 입니다 -->
+		<div class="bottom">
+			<div class="bottom-container">
+				<ul>
+					<li class="bottom-item">
+						<img class="threads-icon" src="../assets/icons/threads.png" />
+						<span>Threads</span>
+					</li>
+					<li class="dropdown bottom-item">
+						<img src="../assets/icons/menu.png" />
+						<span>더보기</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="dropdown-menu hidden" id="moreMenu">
+		<ul class="dropdown-toggle">
+			<li class="dropdown-item">
+				<img class="setting-icon" src="../assets/icons/setting.png" />
+				<span>설정</span>
+			</li>
+			<li class="dropdown-item">
+				<img class="active-icon" src="../assets/icons/active.png" />
+				<span>내 활동</span>
+			</li>
+			<li class="dropdown-item">
+				<img class="bookmark-icon" src="../assets/icons/bookmark.png" />
+				<span>저장됨</span>
+			</li>
+			<li class="dropdown-item mode-toggle">
+				<img class="sun-icon" src="../assets/icons/sun.png" />
+				<span>모드 전환</span>
+			</li>
+			<li class="dropdown-item">
+				<img class="warning-icon" src="../assets/icons/warning.png" />
+				<span>문제 신고</span>
+			</li>
+			<hr style="border: 0; height: 6px; background-color: #dbdbdb4d;" />
+			<li class="dropdown-item">
+				<span>계정 전환</span>
+			</li>
+			<hr style="border: 0; height: 2px; background-color: #dbdbdb4d;" />
+			<li class="dropdown-item">
+				<span>로그아웃</span>
+			</li>
+		</ul>
+	</div>
+
+	<div class="mode-menu hidden" id="modeMenu">
+		<div class="menu-header">
+			<button class="backbtn">
+				<img src="../assets/icons/back.png" />
+			</button>
+			<span>모드 전환</span>
+			<img src="../assets/icons/sun.png" class="sunny" />
+		</div>
+		<hr style="border: 0; height: 2px; background-color: #dbdbdb4d;" />
+		<div class="menu">
+			<div class="menu-item">
+				<span>다크 모드</span>
+				<label class="switch">
+					<input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()" />
+					<span class="slider"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+
+	<!-- 최소화면일때 나타낼 부분 입니다 -->
+	<!-- 최소화면 상단 부분입니다. -->
+	<nav class="left-sidebar-min">
+		<div class="left-sidebar-min-container">
+			<div class="left-sidebar-min-header">
+				<div class="min-logo">
+					<a href="/index.html">
+						<img src="../assets/icons/instalogo.png" class="insta-logo" />
+					</a>
+				</div>
+				<div class="min-search">
+					<div class="min-search-section">
+						<div class="min-search-container">
+							<div class="min-search-box">
+								<input type="text" placeholder="검색" aria-label="입력 검색" class="serachbox"
+									onblur="toggleSearch(false)" onclick="toggleSearch(true)" id="search-input" />
+								<button class="clear-icon" id="clear-icon">X</button>
+								<div class="min-search-big">
+									<div class="min-search-middle">
+										<div class="icon-section" id="icon-section">
+											<img src="../assets/icons/search.png" aria-label="검색"
+												class="min-search-icon" />
+											<span>검색</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="min-heart">
+								<div class="min-heart-section">
+									<img src="../assets/icons/heart.png" class="min-heart-icon" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<!-- 최소화면 하단 부분입니다. -->
+	<nav class="left-sidebar-min-botttom">
+		<div class="sidebar-min-botttom">
+			<div class="sidebar-min-botttom-section">
+				<div class="sidebar-min-botttom-container">
+					<div class="sidebar-min-botttom-contents">
+						<div class="sidebar-min-botttom-content">
+							<div class="sidebar-min-botttom-btns">
+								<div>
+									<div class="min-bottom-btn">
+										<a href="/index.html">
+											<img src="../assets/icons/home.png" />
+										</a>
+									</div>
+								</div>
+								<div>
+									<div class="min-bottom-btn">
+										<img src="../assets/icons/compass.png" />
+									</div>
+								</div>
+								<div>
+									<div class="min-bottom-btn">
+										<img src="../assets/icons/reels.png" />
+									</div>
+								</div>
+								<div>
+									<div class="min-bottom-btn">
+										<img src="../assets/icons/add.png" />
+									</div>
+								</div>
+								<div>
+									<div class="min-bottom-btn">
+										<img src="../assets/icons/dm.png" />
+									</div>
+								</div>
+								<div>
+									<div class="min-bottom-btn">
+										<a href="/profile.html">
+											<img src="../assets/icons/profile.png" />
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<!-- 검색 ui 사이드바 부분 -->
+	<div class="search-tab">
+		<div class="search-tab-sectiion">
+			<div>
+
+			</div>
+		</div>
+	</div>
   <main>
     <div class="main-warpper">
       <div class="main-container">
