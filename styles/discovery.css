@@ -1,0 +1,23 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: var(--base-background-color);
+	display: flex;
+}
+
+#right-side-bar {
+	width: 250px;
+	z-index: 100;
+}
+
+.discovery__tab-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 10px 20px 0 20px;
+	margin: 0 auto;
+}
