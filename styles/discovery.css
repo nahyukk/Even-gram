@@ -18,6 +18,21 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	padding: 10px 20px 0 20px;
+	padding: 60px 20px 0 20px;
 	margin: 0 auto;
+}
+
+@media (min-width: 767px) and (max-width: 1262px) {
+	#right-side-bar {
+		width: 70px;
+	}
+}
+
+@media (max-width: 765px) {
+	#right-side-bar {
+		width: 0;
+	}
+	.discovery__tab-container {
+		padding-top: 80px;
+	}
 }
