@@ -137,7 +137,8 @@ main {
 /* 메인 컨텐츠 슬라이더 부분 */
 /* 캐러셀 전체 구조  */
 .carousel_main {
-    width: 100%; /* 이미지 크기 설정  */
+    width: 100%;
+    /* 이미지 크기 설정  */
     position: relative;
     overflow: hidden;
     margin: 0 auto;
@@ -150,7 +151,8 @@ main {
 }
 
 .carousel_slide {
-    flex: 0 0 100%; /* 이미지 크기 설정  */
+    flex: 0 0 100%;
+    /* 이미지 크기 설정  */
     position: relative;
 }
 
@@ -209,8 +211,10 @@ main {
 }
 
 .carousel_button_disabled {
-    opacity: 0; /* 버튼 투명하게 */
-    pointer-events: none; /* 클릭 불가 */
+    opacity: 0;
+    /* 버튼 투명하게 */
+    pointer-events: none;
+    /* 클릭 불가 */
 }
 
 /* 캐러셀 중앙 버튼 */
@@ -281,6 +285,7 @@ main {
 .icon-heart:hover {
     background-image: url(../assets/icons/heart_hover.png);
 }
+
 .icon-heart:active {
     background-image: url(../assets/icons/heart_active.png);
 }
@@ -417,7 +422,7 @@ main {
 /* 임시 */
 /* 메인 사이드바 컨테이너 (임시) */
 .aside-container {
-    margin-top: 16px; 
+    margin-top: 16px;
     margin-left: 64px;
 }
 
@@ -426,95 +431,97 @@ main {
     0% {
         transform: scale(1)
     }
+
     25% {
         transform: scale(1.2)
     }
+
     50% {
         transform: scale(.95)
     }
+
     100% {
         transform: scale(1)
     }
 }
 
-@media (prefers-color-scheme: dark) {
-    .icon-heart {
-        background-image: url(../assets/icons/dark_heart.png);
-    }
-    
-    .icon-heart.animate {
-        animation: heart-scale 0.45s ease-in-out;
-    }
-    
-    .icon-heart:hover {
-        background-image: url(../assets/icons/dark_heart_hover.png);
-    }
-    .icon-heart:active {
-        background-image: url(../assets/icons/dark_heart_active.png);
-    }
-    
-    .icon-heart.liked {
-        background-image: url(../assets/icons/heart_fill.png);
-    }
-    
-    .icon-heart.liked:active {
-        background-image: url(../assets/icons/dark_heart_fill_active.png);
-    }
-    
-    .icon-msg {
-        background-image: url(../assets/icons/dark_msg.png);
-    }
-    
-    .icon-msg:hover {
-        background-image: url(../assets/icons/dark_msg_hover.png);
-    }
-    
-    .icon-msg:active {
-        background-image: url(../assets/icons/dark_msg_active.png);
-    }
-    
-    .icon-dm {
-        background-image: url(../assets/icons/dark_dm.png);
-    }
-    
-    .icon-dm:hover {
-        background-image: url(../assets/icons/dark_dm_hover.png);
-    }
-    
-    .icon-bookmark {
-        background-image: url(../assets/icons/dark_bookmark.png);
-    }
-    
-    .icon-bookmark:hover {
-        background-image: url(../assets/icons/dark_bookmark_hover.png);
-    }
-    
-    .icon-bookmark:active {
-        background-image: url(../assets/icons/dark_bookmark_active.png);
-    }
-    
-    .icon-bookmark.liked,
-    .icon-bookmark.liked:hover {
-        background-image: url(../assets/icons/dark_bookmark_fill.png);
-    }
-    
-    .icon-bookmark.liked:active {
-        background-image: url(../assets/icons/dark_bookmark_fill_hover.png);
-    }
+body.dark-mode .icon-heart {
+    background-image: url(../assets/icons/dark_heart.png);
+}
 
-    .main-profile-more-icon {
-        width: 24px;
-        height: 24px;
-        background-image: url(../assets/icons/dark_more.png);
-        cursor: pointer;
-    }
+body.dark-mode .icon-heart.animate {
+    animation: heart-scale 0.45s ease-in-out;
+}
 
-    .main-profile-more-icon:active {
-        width: 24px;
-        height: 24px;
-        background-image: url(../assets/icons/dark_more_active.png);
-        cursor: pointer;
-    }
+body.dark-mode .icon-heart:hover {
+    background-image: url(../assets/icons/dark_heart_hover.png);
+}
+
+body.dark-mode .icon-heart:active {
+    background-image: url(../assets/icons/dark_heart_active.png);
+}
+
+body.dark-mode .icon-heart.liked {
+    background-image: url(../assets/icons/heart_fill.png);
+}
+
+body.dark-mode .icon-heart.liked:active {
+    background-image: url(../assets/icons/dark_heart_fill_active.png);
+}
+
+body.dark-mode .icon-msg {
+    background-image: url(../assets/icons/dark_msg.png);
+}
+
+body.dark-mode .icon-msg:hover {
+    background-image: url(../assets/icons/dark_msg_hover.png);
+}
+
+body.dark-mode .icon-msg:active {
+    background-image: url(../assets/icons/dark_msg_active.png);
+}
+
+body.dark-mode .icon-dm {
+    background-image: url(../assets/icons/dark_dm.png);
+}
+
+body.dark-mode .icon-dm:hover {
+    background-image: url(../assets/icons/dark_dm_hover.png);
+}
+
+body.dark-mode .icon-bookmark {
+    background-image: url(../assets/icons/dark_bookmark.png);
+}
+
+body.dark-mode .icon-bookmark:hover {
+    background-image: url(../assets/icons/dark_bookmark_hover.png);
+}
+
+body.dark-mode .icon-bookmark:active {
+    background-image: url(../assets/icons/dark_bookmark_active.png);
+}
+
+body.dark-mode .icon-bookmark.liked,
+body.dark-mode .icon-bookmark.liked:hover {
+    background-image: url(../assets/icons/dark_bookmark_fill.png);
+}
+
+body.dark-mode .icon-bookmark.liked:active {
+    background-image: url(../assets/icons/dark_bookmark_fill_hover.png);
+}
+
+body.dark-mode .main-profile-more-icon {
+    width: 24px;
+    height: 24px;
+    background-image: url(../assets/icons/dark_more.png);
+    cursor: pointer;
+}
+
+body.dark-mode .main-profile-more-icon:active {
+    width: 24px;
+    height: 24px;
+    background-image: url(../assets/icons/dark_more_active.png);
+    cursor: pointer;
 }
 
 /* 스토리 부분 */
@@ -541,8 +548,8 @@ main {
 
 .story-container {
     height: 100%;
-	display: flex;
-	position: relative;
+    display: flex;
+    position: relative;
     overflow-x: auto;
     scrollbar-width: none;
     align-items: stretch;
@@ -550,65 +557,65 @@ main {
 }
 
 .story-list {
-	display: flex;
-	gap: 10px;
+    display: flex;
+    gap: 10px;
     width: calc(100% - 100px);
-	transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
 }
 
 .story-item {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	position: relative;
-	min-width: 75px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    min-width: 75px;
 }
- 
+
 .story-item img {
-	width: 60px;
-	height: 60px;
-	border-radius: 50%;
-	border: 2px solid #f03e73;
-	object-fit: cover;
-	transition: border-color 0.3s ease;
-	cursor: pointer;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #f03e73;
+    object-fit: cover;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
 }
 
 .story-item img:hover {
-	border-color: gray;
+    border-color: gray;
 }
 
 .story-item p {
-	margin: 5px 0 0;
-	color: black;
-	font-size: 12px;
-	text-align: center;
+    margin: 5px 0 0;
+    color: black;
+    font-size: 12px;
+    text-align: center;
 }
 
 .story-button {
-	position: absolute;
-	top: 40%;
-	transform: translateY(-50%);
-	width: 40px;
-	height: 40px;
-	background-color: transparent;
-	color: black;
-	border: none;
-	border-radius: 50%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 18px;
-	cursor: pointer;
-	z-index: 10;
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    color: black;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 10;
 }
 
 .story-button.story-left {
-	left: 1%;
+    left: 1%;
 }
 
 .story-button.story-right {
-	right: 4%;
+    right: 4%;
 }
 
 .story-button svg {
@@ -616,7 +623,7 @@ main {
     height: 24px;
     opacity: 1;
     fill: rgb(255, 255, 255);
-  }
+}
 
 /* 미디어 쿼리 */
 @media (max-width: 1259px) {
