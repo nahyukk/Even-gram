@@ -421,19 +421,6 @@ main {
     margin-left: 64px;
 }
 
-/* 오른쪽 사이드 바 (임시) */
-@media (max-width: 1159px) {
-    .aside-container {
-        display: none;
-    }
-}
-
-/* 왼쪽 사이드 바 자리 (임시) */
-.left-side-container {
-    width: 250px;
-    margin-right: 64px;
-    z-index: -1;
-}
 
 @keyframes heart-scale {
     0% {
@@ -630,3 +617,22 @@ main {
     opacity: 1;
     fill: rgb(255, 255, 255);
   }
+
+/* 미디어 쿼리 */
+@media (max-width: 1259px) {
+    .main-warpper {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1159px) {
+    .aside-container {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .main-warpper {
+        margin-top: 60px;
+    }
+}
