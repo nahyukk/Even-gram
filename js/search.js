@@ -94,7 +94,7 @@ function filterSearchResults(searchText) {
     usernameBox.classList.add("search-list-text-box-username");
 
     const username = document.createElement("span");
-    username.classList.add("list-id");
+    username.classList.add("search-list-id");
     username.textContent = user.username;
 
     const verified = document.createElement("div");
@@ -107,7 +107,7 @@ function filterSearchResults(searchText) {
     followersBox.classList.add("search-list-followers-box");
 
     const name = document.createElement("span");
-    name.classList.add("list-name");
+    name.classList.add("search-list-name");
     name.textContent = user.name;
 
     const dot = document.createElement("span");

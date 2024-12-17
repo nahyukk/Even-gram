@@ -1139,6 +1139,14 @@ a:hover {
     cursor: pointer;
 }
 
+.search-list-id {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000000;
+    padding: 2px 2px 2px 10px;
+    cursor: pointer;
+}
+
 .verified-img {
     margin-top: 2px;
 }
@@ -1164,6 +1172,14 @@ a:hover {
 }
 
 .list-name {
+    font-size: 14px;
+    font-weight: 400;
+    color: #737373;
+    padding: 2px 10px;
+    cursor: pointer;
+}
+
+.search-list-name {
     white-space: nowrap;
     overflow: visible;
 }
