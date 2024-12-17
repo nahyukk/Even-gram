@@ -2,6 +2,7 @@ const searchInput = document.querySelector(".search-box-tab");
 const searchListContainer = document.querySelector(".search-list-container");
 
 let users = [];
+let debounceTimer;
 
 loadUsers();
 
@@ -16,12 +17,17 @@ async function loadUsers() {
 }
 
 searchInput.addEventListener("input", () => {
-  const searchText = searchInput.value.trim().toLowerCase();
-  if (searchText != "") {
-    filterSearchResults(searchText);
-  } else {
-    clearSearchResults();
-  }
+	clearTimeout(debounceTimer);
+
+	debounceTimer = setTimeout(() => {
+		const searchText = searchInput.value.trim().toLowerCase();
+		if (searchText != "") {
+			filterSearchResults(searchText);
+		} else {
+			clearSearchResults();
+		}
+	}, 500);
+  
 });
 
 function filterSearchResults(searchText) {
