@@ -29,7 +29,7 @@ function filterSearchResults(searchText) {
 
   const initialSearchText = getInitialConsonant(searchText);
 
-  const filteredUsers = users.filter(user => {
+  const filteredUsers = users.filter((user) => {
     const username = user.username.toLowerCase();
     const name = user.name;
 
@@ -38,16 +38,23 @@ function filterSearchResults(searchText) {
 
     return (
       username.includes(searchText) || // 영문 검색
-      name.includes(searchText) ||    // 한글 검색
-      initialName.includes(initialSearchText) ||  // 한글 초성 검색
+      name.includes(searchText) || // 한글 검색
+      initialName.includes(initialSearchText) || // 한글 초성 검색
       initialUsername.includes(initialSearchText) // 영문 초성 검색
     );
   });
 
-
   if (filteredUsers.length === 0) {
-    console.log("검색 결과가 없습니다.");
+    const noResults = document.querySelector(".no-results");
+    if (noResults) {
+      noResults.style.display = "flex";
+    }
     return;
+  } else {
+    const noResults = document.querySelector(".no-results");
+    if (noResults) {
+      noResults.style.display = "none";
+    }
   }
 
   filteredUsers.forEach((user) => {
@@ -137,13 +144,30 @@ function formatFollowers(followers) {
 // 한글 초성 추출 함수
 function getInitialConsonant(text) {
   const cho = [
-    "ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ", "ㄹ", "ㅁ", "ㅂ", "ㅃ",
-    "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅉ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"
+    "ㄱ",
+    "ㄲ",
+    "ㄴ",
+    "ㄷ",
+    "ㄸ",
+    "ㄹ",
+    "ㅁ",
+    "ㅂ",
+    "ㅃ",
+    "ㅅ",
+    "ㅆ",
+    "ㅇ",
+    "ㅈ",
+    "ㅉ",
+    "ㅊ",
+    "ㅋ",
+    "ㅌ",
+    "ㅍ",
+    "ㅎ",
   ];
 
   return text
     .split("")
-    .map(char => {
+    .map((char) => {
       const code = char.charCodeAt(0);
       if (code >= 44032 && code <= 55203) {
         const index = Math.floor((code - 44032) / 588);
@@ -153,5 +177,3 @@ function getInitialConsonant(text) {
     })
     .join("");
 }
-
-

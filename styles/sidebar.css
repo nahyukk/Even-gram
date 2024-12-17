@@ -899,6 +899,7 @@ a:hover {
     display: flex;
     align-items: center;
     flex-direction: column;
+		position: relative;
 }
 
 
@@ -1069,6 +1070,15 @@ a:hover {
     font-weight: 600;
     color: #0095f6;
     cursor: pointer;
+}
+
+.no-results {
+	margin-top: 70%; /* 부모 요소의 절반 높이만큼 아래로 이동 */
+  transform: translateY(-50%);
+	font-size: 14px;
+	color: var(--secondary-text-color);
+	text-align: center;
+	white-space: nowrap;
 }
 
 .search-list {
