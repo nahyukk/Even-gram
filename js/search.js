@@ -142,7 +142,7 @@ function filterSearchResults(searchText) {
   });
 }
 
-// 검색 창 지우는 함수
+// 검색 리스트 지우는 함수
 
 function clearSearchResults() {
   searchListContainer.innerHTML = "";
@@ -249,6 +249,15 @@ function showRecentSearches() {
       event.stopPropagation(); // 부모 요소 클릭 방지
       removeFromLocalStorage(user.username);
       showRecentSearches(); // 삭제 후 업데이트된 최근 검색어 표시
+    });
+
+    // 전체 지우기 함수 추가
+    const deleteAll = document.querySelector(".delete-text");
+
+    deleteAll.addEventListener("click", () => {
+      clearSearchResults();
+			removeFromLocalStorage(user.username);
+			showRecentSearches();
     });
 
     userElement.appendChild(profileBox);
