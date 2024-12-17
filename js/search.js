@@ -27,11 +27,23 @@ searchInput.addEventListener("input", () => {
 function filterSearchResults(searchText) {
   clearSearchResults();
 
-  const filteredUsers = users.filter(
-    (user) =>
-      user.username.toLowerCase().includes(searchText) ||
-      user.name.includes(searchText)
-  );
+  const initialSearchText = getInitialConsonant(searchText);
+
+  const filteredUsers = users.filter(user => {
+    const username = user.username.toLowerCase();
+    const name = user.name;
+
+    const initialName = getInitialConsonant(name);
+    const initialUsername = getInitialConsonant(username);
+
+    return (
+      username.includes(searchText) || // 영문 검색
+      name.includes(searchText) ||    // 한글 검색
+      initialName.includes(initialSearchText) ||  // 한글 초성 검색
+      initialUsername.includes(initialSearchText) // 영문 초성 검색
+    );
+  });
+
 
   if (filteredUsers.length === 0) {
     console.log("검색 결과가 없습니다.");
@@ -106,9 +118,13 @@ function filterSearchResults(searchText) {
   });
 }
 
+// 검색 창 지우는 함수
+
 function clearSearchResults() {
   searchListContainer.innerHTML = "";
 }
+
+// 팔로워 n 만명 바꿔주는 함수
 
 function formatFollowers(followers) {
   if (followers >= 10000) {
@@ -117,3 +133,25 @@ function formatFollowers(followers) {
   }
   return `${followers}`;
 }
+
+// 한글 초성 추출 함수
+function getInitialConsonant(text) {
+  const cho = [
+    "ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ", "ㄹ", "ㅁ", "ㅂ", "ㅃ",
+    "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅉ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"
+  ];
+
+  return text
+    .split("")
+    .map(char => {
+      const code = char.charCodeAt(0);
+      if (code >= 44032 && code <= 55203) {
+        const index = Math.floor((code - 44032) / 588);
+        return cho[index]; // 초성 반환
+      }
+      return char; // 한글이 아니면 그대로 반환
+    })
+    .join("");
+}
+
+
