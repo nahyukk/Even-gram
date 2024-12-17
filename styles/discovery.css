@@ -59,11 +59,11 @@ body {
 
 .post_image-multiple {
 	position: absolute;
-	width: 16px;
 	height: auto;
 	top: 8px;
 	right: 8px;
 	z-index: 1;
+	color: var(--always-white);
 }
 
 .post-hover-container {
