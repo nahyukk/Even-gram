@@ -1,3 +1,32 @@
+/* 검색 탭 다크모드 적용 시 변환하는 부분 */
+body.dark-mode .search-title-txt {
+    color: white;
+}
+
+body.dark-mode .search-box-tab {
+    background-color: #363636;
+}
+
+body.dark-mode .search-box-line {
+    border-color: #363636;
+}
+
+body.dark-mode .recent-text {
+    color: white;
+}
+
+body.dark-mode .search-tab-section {
+    border-right: 1px solid #363636;
+}
+
+body.dark-mode .search-list {
+    background-color: #121212;
+}
+
+body.dark-mode .list-id {
+    color: white;
+}
+
 /* 오른쪽 사이드바 다크모드 적용 시 변환하는 부분 */
 body.dark-mode .name-id {
     color: #A8A8A8;

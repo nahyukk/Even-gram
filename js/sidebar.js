@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const hrEle = document.querySelectorAll('#moreMenu hr, #menu-header hr');
         const minisT = document.querySelector('.left-sidebar-min-header');
         const minisB = document.querySelector('.sidebar-min-botttom-contents');
+        const searchbar = document.querySelector('.search-tab-section');
 
         body.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff";   // body 적용 부분
         body.style.color = isDarkMode ? "#ffffff" : "#000000";
@@ -73,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         rightsidebars.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff";
         minisT.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff";  // 최소화면일때 상단 사이드바 부분
         minisB.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff";
+        searchbar.style.backgroundColor = isDarkMode? "#121212" : "#ffffff";
 
 
         // 드롭다운 메뉴들 다크모드 변경
