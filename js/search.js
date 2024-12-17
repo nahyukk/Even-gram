@@ -161,3 +161,26 @@ function removeFromLocalStorage(username) {
   recentSearches = recentSearches.filter((item) => item !== username); // 선택된 username 삭제
   localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
 }
+
+const searchNameContent = document.querySelector(".search-name-content"); // 최근 검색
+const searchBoxLine = document.querySelector(".search-box-line"); // 검색 상자 하단 라인
+
+// 검색 중 또는 검색 전 상태에 따라 요소 숨기기/보이기
+function toggleSearchExtras(isSearching) {
+  const displayValue = isSearching ? "none" : "block";
+  searchNameContent.style.display = displayValue;
+  searchBoxLine.style.display = displayValue;
+}
+
+// 검색 입력 이벤트 리스너
+searchInput.addEventListener("input", () => {
+  const searchText = searchInput.value.trim().toLowerCase();
+
+  if (searchText !== "") {
+    filterSearchResults(searchText);
+    toggleSearchExtras(true); // 검색 중이므로 숨김
+  } else {
+    showRecentSearches();
+    toggleSearchExtras(false); // 검색어가 없으므로 표시
+  }
+});
