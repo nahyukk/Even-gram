@@ -18,7 +18,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	padding: 60px 20px 0 20px;
+	padding: 20px 20px 0 20px;
 	margin: 0 auto;
 }
 
@@ -112,6 +112,6 @@ body {
 	}
 
 	.discovery__tab-container {
-    padding: 80px 0 0 0;
+    padding: 80px 0 10px 0;
 	}
 }
