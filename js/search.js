@@ -23,10 +23,17 @@ searchInput.addEventListener("input", () => {
     const searchText = searchInput.value.trim().toLowerCase();
     if (searchText != "") {
       filterSearchResults(searchText);
+      toggleSearchExtras(true); // 검색 중이므로 숨김
     } else {
-      clearSearchResults();
+      showRecentSearches();
+      toggleSearchExtras(false); // 검색어가 없으므로 표시
     }
   }, 500);
+});
+
+// 페이지 로드 시 최근 검색어 표시
+window.addEventListener("DOMContentLoaded", () => {
+  showRecentSearches();
 });
 
 function filterSearchResults(searchText) {
@@ -66,6 +73,11 @@ function filterSearchResults(searchText) {
     const userElement = document.createElement("div");
     userElement.classList.add("search-list-style");
     userElement.style.display = "flex";
+
+    userElement.addEventListener("click", () => {
+      saveToLocalStorage(user.username);
+      // 검색 중이던 내용은 유지하기 때문에 showRecentSearches() 호출 제거
+    });
 
     const profileBox = document.createElement("div");
     profileBox.classList.add("search-list-box");
@@ -181,4 +193,84 @@ function getInitialConsonant(text) {
       return char; // 한글이 아니면 그대로 반환
     })
     .join("");
+}
+
+// localStorage에 username 저장하는 함수
+function saveToLocalStorage(username) {
+  let recentSearches = JSON.parse(localStorage.getItem("recentSearches")) || [];
+  if (!recentSearches.includes(username)) {
+    recentSearches.unshift(username); // 가장 최근 검색어를 앞에 추가
+    if (recentSearches.length > 10) recentSearches.pop(); // 최대 10개 유지
+  }
+  localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
+}
+
+function showRecentSearches() {
+  clearSearchResults(); // 기존 결과 초기화
+
+  const recentSearches =
+    JSON.parse(localStorage.getItem("recentSearches")) || [];
+
+  const recentUsers = users.filter((user) =>
+    recentSearches.includes(user.username)
+  );
+  recentUsers.forEach((user) => {
+    const userElement = document.createElement("div");
+    userElement.classList.add("search-list-style");
+    userElement.style.display = "flex";
+
+    const profileBox = document.createElement("div");
+    profileBox.classList.add("search-list-box");
+    const profileImg = document.createElement("img");
+    profileImg.classList.add("search-profile");
+    profileImg.src = user.profileImage;
+    profileBox.appendChild(profileImg);
+
+    const textBox = document.createElement("div");
+    textBox.classList.add("search-list-text-box");
+
+    const username = document.createElement("span");
+    username.classList.add("list-id");
+    username.textContent = user.username;
+
+    const name = document.createElement("span");
+    name.classList.add("list-name");
+    name.textContent = user.name;
+
+    textBox.appendChild(username);
+    textBox.appendChild(name);
+
+    const deleteBtn = document.createElement("div");
+    deleteBtn.classList.add("list-delete");
+    deleteBtn.textContent = "X";
+
+    // 삭제 버튼 클릭 이벤트
+    deleteBtn.addEventListener("click", (event) => {
+      event.stopPropagation(); // 부모 요소 클릭 방지
+      removeFromLocalStorage(user.username);
+      showRecentSearches(); // 삭제 후 업데이트된 최근 검색어 표시
+    });
+
+    userElement.appendChild(profileBox);
+    userElement.appendChild(textBox);
+    userElement.appendChild(deleteBtn);
+
+    searchListContainer.appendChild(userElement);
+  });
+}
+
+function removeFromLocalStorage(username) {
+  let recentSearches = JSON.parse(localStorage.getItem("recentSearches")) || [];
+  recentSearches = recentSearches.filter((item) => item !== username); // 선택된 username 삭제
+  localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
+}
+
+const searchNameContent = document.querySelector(".search-name-content"); // 최근 검색
+const searchBoxLine = document.querySelector(".search-box-line"); // 검색 상자 하단 라인
+
+// 검색 중 또는 검색 전 상태에 따라 요소 숨기기/보이기
+function toggleSearchExtras(isSearching) {
+  const displayValue = isSearching ? "none" : "block";
+  searchNameContent.style.display = displayValue;
+  searchBoxLine.style.display = displayValue;
 }

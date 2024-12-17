@@ -1282,39 +1282,9 @@ a:hover {
     .search-tab {
         display: none;
     }
-}
 
-@media (min-width:240px) and (max-width:486px) {
-    .left-container {
-        display: none;
-    }
-
-    .min-logo {
-        display: flex;
-    }
-
-    .min-search-container {
-        display: flex;
-        position: fixed;
-        right: 120px;
-        transform: none;
-        top: 10px;
-        z-index: 1000;
-        padding: 1px;
-    }
-
-    .min-heart {
-        display: none;
-    }
-
-    .left-sidebar-min-botttom {
-        display: flex;
-        position: fixed;
-        z-index: 1000;
-
-    }
-
-    .right-side {
+    /* profile 부분에서 sidebar 상.하단 보이지 않게 하는 부분 */
+    body[data-page="profile"] .left-sidebar-min, .left-sidebar-min-botttom{
         display: none;
     }
 }
