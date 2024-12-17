@@ -434,6 +434,9 @@ body {
 	display: none !important;
 }
 
+#close-btn {
+	display: none !important;
+}
 
 #story-meatball-modal {
 	position: absolute;
@@ -757,6 +760,10 @@ body {
 	#story-next-prev-btns,
 	.meatball-hidden {
 		display: none !important;
+	}
+
+	#close-btn {
+		display: block !important;
 	}
 
 	.story {
