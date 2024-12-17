@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const moreMenu = document.getElementById('moreMenu');
     const modeMenu = document.getElementById('modeMenu');
     const darkModeToggle = document.getElementById('darkModeToggle');
-
+    const searchBtn = document.querySelector('.search');
+    const searchMenu = document.querySelector('.search-tab');
 
     // 더보기 버튼 클릭 시 메뉴 표시/숨김
     toggleButton.addEventListener('click', (event) => {
@@ -23,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', () => {
         moreMenu.classList.add('hidden');
         modeMenu.classList.add('hidden');
+        searchMenu.classList.add('hidden');
     });
 
 
@@ -39,6 +41,12 @@ document.addEventListener('DOMContentLoaded', () => {
         modeMenu.classList.add('hidden');
         moreMenu.classList.remove('hidden');    //더보기 메뉴 다시 표시하는 부분
     });
+
+    // 검색 탭 클릭시 메뉴 표시/숨김
+    searchBtn.addEventListener('click', (event) => {
+        event.stopPropagation();
+        searchMenu.classList.toggle('hidden');
+     });
 
     // 다크 모드 변환시
     darkModeToggle.addEventListener('click', (event) => {

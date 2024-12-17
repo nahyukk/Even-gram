@@ -37,7 +37,7 @@
 									<span>홈</span>
 								</a>
 							</li>
-							<li class="middle-item">
+							<li class="middle-item search" id="search-btn">
 								<img class="search-icon" src="../assets/icons/search.png"/>
 								<span>검색</span>
 							</li>
@@ -228,14 +228,66 @@
 			</div>
 		</div>
 	</nav>
+
 	<!-- 검색 ui 사이드바 부분 -->
-	<div class="search-tab">
-		<div class="search-tab-sectiion">
-			<div>
+	<div class="search-tab hidden">
+		<div class="search-tab-section">
+			<div class="search-container">
+        <div class="search-title">
+          <div>
+            <span class="search-title-txt">검색</span>
+          </div>
+        </div>
+
+        <div class="search-bottom">
+          <div class="search-bottom-section">
+            <div class="search-bottom-container">
+              <div class="search-box-container">
+                  <div class="search-box-section">
+                    <input aria-label="입력 검색" class="search-box-tab" placeholder="검색" type="text"/>
+                    <div class="search-box-small-section">
+                      <div class="search-box-vsmall-section">
+                        <div class="search-box-icon">
+                          <img aria-label="검색" src="/assets/icons/search.png" class="search-tab-icon"/>
+                        </div>
+                        <span class="search-box-title">검색</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <hr class="search-box-line">
+                <div class="search-name-content">
+                  <span class="recent-text">최근 검색 항목</span>
+                  <span class="delete-text">모두 지우기</span>
+                </div>
+                <div class="search-list">
+                  <div class="search-list-container">
+                    <div class="search-list-style">
+                      <div class="search-list-box">
+                        <img src="./assets/images/img5.jpg" class="search-profile"/>
+                      </div>
+                      <div class="search-list-text-box">
+                        <span class="list-id">rudolph</span>
+                        <span class="list-name">루돌프</span>
+                      </div>
+                      <div class="list-delete">X</div>
+                    </div>
+                  </div>
+                </div>
+
+              
+              </div>
+            </div>
+          </div>
+        </div>
 
 			</div>
 		</div>
 	</div>
+
+
   <main>
     <div class="main-warpper">
       <div class="main-container">
