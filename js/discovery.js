@@ -6,6 +6,14 @@ document.addEventListener("DOMContentLoaded", () => {
 	createScrollOberver();
 });
 
+if ("scrollRestoration" in history) {
+	history.scrollRestoration = "manual";
+}
+
+window.addEventListener("load", () => {
+	window.scrollTo(0, 0);
+});
+
 // 무한스크롤 생성 옵저버
 function createScrollOberver() {
 	let options = {
@@ -18,7 +26,7 @@ function createScrollOberver() {
 	observer.observe(target);
 }
 
-// 해당 지점 도달시 
+// 해당 지점 도달시
 const callback = (entries, observer) => {
 	entries.forEach((entry) => {
 		if (entry.isIntersecting) {
@@ -26,7 +34,7 @@ const callback = (entries, observer) => {
 			renderPosts(randomImage);
 		}
 	});
-  observer.observe(document.querySelector("#footer-container"));
+	observer.observe(document.querySelector("#footer-container"));
 };
 
 function renderHTML(id, html) {
