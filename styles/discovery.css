@@ -1,0 +1,72 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: var(--base-background-color);
+	display: flex;
+}
+
+#right-side-bar {
+	width: 250px;
+	z-index: 100;
+}
+
+.discovery__tab-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 60px 20px 0 20px;
+	margin: 0 auto;
+}
+
+/* 이미지 그리드 */
+.discovery__post-container {
+	padding: 0 4px;
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	row-gap: 4px;
+	column-gap: 5px;
+}
+
+.discovery__post_item-container {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	overflow: hidden;
+}
+
+.discovery__post_image {
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	object-fit: cover;
+	cursor: pointer;
+	z-index: 0;
+}
+
+.discovery__post_image-multiple {
+	position: absolute;
+	width: 16px;
+	height: auto;
+	top: 8px;
+	right: 8px;
+	z-index: 1;
+}
+
+@media (min-width: 767px) and (max-width: 1262px) {
+	#right-side-bar {
+		width: 70px;
+	}
+}
+
+@media (max-width: 765px) {
+	#right-side-bar {
+		width: 0;
+	}
+	.discovery__tab-container {
+		padding-top: 80px;
+	}
+}
