@@ -3,7 +3,31 @@ document.addEventListener("DOMContentLoaded", () => {
 	renderHTML("footer-container", "./components/footer.html");
 	const randomImage = generateRandomImageData(16);
 	renderPosts(randomImage);
+	createScrollOberver();
 });
+
+// 무한스크롤 생성 옵저버
+function createScrollOberver() {
+	let options = {
+		root: null,
+		threshold: 0.8,
+	};
+
+	const observer = new IntersectionObserver(callback, options);
+	const target = document.querySelector(".discovery__post-container");
+	observer.observe(target);
+}
+
+// 해당 지점 도달시 
+const callback = (entries, observer) => {
+	entries.forEach((entry) => {
+		if (entry.isIntersecting) {
+			const randomImage = generateRandomImageData(15);
+			renderPosts(randomImage);
+		}
+	});
+  observer.observe(document.querySelector("#footer-container"));
+};
 
 function renderHTML(id, html) {
 	const sidebarContainer = document.getElementById(id);
