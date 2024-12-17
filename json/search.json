@@ -3,122 +3,128 @@
     {
       "username": "rudolph",
       "name": "루돌프",
-      "profileImage": "https://www.urbanbrush.net/web/wp-content/uploads/edd/2023/12/urban-20231208093930274585.jpg"
+      "profileImage": "https://www.urbanbrush.net/web/wp-content/uploads/edd/2023/12/urban-20231208093930274585.jpg",
+      "verified": "true",
+      "followers": 26034
     },
     {
       "username": "santa",
       "name": "산타",
-      "profileImage": "../assets/images/img5.jpg"
+      "profileImage": "../assets/images/img5.jpg",
+      "followers": 103200,
+      "verified": "true"
     },
     {
       "username": "santti",
       "name": "산티",
-      "profileImage": "https://img.freepik.com/premium-vector/vector-set-cute-santa-claus-character-illustration_87661-411.jpg"
+      "profileImage": "https://img.freepik.com/premium-vector/vector-set-cute-santa-claus-character-illustration_87661-411.jpg",
+      "followers": 9,
+      "follower": "frosty"
     },
     {
       "username": "elf",
       "name": "엘프",
-      "profileImage": "https://i.namu.wiki/i/wV9elx7QYZWDzk_dwU4-5IYDB-YGcKHsnrtqvnh_EYeY6GilI-M4RYfp6R6K-xcTtrORBcB0mpkZXCIxj_xTXA.webp"
+      "profileImage": "https://i.namu.wiki/i/wV9elx7QYZWDzk_dwU4-5IYDB-YGcKHsnrtqvnh_EYeY6GilI-M4RYfp6R6K-xcTtrORBcB0mpkZXCIxj_xTXA.webp",
+      "followers": 2,
+      "follower": "snowqueen"
     },
     {
       "username": "snowqueen",
       "name": "눈의 여왕",
-      "profileImage": "https://wimg.heraldcorp.com/content/default/2016/05/04/20160504001412_0.jpg"
+      "profileImage": "https://wimg.heraldcorp.com/content/default/2016/05/04/20160504001412_0.jpg",
+      "verified": "true",
+      "followers": 524002
     },
     {
       "username": "frosty",
       "name": "프로스티",
-      "profileImage": "https://i.namu.wiki/i/dCwBmzixjUNDxv3zUIfjvO4v4gAa8V2FW4QJPs1qJ4a6K5VeW-K9c6ZuJNBkfyN23WbItGgP5Wd5l1EAK4Fbwg.webp"
+      "profileImage": "https://i.namu.wiki/i/dCwBmzixjUNDxv3zUIfjvO4v4gAa8V2FW4QJPs1qJ4a6K5VeW-K9c6ZuJNBkfyN23WbItGgP5Wd5l1EAK4Fbwg.webp",
+      "followers": 17,
+      "follower": "toy_soldier"
     },
     {
       "username": "ginger",
       "name": "진저",
-      "profileImage": "https://m.dbstory.co.kr/web/product/big/202201/2fef14c2cc1823a6e1f537e53c38baea.jpg"
+      "profileImage": "https://m.dbstory.co.kr/web/product/big/202201/2fef14c2cc1823a6e1f537e53c38baea.jpg",
+      "followers": 9,
+      "follower": "snowqueen"
     },
     {
       "username": "toy_soldier",
       "name": "장난감 병정",
-      "profileImage": "https://cdn.kidshankook.kr/news/photo/202211/5385_15318_4221.jpg"
+      "profileImage": "https://cdn.kidshankook.kr/news/photo/202211/5385_15318_4221.jpg",
+      "followers": 2,
+      "follower": "frosty"
     },
     {
       "username": "starry",
       "name": "스타리",
-      "profileImage": "https://images.stockcake.com/public/7/7/8/778f8834-850b-4451-847a-100944e18f81_large/starry-night-sky-stockcake.jpg"
+      "profileImage": "https://images.stockcake.com/public/7/7/8/778f8834-850b-4451-847a-100944e18f81_large/starry-night-sky-stockcake.jpg",
+      "followers": 1,
+      "follower": "ginger"
     },
     {
       "username": "holly",
       "name": "홀리",
-      "profileImage": "https://gardenerspath.com/wp-content/uploads/2022/03/How-to-Grow-English-Holly-Feature.jpg"
+      "profileImage": "https://gardenerspath.com/wp-content/uploads/2022/03/How-to-Grow-English-Holly-Feature.jpg",
+      "followers": 18,
+      "follower": "rudolph"
     },
     {
       "username": "noel",
       "name": "노엘",
-      "profileImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQq76ObW9NJKAcTDqH1OtIr8-jU7ZtcRk22Tw&s"
+      "profileImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQq76ObW9NJKAcTDqH1OtIr8-jU7ZtcRk22Tw&s",
+      "followers": 17,
+      "follower": "starry"
     },
     {
       "username": "caroler",
       "name": "캐롤러",
-      "profileImage": "https://m.media-amazon.com/images/S/aplus-media/vc/23d6b6e1-6d38-422f-b143-dfffb03158a3.__CR0,13,970,600_PT0_SX970_V1___.png"
+      "profileImage": "https://m.media-amazon.com/images/S/aplus-media/vc/23d6b6e1-6d38-422f-b143-dfffb03158a3.__CR0,13,970,600_PT0_SX970_V1___.png",
+      "followers": 9,
+      "follower": "ginger"
     },
-		{
+    {
       "username": "hollee",
       "name": "홀리이",
-      "profileImage": "https://image.fnnews.com/resource/media/image/2023/12/24/202312241438503944_l.jpg"
+      "profileImage": "https://image.fnnews.com/resource/media/image/2023/12/24/202312241438503944_l.jpg",
+      "followers": 6,
+      "follower": "santtidefwefewfefewf"
     },
     {
       "username": "noellie",
       "name": "노엘리",
-      "profileImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbsz5TB2zFaddh19ssNgiuW27_39WyovgmQg&s"
+      "profileImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbsz5TB2zFaddh19ssNgiuW27_39WyovgmQg&s",
+      "followers": 3,
+      "follower": "elf"
     },
     {
       "username": "caroll",
       "name": "캐롤리",
-      "profileImage": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/guest/image/eyY1mbshVoaMG-jN3H3TrqivmLc.JPG"
+      "profileImage": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/guest/image/eyY1mbshVoaMG-jN3H3TrqivmLc.JPG",
+      "followers": 14,
+      "follower": "frosty"
     },
     {
       "username": "noellee",
       "name": "노엘리이",
-      "profileImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_rt0fCAZbvq4NEYkqAUkwPoKH2IMaY7IWHQ&s"
+      "profileImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_rt0fCAZbvq4NEYkqAUkwPoKH2IMaY7IWHQ&s",
+      "followers": 13,
+      "follower": "rudolph"
     },
     {
       "username": "hollie",
       "name": "홀라이",
-      "profileImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLzaxtHlYwf9oh_fXHaOc5h_br3KX5Zeo2dw&s"
+      "profileImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLzaxtHlYwf9oh_fXHaOc5h_br3KX5Zeo2dw&s",
+      "followers": 12,
+      "follower": "starry"
     },
     {
       "username": "carollie",
       "name": "캐롤라이",
-      "profileImage": "https://www.sk5.co.kr/img_src/s600/b261//b2610009.jpg"
-    },
-		{
-      "username": "nollie",
-      "name": "놀라이",
-      "profileImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzWBPSisjkFpyRVzcuU6hyhGv8zLGKhWUX9A&s"
-    },
-    {
-      "username": "holloe",
-      "name": "홀로이",
-      "profileImage": "https://i.pinimg.com/474x/24/79/78/2479783256baf992ea821a178915ac16.jpg"
-    },
-    {
-      "username": "carolly",
-      "name": "캐롤리",
-      "profileImage": "https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41558-018-0332-5/MediaObjects/41558_2018_332_Figa_HTML.png"
-    },
-    {
-      "username": "noelor",
-      "name": "노엘러",
-      "profileImage": "https://i2-prod.walesonline.co.uk/incoming/article6121740.ece/ALTERNATES/s1227b/Emma-Watson.jpg"
-    },
-    {
-      "username": "hollor",
-      "name": "홀로르",
-      "profileImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeBZ_KU9I8B221wmKWVq2er9GW4CmLlsXAlw&s"
-    },
-    {
-      "username": "carolley",
-      "name": "캐롤레이",
-      "profileImage": "https://images.herzindagi.info/image/2023/Dec/history-of-christmas.jpg"
+      "profileImage": "https://www.sk5.co.kr/img_src/s600/b261//b2610009.jpg",
+      "followers": 2,
+      "follower": "caroler"
     }
   ]
 }
