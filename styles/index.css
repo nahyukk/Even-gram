@@ -547,6 +547,13 @@ body.dark-mode .main-profile-more-icon:active {
     cursor: pointer;
 }
 
+body.dark-mode .story-item p {
+    margin: 5px 0 0;
+    color: #f5f5f5;
+    font-size: 12px;
+    text-align: center;
+}
+
 /* 스토리 부분 */
 .main-story {
     margin-bottom: 24px;
