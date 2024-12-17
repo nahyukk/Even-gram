@@ -830,7 +830,7 @@ a:hover {
     position: absolute;
     left: 73px;
     transform: translateX(0%);
-    
+
 }
 
 .search-tab-section {
@@ -895,11 +895,11 @@ a:hover {
     width: 396px;
 }
 
-.search-bottom-container{
+.search-bottom-container {
     display: flex;
     align-items: center;
     flex-direction: column;
-		position: relative;
+    position: relative;
 }
 
 
@@ -964,6 +964,7 @@ a:hover {
 .search-box-section input::-webkit-input-placeholder {
     color: transparent;
 }
+
 .search-box-section input:focus::-webkit-input-placeholder {
     color: #888;
 }
@@ -1008,7 +1009,7 @@ a:hover {
     margin-bottom: 20px;
 }
 
-.search-box-tab:focus + .search-box-small-section {
+.search-box-tab:focus+.search-box-small-section {
     background-color: transparent;
 }
 
@@ -1054,8 +1055,8 @@ a:hover {
 
 .search-name-content {
     display: flex;
-   justify-content: space-between;
-   padding: 15px;
+    justify-content: space-between;
+    padding: 15px;
 }
 
 .recent-text {
@@ -1073,12 +1074,13 @@ a:hover {
 }
 
 .no-results {
-	margin-top: 70%; /* 부모 요소의 절반 높이만큼 아래로 이동 */
-  transform: translateY(-50%);
-	font-size: 14px;
-	color: var(--secondary-text-color);
-	text-align: center;
-	white-space: nowrap;
+    margin-top: 70%;
+    /* 부모 요소의 절반 높이만큼 아래로 이동 */
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: var(--secondary-text-color);
+    text-align: center;
+    white-space: nowrap;
 }
 
 .search-list {
@@ -1124,9 +1126,9 @@ a:hover {
 }
 
 .search-list-text-box-username {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .list-id {
@@ -1138,38 +1140,39 @@ a:hover {
 }
 
 .verified-img {
-	margin-top: 2px;
+    margin-top: 2px;
 }
 
 .search-list-followers-box {
-		max-width: 108%;
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		text-align: center;
-		padding: 2px 10px;
-		font-size: 14px;
+    max-width: 108%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    padding: 2px 10px;
+    font-size: 14px;
     font-weight: 400;
     color: #737373;
 }
 
 .dot {
-		font-size: 18px;
-		font-weight: 600;
-		padding: 0 3px;
-		line-height: 1;
-		vertical-align: middle;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 0 3px;
+    line-height: 1;
+    vertical-align: middle;
 }
+
 .list-name {
-	white-space: nowrap;
-  overflow: visible;
+    white-space: nowrap;
+    overflow: visible;
 }
 
 .list-followers {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	flex-shrink: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-shrink: 1;
 }
 
 .list-delete {
@@ -1275,7 +1278,7 @@ a:hover {
     .right-side {
         display: none;
     }
-    
+
     .search-tab {
         display: none;
     }

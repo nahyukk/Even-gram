@@ -17,17 +17,16 @@ async function loadUsers() {
 }
 
 searchInput.addEventListener("input", () => {
-	clearTimeout(debounceTimer);
+  clearTimeout(debounceTimer);
 
-	debounceTimer = setTimeout(() => {
-		const searchText = searchInput.value.trim().toLowerCase();
-		if (searchText != "") {
-			filterSearchResults(searchText);
-		} else {
-			clearSearchResults();
-		}
-	}, 500);
-  
+  debounceTimer = setTimeout(() => {
+    const searchText = searchInput.value.trim().toLowerCase();
+    if (searchText != "") {
+      filterSearchResults(searchText);
+    } else {
+      clearSearchResults();
+    }
+  }, 500);
 });
 
 function filterSearchResults(searchText) {
