@@ -20,3 +20,25 @@ function renderHTML(id, html) {
 			console.error("Error loading sidebar:", error);
 		});
 }
+
+// 랜덤이미지, 숫자 만들어주는 배열
+function generateRandomImageData(count) {
+	const imageDataArray = [];
+
+	for (let i = 0; i < count; i++) {
+		const randomNumber = Math.floor(Math.random() * 1000);
+		const isMultiple = Math.random() < 0.5;
+		imageDataArray.push({
+			imageUrl: getRandomImageURL(),
+			isMultiple: isMultiple,
+			comments: randomNumber,
+		});
+	}
+	return imageDataArray;
+}
+
+function getRandomImageURL() {
+	const randomId = Math.floor(Math.random() * 1000); // 0~999의 랜덤 ID
+	return `https://picsum.photos/id/${randomId}/300/300`;
+}
+
