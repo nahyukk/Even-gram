@@ -62,8 +62,12 @@ function generateRandomImageData(count) {
 	for (let i = 0; i < count; i++) {
 		const randomNumber = Math.floor(Math.random() * 1000);
 		const isMultiple = Math.random() < 0.5;
+		const imageUrl =
+			(i + 1) % 10 === 3 || (i + 1) % 10 === 6
+				? getRandomImageURL(600)
+				: getRandomImageURL(300);
 		imageDataArray.push({
-			imageUrl: getRandomImageURL(),
+			imageUrl: imageUrl,
 			isMultiple: isMultiple,
 			comments: randomNumber,
 		});
@@ -71,9 +75,9 @@ function generateRandomImageData(count) {
 	return imageDataArray;
 }
 
-function getRandomImageURL() {
+function getRandomImageURL(height) {
 	const randomId = Math.floor(Math.random() * 1000); // 0~999의 랜덤 ID
-	return `https://picsum.photos/id/${randomId}/300/300`;
+	return `https://picsum.photos/id/${randomId}/300/${height}`;
 }
 
 // 전체 포스트 랜더링
