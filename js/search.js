@@ -54,24 +54,53 @@ function filterSearchResults(searchText) {
     const textBox = document.createElement("div");
     textBox.classList.add("search-list-text-box");
 
+    const usernameBox = document.createElement("div");
+    usernameBox.classList.add("search-list-text-box-username");
+
     const username = document.createElement("span");
     username.classList.add("list-id");
     username.textContent = user.username;
+
+    const verified = document.createElement("div");
+    if (user.verified) {
+      verified.classList.add("verified-img");
+      verified.innerHTML = `<svg aria-label="인증됨" class="x1lliihq x1n2onr6" fill="rgb(0, 149, 246)" height="12" role="img" viewBox="0 0 40 40" width="12"><title>인증됨</title><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z" fill-rule="evenodd"></path></svg>`;
+    }
+
+    const followersBox = document.createElement("div");
+    followersBox.classList.add("search-list-followers-box");
 
     const name = document.createElement("span");
     name.classList.add("list-name");
     name.textContent = user.name;
 
-    textBox.appendChild(username);
-    textBox.appendChild(name);
+    const dot = document.createElement("span");
+    dot.classList.add("dot");
+    dot.textContent = " · ";
 
-    const deleteBtn = document.createElement("div");
-    deleteBtn.classList.add("list-delete");
-    deleteBtn.textContent = "X";
+    const followers = document.createElement("span");
+    followers.classList.add("list-followers");
+
+    if (user.verified) {
+      followers.textContent = `팔로워 ${formatFollowers(user.followers)}명`;
+    } else {
+      followers.textContent = `${user.follower}님 외 ${formatFollowers(
+        user.followers
+      )}명이 팔로우합니다.`;
+    }
+
+    usernameBox.appendChild(username);
+    usernameBox.appendChild(verified);
+
+    followersBox.appendChild(name);
+    followersBox.appendChild(dot);
+    followersBox.appendChild(followers);
+
+    textBox.appendChild(usernameBox);
+    textBox.appendChild(followersBox);
 
     userElement.appendChild(profileBox);
     userElement.appendChild(textBox);
-    userElement.appendChild(deleteBtn);
 
     searchListContainer.appendChild(userElement);
   });
@@ -79,4 +108,12 @@ function filterSearchResults(searchText) {
 
 function clearSearchResults() {
   searchListContainer.innerHTML = "";
+}
+
+function formatFollowers(followers) {
+  if (followers >= 10000) {
+    const formatted = (followers / 10000).toFixed(1);
+    return `${formatted}만`;
+  }
+  return `${followers}`;
 }
