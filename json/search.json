@@ -1,0 +1,139 @@
+{
+  "users": [
+    {
+      "username": "rudolph",
+      "name": "루돌프",
+      "profileImage": "./assets/images/1_hwiwoo.jpg"
+    },
+    {
+      "username": "santa",
+      "name": "산타",
+      "profileImage": "./assets/images/img5.jpg"
+    },
+    {
+      "username": "santti",
+      "name": "산티",
+      "profileImage": "./assets/images/img3.jpg"
+    },
+    {
+      "username": "elf",
+      "name": "엘프",
+      "profileImage": "./assets/images/3_aeoni.jpg"
+    },
+    {
+      "username": "snowqueen",
+      "name": "눈의 여왕",
+      "profileImage": "./assets/images/img6.jpg"
+    },
+    {
+      "username": "frosty",
+      "name": "프로스티",
+      "profileImage": "./assets/images/img7.jpg"
+    },
+    {
+      "username": "ginger",
+      "name": "진저",
+      "profileImage": "./assets/images/img8.jpg"
+    },
+    {
+      "username": "toy_soldier",
+      "name": "장난감 병정",
+      "profileImage": "./assets/images/img9.jpg"
+    },
+    {
+      "username": "starry",
+      "name": "스타리",
+      "profileImage": "./assets/images/img10.jpg"
+    },
+    {
+      "username": "tinsel",
+      "name": "틴셀",
+      "profileImage": "./assets/images/img11.jpg"
+    },
+    {
+      "username": "krampus",
+      "name": "크람푸스",
+      "profileImage": "./assets/images/img12.jpg"
+    },
+    {
+      "username": "mistletoe",
+      "name": "미슬토우",
+      "profileImage": "./assets/images/img13.jpg"
+    },
+    {
+      "username": "holly",
+      "name": "홀리",
+      "profileImage": "./assets/images/img14.jpg"
+    },
+    {
+      "username": "noel",
+      "name": "노엘",
+      "profileImage": "./assets/images/img15.jpg"
+    },
+    {
+      "username": "caroler",
+      "name": "캐롤러",
+      "profileImage": "./assets/images/img16.jpg"
+    },
+		{
+      "username": "hollee",
+      "name": "홀리이",
+      "profileImage": "./assets/images/img17.jpg"
+    },
+    {
+      "username": "noellie",
+      "name": "노엘리",
+      "profileImage": "./assets/images/img18.jpg"
+    },
+    {
+      "username": "caroll",
+      "name": "캐롤리",
+      "profileImage": "./assets/images/img19.jpg"
+    },
+    {
+      "username": "noellee",
+      "name": "노엘리이",
+      "profileImage": "./assets/images/img20.jpg"
+    },
+    {
+      "username": "hollie",
+      "name": "홀라이",
+      "profileImage": "./assets/images/img21.jpg"
+    },
+    {
+      "username": "carollie",
+      "name": "캐롤라이",
+      "profileImage": "./assets/images/img22.jpg"
+    },
+		{
+      "username": "nollie",
+      "name": "놀라이",
+      "profileImage": "./assets/images/img23.jpg"
+    },
+    {
+      "username": "holloe",
+      "name": "홀로이",
+      "profileImage": "./assets/images/img24.jpg"
+    },
+    {
+      "username": "carolly",
+      "name": "캐롤리",
+      "profileImage": "./assets/images/img25.jpg"
+    },
+    {
+      "username": "noelor",
+      "name": "노엘러",
+      "profileImage": "./assets/images/img26.jpg"
+    },
+    {
+      "username": "hollor",
+      "name": "홀로르",
+      "profileImage": "./assets/images/img27.jpg"
+    },
+    {
+      "username": "carolley",
+      "name": "캐롤레이",
+      "profileImage": "./assets/images/img28.jpg"
+    }
+  ]
+}

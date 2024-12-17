@@ -1,6 +1,20 @@
 const searchInput = document.querySelector(".search-box-tab");
 const searchListContainer = document.querySelector(".search-list-container");
 
+let users = [];
+
+loadUsers();
+
+async function loadUsers() {
+  try {
+    const response = await fetch("../json/search.json");
+    const data = await response.json();
+    users = data.users;
+  } catch (error) {
+    console.log("json 데이터 못불렀다.");
+  }
+}
+
 searchInput.addEventListener("input", () => {
   const searchText = searchInput.value.trim().toLowerCase();
   if (searchText != "") {
@@ -9,22 +23,6 @@ searchInput.addEventListener("input", () => {
     clearSearchResults();
   }
 });
-
-// 더미 데이터
-const users = [
-  {
-    username: "rudolph",
-    name: "루돌프",
-    profileImage: "./assets/images/1_hwiwoo.jpg",
-  },
-  { username: "santa", name: "산타", profileImage: "./assets/images/img5.jpg" },
-	{ username: "santti", name: "산티", profileImage: "./assets/images/img3.jpg" },
-  {
-    username: "elf",
-    name: "엘프",
-    profileImage: "./assets/images/3_aeoni.jpg",
-  },
-];
 
 function filterSearchResults(searchText) {
   clearSearchResults();
