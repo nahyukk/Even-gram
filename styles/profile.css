@@ -221,10 +221,10 @@ body {
 
 .profile__post_image-multiple {
 	position: absolute;
-	width: 16px;
 	height: auto;
 	top: 8px;
 	right: 8px;
+	color: var(--always-white);
 	z-index: 1;
 }
 

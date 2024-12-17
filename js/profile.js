@@ -202,12 +202,29 @@ function createPostElement(post, imageUrl, type) {
 }
 
 function createMultipleImageIcon() {
-	const multipleIcon = document.createElement("img");
-	multipleIcon.className = "profile__post_image-multiple";
-	multipleIcon.src = "./assets/icons/profile_post_multiple.png";
-	multipleIcon.alt = "post_image_multiple";
+	// 컨테이너 선택
+	const container = document.createElement("div");
+	container.className = "profile__post_image-multiple";
 
-	return multipleIcon;
+	// SVG 요소 생성
+	const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+	svg.setAttribute("fill", "currentColor");
+	svg.setAttribute("height", "20");
+	svg.setAttribute("width", "20");
+	svg.setAttribute("role", "img");
+	svg.setAttribute("viewBox", "0 0 48 48");
+
+	// Path 요소 추가
+	const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+	path.setAttribute(
+		"d",
+		"M34.8 29.7V11c0-2.9-2.3-5.2-5.2-5.2H11c-2.9 0-5.2 2.3-5.2 5.2v18.7c0 2.9 2.3 5.2 5.2 5.2h18.7c2.8-.1 5.1-2.4 5.1-5.2zM39.2 15v16.1c0 4.5-3.7 8.2-8.2 8.2H14.9c-.6 0-.9.7-.5 1.1 1 1.1 2.4 1.8 4.1 1.8h13.4c5.7 0 10.3-4.6 10.3-10.3V18.5c0-1.6-.7-3.1-1.8-4.1-.5-.4-1.2 0-1.2.6z"
+	);
+	svg.appendChild(path);
+
+	// 컨테이너에 추가
+	container.appendChild(svg);
+	return container;
 }
 
 function createHoverContainer(post) {
