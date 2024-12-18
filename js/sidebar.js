@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     modeMenu.addEventListener('click', (event) => {
         event.stopPropagation();
-        modeMenu.classList.toggle('hidden');   // 모드 전환 메���가 나타나는 부분
+        modeMenu.classList.toggle('hidden');
     });
 
     searchMenu.addEventListener('click', (event) => {
@@ -41,6 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
         event.stopPropagation();
         modeMenu.classList.remove('hidden');   // 모드전환 메뉴가 나타나는 부분
         moreMenu.classList.add('hidden');   // 더보기 메뉴 숨기는 부분
+        searchMenu.classList.remove('show');
+        leftcontainer.classList.remove('small');
     });
 
     // 뒤로 가기 버튼 클릭시 메뉴 닫기
@@ -55,12 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
         event.stopPropagation();
         searchMenu.classList.toggle('show');
         leftcontainer.classList.toggle('small');
+        modeMenu.classList.add('hidden');
      });
 
     // 다크 모드 변환시
     darkModeToggle.addEventListener('click', (event) => {
         event.stopPropagation();
         modeMenu.classList.remove('hidden');
+        searchMenu.classList.remove('show');
+        leftcontainer.classList.remove('small');
     });
 
     // 다크 모드 변환 시 바뀌는 부분
