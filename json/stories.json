@@ -3,7 +3,7 @@
     {
       "userId": 1,
       "username": "john_doe",
-      "profileImage": "assets/images/story_profile_john.webp",
+      "profileImage": "../assets/images/story_profile_john.webp",
       "stories": [
         {
           "storyId": 101,
@@ -28,7 +28,7 @@
     {
       "userId": 2,
       "username": "jane_smith",
-      "profileImage": "assets/images/story_profile_jane.webp",
+      "profileImage": "../assets/images/story_profile_jane.webp",
       "stories": [
         {
           "storyId": 201,
