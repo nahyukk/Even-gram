@@ -10,8 +10,6 @@ window.addEventListener("resize", () => {
 });
 
 function renderHTML(id, html) {
-	const sidebarContainer = document.getElementById(id);
-
 	fetch(html)
 		.then((response) => {
 			if (!response.ok) {
@@ -20,7 +18,13 @@ function renderHTML(id, html) {
 			return response.text();
 		})
 		.then((html) => {
-			sidebarContainer.innerHTML = html;
+			const container = document.getElementById(id);
+			console.log(id);
+			container.innerHTML = html;
+
+			if (id === "right-side-bar") {
+				window.loadButtonActions();
+			}
 		})
 		.catch((error) => {
 			console.error("Error loading sidebar:", error);
