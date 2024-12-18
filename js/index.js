@@ -4,30 +4,35 @@ document.addEventListener("DOMContentLoaded", () => {
   initializeFeed(); // 피드 초기화 및 무한 스크롤 설정
   initializeCommentInput(); // 댓글 입력 로직 초기화
   initializeLikeAndBookmark(); // 좋아요 및 북마크 기능 초기화
-  initializeStories(); // 스토리 데이터 초기화
 });
 
+document.addEventListener("DOMContentLoaded", async () => {
+  await loadStories(); // 스토리 로딩 후 버튼 업데이트
+  currentIndex = localStorage.getItem("currentStoryIndex")
+    ? parseInt(localStorage.getItem("currentStoryIndex"))
+    : 0;
+  updateStoryButtons();
+});
 
 // JSON 파일 불러오기 (연동)
 function fetchJSON(url, onSuccess) {
   fetch(url)
-      .then((response) => {
-          if (!response.ok) throw new Error(`Failed to load ${url}`);
-          return response.json();
-      })
-      .then(onSuccess)
-      .catch((error) => console.error(`Error loading JSON from ${url}:`, error));
+    .then((response) => {
+      if (!response.ok) throw new Error(`Failed to load ${url}`);
+      return response.json();
+    })
+    .then(onSuccess)
+    .catch((error) => console.error(`Error loading JSON from ${url}:`, error));
 }
 
 // 사이드 바 불러오기 코드
 function initializeSidebar() {
   const sidebarContainer = document.getElementById("right-side-bar");
   fetch("./components/sidebar.html")
-      .then((response) => response.text())
-      .then((html) => (sidebarContainer.innerHTML = html))
-      .catch((error) => console.error("Error loading sidebar.html:", error));
+    .then((response) => response.text())
+    .then((html) => (sidebarContainer.innerHTML = html))
+    .catch((error) => console.error("Error loading sidebar.html:", error));
 }
-
 
 // ---------- 슬라이더 관련 ----------
 
@@ -41,62 +46,64 @@ function initializeCarousel(carousel) {
 
   pagination.innerHTML = ""; // 기존 점 제거
   slides.forEach((_, index) => {
-      const bullet = document.createElement("div");
-      bullet.classList.add("carousel_circle");
-      bullet.setAttribute("data-index", index);
-      pagination.appendChild(bullet);
+    const bullet = document.createElement("div");
+    bullet.classList.add("carousel_circle");
+    bullet.setAttribute("data-index", index);
+    pagination.appendChild(bullet);
   });
 
   const bullets = pagination.querySelectorAll(".carousel_circle");
   let currentSlide = 0;
 
   function updateButtonVisibility() {
-      prevButton.classList.toggle("carousel_button_disabled", currentSlide === 0);
-      nextButton.classList.toggle("carousel_button_disabled", currentSlide === slides.length - 1);
+    prevButton.classList.toggle("carousel_button_disabled", currentSlide === 0);
+    nextButton.classList.toggle(
+      "carousel_button_disabled",
+      currentSlide === slides.length - 1
+    );
   }
 
   function showSlide(index) {
-      currentSlide = index;
-      wrapper.style.transform = `translateX(-${index * 100}%)`;
-      bullets.forEach((bullet, idx) => bullet.classList.toggle("active", idx === index));
-      updateButtonVisibility();
+    currentSlide = index;
+    wrapper.style.transform = `translateX(-${index * 100}%)`;
+    bullets.forEach((bullet, idx) =>
+      bullet.classList.toggle("active", idx === index)
+    );
+    updateButtonVisibility();
   }
 
   if (prevButton && nextButton) {
-      prevButton.addEventListener("click", () => {
-          if (currentSlide > 0) showSlide(currentSlide - 1);
-      });
-      nextButton.addEventListener("click", () => {
-          if (currentSlide < slides.length - 1) showSlide(currentSlide + 1);
-      });
+    prevButton.addEventListener("click", () => {
+      if (currentSlide > 0) showSlide(currentSlide - 1);
+    });
+    nextButton.addEventListener("click", () => {
+      if (currentSlide < slides.length - 1) showSlide(currentSlide + 1);
+    });
   }
 
   bullets.forEach((bullet, index) => {
-      bullet.addEventListener("click", () => showSlide(index));
+    bullet.addEventListener("click", () => showSlide(index));
   });
 
   showSlide(0);
   updateButtonVisibility();
 }
 
-
 // ---------- 피드 등장 관련 ----------
 
 let shuffledFeeds = [];
 let currentFeedIndex = 0;
 
-
 // JSON 데이터를 가져오고 배열을 섞는 작업
 function initializeFeed() {
   fetchJSON("./json/feed.json", (data) => {
-      shuffledFeeds = shuffle([...data.feeds]);
-      currentFeedIndex = 0;
+    shuffledFeeds = shuffle([...data.feeds]);
+    currentFeedIndex = 0;
 
-      renderAndInitializeFirstFeed(); // 첫번째 피드 렌더링 및 슬라이더 초기화
-      setupInfiniteScroll(); // 무한 스크롤 설정
+    renderAndInitializeFirstFeed(); // 첫번째 피드 렌더링 및 슬라이더 초기화
+    setupInfiniteScroll(); // 무한 스크롤 설정
   });
 }
-
 
 // 첫 번째 피드 렌더링하고 슬라이더 초기화
 function renderAndInitializeFirstFeed() {
@@ -105,48 +112,49 @@ function renderAndInitializeFirstFeed() {
   renderFeed(feedToRender);
   currentFeedIndex++;
 
-  const firstCarousel = mainContentsList.lastElementChild.querySelector(".carousel_main");
+  const firstCarousel =
+    mainContentsList.lastElementChild.querySelector(".carousel_main");
   if (firstCarousel) initializeCarousel(firstCarousel);
 }
-
 
 // 무한 스크롤 설정
 function setupInfiniteScroll() {
   window.addEventListener("scroll", () => {
-      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
-          loadMoreFeeds(); // 추가 피드 로드 및 렌더링
-      }
+    if (
+      window.innerHeight + window.scrollY >=
+      document.body.offsetHeight - 100
+    ) {
+      loadMoreFeeds(); // 추가 피드 로드 및 렌더링
+    }
   });
 }
-
 
 // 추가 피드 로드 및 렌더링
 function loadMoreFeeds() {
   const mainContentsList = document.querySelector(".main-contents-list");
 
   if (currentFeedIndex >= shuffledFeeds.length) {
-      shuffledFeeds = shuffle([...shuffledFeeds]);
-      currentFeedIndex = 0;
+    shuffledFeeds = shuffle([...shuffledFeeds]);
+    currentFeedIndex = 0;
   }
 
   const feedToRender = shuffledFeeds[currentFeedIndex];
   currentFeedIndex++;
   renderFeed(feedToRender);
 
-  const newCarousel = mainContentsList.lastElementChild.querySelector(".carousel_main");
+  const newCarousel =
+    mainContentsList.lastElementChild.querySelector(".carousel_main");
   if (newCarousel) initializeCarousel(newCarousel);
 }
-
 
 // 배열을 무작위로 섞는 함수 (Fisher-Yates 알고리즘)
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
 }
-
 
 // 피드 렌더링 및 디자인
 function renderFeed(feed) {
@@ -179,13 +187,13 @@ function renderFeed(feed) {
       <div class="carousel_main">
         <div class="carousel_wrapper">
           ${feed.postImages
-          .map(
+            .map(
               (image) => `
               <div class="carousel_slide">
                 <img src="${image}" alt="#" />
               </div>`
-          )
-          .join("")}
+            )
+            .join("")}
         </div>
           <div class="carousel_button_container">
             <button type="button" class="carousel_prev">
@@ -201,11 +209,11 @@ function renderFeed(feed) {
           </div>
         <div class="carousel_pagination">
           ${feed.postImages
-          .map(
+            .map(
               (_, index) =>
-                  `<div class="carousel_circle" data-index="${index}"></div>`
-          )
-          .join("")}
+                `<div class="carousel_circle" data-index="${index}"></div>`
+            )
+            .join("")}
         </div>
       </div>
     </div>
@@ -224,7 +232,8 @@ function renderFeed(feed) {
       <div class="main-content-text st-mg-t-8">
         <span class="st-bold">${feed.username}</span>${feed.caption}
       </div>
-      <div class="main-content-comment st-mg-t-8 st-gray">댓글 ${feed.comments
+      <div class="main-content-comment st-mg-t-8 st-gray">댓글 ${
+        feed.comments
       }개 모두 보기</div>
       <div class="main-content-input st-mg-t-8 st-gray">
         <div class="main-content-input-flex">
@@ -241,7 +250,6 @@ function renderFeed(feed) {
   mainContentsList.appendChild(article);
 }
 
-
 // ---------- 피드 내용 관련 ----------
 
 // 댓글 입력 창과 게시 버튼
@@ -249,10 +257,13 @@ function initializeCommentInput() {
   const mainContentsList = document.querySelector(".main-contents-list");
 
   mainContentsList.addEventListener("input", (event) => {
-      if (event.target.classList.contains("main-content-textbox")) {
-          const uploadButton = event.target.closest(".main-content-input-flex").querySelector(".main-content-text-upload");
-          uploadButton.style.display = event.target.value.trim() === "" ? "none" : "block";
-      }
+    if (event.target.classList.contains("main-content-textbox")) {
+      const uploadButton = event.target
+        .closest(".main-content-input-flex")
+        .querySelector(".main-content-text-upload");
+      uploadButton.style.display =
+        event.target.value.trim() === "" ? "none" : "block";
+    }
   });
 }
 
@@ -261,23 +272,25 @@ function initializeLikeAndBookmark() {
   const mainContentsList = document.querySelector(".main-contents-list");
 
   mainContentsList.addEventListener("click", (event) => {
-      const heartIcon = event.target.closest(".icon-heart");
-      const bookmarkIcon = event.target.closest(".icon-bookmark");
+    const heartIcon = event.target.closest(".icon-heart");
+    const bookmarkIcon = event.target.closest(".icon-bookmark");
 
-      if (heartIcon) toggleHeart(heartIcon);
-      if (bookmarkIcon) toggleBookmark(bookmarkIcon);
+    if (heartIcon) toggleHeart(heartIcon);
+    if (bookmarkIcon) toggleBookmark(bookmarkIcon);
   });
 
   function toggleHeart(heartIcon) {
-      const likesElement = heartIcon.closest(".main-content-inner").querySelector(".main-content-like");
-      const currentLikes = parseInt(likesElement.textContent.match(/\d+/)[0], 10);
-      const isLiked = heartIcon.classList.toggle("liked");
+    const likesElement = heartIcon
+      .closest(".main-content-inner")
+      .querySelector(".main-content-like");
+    const currentLikes = parseInt(likesElement.textContent.match(/\d+/)[0], 10);
+    const isLiked = heartIcon.classList.toggle("liked");
 
-      likesElement.textContent = `좋아요 ${currentLikes + (isLiked ? 1 : -1)}개`;
+    likesElement.textContent = `좋아요 ${currentLikes + (isLiked ? 1 : -1)}개`;
   }
 
   function toggleBookmark(bookmarkIcon) {
-      bookmarkIcon.classList.toggle("liked");
+    bookmarkIcon.classList.toggle("liked");
   }
 }
 
@@ -287,98 +300,99 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 좋아요 애니메이션 트리거
   mainContentsList.addEventListener("click", (event) => {
-      // 클릭된 요소가 .icon-heart인지 확인
-      const heartIcon = event.target.closest(".icon-heart");
+    // 클릭된 요소가 .icon-heart인지 확인
+    const heartIcon = event.target.closest(".icon-heart");
 
-      // 애니메이션 트리거
-      if (heartIcon) {
-          heartIcon.classList.remove("animate"); // 기존 애니메이션 클래스 제거
-          void heartIcon.offsetWidth; // 리플로우 발생 (애니메이션 초기화)
-          heartIcon.classList.add("animate"); // 애니메이션 클래스 다시 추가
-      }
-  });
-});
-
-
-// ---------- 스토리 관련 ----------
-
-// 스토리 불러오기
-function initializeStories() {
-  fetchJSON("/json/stories.json", (data) => {
-      const storyList = document.querySelector(".story-list");
-      if (!storyList) return console.error("스토리 목록 컨테이너가 없습니다.");
-
-      storyList.innerHTML = data.stories
-          .map((story) => `
-        <div class="story-item">
-          <img src="${story.profileImage}" alt="${story.username}">
-          <p>${story.username}</p>
-        </div>
-      `)
-          .join("");
-
-      storyList.querySelectorAll(".story-item").forEach((item, index) => {
-          item.addEventListener("click", () => {
-              window.location.href = `/story.html?userId=${data.stories[index].userId}`;
-          });
-      });
-  });
-}
-const storyList = document.querySelector(".story-list");
-const leftButton = document.querySelector(".story-button.story-left");
-const rightButton = document.querySelector(".story-button.story-right");
-const carouselItems = document.querySelectorAll(".story-item");
-
-let currentIndex = 0;
-const storyWidth = 85;
-const storiesPerSlide = 2;
-const totalItems = carouselItems.length; // 총 스토리 개수
-const visibleItems = Math.floor(storyList.offsetWidth / storyWidth); // 화면에 보이는 아이템 수
-const maxIndex = totalItems - visibleItems; // 이동할 수 있는 최대 인덱스
-
-
-  // 버튼 상태를 업데이트하는 함수
-function updateButtons() {
-  if (currentIndex === 0) {
-    leftButton.style.display = "none"; // 첫 번째에서 왼쪽 버튼 숨김
-  } else {
-    leftButton.style.display = "flex"; // 중간에서는 왼쪽 버튼 표시
-  }
-
-  if (currentIndex >= maxIndex) {
-    rightButton.style.display = "none"; // 마지막에서 오른쪽 버튼 숨김
-  } else {
-    rightButton.style.display = "flex"; // 중간에서는 오른쪽 버튼 표시
-  }
-}
-
-// 왼쪽 버튼 클릭 이벤트
-leftButton.addEventListener("click", () => {
-  if (currentIndex > 0) {
-    currentIndex--;
-    storyList.style.transform = `translateX(-${currentIndex * storyWidth}px)`;
-    updateButtons();
-  }
-});
-
-// 오른쪽 버튼 클릭 이벤트
-rightButton.addEventListener("click", () => {
-  if (currentIndex < maxIndex) {
-    currentIndex++;
-    storyList.style.transform = `translateX(-${currentIndex * storyWidth}px)`;
-    updateButtons();
-  }
-});
-
-// 각 스토리 클릭 시 링크로 이동
-carouselItems.forEach(item => {
-  item.addEventListener("click", () => {
-    const link = item.getAttribute("data-link");
-    if (link) {
-      window.location.href = link;
+    // 애니메이션 트리거
+    if (heartIcon) {
+      heartIcon.classList.remove("animate"); // 기존 애니메이션 클래스 제거
+      void heartIcon.offsetWidth; // 리플로우 발생 (애니메이션 초기화)
+      heartIcon.classList.add("animate"); // 애니메이션 클래스 다시 추가
     }
   });
 });
 
-// 초기 버튼 상태 설정
-updateButtons();
+// ---------- 스토리 관련 ----------
+
+// 스토리 불러오기
+async function loadStories() {
+  try {
+    const response = await fetch("../json/stories.json");
+    const data = await response.json();
+    const stories = data.stories;
+
+    const storyList = document.querySelector(".story-list");
+    if (!storyList) throw new Error("스토리 목록 컨테이너가 없습니다.");
+
+    storyList.innerHTML = ""; // 기존 목록 제거
+
+    stories.forEach((story) => {
+      const storyItem = document.createElement("div");
+      storyItem.className = "story-item";
+      storyItem.innerHTML = `
+        <img src="${story.profileImage}" alt="${story.username}">
+        <p>${story.username}</p>
+      `;
+
+      // 스토리 항목 클릭 시 이동 (userId 전달)
+      storyItem.addEventListener("click", () => {
+        const url = `/story.html?userId=${story.userId}`;
+        window.location.href = url;
+      });
+      storyList.appendChild(storyItem);
+    });
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+const storyList = document.querySelector(".story-list");
+const leftButton = document.querySelector(".story-button.story-left");
+const rightButton = document.querySelector(".story-button.story-right");
+
+let currentIndex = localStorage.getItem("currentStoryIndex")
+  ? parseInt(localStorage.getItem("currentStoryIndex"))
+  : 0;
+const storyWidth = 85;
+const storiesPerSlide = 3;
+
+// 버튼 상태를 업데이트하는 함수
+function updateStoryButtons() {
+  const updatedItems = document.querySelectorAll(".story-item").length;
+  const visibleItems = Math.ceil(storyList.offsetWidth / storyWidth);
+  const maxIndex = updatedItems - visibleItems;
+
+  currentIndex = Math.min(currentIndex, maxIndex - 1);
+
+  storyList.style.transform = `translateX(-${currentIndex * storyWidth}px)`;
+
+  // 버튼 상태 업데이트
+  leftButton.style.display = currentIndex === 0 ? "none" : "flex";
+  if (currentIndex != 0) {
+    rightButton.style.display = currentIndex >= maxIndex - 1 ? "none" : "flex";
+  }
+}
+
+leftButton.addEventListener("click", () => {
+  if (currentIndex >= storiesPerSlide) {
+    currentIndex -= storiesPerSlide;
+  } else {
+    currentIndex = 0;
+  }
+  localStorage.setItem("currentStoryIndex", currentIndex);
+  updateStoryButtons();
+});
+
+rightButton.addEventListener("click", () => {
+  const updatedItems = document.querySelectorAll(".story-item").length;
+  const visibleItems = Math.floor(storyList.offsetWidth / storyWidth);
+  const maxIndex = updatedItems - visibleItems;
+
+  if (currentIndex <= maxIndex - storiesPerSlide) {
+    currentIndex += storiesPerSlide;
+  } else {
+    currentIndex = maxIndex;
+  }
+  localStorage.setItem("currentStoryIndex", currentIndex);
+  updateStoryButtons();
+});
