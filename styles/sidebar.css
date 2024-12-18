@@ -1092,7 +1092,7 @@ a:hover {
     padding-top: 0;
     padding-left: 10px;
     padding-right: 16px;
-    width: 80px;
+    width: 100%;
     z-index: 2;
     display: flex;
     transition: all 0.2s ease-in-out;
@@ -1142,12 +1142,9 @@ a:hover {
 .search-box-title {
     font-size: 16px;
     font-weight: 300;
-    max-width: 140px;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    text-overflow: ellipsis;
-    white-space-collapse: collapse;
+    max-width: 100%;
     margin-bottom: 50px;
+		white-space: nowrap;
 }
 
 .search-box-line {
