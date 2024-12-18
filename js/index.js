@@ -1,6 +1,6 @@
 // DOM 로드 완료 시 실행 (중앙 컨트롤러)
 document.addEventListener("DOMContentLoaded", () => {
-  initializeSidebar(); // 사이드바 로드
+  // initializeSidebar(); // 사이드바 로드
   initializeFeed(); // 피드 초기화 및 무한 스크롤 설정
   initializeCommentInput(); // 댓글 입력 로직 초기화
   initializeLikeAndBookmark(); // 좋아요 및 북마크 기능 초기화
