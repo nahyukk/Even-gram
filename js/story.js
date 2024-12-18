@@ -851,3 +851,8 @@ function toggleSideElements() {
     sideStoryRight4.style.visibility = "visible";
   }
 }
+
+// 닫기 버튼 클릭 시 실행되는 함수
+document.getElementById("close-btn").addEventListener("click", () => {
+  window.location.href = "index.html";
+});
