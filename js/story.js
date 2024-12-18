@@ -36,7 +36,7 @@ function renderStoryDetails(story) {
 
   storyImg.src = firstStory.mediaUrl;
   storyUsername.textContent = story.username;
-  storyUploadTime.textContent = new Date(firstStory.timestamp).toLocaleString();
+  storyUploadTime.textContent = formatTimestamp(story.timestamp);
 }
 
 function renderStoryDetails(story) {
@@ -49,7 +49,7 @@ function renderStoryDetails(story) {
 
   storyImg.src = firstStory.mediaUrl;
   storyUsername.textContent = story.username;
-  storyUploadTime.textContent = new Date(firstStory.timestamp).toLocaleString();
+  storyUploadTime.textContent = formatTimestamp(story.timestamp);
 }
 
 // 하단부 액션 - 엘리멘트 호출
@@ -175,15 +175,10 @@ function updateSideStory(containerId, userIndex, mediaIndex) {
 
 // 시간 스탬프 계산
 function formatTimestamp(timestamp) {
-  const timeDiff = new Date() - new Date(timestamp);
-  const minutes = Math.floor(timeDiff / (1000 * 60));
-  const hours = Math.floor(timeDiff / (1000 * 60 * 60));
-  if (hours > 0) {
-    return `${hours}시간 전`;
-  } else if (minutes > 0) {
-    return `${minutes}분 전`;
+  if (timestamp === 0) {
+    return "방금 전";
   } else {
-    return `방금 전`;
+    return `${timestamp}시간 전`;
   }
 }
 
@@ -649,33 +644,29 @@ function adjustStoriesForLargeScreens() {
     centerStory.style.height = `${centerStoryHeight}px`;
     centerStory.style.aspectRatio = `${aspectRatio}`;
     centerStory.style.overflow = "hidden";
-    centerStory.querySelector("img").style.objectFit = "cover";
+    centerStory.querySelector("img").style.objectFit = "contain";
 
     // 양쪽 스토리 크기 계산
     let sideStoryWidth = centerStoryWidth * 0.4;
     let sideStoryHeight = sideStoryWidth / aspectRatio;
 
-    [leftStory1, leftStory2].forEach((story) => {
-      if (story) {
-        story.style.width = `${sideStoryWidth}px`;
-        story.style.height = `${sideStoryHeight}px`;
-        story.style.aspectRatio = `${aspectRatio}`;
-        story.style.overflow = "hidden";
-        const img = story.querySelector("img");
-        if (img) img.style.objectFit = "cover";
-      }
-    });
-
-    [rightStory3, rightStory4].forEach((story) => {
-      if (story) {
-        story.style.width = `${sideStoryWidth}px`;
-        story.style.height = `${sideStoryHeight}px`;
-        story.style.aspectRatio = `${aspectRatio}`;
-        story.style.overflow = "hidden";
-        const img = story.querySelector("img");
-        if (img) img.style.objectFit = "cover";
-      }
-    });
+		[leftStory1, leftStory2, rightStory3, rightStory4].forEach((story) => {
+			if (story) {
+				story.style.width = `${sideStoryWidth}px`;
+				story.style.height = `${sideStoryHeight}px`;
+				story.style.display = "flex";
+				story.style.alignItems = "center";
+				story.style.justifyContent = "center";
+				story.style.overflow = "hidden";
+				
+				const img = story.querySelector("img");
+				if (img) {
+					img.style.width = "100%";
+					img.style.height = "100%";
+					img.style.objectFit = "contain";
+				}
+			}
+		});
   }
 }
 
@@ -839,14 +830,17 @@ function toggleSideElements() {
   }
 
   // 마지막 사용자
-  if (currentMediaIndex === lastMediaIndex) {
-    nextBtn.style.visibility = "hidden";
-    sideStoryRight3.style.visibility = "hidden";
-    sideStoryRight4.style.visibility = "hidden";
-  } else if (currentStoryIndex === lastStoryIndex) {
-    nextBtn.style.visibility = "visible";
-    sideStoryRight3.style.visibility = "hidden";
-    sideStoryRight4.style.visibility = "hidden";
+
+  if (currentStoryIndex === lastStoryIndex) {
+    if (currentMediaIndex === lastMediaIndex) {
+      nextBtn.style.visibility = "hidden";
+      sideStoryRight3.style.visibility = "hidden";
+      sideStoryRight4.style.visibility = "hidden";
+    } else {
+      nextBtn.style.visibility = "visible";
+      sideStoryRight3.style.visibility = "hidden";
+      sideStoryRight4.style.visibility = "hidden";
+    }
   } else if (currentStoryIndex === lastStoryIndex - 1) {
     nextBtn.style.visibility = "visible";
     sideStoryRight3.style.visibility = "visible";
