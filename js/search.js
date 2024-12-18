@@ -1,5 +1,8 @@
 const searchInput = document.querySelector(".search-box-tab");
 const searchListContainer = document.querySelector(".search-list-container");
+const searchXButton = document.querySelector(".search-x-btn");
+const searchTabIcon = document.querySelector(".search-tab-icon");
+const searchBoxTitle = document.querySelector(".search-box-title");
 
 let users = [];
 let debounceTimer;
@@ -31,6 +34,33 @@ searchInput.addEventListener("input", () => {
       toggleSearchExtras(false); // 검색어가 없으므로 표시
     }
   }, 500);
+});
+
+searchInput.addEventListener("blur", () => {
+  const inputValue = searchInput.value.trim();
+  if (searchInput.value.trim() !== "") {
+    searchInput.dataset.storedValue = inputValue;
+    searchInput.value = "";
+
+    searchXButton.style.display = "none";
+    searchTabIcon.style.display = "block";
+
+    searchBoxTitle.textContent = inputValue;
+    searchBoxTitle.style.display = "block";
+    searchBoxTitle.style.marginLeft = "6px";
+  } else {
+    searchBoxTitle.textContent = "검색";
+    searchBoxTitle.style.display = "block";
+  }
+});
+
+searchInput.addEventListener("focus", () => {
+  const storedValue = searchInput.dataset.storedValue || "";
+  if (storedValue.trim() !== "") {
+    searchInput.value = storedValue;
+    searchXButton.style.display = "block";
+    searchBoxTitle.style.display = "none";
+  }
 });
 
 // 페이지 로드 시 최근 검색어 표시
@@ -244,7 +274,7 @@ function showRecentSearches() {
 
     const deleteBtn = document.createElement("div");
     deleteBtn.classList.add("list-delete");
-    deleteBtn.textContent = "X";
+    deleteBtn.innerHTML = ` <svg aria-label="닫기" class="x1lliihq x1n2onr6 x1roi4f4" fill="currentColor" height="16" role="img" viewBox="0 0 24 24" width="16"><title>닫기</title><polyline fill="none" points="20.643 3.357 12 12 3.353 20.647" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" x1="20.649" x2="3.354" y1="20.649" y2="3.354"></line></svg>`;
 
     // 삭제 버튼 클릭 이벤트
     deleteBtn.addEventListener("click", (event) => {
@@ -258,8 +288,8 @@ function showRecentSearches() {
 
     deleteAll.addEventListener("click", () => {
       clearSearchResults();
-			removeFromLocalStorage(user.username);
-			showRecentSearches();
+      removeFromLocalStorage(user.username);
+      showRecentSearches();
     });
 
     userElement.appendChild(profileBox);
@@ -282,6 +312,25 @@ const searchBoxLine = document.querySelector(".search-box-line"); // 검색 상�
 // 검색 중 또는 검색 전 상태에 따라 요소 숨기기/보이기
 function toggleSearchExtras(isSearching) {
   const displayValue = isSearching ? "none" : "block";
+  const displayValueNo = isSearching ? "block" : "none";
   searchNameContent.style.display = displayValue;
   searchBoxLine.style.display = displayValue;
+  searchXButton.style.display = displayValueNo;
 }
+
+// input 박스 내에 x 버튼 클릭시 입력 필드 초기화
+searchXButton.addEventListener("mousedown", (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+
+  searchInput.value = "";
+  searchXButton.style.display = "none";
+
+  clearSearchResults();
+  toggleSearchExtras(false);
+  showRecentSearches();
+
+  const noResults = document.querySelector(".no-results");
+  noResults.style.display = "none";
+  searchInput.blur();
+});
