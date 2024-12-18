@@ -1,3 +1,5 @@
+import { loadButtonActions } from "./sidebar.js";
+
 document.addEventListener("DOMContentLoaded", () => {
 	renderHTML("right-side-bar", "../components/sidebar.html");
 	renderHTML("footer-container", "../components/footer.html");
@@ -49,6 +51,9 @@ function renderHTML(id, html) {
 		})
 		.then((html) => {
 			sidebarContainer.innerHTML = html;
+			if (id === "right-side-bar") {
+				loadButtonActions();
+			}
 		})
 		.catch((error) => {
 			console.error("Error loading sidebar:", error);

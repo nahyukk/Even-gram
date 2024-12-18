@@ -1,3 +1,5 @@
+import { loadButtonActions } from "./sidebar.js";
+
 document.addEventListener("DOMContentLoaded", () => {
 	toggleNavContainer();
 	renderHTML("right-side-bar", "../components/sidebar.html");
@@ -23,7 +25,7 @@ function renderHTML(id, html) {
 			container.innerHTML = html;
 
 			if (id === "right-side-bar") {
-				window.loadButtonActions();
+				loadButtonActions();
 			}
 		})
 		.catch((error) => {

@@ -1,9 +1,8 @@
-window.loadButtonActions = loadButtonActions;
 document.addEventListener("DOMContentLoaded", () => {
 	loadButtonActions();
 });
 
-function loadButtonActions() {
+export function loadButtonActions() {
 	const toggleButton = document.querySelector(".dropdown");
 	const sunButton = document.querySelector(".mode-toggle");
 	const backButton = document.querySelector(".backbtn");
