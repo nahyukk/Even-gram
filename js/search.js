@@ -1,6 +1,8 @@
 const searchInput = document.querySelector(".search-box-tab");
 const searchListContainer = document.querySelector(".search-list-container");
 const searchXButton = document.querySelector(".search-x-btn");
+const searchTabIcon = document.querySelector(".search-tab-icon");
+const searchBoxTitle = document.querySelector(".search-box-title");
 
 let users = [];
 let debounceTimer;
@@ -32,6 +34,33 @@ searchInput.addEventListener("input", () => {
       toggleSearchExtras(false); // 검색어가 없으므로 표시
     }
   }, 500);
+});
+
+searchInput.addEventListener("blur", () => {
+  const inputValue = searchInput.value.trim();
+  if (searchInput.value.trim() !== "") {
+    searchInput.dataset.storedValue = inputValue;
+    searchInput.value = "";
+
+    searchXButton.style.display = "none";
+    searchTabIcon.style.display = "block";
+
+    searchBoxTitle.textContent = inputValue;
+    searchBoxTitle.style.display = "block";
+    searchBoxTitle.style.marginLeft = "6px";
+  } else {
+    searchBoxTitle.textContent = "검색";
+    searchBoxTitle.style.display = "block";
+  }
+});
+
+searchInput.addEventListener("focus", () => {
+  const storedValue = searchInput.dataset.storedValue || "";
+  if (storedValue.trim() !== "") {
+    searchInput.value = storedValue;
+    searchXButton.style.display = "block";
+    searchBoxTitle.style.display = "none";
+  }
 });
 
 // 페이지 로드 시 최근 검색어 표시
@@ -290,13 +319,18 @@ function toggleSearchExtras(isSearching) {
 }
 
 // input 박스 내에 x 버튼 클릭시 입력 필드 초기화
-searchXButton.addEventListener("click", () => {
+searchXButton.addEventListener("mousedown", (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+
   searchInput.value = "";
   searchXButton.style.display = "none";
+
   clearSearchResults();
   toggleSearchExtras(false);
   showRecentSearches();
 
   const noResults = document.querySelector(".no-results");
   noResults.style.display = "none";
+  searchInput.blur();
 });
