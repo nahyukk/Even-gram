@@ -23,8 +23,30 @@ body.dark-mode .search-list {
     background-color: #121212;
 }
 
+body.dark-mode .search-list-style:hover {
+    background-color: #1a1a1a;
+}
+
+body.dark-mode .search-list-style:active {
+    opacity: 0.6;
+}
+
 body.dark-mode .list-id {
     color: white;
+}
+
+body.dark-mode .list-name {
+    color: #A8A8A8;
+}
+
+body.dark-mode .search-list-id {
+    color: white;
+}
+
+
+
+body.dark-mode .search-list-followers-box {
+    color: #A8A8A8;
 }
 
 /* 오른쪽 사이드바 다크모드 적용 시 변환하는 부분 */
@@ -957,7 +979,7 @@ a:hover {
     align-items: center;
     position: relative;
     overflow: visible;
-    width: 397px;
+    width: 396px;
 }
 
 .search-bottom-container {
@@ -1175,7 +1197,7 @@ a:hover {
     display: flex;
     align-items: center;
     margin: 0;
-    padding: 5px 24px;
+    padding: 8px 24px;
     cursor: pointer;
 }
 
@@ -1188,8 +1210,8 @@ a:hover {
 }
 
 .search-list-box {
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 44px;
     border-radius: 70%;
     overflow: hidden;
 }
@@ -1210,6 +1232,7 @@ a:hover {
     width: 270px;
     display: flex;
     flex-direction: column;
+    margin-left: 3px;
 }
 
 .search-list-text-box-username {
@@ -1284,7 +1307,7 @@ a:hover {
     font-size: 20px;
     color: #737373;
     margin-left: auto;
-    padding-right: 10px;
+    padding-right: 8px;
     position: relative;
 }
 
