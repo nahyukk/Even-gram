@@ -1013,7 +1013,6 @@ a:hover {
 
 .search-box-tab {
     position: relative;
-    color: white;
     appearance: none;
     box-sizing: border-box;
     background-color: #efefef;
@@ -1031,7 +1030,7 @@ a:hover {
     cursor: text;
     display: block;
     font-size: 16px;
-    font-weight: 300;
+    font-weight: 400;
     height: 40px;
     overflow: visible;
     padding-block-end: 3px;
@@ -1060,6 +1059,7 @@ a:hover {
 
 .search-box-section input:focus::-webkit-input-placeholder {
     color: #888;
+	font-weight: 300;
 }
 
 .search-x-btn {
