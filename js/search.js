@@ -23,9 +23,11 @@ async function loadUsers() {
 
 searchInput.addEventListener("input", () => {
   clearTimeout(debounceTimer);
-
+  const searchText = searchInput.value.trim().toLowerCase();
+  if (searchText === "") {
+    handleSearchClear();
+  }
   debounceTimer = setTimeout(() => {
-    const searchText = searchInput.value.trim().toLowerCase();
     if (searchText != "") {
       filterSearchResults(searchText);
       toggleSearchExtras(true); // 검색 중이므로 숨김
@@ -59,6 +61,11 @@ searchInput.addEventListener("focus", () => {
   if (storedValue.trim() !== "") {
     searchInput.value = storedValue;
     searchXButton.style.display = "block";
+    searchBoxTitle.style.display = "none";
+  } else {
+    searchInput.value = "";
+    storedValue = "";
+    searchXButton.style.display = "none";
     searchBoxTitle.style.display = "none";
   }
 });
@@ -324,6 +331,7 @@ searchXButton.addEventListener("mousedown", (event) => {
   event.stopPropagation();
 
   searchInput.value = "";
+  searchInput.dataset.storedValue = "";
   searchXButton.style.display = "none";
 
   clearSearchResults();
@@ -334,3 +342,17 @@ searchXButton.addEventListener("mousedown", (event) => {
   noResults.style.display = "none";
   searchInput.blur();
 });
+
+// 글자 지워서 입력 필드 초기화
+function handleSearchClear() {
+  searchInput.value = "";
+  searchInput.dataset.storedValue = "";
+  searchXButton.style.display = "none";
+
+  clearSearchResults();
+  toggleSearchExtras(false);
+  showRecentSearches();
+
+  const noResults = document.querySelector(".no-results");
+  noResults.style.display = "none";
+}

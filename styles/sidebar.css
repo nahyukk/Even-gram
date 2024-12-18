@@ -1013,7 +1013,6 @@ a:hover {
 
 .search-box-tab {
     position: relative;
-    color: white;
     appearance: none;
     box-sizing: border-box;
     background-color: #efefef;
@@ -1031,7 +1030,7 @@ a:hover {
     cursor: text;
     display: block;
     font-size: 16px;
-    font-weight: 300;
+    font-weight: 400;
     height: 40px;
     overflow: visible;
     padding-block-end: 3px;
@@ -1048,6 +1047,8 @@ a:hover {
     outline: none;
     /* transition: all 0.2s ease-in-out; */
     z-index: 2;
+	overflow: hidden;  
+	text-overflow: ellipsis;
 }
 
 .search-box-tab:focus {
@@ -1060,6 +1061,7 @@ a:hover {
 
 .search-box-section input:focus::-webkit-input-placeholder {
     color: #888;
+	font-weight: 300;
 }
 
 .search-x-btn {
@@ -1092,7 +1094,7 @@ a:hover {
     padding-top: 0;
     padding-left: 10px;
     padding-right: 16px;
-    width: 80px;
+    width: 100%;
     z-index: 2;
     display: flex;
     transition: all 0.2s ease-in-out;
@@ -1142,12 +1144,10 @@ a:hover {
 .search-box-title {
     font-size: 16px;
     font-weight: 300;
-    max-width: 140px;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    text-overflow: ellipsis;
-    white-space-collapse: collapse;
+    max-width: 290px;
     margin-bottom: 50px;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 .search-box-line {
