@@ -11,6 +11,8 @@ async function loadUsers() {
     const response = await fetch("../json/search.json");
     const data = await response.json();
     users = data.users;
+
+    showRecentSearches(); // 새로고침 후에도 바로 최근 검색 항목 표시
   } catch (error) {
     console.log("json 데이터 못불렀다.");
   }

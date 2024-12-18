@@ -102,6 +102,106 @@
             "likes": 77,
             "caption": "우푸 커피가 오트 커피로 바뀌었습니다!",
             "comments": 54
+        },
+        {
+            "username": "__ssssl__",
+            "location": "서울혁신파크",
+            "profileImage": "./assets/images/6_ssssl.jpg",
+            "update": "3일",
+            "postImages": [
+                "./assets/images/6-1_ssssl.jpeg",
+                "./assets/images/6-2_ssssl.jpeg",
+                "./assets/images/6-3_ssssl.jpeg",
+                "./assets/images/6-4_ssssl.jpeg",
+                "./assets/images/6-5_ssssl.jpeg",
+                "./assets/images/6-6_ssssl.jpeg",
+                "./assets/images/6-7_ssssl.jpeg",
+                "./assets/images/6-8_ssssl.jpeg",
+                "./assets/images/6-9_ssssl.jpeg",
+                "./assets/images/6-10_ssssl.jpeg"
+            ],
+            "likes": 212,
+            "caption": "카페 쓸 ‘알뜰쓸뜰’ 굿바이 플리마켓~ 우리의 마지막은 아름답게✨",
+            "comments": 156
+        },
+        {
+            "username": "eroom_project",
+            "location": "이룸(이루다)",
+            "update": "1일",
+            "profileImage": "./assets/images/7_eroom.jpg",
+            "postImages": [
+                "./assets/images/7-1_eroom.jpeg",
+                "./assets/images/7-2_eroom.jpeg",
+                "./assets/images/7-3_eroom.jpeg",
+                "./assets/images/7-4_eroom.jpeg",
+                "./assets/images/7-5_eroom.jpeg",
+                "./assets/images/7-6_eroom.jpeg",
+                "./assets/images/7-7_eroom.jpeg",
+                "./assets/images/7-8_eroom.jpeg",
+                "./assets/images/7-9_eroom.jpeg"
+            ],
+            "likes": 41,
+            "caption": "오늘 이룸 정상영업합니다!",
+            "comments": 37
+        },
+        {
+            "username": "sanbo_club",
+            "location": "산보클럽",
+            "update": "1주",
+            "profileImage": "./assets/images/8_sanbo.jpg",
+            "postImages": [
+                "./assets/images/8-1_sanbo.jpeg",
+                "./assets/images/8-2_sanbo.jpeg",
+                "./assets/images/8-3_sanbo.jpeg",
+                "./assets/images/8-4_sanbo.jpeg",
+                "./assets/images/8-5_sanbo.jpeg",
+                "./assets/images/8-6_sanbo.jpeg",
+                "./assets/images/8-7_sanbo.jpeg",
+                "./assets/images/8-8_sanbo.jpeg"
+            ],
+            "likes": 102,
+            "caption": "참! 그리고 산보클럽을 방문해주시는 우리 회원님들 사.. 산보하세요..!🚶🏻🫶🏻",
+            "comments": 92
+        },
+        {
+            "username": "faabs_coffee_roasters",
+            "location": "서울 은평구",
+            "update": "33분",
+            "profileImage": "./assets/images/9_faabs.jpg",
+            "postImages": [
+                "./assets/images/9-1_faabs.jpeg",
+                "./assets/images/9-2_faabs.jpeg",
+                "./assets/images/9-3_faabs.jpeg",
+                "./assets/images/9-4_faabs.jpeg",
+                "./assets/images/9-5_faabs.jpeg",
+                "./assets/images/9-6_faabs.jpeg",
+                "./assets/images/9-7_faabs.jpeg",
+                "./assets/images/9-8_faabs.jpeg",
+                "./assets/images/9-9_faabs.jpeg",
+                "./assets/images/9-10_faabs.jpeg"
+            ],
+            "likes": 74,
+            "caption": "앞으로도 파브스는 커피에 담긴 사람냄새 나는 이야기를 여러분께 전하도록 할게요.",
+            "comments": 76
+        },
+        {
+            "username": "caffe_del_cotone",
+            "location": "카페 델 꼬또네",
+            "update": "3주",
+            "profileImage": "./assets/images/10_cotone.jpg",
+            "postImages": [
+                "./assets/images/10-1_cotone.jpg",
+                "./assets/images/10-2_cotone.jpg",
+                "./assets/images/10-3_cotone.jpg",
+                "./assets/images/10-4_cotone.jpg",
+                "./assets/images/10-5_cotone.jpg",
+                "./assets/images/10-6_cotone.jpg",
+                "./assets/images/10-7_cotone.jpg",
+                "./assets/images/10-8_cotone.jpg"
+            ],
+            "likes": 62,
+            "caption": "에스프레소 바 ‘카페 델 꼬또네’에서 모닝커피 한 잔으로 감미로운 아침을 열어보세요",
+            "comments": 33
         }
     ]
 }

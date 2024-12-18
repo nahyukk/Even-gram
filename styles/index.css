@@ -554,6 +554,31 @@ body.dark-mode .story-item p {
     text-align: center;
 }
 
+body.dark-mode .st-gray {
+    color: #a8a8a8;
+}
+
+body.dark-mode .main-content-textbox::placeholder {
+    font-size: 14px;
+    color: #a8a8a8;
+}
+
+body.dark-mode .comment-emoji {
+    fill: #a8a8a8;
+}
+
+body.dark-mode .comment-emoji:hover {
+    fill: #737373;
+}
+
+body.dark-mode .main-profile-meta span {
+    color: #a8a8a8 !important;
+}
+
+body.dark-mode .main-profile-date {
+    color: #a8a8a8;
+}
+
 /* 스토리 부분 */
 .main-story {
     margin-bottom: 24px;
