@@ -152,7 +152,7 @@ function createHoverContainer(post) {
 	const hoverItem = document.createElement("div");
 	hoverItem.className = "post-hover-item";
 	const commentItem = createHoverItem(
-		"./assets/icons/profile_post_comment.png",
+		"../assets/icons/profile_post_comment.png",
 		post.comments
 	);
 	hoverItem.appendChild(commentItem);
