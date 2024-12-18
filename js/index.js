@@ -17,21 +17,21 @@ document.addEventListener("DOMContentLoaded", async () => {
 // JSON 파일 불러오기 (연동)
 function fetchJSON(url, onSuccess) {
   fetch(url)
-      .then((response) => {
-          if (!response.ok) throw new Error(`Failed to load ${url}`);
-          return response.json();
-      })
-      .then(onSuccess)
-      .catch((error) => console.error(`Error loading JSON from ${url}:`, error));
+    .then((response) => {
+      if (!response.ok) throw new Error(`Failed to load ${url}`);
+      return response.json();
+    })
+    .then(onSuccess)
+    .catch((error) => console.error(`Error loading JSON from ${url}:`, error));
 }
 
 // 사이드 바 불러오기 코드
 function initializeSidebar() {
   const sidebarContainer = document.getElementById("right-side-bar");
   fetch("./components/sidebar.html")
-      .then((response) => response.text())
-      .then((html) => (sidebarContainer.innerHTML = html))
-      .catch((error) => console.error("Error loading sidebar.html:", error));
+    .then((response) => response.text())
+    .then((html) => (sidebarContainer.innerHTML = html))
+    .catch((error) => console.error("Error loading sidebar.html:", error));
 }
 
 
@@ -47,38 +47,38 @@ function initializeCarousel(carousel) {
 
   pagination.innerHTML = ""; // 기존 점 제거
   slides.forEach((_, index) => {
-      const bullet = document.createElement("div");
-      bullet.classList.add("carousel_circle");
-      bullet.setAttribute("data-index", index);
-      pagination.appendChild(bullet);
+    const bullet = document.createElement("div");
+    bullet.classList.add("carousel_circle");
+    bullet.setAttribute("data-index", index);
+    pagination.appendChild(bullet);
   });
 
   const bullets = pagination.querySelectorAll(".carousel_circle");
   let currentSlide = 0;
 
   function updateButtonVisibility() {
-      prevButton.classList.toggle("carousel_button_disabled", currentSlide === 0);
-      nextButton.classList.toggle("carousel_button_disabled", currentSlide === slides.length - 1);
+    prevButton.classList.toggle("carousel_button_disabled", currentSlide === 0);
+    nextButton.classList.toggle("carousel_button_disabled", currentSlide === slides.length - 1);
   }
 
   function showSlide(index) {
-      currentSlide = index;
-      wrapper.style.transform = `translateX(-${index * 100}%)`;
-      bullets.forEach((bullet, idx) => bullet.classList.toggle("active", idx === index));
-      updateButtonVisibility();
+    currentSlide = index;
+    wrapper.style.transform = `translateX(-${index * 100}%)`;
+    bullets.forEach((bullet, idx) => bullet.classList.toggle("active", idx === index));
+    updateButtonVisibility();
   }
 
   if (prevButton && nextButton) {
-      prevButton.addEventListener("click", () => {
-          if (currentSlide > 0) showSlide(currentSlide - 1);
-      });
-      nextButton.addEventListener("click", () => {
-          if (currentSlide < slides.length - 1) showSlide(currentSlide + 1);
-      });
+    prevButton.addEventListener("click", () => {
+      if (currentSlide > 0) showSlide(currentSlide - 1);
+    });
+    nextButton.addEventListener("click", () => {
+      if (currentSlide < slides.length - 1) showSlide(currentSlide + 1);
+    });
   }
 
   bullets.forEach((bullet, index) => {
-      bullet.addEventListener("click", () => showSlide(index));
+    bullet.addEventListener("click", () => showSlide(index));
   });
 
   showSlide(0);
@@ -95,11 +95,11 @@ let currentFeedIndex = 0;
 // JSON 데이터를 가져오고 배열을 섞는 작업
 function initializeFeed() {
   fetchJSON("./json/feed.json", (data) => {
-      shuffledFeeds = shuffle([...data.feeds]);
-      currentFeedIndex = 0;
+    shuffledFeeds = shuffle([...data.feeds]);
+    currentFeedIndex = 0;
 
-      renderAndInitializeFirstFeed(); // 첫번째 피드 렌더링 및 슬라이더 초기화
-      setupInfiniteScroll(); // 무한 스크롤 설정
+    renderAndInitializeFirstFeed(); // 첫번째 피드 렌더링 및 슬라이더 초기화
+    setupInfiniteScroll(); // 무한 스크롤 설정
   });
 }
 
@@ -119,9 +119,9 @@ function renderAndInitializeFirstFeed() {
 // 무한 스크롤 설정
 function setupInfiniteScroll() {
   window.addEventListener("scroll", () => {
-      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
-          loadMoreFeeds(); // 추가 피드 로드 및 렌더링
-      }
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
+      loadMoreFeeds(); // 추가 피드 로드 및 렌더링
+    }
   });
 }
 
@@ -131,8 +131,8 @@ function loadMoreFeeds() {
   const mainContentsList = document.querySelector(".main-contents-list");
 
   if (currentFeedIndex >= shuffledFeeds.length) {
-      shuffledFeeds = shuffle([...shuffledFeeds]);
-      currentFeedIndex = 0;
+    shuffledFeeds = shuffle([...shuffledFeeds]);
+    currentFeedIndex = 0;
   }
 
   const feedToRender = shuffledFeeds[currentFeedIndex];
@@ -147,8 +147,8 @@ function loadMoreFeeds() {
 // 배열을 무작위로 섞는 함수 (Fisher-Yates 알고리즘)
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
 }
@@ -185,13 +185,13 @@ function renderFeed(feed) {
       <div class="carousel_main">
         <div class="carousel_wrapper">
           ${feed.postImages
-          .map(
-              (image) => `
+      .map(
+        (image) => `
               <div class="carousel_slide">
                 <img src="${image}" alt="#" />
               </div>`
-          )
-          .join("")}
+      )
+      .join("")}
         </div>
           <div class="carousel_button_container">
             <button type="button" class="carousel_prev">
@@ -207,11 +207,11 @@ function renderFeed(feed) {
           </div>
         <div class="carousel_pagination">
           ${feed.postImages
-          .map(
-              (_, index) =>
-                  `<div class="carousel_circle" data-index="${index}"></div>`
-          )
-          .join("")}
+      .map(
+        (_, index) =>
+          `<div class="carousel_circle" data-index="${index}"></div>`
+      )
+      .join("")}
         </div>
       </div>
     </div>
@@ -231,7 +231,7 @@ function renderFeed(feed) {
         <span class="st-bold">${feed.username}</span>${feed.caption}
       </div>
       <div class="main-content-comment st-mg-t-8 st-gray">댓글 ${feed.comments
-      }개 모두 보기</div>
+    }개 모두 보기</div>
       <div class="main-content-input st-mg-t-8 st-gray">
         <div class="main-content-input-flex">
           <input class="main-content-textbox" placeholder="댓글 달기..." autocomplete="off" autocorrect="off">
@@ -255,10 +255,10 @@ function initializeCommentInput() {
   const mainContentsList = document.querySelector(".main-contents-list");
 
   mainContentsList.addEventListener("input", (event) => {
-      if (event.target.classList.contains("main-content-textbox")) {
-          const uploadButton = event.target.closest(".main-content-input-flex").querySelector(".main-content-text-upload");
-          uploadButton.style.display = event.target.value.trim() === "" ? "none" : "block";
-      }
+    if (event.target.classList.contains("main-content-textbox")) {
+      const uploadButton = event.target.closest(".main-content-input-flex").querySelector(".main-content-text-upload");
+      uploadButton.style.display = event.target.value.trim() === "" ? "none" : "block";
+    }
   });
 }
 
@@ -267,23 +267,23 @@ function initializeLikeAndBookmark() {
   const mainContentsList = document.querySelector(".main-contents-list");
 
   mainContentsList.addEventListener("click", (event) => {
-      const heartIcon = event.target.closest(".icon-heart");
-      const bookmarkIcon = event.target.closest(".icon-bookmark");
+    const heartIcon = event.target.closest(".icon-heart");
+    const bookmarkIcon = event.target.closest(".icon-bookmark");
 
-      if (heartIcon) toggleHeart(heartIcon);
-      if (bookmarkIcon) toggleBookmark(bookmarkIcon);
+    if (heartIcon) toggleHeart(heartIcon);
+    if (bookmarkIcon) toggleBookmark(bookmarkIcon);
   });
 
   function toggleHeart(heartIcon) {
-      const likesElement = heartIcon.closest(".main-content-inner").querySelector(".main-content-like");
-      const currentLikes = parseInt(likesElement.textContent.match(/\d+/)[0], 10);
-      const isLiked = heartIcon.classList.toggle("liked");
+    const likesElement = heartIcon.closest(".main-content-inner").querySelector(".main-content-like");
+    const currentLikes = parseInt(likesElement.textContent.match(/\d+/)[0], 10);
+    const isLiked = heartIcon.classList.toggle("liked");
 
-      likesElement.textContent = `좋아요 ${currentLikes + (isLiked ? 1 : -1)}개`;
+    likesElement.textContent = `좋아요 ${currentLikes + (isLiked ? 1 : -1)}개`;
   }
 
   function toggleBookmark(bookmarkIcon) {
-      bookmarkIcon.classList.toggle("liked");
+    bookmarkIcon.classList.toggle("liked");
   }
 }
 
@@ -293,15 +293,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 좋아요 애니메이션 트리거
   mainContentsList.addEventListener("click", (event) => {
-      // 클릭된 요소가 .icon-heart인지 확인
-      const heartIcon = event.target.closest(".icon-heart");
+    // 클릭된 요소가 .icon-heart인지 확인
+    const heartIcon = event.target.closest(".icon-heart");
 
-      // 애니메이션 트리거
-      if (heartIcon) {
-          heartIcon.classList.remove("animate"); // 기존 애니메이션 클래스 제거
-          void heartIcon.offsetWidth; // 리플로우 발생 (애니메이션 초기화)
-          heartIcon.classList.add("animate"); // 애니메이션 클래스 다시 추가
-      }
+    // 애니메이션 트리거
+    if (heartIcon) {
+      heartIcon.classList.remove("animate"); // 기존 애니메이션 클래스 제거
+      void heartIcon.offsetWidth; // 리플로우 발생 (애니메이션 초기화)
+      heartIcon.classList.add("animate"); // 애니메이션 클래스 다시 추가
+    }
   });
 });
 
