@@ -795,3 +795,4 @@ function handleMeatballToggle() {
     if (meatballToggle) meatballToggle.style.display = "none";
   }
 }
+// 닫기 버튼 클릭 시 실행되는 함수document.getElementById("close-btn").addEventListener("click", () => {  window.location.href = "index.html";});
