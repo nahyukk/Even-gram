@@ -1034,6 +1034,18 @@ a:hover {
     color: #888;
 }
 
+.search-x-btn {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    width: 14.5px;
+    height: 14.5px;
+    cursor: pointer;
+    z-index: 3;
+    display: none;
+}
+
 .search-box-small-section {
     align-items: center;
     flex-direction: row;

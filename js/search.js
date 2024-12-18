@@ -1,5 +1,6 @@
 const searchInput = document.querySelector(".search-box-tab");
 const searchListContainer = document.querySelector(".search-list-container");
+const searchXButton = document.querySelector(".search-x-btn");
 
 let users = [];
 let debounceTimer;
@@ -258,8 +259,8 @@ function showRecentSearches() {
 
     deleteAll.addEventListener("click", () => {
       clearSearchResults();
-			removeFromLocalStorage(user.username);
-			showRecentSearches();
+      removeFromLocalStorage(user.username);
+      showRecentSearches();
     });
 
     userElement.appendChild(profileBox);
@@ -282,6 +283,20 @@ const searchBoxLine = document.querySelector(".search-box-line"); // 검색 상�
 // 검색 중 또는 검색 전 상태에 따라 요소 숨기기/보이기
 function toggleSearchExtras(isSearching) {
   const displayValue = isSearching ? "none" : "block";
+  const displayValueNo = isSearching ? "block" : "none";
   searchNameContent.style.display = displayValue;
   searchBoxLine.style.display = displayValue;
+  searchXButton.style.display = displayValueNo;
 }
+
+// input 박스 내에 x 버튼 클릭시 입력 필드 초기화
+searchXButton.addEventListener("click", () => {
+  searchInput.value = "";
+  searchXButton.style.display = "none";
+  clearSearchResults();
+  toggleSearchExtras(false);
+  showRecentSearches();
+
+  const noResults = document.querySelector(".no-results");
+  noResults.style.display = "none";
+});
