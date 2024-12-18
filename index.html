@@ -617,32 +617,6 @@
     <script src="./js/index.js"></script>
     <script src="./js/sidebar.js"></script>
     <script src="./js/search.js"></script>
-
-    <script>
-      const storyList = document.querySelector(".story-list");
-      const leftButton = document.querySelector(".story-button.story-left");
-      const rightButton = document.querySelector(".story-button.story-right");
-
-      let currentIndex = 0;
-      const storyWidth = 85;
-      const storiesPerSlide = 2;
-
-      leftButton.addEventListener("click", () => {
-        currentIndex = Math.max(0, currentIndex - storiesPerSlide);
-        storyList.style.transform = `translateX(-${
-          currentIndex * storyWidth
-        }px)`;
-      });
-
-      rightButton.addEventListener("click", () => {
-        currentIndex = Math.min(
-          storyList.children.length - storiesPerSlide,
-          currentIndex + storiesPerSlide
-        );
-        storyList.style.transform = `translateX(-${
-          currentIndex * storyWidth
-        }px)`;
-      });
-    </script>
+     
   </body>
 </html>

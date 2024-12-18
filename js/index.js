@@ -324,3 +324,61 @@ function initializeStories() {
       });
   });
 }
+const storyList = document.querySelector(".story-list");
+const leftButton = document.querySelector(".story-button.story-left");
+const rightButton = document.querySelector(".story-button.story-right");
+const carouselItems = document.querySelectorAll(".story-item");
+
+let currentIndex = 0;
+const storyWidth = 85;
+const storiesPerSlide = 2;
+const totalItems = carouselItems.length; // 총 스토리 개수
+const visibleItems = Math.floor(storyList.offsetWidth / storyWidth); // 화면에 보이는 아이템 수
+const maxIndex = totalItems - visibleItems; // 이동할 수 있는 최대 인덱스
+
+
+  // 버튼 상태를 업데이트하는 함수
+function updateButtons() {
+  if (currentIndex === 0) {
+    leftButton.style.display = "none"; // 첫 번째에서 왼쪽 버튼 숨김
+  } else {
+    leftButton.style.display = "flex"; // 중간에서는 왼쪽 버튼 표시
+  }
+
+  if (currentIndex >= maxIndex) {
+    rightButton.style.display = "none"; // 마지막에서 오른쪽 버튼 숨김
+  } else {
+    rightButton.style.display = "flex"; // 중간에서는 오른쪽 버튼 표시
+  }
+}
+
+// 왼쪽 버튼 클릭 이벤트
+leftButton.addEventListener("click", () => {
+  if (currentIndex > 0) {
+    currentIndex--;
+    storyList.style.transform = `translateX(-${currentIndex * storyWidth}px)`;
+    updateButtons();
+  }
+});
+
+// 오른쪽 버튼 클릭 이벤트
+rightButton.addEventListener("click", () => {
+  if (currentIndex < maxIndex) {
+    currentIndex++;
+    storyList.style.transform = `translateX(-${currentIndex * storyWidth}px)`;
+    updateButtons();
+  }
+});
+
+// 각 스토리 클릭 시 링크로 이동
+carouselItems.forEach(item => {
+  item.addEventListener("click", () => {
+    const link = item.getAttribute("data-link");
+    if (link) {
+      window.location.href = link;
+    }
+  });
+});
+
+// 초기 버튼 상태 설정
+updateButtons();
