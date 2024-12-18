@@ -901,6 +901,7 @@ a:hover {
 
 .search-tab.show {
     display: block;
+    position: fixed;
 }
 
 .search-tab-section {
@@ -1372,6 +1373,10 @@ a:hover {
 
     /* profile 부분에서 sidebar 상.하단 보이지 않게 하는 부분 */
     body[data-page="profile"] .left-sidebar-min, .left-sidebar-min-botttom{
+        display: none;
+    }
+
+    .search-tab.show {
         display: none;
     }
 }
