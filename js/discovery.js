@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-	renderHTML("right-side-bar", "./components/sidebar.html");
-	renderHTML("footer-container", "./components/footer.html");
+	renderHTML("right-side-bar", "../components/sidebar.html");
+	renderHTML("footer-container", "../components/footer.html");
 	const randomImage = generateRandomImageData(15);
 	renderPosts(randomImage);
 	createScrollOberver();

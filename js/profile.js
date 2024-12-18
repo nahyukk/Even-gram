@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 	toggleNavContainer();
-	renderHTML("right-side-bar", "./components/sidebar.html");
-	renderHTML("footer-container", "./components/footer.html");
+	renderHTML("right-side-bar", "../components/sidebar.html");
+	renderHTML("footer-container", "../components/footer.html");
 	fetchUser();
 });
 
