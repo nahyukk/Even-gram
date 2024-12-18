@@ -1,6 +1,7 @@
 /* 메인 전체 레이아웃 */
 main {
     font-size: 14px;
+    overflow: hidden;
 }
 
 .main-warpper {

@@ -269,14 +269,15 @@
                       placeholder="검색"
                       type="text"
                     />
+                    <img
+                      src="./assets/icons/search-x.png"
+                      aria-label="검색취소"
+                      class="search-x-btn"
+                    />
                     <div class="search-box-small-section">
                       <div class="search-box-vsmall-section">
                         <div class="search-box-icon">
-                          <img
-                            aria-label="검색"
-                            src="/assets/icons/search.png"
-                            class="search-tab-icon"
-                          />
+                          <svg aria-label="검색" class="search-tab-icon" fill="currentColor" height="16" role="img" viewBox="0 0 24 24" width="16"><title>검색</title><path d="M19 10.5A8.5 8.5 0 1 1 10.5 2a8.5 8.5 0 0 1 8.5 8.5Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="16.511" x2="22" y1="16.511" y2="22"></line></svg>
                         </div>
                         <span class="search-box-title">검색</span>
                       </div>
@@ -306,7 +307,9 @@
                       <span class="list-id">rudolph</span>
                       <span class="list-name">루돌프</span>
                     </div>
-                    <div class="list-delete">X</div>
+                    <div class="list-delete">
+                      <svg aria-label="닫기" class="x1lliihq x1n2onr6 x1roi4f4" fill="currentColor" height="16" role="img" viewBox="0 0 24 24" width="16"><title>닫기</title><polyline fill="none" points="20.643 3.357 12 12 3.353 20.647" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" x1="20.649" x2="3.354" y1="20.649" y2="3.354"></line></svg>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -614,32 +617,6 @@
     <script src="./js/index.js"></script>
     <script src="./js/sidebar.js"></script>
     <script src="./js/search.js"></script>
-
-    <script>
-      const storyList = document.querySelector(".story-list");
-      const leftButton = document.querySelector(".story-button.story-left");
-      const rightButton = document.querySelector(".story-button.story-right");
-
-      let currentIndex = 0;
-      const storyWidth = 85;
-      const storiesPerSlide = 2;
-
-      leftButton.addEventListener("click", () => {
-        currentIndex = Math.max(0, currentIndex - storiesPerSlide);
-        storyList.style.transform = `translateX(-${
-          currentIndex * storyWidth
-        }px)`;
-      });
-
-      rightButton.addEventListener("click", () => {
-        currentIndex = Math.min(
-          storyList.children.length - storiesPerSlide,
-          currentIndex + storiesPerSlide
-        );
-        storyList.style.transform = `translateX(-${
-          currentIndex * storyWidth
-        }px)`;
-      });
-    </script>
+     
   </body>
 </html>

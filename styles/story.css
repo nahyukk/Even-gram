@@ -434,6 +434,9 @@ body {
 	display: none !important;
 }
 
+#close-btn {
+	display: none !important;
+}
 
 #story-meatball-modal {
 	position: absolute;
@@ -754,8 +757,13 @@ body {
 	#story-side-stories-right4,
 	#story-out-logo-div,
 	#story-out-btn,
-	#story-next-prev-btns {
+	#story-next-prev-btns,
+	.meatball-hidden {
 		display: none !important;
+	}
+
+	#close-btn {
+		display: block !important;
 	}
 
 	.story {
@@ -794,7 +802,7 @@ body {
 
 		#story-side-stories-left1,
 		#story-side-stories-right4 {
-			display: none;
+			display: none !important;
 		}
 
 		#story-next-prev-btns {
