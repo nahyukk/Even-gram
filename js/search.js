@@ -60,6 +60,11 @@ searchInput.addEventListener("focus", () => {
     searchInput.value = storedValue;
     searchXButton.style.display = "block";
     searchBoxTitle.style.display = "none";
+  } else {
+    searchInput.value = "";
+    storedValue = "";
+    searchXButton.style.display = "none";
+    searchBoxTitle.style.display = "none";
   }
 });
 
@@ -324,6 +329,7 @@ searchXButton.addEventListener("mousedown", (event) => {
   event.stopPropagation();
 
   searchInput.value = "";
+  searchInput.dataset.storedValue = "";
   searchXButton.style.display = "none";
 
   clearSearchResults();
