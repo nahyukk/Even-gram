@@ -957,7 +957,7 @@ a:hover {
     align-items: center;
     position: relative;
     overflow: visible;
-    width: 396px;
+    width: 397px;
 }
 
 .search-bottom-container {
@@ -1162,7 +1162,7 @@ a:hover {
 
 .search-list {
     background-color: #ffffff;
-    width: 390px;
+    width: 100%;
     height: 100%;
     position: relative;
 }
@@ -1174,7 +1174,17 @@ a:hover {
 .search-list-style {
     display: flex;
     align-items: center;
-    margin: 20px;
+    margin: 0;
+    padding: 5px 24px;
+    cursor: pointer;
+}
+
+.search-list-style:hover {
+    background-color: #f2f2f2;
+}
+
+.search-list-style:active {
+    opacity: 0.6;
 }
 
 .search-list-box {
@@ -1273,6 +1283,9 @@ a:hover {
     border-radius: 70%;
     font-size: 20px;
     color: #737373;
+    margin-left: auto;
+    padding-right: 10px;
+    position: relative;
 }
 
 /* 미디어쿼리 작성부분 */
@@ -1377,7 +1390,8 @@ a:hover {
     }
 
     /* profile 부분에서 sidebar 상.하단 보이지 않게 하는 부분 */
-    body[data-page="profile"] .left-sidebar-min, .left-sidebar-min-botttom{
+    body[data-page="profile"] .left-sidebar-min,
+    .left-sidebar-min-botttom {
         display: none;
     }
 }
