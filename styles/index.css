@@ -350,6 +350,10 @@ main {
     color: #737373;
 }
 
+.main-content-text {
+    line-height: 18px;
+}
+
 .main-content-text span {
     cursor: pointer;
     margin-right: 4px;
