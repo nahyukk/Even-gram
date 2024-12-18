@@ -5,8 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const moreMenu = document.getElementById('moreMenu');
     const modeMenu = document.getElementById('modeMenu');
     const darkModeToggle = document.getElementById('darkModeToggle');
-    const searchBtn = document.querySelector('.search');
     const searchMenu = document.querySelector('.search-tab');
+    const searchBtn = document.getElementById('search-btn');
+    const leftcontainer = document.querySelector('.left-container');
 
     // 더보기 버튼 클릭 시 메뉴 표시/숨김
     toggleButton.addEventListener('click', (event) => {
@@ -16,7 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     modeMenu.addEventListener('click', (event) => {
         event.stopPropagation();
-        modeMenu.classList.toggle('hidden');   // 모드 전환 메���가 나타나는 부분
+        modeMenu.classList.toggle('hidden');
+    });
+
+    searchMenu.addEventListener('click', (event) => {
+       event.stopPropagation(); 
+       modeMenu.classList.add('hidden');
+       moreMenu.classList.add('hidden');
     });
 
 
@@ -24,7 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', () => {
         moreMenu.classList.add('hidden');
         modeMenu.classList.add('hidden');
-        searchMenu.classList.add('hidden');
+        searchMenu.classList.remove('show');
+        leftcontainer.classList.remove('small');
     });
 
 
@@ -33,6 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
         event.stopPropagation();
         modeMenu.classList.remove('hidden');   // 모드전환 메뉴가 나타나는 부분
         moreMenu.classList.add('hidden');   // 더보기 메뉴 숨기는 부분
+        searchMenu.classList.remove('show');
+        leftcontainer.classList.remove('small');
     });
 
     // 뒤로 가기 버튼 클릭시 메뉴 닫기
@@ -45,19 +55,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // 검색 탭 클릭시 메뉴 표시/숨김
     searchBtn.addEventListener('click', (event) => {
         event.stopPropagation();
-        searchMenu.classList.toggle('hidden');
+        searchMenu.classList.toggle('show');
+        leftcontainer.classList.toggle('small');
+        modeMenu.classList.add('hidden');
      });
 
     // 다크 모드 변환시
     darkModeToggle.addEventListener('click', (event) => {
         event.stopPropagation();
         modeMenu.classList.remove('hidden');
+        searchMenu.classList.remove('show');
+        leftcontainer.classList.remove('small');
     });
 
     // 다크 모드 변환 시 바뀌는 부분
     darkModeToggle.addEventListener('change', (event) => {
         const isDarkMode = event.target.checked;
-        const icons = document.querySelectorAll('.logo-container img, .middle-container img, .bottom-container img, .mode-menu img, .dropdown-menu img, .min-bottom-btn img, .left-sidebar-min-header img');    //sidebar의 아이콘 변경
+        const icons = document.querySelectorAll('.logo-container img, .middle-container img, .bottom-container img, .mode-menu img, .dropdown-menu img, .min-bottom-btn img, .left-sidebar-min-header img, .search-box-icon img');    //sidebar의 아이콘 변경
         const menus = document.querySelectorAll('.dropdown-menu, .mode-menu');
         const body = document.body;
         const sidebar = document.querySelector('.left-container');
@@ -65,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const hrEle = document.querySelectorAll('#moreMenu hr, #menu-header hr');
         const minisT = document.querySelector('.left-sidebar-min-header');
         const minisB = document.querySelector('.sidebar-min-botttom-contents');
+        const searchbar = document.querySelector('.search-tab-section');
 
         body.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff";   // body 적용 부분
         body.style.color = isDarkMode ? "#ffffff" : "#000000";
@@ -73,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         rightsidebars.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff";
         minisT.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff";  // 최소화면일때 상단 사이드바 부분
         minisB.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff";
+        searchbar.style.backgroundColor = isDarkMode? "#121212" : "#ffffff";
 
 
         // 드롭다운 메뉴들 다크모드 변경

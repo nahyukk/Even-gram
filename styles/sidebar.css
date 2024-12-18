@@ -1,3 +1,59 @@
+/* 검색 탭 다크모드 적용 시 변환하는 부분 */
+body.dark-mode .search-title-txt {
+    color: white;
+}
+
+body.dark-mode .search-box-tab {
+    background-color: #363636;
+    color: white;
+}
+
+body.dark-mode .search-box-line {
+    border-color: #363636;
+}
+
+body.dark-mode .recent-text {
+    color: white;
+}
+
+body.dark-mode .search-tab-section {
+    border-right: 1px solid #363636;
+}
+
+body.dark-mode .search-list {
+    background-color: #121212;
+}
+
+body.dark-mode .search-list-style:hover {
+    background-color: #1a1a1a;
+}
+
+body.dark-mode .search-list-style:active {
+    opacity: 0.6;
+}
+
+body.dark-mode .list-id {
+    color: white;
+}
+
+body.dark-mode .list-name {
+    color: #A8A8A8;
+}
+
+body.dark-mode .search-list-id {
+    color: white;
+}
+
+
+
+body.dark-mode .search-list-followers-box {
+    color: #A8A8A8;
+}
+
+body.dark-mode .no-results {
+    color: #a8a8a8;
+}
+
 /* 오른쪽 사이드바 다크모드 적용 시 변환하는 부분 */
 body.dark-mode .name-id {
     color: #A8A8A8;
@@ -84,6 +140,38 @@ body.dark-mode .sidebar-min-botttom {
     left: 0;
     padding: 8px 20px 12px 12px;
     box-sizing: border-box;
+}
+
+/* 검색 탭을 눌렀을때 변화하는 left-container 부분 */
+.left-container.small {
+    width: 70px;
+    padding: 10px;
+    transition: width 0.3s ease, padding 0.3s ease;
+}
+
+.left-container.small .insta-logo {
+    display: none;
+}
+
+.left-container.small .insta-logo2 {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.left-container.small .middle-container li span {
+    display: none;
+}
+
+.left-container.small .bottom-container li span {
+    display: none;
+}
+
+.left-container.small .middle-item {
+    width: 23px;
+}
+
+.left-container.small .bottom-item {
+    width: 23px;
 }
 
 /* 로고 */
@@ -830,7 +918,12 @@ a:hover {
     position: absolute;
     left: 73px;
     transform: translateX(0%);
+    display: none;
+}
 
+.search-tab.show {
+    display: block;
+    position: fixed;
 }
 
 .search-tab-section {
@@ -969,6 +1062,18 @@ a:hover {
     color: #888;
 }
 
+.search-x-btn {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    width: 14.5px;
+    height: 14.5px;
+    cursor: pointer;
+    z-index: 3;
+    display: none;
+}
+
 .search-box-small-section {
     align-items: center;
     flex-direction: row;
@@ -1081,11 +1186,12 @@ a:hover {
     color: var(--secondary-text-color);
     text-align: center;
     white-space: nowrap;
+    color: #737373;
 }
 
 .search-list {
     background-color: #ffffff;
-    width: 397px;
+    width: 100%;
     height: 100%;
     position: relative;
 }
@@ -1097,12 +1203,22 @@ a:hover {
 .search-list-style {
     display: flex;
     align-items: center;
-    margin: 20px;
+    margin: 0;
+    padding: 8px 24px;
+    cursor: pointer;
+}
+
+.search-list-style:hover {
+    background-color: #f2f2f2;
+}
+
+.search-list-style:active {
+    opacity: 0.6;
 }
 
 .search-list-box {
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 44px;
     border-radius: 70%;
     overflow: hidden;
 }
@@ -1123,6 +1239,7 @@ a:hover {
     width: 270px;
     display: flex;
     flex-direction: column;
+    margin-left: 3px;
 }
 
 .search-list-text-box-username {
@@ -1196,6 +1313,9 @@ a:hover {
     border-radius: 70%;
     font-size: 20px;
     color: #737373;
+    margin-left: auto;
+    padding-right: 8px;
+    position: relative;
 }
 
 /* 미디어쿼리 작성부분 */
@@ -1300,7 +1420,12 @@ a:hover {
     }
 
     /* profile 부분에서 sidebar 상.하단 보이지 않게 하는 부분 */
-    body[data-page="profile"] .left-sidebar-min, .left-sidebar-min-botttom{
+    body[data-page="profile"] .left-sidebar-min,
+    .left-sidebar-min-botttom {
+        display: none;
+    }
+
+    .search-tab.show {
         display: none;
     }
 }

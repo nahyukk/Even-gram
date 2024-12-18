@@ -1,6 +1,7 @@
 /* 메인 전체 레이아웃 */
 main {
     font-size: 14px;
+    overflow: hidden;
 }
 
 .main-warpper {
@@ -552,6 +553,31 @@ body.dark-mode .story-item p {
     color: #f5f5f5;
     font-size: 12px;
     text-align: center;
+}
+
+body.dark-mode .st-gray {
+    color: #a8a8a8;
+}
+
+body.dark-mode .main-content-textbox::placeholder {
+    font-size: 14px;
+    color: #a8a8a8;
+}
+
+body.dark-mode .comment-emoji {
+    fill: #a8a8a8;
+}
+
+body.dark-mode .comment-emoji:hover {
+    fill: #737373;
+}
+
+body.dark-mode .main-profile-meta span {
+    color: #a8a8a8 !important;
+}
+
+body.dark-mode .main-profile-date {
+    color: #a8a8a8;
 }
 
 /* 스토리 부분 */

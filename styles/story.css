@@ -802,7 +802,7 @@ body {
 
 		#story-side-stories-left1,
 		#story-side-stories-right4 {
-			display: none;
+			display: none !important;
 		}
 
 		#story-next-prev-btns {
