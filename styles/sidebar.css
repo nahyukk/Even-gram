@@ -5,6 +5,7 @@ body.dark-mode .search-title-txt {
 
 body.dark-mode .search-box-tab {
     background-color: #363636;
+    color: white;
 }
 
 body.dark-mode .search-box-line {
@@ -47,6 +48,10 @@ body.dark-mode .search-list-id {
 
 body.dark-mode .search-list-followers-box {
     color: #A8A8A8;
+}
+
+body.dark-mode .no-results {
+    color: #a8a8a8;
 }
 
 /* 오른쪽 사이드바 다크모드 적용 시 변환하는 부분 */
@@ -918,6 +923,7 @@ a:hover {
 
 .search-tab.show {
     display: block;
+    position: fixed;
 }
 
 .search-tab-section {
@@ -1180,6 +1186,7 @@ a:hover {
     color: var(--secondary-text-color);
     text-align: center;
     white-space: nowrap;
+    color: #737373;
 }
 
 .search-list {
@@ -1415,6 +1422,10 @@ a:hover {
     /* profile 부분에서 sidebar 상.하단 보이지 않게 하는 부분 */
     body[data-page="profile"] .left-sidebar-min,
     .left-sidebar-min-botttom {
+        display: none;
+    }
+
+    .search-tab.show {
         display: none;
     }
 }
