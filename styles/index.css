@@ -342,8 +342,25 @@ main {
 
 
 /* 메인 컨텐츠 내용 본문 부분 */
+.main-content-like {
+    cursor: pointer;
+}
+
+.main-content-like:active {
+    color: #737373;
+}
+
+.main-content-text {
+    line-height: 18px;
+}
+
 .main-content-text span {
+    cursor: pointer;
     margin-right: 4px;
+}
+
+.main-content-text span:active {
+    color: #737373;
 }
 
 

@@ -34,6 +34,7 @@ function initializeSidebar() {
     .catch((error) => console.error("Error loading sidebar.html:", error));
 }
 
+
 // ---------- 슬라이더 관련 ----------
 
 // 슬라이더(Carousel)를 초기화
@@ -57,18 +58,13 @@ function initializeCarousel(carousel) {
 
   function updateButtonVisibility() {
     prevButton.classList.toggle("carousel_button_disabled", currentSlide === 0);
-    nextButton.classList.toggle(
-      "carousel_button_disabled",
-      currentSlide === slides.length - 1
-    );
+    nextButton.classList.toggle("carousel_button_disabled", currentSlide === slides.length - 1);
   }
 
   function showSlide(index) {
     currentSlide = index;
     wrapper.style.transform = `translateX(-${index * 100}%)`;
-    bullets.forEach((bullet, idx) =>
-      bullet.classList.toggle("active", idx === index)
-    );
+    bullets.forEach((bullet, idx) => bullet.classList.toggle("active", idx === index));
     updateButtonVisibility();
   }
 
@@ -89,10 +85,12 @@ function initializeCarousel(carousel) {
   updateButtonVisibility();
 }
 
+
 // ---------- 피드 등장 관련 ----------
 
 let shuffledFeeds = [];
 let currentFeedIndex = 0;
+
 
 // JSON 데이터를 가져오고 배열을 섞는 작업
 function initializeFeed() {
@@ -105,6 +103,7 @@ function initializeFeed() {
   });
 }
 
+
 // 첫 번째 피드 렌더링하고 슬라이더 초기화
 function renderAndInitializeFirstFeed() {
   const mainContentsList = document.querySelector(".main-contents-list");
@@ -112,22 +111,20 @@ function renderAndInitializeFirstFeed() {
   renderFeed(feedToRender);
   currentFeedIndex++;
 
-  const firstCarousel =
-    mainContentsList.lastElementChild.querySelector(".carousel_main");
+  const firstCarousel = mainContentsList.lastElementChild.querySelector(".carousel_main");
   if (firstCarousel) initializeCarousel(firstCarousel);
 }
+
 
 // 무한 스크롤 설정
 function setupInfiniteScroll() {
   window.addEventListener("scroll", () => {
-    if (
-      window.innerHeight + window.scrollY >=
-      document.body.offsetHeight - 100
-    ) {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
       loadMoreFeeds(); // 추가 피드 로드 및 렌더링
     }
   });
 }
+
 
 // 추가 피드 로드 및 렌더링
 function loadMoreFeeds() {
@@ -142,10 +139,10 @@ function loadMoreFeeds() {
   currentFeedIndex++;
   renderFeed(feedToRender);
 
-  const newCarousel =
-    mainContentsList.lastElementChild.querySelector(".carousel_main");
+  const newCarousel = mainContentsList.lastElementChild.querySelector(".carousel_main");
   if (newCarousel) initializeCarousel(newCarousel);
 }
+
 
 // 배열을 무작위로 섞는 함수 (Fisher-Yates 알고리즘)
 function shuffle(array) {
@@ -155,6 +152,7 @@ function shuffle(array) {
   }
   return array;
 }
+
 
 // 피드 렌더링 및 디자인
 function renderFeed(feed) {
@@ -187,13 +185,13 @@ function renderFeed(feed) {
       <div class="carousel_main">
         <div class="carousel_wrapper">
           ${feed.postImages
-            .map(
-              (image) => `
+      .map(
+        (image) => `
               <div class="carousel_slide">
                 <img src="${image}" alt="#" />
               </div>`
-            )
-            .join("")}
+      )
+      .join("")}
         </div>
           <div class="carousel_button_container">
             <button type="button" class="carousel_prev">
@@ -209,11 +207,11 @@ function renderFeed(feed) {
           </div>
         <div class="carousel_pagination">
           ${feed.postImages
-            .map(
-              (_, index) =>
-                `<div class="carousel_circle" data-index="${index}"></div>`
-            )
-            .join("")}
+      .map(
+        (_, index) =>
+          `<div class="carousel_circle" data-index="${index}"></div>`
+      )
+      .join("")}
         </div>
       </div>
     </div>
@@ -232,9 +230,8 @@ function renderFeed(feed) {
       <div class="main-content-text st-mg-t-8">
         <span class="st-bold">${feed.username}</span>${feed.caption}
       </div>
-      <div class="main-content-comment st-mg-t-8 st-gray">댓글 ${
-        feed.comments
-      }개 모두 보기</div>
+      <div class="main-content-comment st-mg-t-8 st-gray">댓글 ${feed.comments
+    }개 모두 보기</div>
       <div class="main-content-input st-mg-t-8 st-gray">
         <div class="main-content-input-flex">
           <input class="main-content-textbox" placeholder="댓글 달기..." autocomplete="off" autocorrect="off">
@@ -250,6 +247,7 @@ function renderFeed(feed) {
   mainContentsList.appendChild(article);
 }
 
+
 // ---------- 피드 내용 관련 ----------
 
 // 댓글 입력 창과 게시 버튼
@@ -258,11 +256,8 @@ function initializeCommentInput() {
 
   mainContentsList.addEventListener("input", (event) => {
     if (event.target.classList.contains("main-content-textbox")) {
-      const uploadButton = event.target
-        .closest(".main-content-input-flex")
-        .querySelector(".main-content-text-upload");
-      uploadButton.style.display =
-        event.target.value.trim() === "" ? "none" : "block";
+      const uploadButton = event.target.closest(".main-content-input-flex").querySelector(".main-content-text-upload");
+      uploadButton.style.display = event.target.value.trim() === "" ? "none" : "block";
     }
   });
 }
@@ -280,9 +275,7 @@ function initializeLikeAndBookmark() {
   });
 
   function toggleHeart(heartIcon) {
-    const likesElement = heartIcon
-      .closest(".main-content-inner")
-      .querySelector(".main-content-like");
+    const likesElement = heartIcon.closest(".main-content-inner").querySelector(".main-content-like");
     const currentLikes = parseInt(likesElement.textContent.match(/\d+/)[0], 10);
     const isLiked = heartIcon.classList.toggle("liked");
 
