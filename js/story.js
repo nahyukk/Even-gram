@@ -9,7 +9,7 @@ preloadImagesFromJSON(); // 데이터 로딩 + 초기화
 
 async function loadStoryDetails() {
   try {
-    const response = await fetch("../json/stories.json");
+    const response = await fetch("./json/stories.json");
     const data = await response.json();
     const stories = data.stories;
 
@@ -64,7 +64,7 @@ let currentStoryIndex = 0;
 let currentMediaIndex = 0;
 let storiesData = [];
 
-fetch("../json/stories.json")
+fetch("json/stories.json")
   .then((response) => {
     if (!response.ok) {
       throw new Error("업로드 대실패!");
@@ -82,7 +82,7 @@ fetch("../json/stories.json")
 // 이미지 미리 로딩 함수
 async function preloadImagesFromJSON() {
   try {
-    const response = await fetch("../json/stories.json");
+    const response = await fetch("json/stories.json");
     const data = await response.json();
 
     // 모든 미디어 URL 수집
