@@ -22,7 +22,7 @@
     {
       "userId": 2,
       "username": "santa",
-      "profileImage": "../assets/images/img5.jpg",
+      "profileImage": "assets/images/img5.jpg",
       "stories": [
         {
           "storyId": 201,
@@ -187,7 +187,7 @@
     {
       "userId": 11,
       "username": "john_doe",
-      "profileImage": "../assets/images/story_profile_john.webp",
+      "profileImage": "assets/images/story_profile_john.webp",
       "stories": [
         {
           "storyId": 1101,
@@ -212,7 +212,7 @@
     {
       "userId": 12,
       "username": "jane_smith",
-      "profileImage": "../assets/images/story_profile_jane.webp",
+      "profileImage": "assets/images/story_profile_jane.webp",
       "stories": [
         {
           "storyId": 1201,

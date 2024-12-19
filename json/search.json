@@ -10,7 +10,7 @@
     {
       "username": "santa",
       "name": "산타",
-      "profileImage": "../assets/images/img5.jpg",
+      "profileImage": "assets/images/img5.jpg",
       "followers": 103200,
       "verified": "true"
     },

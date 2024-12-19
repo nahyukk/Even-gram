@@ -11,7 +11,7 @@ loadUsers();
 
 async function loadUsers() {
   try {
-    const response = await fetch("../json/search.json");
+    const response = await fetch("./json/search.json");
     const data = await response.json();
     users = data.users;
 
@@ -64,7 +64,6 @@ searchInput.addEventListener("focus", () => {
     searchBoxTitle.style.display = "none";
   } else {
     searchInput.value = "";
-    storedValue = "";
     searchXButton.style.display = "none";
     searchBoxTitle.style.display = "none";
   }
