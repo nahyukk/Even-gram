@@ -64,7 +64,6 @@ searchInput.addEventListener("focus", () => {
     searchBoxTitle.style.display = "none";
   } else {
     searchInput.value = "";
-    storedValue = "";
     searchXButton.style.display = "none";
     searchBoxTitle.style.display = "none";
   }
