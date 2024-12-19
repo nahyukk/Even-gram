@@ -1,6 +1,8 @@
+import { loadButtonActions } from "./sidebar.js";
+
 document.addEventListener("DOMContentLoaded", () => {
-	renderHTML("right-side-bar", "./components/sidebar.html");
-	renderHTML("footer-container", "./components/footer.html");
+	renderHTML("right-side-bar", "../components/sidebar.html");
+	renderHTML("footer-container", "../components/footer.html");
 	const randomImage = generateRandomImageData(15);
 	renderPosts(randomImage);
 	createScrollOberver();
@@ -49,6 +51,9 @@ function renderHTML(id, html) {
 		})
 		.then((html) => {
 			sidebarContainer.innerHTML = html;
+			if (id === "right-side-bar") {
+				loadButtonActions();
+			}
 		})
 		.catch((error) => {
 			console.error("Error loading sidebar:", error);
@@ -147,7 +152,7 @@ function createHoverContainer(post) {
 	const hoverItem = document.createElement("div");
 	hoverItem.className = "post-hover-item";
 	const commentItem = createHoverItem(
-		"./assets/icons/profile_post_comment.png",
+		"../assets/icons/profile_post_comment.png",
 		post.comments
 	);
 	hoverItem.appendChild(commentItem);

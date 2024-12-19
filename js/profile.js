@@ -1,7 +1,9 @@
+import { loadButtonActions } from "./sidebar.js";
+
 document.addEventListener("DOMContentLoaded", () => {
 	toggleNavContainer();
-	renderHTML("right-side-bar", "./components/sidebar.html");
-	renderHTML("footer-container", "./components/footer.html");
+	renderHTML("right-side-bar", "../components/sidebar.html");
+	renderHTML("footer-container", "../components/footer.html");
 	fetchUser();
 });
 
@@ -10,8 +12,6 @@ window.addEventListener("resize", () => {
 });
 
 function renderHTML(id, html) {
-	const sidebarContainer = document.getElementById(id);
-
 	fetch(html)
 		.then((response) => {
 			if (!response.ok) {
@@ -20,7 +20,13 @@ function renderHTML(id, html) {
 			return response.text();
 		})
 		.then((html) => {
-			sidebarContainer.innerHTML = html;
+			const container = document.getElementById(id);
+			console.log(id);
+			container.innerHTML = html;
+
+			if (id === "right-side-bar") {
+				loadButtonActions();
+			}
 		})
 		.catch((error) => {
 			console.error("Error loading sidebar:", error);
@@ -36,7 +42,6 @@ function fetchUser() {
 			return response.json();
 		})
 		.then((data) => {
-			console.log(data);
 			renderUser(data.user);
 			initializeTabs(".profile__tab-button", data.user.post);
 		})
@@ -73,7 +78,6 @@ function initializeTabs(selector, posts, defaultIndex = 0) {
 
 function renderUser(user) {
 	const profileImage = getCachedImageURL("profileImage", 1)[0];
-	console.log(profileImage);
 	document.querySelector(".nav__profile-name").textContent = user.nickName;
 	document.querySelector(".profile__image").src = profileImage;
 	document.querySelector(".profile__name").textContent = user.nickName;
@@ -235,10 +239,10 @@ function createHoverContainer(post) {
 	hoverItem.className = "profile__post-hover-item";
 
 	hoverItem.appendChild(
-		createHoverItem("./assets/icons/profile_post_like.png", post.likes)
+		createHoverItem("../assets/icons/profile_post_like.png", post.likes)
 	);
 	hoverItem.appendChild(
-		createHoverItem("./assets/icons/profile_post_comment.png", post.comments)
+		createHoverItem("../assets/icons/profile_post_comment.png", post.comments)
 	);
 
 	hoverContainer.appendChild(hoverItem);
