@@ -11,7 +11,7 @@ loadUsers();
 
 async function loadUsers() {
   try {
-    const response = await fetch("json/search.json");
+    const response = await fetch("./json/search.json");
     const data = await response.json();
     users = data.users;
 
