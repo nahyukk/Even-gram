@@ -18,6 +18,9 @@ style attribute {
 	--tertiary-text-color: #c7c7c7;
 	--always-black: #000000;
 	--always-white: #ffffff;
+	--badge-background-color-dark-gray: #8e8e8e;
+	--divider: #dbdbdb;
+	--radio-background-color: #dcdfe4;
 }
 
 .dark {
@@ -30,4 +33,7 @@ style attribute {
 	--tertiary-text-color: #717171;
 	--always-black: #000000;
 	--always-white: #ffffff;
+	--badge-background-color-dark-gray: #898989;
+	--divider: #262626;
+	--radio-background-color: #f8f9f9;
 }
