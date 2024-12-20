@@ -1,3 +1,5 @@
+import { toggleDarkMode } from "./darkModeManager.js";
+
 document.addEventListener("DOMContentLoaded", () => {
 	loadButtonActions();
 });
@@ -73,6 +75,7 @@ export function loadButtonActions() {
 	// 다크 모드 변환 시 바뀌는 부분
 	darkModeToggle.addEventListener("change", (event) => {
 		const isDarkMode = event.target.checked;
+		toggleDarkMode(isDarkMode);
 		const icons = document.querySelectorAll(
 			".logo-container img, .middle-container img, .bottom-container img, .mode-menu img, .dropdown-menu img, .min-bottom-btn img, .left-sidebar-min-header img, .search-box-icon img"
 		); //sidebar의 아이콘 변경
@@ -86,7 +89,7 @@ export function loadButtonActions() {
 		const searchbar = document.querySelector(".search-tab-section");
 
 		body.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff"; // body 적용 부분
-		body.style.color = isDarkMode ? "#ffffff" : "#000000";
+		// body.style.color = isDarkMode ? "#ffffff" : "#000000";
 		sidebar.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff"; // 사이드바 부분 적용
 		sidebar.style.borderColor = isDarkMode ? "#383838" : "#dbdbdb"; // 사이드바 border 부분 적용
 		rightsidebars.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff";

@@ -1,3 +1,7 @@
+body {
+	background-color: var(--base-background-color);
+}
+
 /* 검색 탭 다크모드 적용 시 변환하는 부분 */
 body.dark-mode .search-title-txt {
     color: white;
