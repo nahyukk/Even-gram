@@ -2,6 +2,7 @@ import { toggleDarkMode } from "./darkModeManager.js";
 
 document.addEventListener("DOMContentLoaded", () => {
 	loadButtonActions();
+	toggleDarkModeHandler();
 });
 
 export function loadButtonActions() {
@@ -71,7 +72,10 @@ export function loadButtonActions() {
 		searchMenu.classList.remove("show");
 		leftcontainer.classList.remove("small");
 	});
+}
 
+export function toggleDarkModeHandler() {
+	const darkModeToggle = document.getElementById("darkModeToggle");
 	// 다크 모드 변환 시 바뀌는 부분
 	darkModeToggle.addEventListener("change", (event) => {
 		const isDarkMode = event.target.checked;
@@ -80,22 +84,22 @@ export function loadButtonActions() {
 			".logo-container img, .middle-container img, .bottom-container img, .mode-menu img, .dropdown-menu img, .min-bottom-btn img, .left-sidebar-min-header img, .search-box-icon img"
 		); //sidebar의 아이콘 변경
 		const menus = document.querySelectorAll(".dropdown-menu, .mode-menu");
-		const body = document.body;
-		const sidebar = document.querySelector(".left-container");
-		const rightsidebars = document.querySelector(".right-side");
-		const hrEle = document.querySelectorAll("#moreMenu hr, #menu-header hr");
-		const minisT = document.querySelector(".left-sidebar-min-header");
-		const minisB = document.querySelector(".sidebar-min-botttom-contents");
-		const searchbar = document.querySelector(".search-tab-section");
+		// const body = document.body;
+		// const sidebar = document.querySelector(".left-container");
+		// const rightsidebars = document.querySelector(".right-side");
+		// const hrEle = document.querySelectorAll("#moreMenu hr, #menu-header hr");
+		// const minisT = document.querySelector(".left-sidebar-min-header");
+		// const minisB = document.querySelector(".sidebar-min-botttom-contents");
+		// const searchbar = document.querySelector(".search-tab-section");
 
-		body.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff"; // body 적용 부분
-		// body.style.color = isDarkMode ? "#ffffff" : "#000000";
-		sidebar.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff"; // 사이드바 부분 적용
-		sidebar.style.borderColor = isDarkMode ? "#383838" : "#dbdbdb"; // 사이드바 border 부분 적용
-		rightsidebars.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff";
-		minisT.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff"; // 최소화면일때 상단 사이드바 부분
-		minisB.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff";
-		searchbar.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff";
+		// body.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff"; // body 적용 부분
+		// // body.style.color = isDarkMode ? "#ffffff" : "#000000";
+		// sidebar.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff"; // 사이드바 부분 적용
+		// sidebar.style.borderColor = isDarkMode ? "#383838" : "#dbdbdb"; // 사이드바 border 부분 적용
+		// rightsidebars.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff";
+		// minisT.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff"; // 최소화면일때 상단 사이드바 부분
+		// minisB.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff";
+		// searchbar.style.backgroundColor = isDarkMode ? "#121212" : "#ffffff";
 
 		// 드롭다운 메뉴들 다크모드 변경
 		menus.forEach((menu) => {
@@ -103,16 +107,16 @@ export function loadButtonActions() {
 			menu.style.color = isDarkMode ? "#ffffff" : "#000000";
 		});
 
-		hrEle.forEach((hr) => {
-			hr.style.borderColor = isDarkMode ? "#444444" : "#dbdbdb4d";
-			hr.style.backgroundColor = isDarkMode ? "#444444" : "#dbdbdb4d";
-		});
+		// hrEle.forEach((hr) => {
+		// 	hr.style.borderColor = isDarkMode ? "#444444" : "#dbdbdb4d";
+		// 	hr.style.backgroundColor = isDarkMode ? "#444444" : "#dbdbdb4d";
+		// });
 
-		if (isDarkMode) {
-			body.classList.add("dark-mode");
-		} else {
-			body.classList.remove("dark-mode");
-		}
+		// if (isDarkMode) {
+		// 	body.classList.add("dark-mode");
+		// } else {
+		// 	body.classList.remove("dark-mode");
+		// }
 
 		// 아이콘 다크모드 변경
 		icons.forEach((icon) => {
