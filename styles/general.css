@@ -18,18 +18,22 @@ style attribute {
 	--tertiary-text-color: #c7c7c7;
 	--always-black: #000000;
 	--always-white: #ffffff;
+	--badge-background-color-dark-gray: #8e8e8e;
+	--divider: #dbdbdb;
+	--radio-background-color: #dcdfe4;
 }
 
-@media (prefers-color-scheme: dark) {
-	:root {
-		--primary: #0096f6;
-		--tag: #e0f1ff;
-		--base-background-color: #000000;
-		--base-secondary-background-color: #363636;
-		--text-color: #ffffff;
-		--secondary-text-color: #a8a8a8;
-		--tertiary-text-color: #717171;
-		--always-black: #000000;
-		--always-white: #ffffff;
-	}
+.dark {
+	--primary: #0096f6;
+	--tag: #e0f1ff;
+	--base-background-color: #000000;
+	--base-secondary-background-color: #363636;
+	--text-color: #ffffff;
+	--secondary-text-color: #a8a8a8;
+	--tertiary-text-color: #717171;
+	--always-black: #000000;
+	--always-white: #ffffff;
+	--badge-background-color-dark-gray: #898989;
+	--divider: #262626;
+	--radio-background-color: #f8f9f9;
 }

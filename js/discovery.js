@@ -1,6 +1,9 @@
 import { loadButtonActions } from "./sidebar.js";
+import { toggleDarkModeHandler } from "./sidebar.js";
+import { initializeDarkMode } from "./darkModeManager.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+	initializeDarkMode();
 	renderHTML("right-side-bar", "components/sidebar.html");
 	renderHTML("footer-container", "components/footer.html");
 	const randomImage = generateRandomImageData(15);
@@ -53,6 +56,7 @@ function renderHTML(id, html) {
 			sidebarContainer.innerHTML = html;
 			if (id === "right-side-bar") {
 				loadButtonActions();
+				toggleDarkModeHandler();
 			}
 		})
 		.catch((error) => {
