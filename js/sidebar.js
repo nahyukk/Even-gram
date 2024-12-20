@@ -89,14 +89,7 @@ export function toggleDarkModeHandler() {
 		const icons = document.querySelectorAll(
 			".logo-container img, .middle-container img, .bottom-container img, .mode-menu img, .dropdown-menu img, .min-bottom-btn img, .left-sidebar-min-header img, .search-box-icon img"
 		); //sidebar의 아이콘 변경
-		const menus = document.querySelectorAll(".dropdown-menu, .mode-menu");
-
-		// 드롭다운 메뉴들 다크모드 변경
-		menus.forEach((menu) => {
-			menu.style.backgroundColor = isDarkMode ? "#272727" : "#ffffff"; //dropdown-menu 변경
-			menu.style.color = isDarkMode ? "#ffffff" : "#000000";
-		});
-
+		
 		// 아이콘 다크모드 변경
 		icons.forEach((icon) => {
 			const originSrc = icon.getAttribute("src");
