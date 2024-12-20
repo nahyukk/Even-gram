@@ -1,657 +1,646 @@
 /* 메인 전체 레이아웃 */
 main {
-    font-size: 14px;
-    overflow: hidden;
+	font-size: 14px;
+	overflow: hidden;
 }
 
 .main-warpper {
-    display: flex;
-    width: calc(100% + 300px);
-    flex-direction: row;
-    align-items: stretch;
-    justify-content: center;
+	display: flex;
+	width: calc(100% + 300px);
+	flex-direction: row;
+	align-items: stretch;
+	justify-content: center;
 }
 
 /* 메인 컨테이너 */
 .main-container {
-    width: 100%;
-    max-width: 630px;
+	width: 100%;
+	max-width: 630px;
 }
 
 .main-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .main-section-inner {
-    display: flex;
-    width: min(470px, 100vw);
-    max-width: 100%;
-    flex-direction: column;
+	display: flex;
+	width: min(470px, 100vw);
+	max-width: 100%;
+	flex-direction: column;
 }
 
 /* 메인 컨텐츠 시작 */
 .main-contents-list {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 10px;
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 10px;
 }
 
 .main-content {
-    display: flex;
-    flex-direction: column;
-    border-bottom: 1px solid rgb(219, 219, 219);
-    padding-bottom: 16px;
-    margin-bottom: 20px;
+	display: flex;
+	flex-direction: column;
+	border-bottom: 1px solid rgb(219, 219, 219);
+	padding-bottom: 16px;
+	margin-bottom: 20px;
 }
 
 .main-content-profile {
-    padding-bottom: 12px;
-    padding-left: 4px;
+	padding-bottom: 12px;
+	padding-left: 4px;
 }
 
 .main-contents-list article:first-child {
-    display: none;
+	display: none;
 }
 
 /* 메인 컨텐츠 프로필 부분 */
 /* 프로필 이미지 */
 .main-content-profile-flex {
-    display: flex;
-    width: 100%;
-    align-items: center;
+	display: flex;
+	width: 100%;
+	align-items: center;
 }
 
 .main-profile-image {
-    margin-right: 12px;
+	margin-right: 12px;
 }
 
 .main-profile-image span {
-    width: 38px;
-    height: 38px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid transparent;
-    border-radius: 50%;
-    background: radial-gradient(circle at bottom left, red 20%, orange, #8309c9);
-    cursor: pointer;
+	width: 38px;
+	height: 38px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 2px solid transparent;
+	border-radius: 50%;
+	background: radial-gradient(circle at bottom left, red 20%, orange, #8309c9);
+	cursor: pointer;
 }
 
 .main-profile-image span img {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 1px solid #737373;
-    outline: 2px solid #FFF;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	border: 1px solid var(--secondary-text-color);
+	outline: 2px solid #fff;
 }
 
 /* 프로필 정보 */
 .main-profile-info {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
 }
 
 .main-profile-more-icon {
-    width: 24px;
-    height: 24px;
-    background-image: url(../assets/icons/more.png);
-    cursor: pointer;
+	width: 24px;
+	height: 24px;
+	background-image: url(../assets/icons/more.png);
+	cursor: pointer;
 }
 
 .main-profile-more-icon:active {
-    width: 24px;
-    height: 24px;
-    background-image: url(../assets/icons/more_active.png);
-    cursor: pointer;
+	width: 24px;
+	height: 24px;
+	background-image: url(../assets/icons/more_active.png);
+	cursor: pointer;
 }
 
 .main-profile-meta {
-    display: flex;
-    flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
 
 .main-profile-name {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .main-profile-date {
-    color: var(--secondary-text-color);
-    text-decoration: none;
+	color: var(--secondary-text-color);
+	text-decoration: none;
 }
 
 .main-profile-date:hover {
-    color: var(--secondary-text-color);
-    text-decoration: none;
+	color: var(--secondary-text-color);
+	text-decoration: none;
 }
 
 .main-profile-site {
-    font-size: 12px;
-    cursor: pointer;
+	font-size: 12px;
+	cursor: pointer;
 }
-
-
 
 /* 메인 컨텐츠 슬라이더 부분 */
 /* 캐러셀 전체 구조  */
 .carousel_main {
-    width: 100%;
-    /* 이미지 크기 설정  */
-    position: relative;
-    overflow: hidden;
-    margin: 0 auto;
-    user-select: none;
+	width: 100%;
+	/* 이미지 크기 설정  */
+	position: relative;
+	overflow: hidden;
+	margin: 0 auto;
+	user-select: none;
 }
 
 .carousel_wrapper {
-    display: flex;
-    transition: all 0.25s ease;
+	display: flex;
+	transition: all 0.25s ease;
 }
 
 .carousel_slide {
-    flex: 0 0 100%;
-    /* 이미지 크기 설정  */
-    position: relative;
+	flex: 0 0 100%;
+	/* 이미지 크기 설정  */
+	position: relative;
 }
 
 .carousel_slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
-
 
 /* 캐러셀 사이드 버튼 */
 .carousel_button_container {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
 }
 
 .carousel_button {
-    width: 50px;
-    height: 50px;
-    color: #fff;
-    background: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
+	width: 50px;
+	height: 50px;
+	color: #fff;
+	background: transparent;
+	border: none;
+	outline: none;
+	cursor: pointer;
 }
 
 .carousel_prev {
-    background-color: transparent;
-    border: 0px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    cursor: pointer;
-    margin-left: 5px;
+	background-color: transparent;
+	border: 0px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	cursor: pointer;
+	margin-left: 5px;
 }
 
 .carousel_next {
-    background-color: transparent;
-    border: 0px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    cursor: pointer;
-    margin-right: 5px;
+	background-color: transparent;
+	border: 0px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	cursor: pointer;
+	margin-right: 5px;
 }
 
 .carousel_button_disabled {
-    opacity: 0;
-    /* 버튼 투명하게 */
-    pointer-events: none;
-    /* 클릭 불가 */
+	opacity: 0;
+	/* 버튼 투명하게 */
+	pointer-events: none;
+	/* 클릭 불가 */
 }
 
 /* 캐러셀 중앙 버튼 */
 .carousel_pagination {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
 }
 
 .carousel_circle {
-    width: 6px;
-    height: 6px;
-    background-color: #bdbdbd;
-    border-radius: 50%;
-    margin: 0 3px;
-    cursor: pointer;
+	width: 6px;
+	height: 6px;
+	background-color: #bdbdbd;
+	border-radius: 50%;
+	margin: 0 3px;
+	cursor: pointer;
 }
 
 .carousel_circle.active {
-    background-color: #fff;
+	background-color: #fff;
 }
-
-
 
 /* 메인 컨텐츠 내용 부분 */
 .main-content-inner {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
 }
-
 
 /* 메인 컨텐츠 내용 아이콘 부분 */
 .main-content-icon {
-    display: grid;
-    margin: 4px 0;
-    align-items: center;
-    grid-template-columns: 1fr 1fr;
+	display: grid;
+	margin: 4px 0;
+	align-items: center;
+	grid-template-columns: 1fr 1fr;
 }
 
 .main-content-icon-left {
-    display: flex;
+	display: flex;
 }
 
 .main-content-icon-right {
-    margin-left: auto;
+	margin-left: auto;
 }
 
 .content-icon-slot {
-    display: flex;
-    margin: 8px;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+	display: flex;
+	margin: 8px;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
 }
 
 /* 아이콘 */
 .icon-heart {
-    background-image: url(../assets/icons/heart.png);
+	background-image: url(../assets/icons/heart.png);
 }
 
 .icon-heart.animate {
-    animation: heart-scale 0.45s ease-in-out;
+	animation: heart-scale 0.45s ease-in-out;
 }
 
 .icon-heart:hover {
-    background-image: url(../assets/icons/heart_hover.png);
+	background-image: url(../assets/icons/heart_hover.png);
 }
 
 .icon-heart:active {
-    background-image: url(../assets/icons/heart_active.png);
+	background-image: url(../assets/icons/heart_active.png);
 }
 
 .icon-heart.liked {
-    background-image: url(../assets/icons/heart_fill.png);
+	background-image: url(../assets/icons/heart_fill.png);
 }
 
 .icon-heart.liked:active {
-    background-image: url(../assets/icons/heart_fill_active.png);
+	background-image: url(../assets/icons/heart_fill_active.png);
 }
 
 .icon-msg {
-    background-image: url(../assets/icons/msg.png);
+	background-image: url(../assets/icons/msg.png);
 }
 
 .icon-msg:hover {
-    background-image: url(../assets/icons/msg_hover.png);
+	background-image: url(../assets/icons/msg_hover.png);
 }
 
 .icon-msg:active {
-    background-image: url(../assets/icons/msg_active.png);
+	background-image: url(../assets/icons/msg_active.png);
 }
 
 .icon-dm {
-    background-image: url(../assets/icons/dm.png);
+	background-image: url(../assets/icons/dm.png);
 }
 
 .icon-dm:hover {
-    background-image: url(../assets/icons/dm_hover.png);
+	background-image: url(../assets/icons/dm_hover.png);
 }
 
 .icon-bookmark {
-    background-image: url(../assets/icons/bookmark.png);
+	background-image: url(../assets/icons/bookmark.png);
 }
 
 .icon-bookmark:hover {
-    background-image: url(../assets/icons/bookmark_hover.png);
+	background-image: url(../assets/icons/bookmark_hover.png);
 }
 
 .icon-bookmark:active {
-    background-image: url(../assets/icons/bookmark_active.png);
+	background-image: url(../assets/icons/bookmark_active.png);
 }
 
 .icon-bookmark.liked,
 .icon-bookmark.liked:hover {
-    background-image: url(../assets/icons/bookmark_fill.png);
+	background-image: url(../assets/icons/bookmark_fill.png);
 }
 
 .icon-bookmark.liked:active {
-    background-image: url(../assets/icons/bookmark_fill_hover.png);
+	background-image: url(../assets/icons/bookmark_fill_hover.png);
 }
-
 
 /* 메인 컨텐츠 내용 본문 부분 */
 .main-content-like {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .main-content-like:active {
-    color: #737373;
+	color: var(--secondary-text-color);
 }
 
 .main-content-text {
-    line-height: 18px;
+	line-height: 18px;
 }
 
 .main-content-text span {
-    cursor: pointer;
-    margin-right: 4px;
+	cursor: pointer;
+	margin-right: 4px;
 }
 
 .main-content-text span:active {
-    color: #737373;
+	color: var(--secondary-text-color);
 }
-
 
 /* 메인 컨텐츠 내용 댓글 부분 */
 .main-content-comment {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .main-content-input-flex {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .main-content-textbox {
-    width: 100%;
-    height: 18px;
-    font-size: 14px;
-    padding-left: 0;
-    border: 0;
+	width: 100%;
+	height: 18px;
+	font-size: 14px;
+	padding-left: 0;
+	border: 0;
 }
 
 .main-content-textbox:focus {
-    outline: none;
+	outline: none;
 }
 
 .main-content-textbox::placeholder {
-    font-size: 14px;
+	font-size: 14px;
 }
 
 .main-content-text-upload {
-    width: 30px;
-    height: 18px;
-    margin: 0 8px;
-    font-weight: bold;
-    color: #0095f6;
-    cursor: pointer;
+	width: 30px;
+	height: 18px;
+	margin: 0 8px;
+	font-weight: bold;
+	color: #0095f6;
+	cursor: pointer;
 }
 
 .main-content-text-upload:hover {
-    color: var(--tag);
+	color: var(--tag);
 }
 
 .comment-emoji {
-    fill: var(--secondary-text-color);
-    cursor: pointer;
+	fill: var(--secondary-text-color);
+	cursor: pointer;
 }
 
 .comment-emoji:hover {
-    fill: var(--tertiary-text-color);
-    cursor: pointer;
+	fill: var(--tertiary-text-color);
+	cursor: pointer;
 }
-
 
 /* 유틸리티 클래스 */
 .st-bold {
-    font-weight: bold;
+	font-weight: bold;
 }
 
 .st-gray {
-    color: var(--secondary-text-color);
+	color: var(--secondary-text-color);
 }
 
 .st-mg-t-8 {
-    margin-top: 8px;
+	margin-top: 8px;
 }
 
 .icon-box {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
+	width: 24px;
+	height: 24px;
+	cursor: pointer;
 }
-
-
 
 /* 임시 */
 /* 메인 사이드바 컨테이너 (임시) */
 .aside-container {
-    margin-top: 16px;
-    margin-left: 64px;
+	margin-top: 16px;
+	margin-left: 64px;
 }
 
 /* 왼쪽 사이드 바 자리 (임시) */
 .left-side-container {
-    width: 250px;
-    margin-right: 64px;
-    z-index: -1;
+	width: 250px;
+	margin-right: 64px;
+	z-index: -1;
 }
 
 @keyframes heart-scale {
-    0% {
-        transform: scale(1)
-    }
+	0% {
+		transform: scale(1);
+	}
 
-    25% {
-        transform: scale(1.2)
-    }
+	25% {
+		transform: scale(1.2);
+	}
 
-    50% {
-        transform: scale(.95)
-    }
+	50% {
+		transform: scale(0.95);
+	}
 
-    100% {
-        transform: scale(1)
-    }
+	100% {
+		transform: scale(1);
+	}
 }
 
 /* 다크 모드 CSS 적용 */
-body.dark-mode main {
-    color: #f5f5f5;
+.dark main {
+	color: #f5f5f5;
 }
 
-body.dark-mode .main-content-textbox {
-    background-color: #121212;
-    color: #f5f5f5;
+.dark .main-content-textbox {
+	background-color: #121212;
+	color: #f5f5f5;
 }
 
-body.dark-mode .main-content {
-    border-bottom: 1px solid #262626;
+.dark .main-content {
+	border-bottom: 1px solid #262626;
 }
 
-body.dark-mode .icon-heart {
-    background-image: url(../assets/icons/dark_heart.png);
+.dark .icon-heart {
+	background-image: url(../assets/icons/dark_heart.png);
 }
 
-body.dark-mode .icon-heart.animate {
-    animation: heart-scale 0.45s ease-in-out;
+.dark .icon-heart.animate {
+	animation: heart-scale 0.45s ease-in-out;
 }
 
-body.dark-mode .icon-heart:hover {
-    background-image: url(../assets/icons/dark_heart_hover.png);
+.dark .icon-heart:hover {
+	background-image: url(../assets/icons/dark_heart_hover.png);
 }
 
-body.dark-mode .icon-heart:active {
-    background-image: url(../assets/icons/dark_heart_active.png);
+.dark .icon-heart:active {
+	background-image: url(../assets/icons/dark_heart_active.png);
 }
 
-body.dark-mode .icon-heart.liked {
-    background-image: url(../assets/icons/heart_fill.png);
+.dark .icon-heart.liked {
+	background-image: url(../assets/icons/heart_fill.png);
 }
 
-body.dark-mode .icon-heart.liked:active {
-    background-image: url(../assets/icons/dark_heart_fill_active.png);
+.dark .icon-heart.liked:active {
+	background-image: url(../assets/icons/dark_heart_fill_active.png);
 }
 
-body.dark-mode .icon-msg {
-    background-image: url(../assets/icons/dark_msg.png);
+.dark .icon-msg {
+	background-image: url(../assets/icons/dark_msg.png);
 }
 
-body.dark-mode .icon-msg:hover {
-    background-image: url(../assets/icons/dark_msg_hover.png);
+.dark .icon-msg:hover {
+	background-image: url(../assets/icons/dark_msg_hover.png);
 }
 
-body.dark-mode .icon-msg:active {
-    background-image: url(../assets/icons/dark_msg_active.png);
+.dark .icon-msg:active {
+	background-image: url(../assets/icons/dark_msg_active.png);
 }
 
-body.dark-mode .icon-dm {
-    background-image: url(../assets/icons/dark_dm.png);
+.dark .icon-dm {
+	background-image: url(../assets/icons/dark_dm.png);
 }
 
-body.dark-mode .icon-dm:hover {
-    background-image: url(../assets/icons/dark_dm_hover.png);
+.dark .icon-dm:hover {
+	background-image: url(../assets/icons/dark_dm_hover.png);
 }
 
-body.dark-mode .icon-bookmark {
-    background-image: url(../assets/icons/dark_bookmark.png);
+.dark .icon-bookmark {
+	background-image: url(../assets/icons/dark_bookmark.png);
 }
 
-body.dark-mode .icon-bookmark:hover {
-    background-image: url(../assets/icons/dark_bookmark_hover.png);
+.dark .icon-bookmark:hover {
+	background-image: url(../assets/icons/dark_bookmark_hover.png);
 }
 
-body.dark-mode .icon-bookmark:active {
-    background-image: url(../assets/icons/dark_bookmark_active.png);
+.dark .icon-bookmark:active {
+	background-image: url(../assets/icons/dark_bookmark_active.png);
 }
 
-body.dark-mode .icon-bookmark.liked,
-body.dark-mode .icon-bookmark.liked:hover {
-    background-image: url(../assets/icons/dark_bookmark_fill.png);
+.dark .icon-bookmark.liked,
+.dark .icon-bookmark.liked:hover {
+	background-image: url(../assets/icons/dark_bookmark_fill.png);
 }
 
-body.dark-mode .icon-bookmark.liked:active {
-    width: 24px;
-    height: 24px;
-    background-image: url(../assets/icons/dark_bookmark_fill_hover.png);
-    background-size: cover;
+.dark .icon-bookmark.liked:active {
+	width: 24px;
+	height: 24px;
+	background-image: url(../assets/icons/dark_bookmark_fill_hover.png);
+	background-size: cover;
 }
 
-body.dark-mode .main-profile-more-icon {
-    width: 24px;
-    height: 24px;
-    background-image: url(../assets/icons/dark_more.png);
-    cursor: pointer;
+.dark .main-profile-more-icon {
+	width: 24px;
+	height: 24px;
+	background-image: url(../assets/icons/dark_more.png);
+	cursor: pointer;
 }
 
-body.dark-mode .main-profile-more-icon:active {
-    width: 24px;
-    height: 24px;
-    background-image: url(../assets/icons/dark_more_active.png);
-    cursor: pointer;
+.dark .main-profile-more-icon:active {
+	width: 24px;
+	height: 24px;
+	background-image: url(../assets/icons/dark_more_active.png);
+	cursor: pointer;
 }
 
-body.dark-mode .story-item p {
-    margin: 5px 0 0;
-    color: #f5f5f5;
-    font-size: 12px;
-    text-align: center;
+.dark .story-item p {
+	margin: 5px 0 0;
+	color: #f5f5f5;
+	font-size: 12px;
+	text-align: center;
 }
 
-body.dark-mode .st-gray {
-    color: #a8a8a8;
+.dark .st-gray {
+	color: #a8a8a8;
 }
 
-body.dark-mode .main-content-textbox::placeholder {
-    font-size: 14px;
-    color: #a8a8a8;
+.dark .main-content-textbox::placeholder {
+	font-size: 14px;
+	color: #a8a8a8;
 }
 
-body.dark-mode .comment-emoji {
-    fill: #a8a8a8;
+.dark .comment-emoji {
+	fill: #a8a8a8;
 }
 
-body.dark-mode .comment-emoji:hover {
-    fill: #737373;
+.dark .comment-emoji:hover {
+	fill: var(--secondary-text-color);
 }
 
-body.dark-mode .main-profile-meta span {
-    color: #a8a8a8 !important;
+.dark .main-profile-meta span {
+	color: #a8a8a8 !important;
 }
 
-body.dark-mode .main-profile-date {
-    color: #a8a8a8;
+.dark .main-profile-date {
+	color: #a8a8a8;
 }
 
 /* 스토리 부분 */
 .main-story {
-    margin-bottom: 24px;
+	margin-bottom: 24px;
 }
 
 .story-main {
-    padding: 8px 0;
-    margin-top: 16px;
-    margin-bottom: 24px;
-    position: relative;
-    display: block;
+	padding: 8px 0;
+	margin-top: 16px;
+	margin-bottom: 24px;
+	position: relative;
+	display: block;
 }
 
 .story-warpper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    margin: 0 auto;
-    max-width: 600px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: relative;
+	margin: 0 auto;
+	max-width: 600px;
 }
 
 .story-container {
-    height: 100%;
-    display: flex;
-    position: relative;
-    overflow-x: auto;
-    scrollbar-width: none;
-    align-items: stretch;
-    flex-direction: row;
+	height: 100%;
+	display: flex;
+	position: relative;
+	overflow-x: auto;
+	scrollbar-width: none;
+	align-items: stretch;
+	flex-direction: row;
 }
 
 .story-list {
-    display: flex;
-    gap: 10px;
-    width: calc(100% - 100px);
-    transition: transform 0.3s ease-in-out;
+	display: flex;
+	gap: 10px;
+	width: calc(100% - 100px);
+	transition: transform 0.3s ease-in-out;
 }
 
 .story-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    min-width: 76px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+	min-width: 76px;
 }
 
 .story-item img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: 2px solid #f03e73;
-    object-fit: cover;
-    transition: border-color 0.3s ease;
-    cursor: pointer;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	border: 2px solid #f03e73;
+	object-fit: cover;
+	transition: border-color 0.3s ease;
+	cursor: pointer;
 }
 
 /* .story-item img:hover {
@@ -659,60 +648,60 @@ body.dark-mode .main-profile-date {
 } */
 
 .story-item p {
-    margin: 5px 0 0;
-    color: black;
-    font-size: 12px;
-    text-align: center;
+	margin: 5px 0 0;
+	color: black;
+	font-size: 12px;
+	text-align: center;
 }
 
 .story-button {
-    position: absolute;
-    top: 40%;
-    transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
-    background-color: transparent;
-    color: black;
-    border: none;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    cursor: pointer;
-    z-index: 1;
+	position: absolute;
+	top: 40%;
+	transform: translateY(-50%);
+	width: 40px;
+	height: 40px;
+	background-color: transparent;
+	color: black;
+	border: none;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 18px;
+	cursor: pointer;
+	z-index: 1;
 }
 
 .story-button.story-left {
-    left: 1%;
+	left: 1%;
 }
 
 .story-button.story-right {
-    right: 4%;
+	right: 4%;
 }
 
 .story-button svg {
-    width: 24px;
-    height: 24px;
-    opacity: 1;
-    fill: rgb(255, 255, 255);
+	width: 24px;
+	height: 24px;
+	opacity: 1;
+	fill: rgb(255, 255, 255);
 }
 
 /* 메인 미디어 쿼리 */
 @media (max-width: 1259px) {
-    .main-warpper {
-        width: 100%;
-    }
+	.main-warpper {
+		width: 100%;
+	}
 }
 
 @media (max-width: 1159px) {
-    .aside-container {
-        display: none;
-    }
+	.aside-container {
+		display: none;
+	}
 }
 
 @media (max-width: 767px) {
-    .main-warpper {
-        margin-top: 60px;
-    }
+	.main-warpper {
+		margin-top: 60px;
+	}
 }
