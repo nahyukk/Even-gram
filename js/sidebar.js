@@ -27,11 +27,13 @@ export function loadButtonActions() {
 		modeMenu.classList.toggle("hidden");
 	});
 
-	searchMenu.addEventListener("click", (event) => {
-		event.stopPropagation();
-		modeMenu.classList.add("hidden");
-		moreMenu.classList.add("hidden");
-	});
+	if (searchMenu) { // 없을 경우 실행 안함
+		searchMenu.addEventListener("click", (event) => {
+			event.stopPropagation();
+			modeMenu.classList.add("hidden");
+			moreMenu.classList.add("hidden");
+		});
+	}
 
 	// 페이지 외부 클릭 시 메뉴 닫기
 	document.addEventListener("click", () => {
@@ -58,12 +60,14 @@ export function loadButtonActions() {
 	});
 
 	// 검색 탭 클릭시 메뉴 표시/숨김
-	searchBtn.addEventListener("click", (event) => {
-		event.stopPropagation();
-		searchMenu.classList.toggle("show");
-		leftcontainer.classList.toggle("small");
-		modeMenu.classList.add("hidden");
-	});
+	if (searchBtn) { // 없을 경우 실행 안함
+		searchBtn.addEventListener("click", (event) => {
+			event.stopPropagation();
+			searchMenu.classList.toggle("show");
+			leftcontainer.classList.toggle("small");
+			modeMenu.classList.add("hidden");
+		});
+	}
 
 	// 다크 모드 변환시
 	darkModeToggle.addEventListener("click", (event) => {
