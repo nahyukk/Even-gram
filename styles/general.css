@@ -20,16 +20,14 @@ style attribute {
 	--always-white: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
-	:root {
-		--primary: #0096f6;
-		--tag: #e0f1ff;
-		--base-background-color: #000000;
-		--base-secondary-background-color: #363636;
-		--text-color: #ffffff;
-		--secondary-text-color: #a8a8a8;
-		--tertiary-text-color: #717171;
-		--always-black: #000000;
-		--always-white: #ffffff;
-	}
+.dark {
+	--primary: #0096f6;
+	--tag: #e0f1ff;
+	--base-background-color: #000000;
+	--base-secondary-background-color: #363636;
+	--text-color: #ffffff;
+	--secondary-text-color: #a8a8a8;
+	--tertiary-text-color: #717171;
+	--always-black: #000000;
+	--always-white: #ffffff;
 }
