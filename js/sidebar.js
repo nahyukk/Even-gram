@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	initializeDarkMode();
 	loadButtonActions();
 	toggleDarkModeHandler();
+	configureIcons();
 });
 
 export function loadButtonActions() {
@@ -99,6 +100,33 @@ export function toggleDarkModeHandler() {
 				icon.setAttribute("src", originSrc.replace("icons/dark_", "icons/"));
 			}
 		});
+	});
+}
+
+// 새로 고침 시 이미지 변경
+function configureIcons() {
+	const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+	const savedTheme = localStorage.getItem("color-theme");
+
+	// 로컬 스토리지에 저장된 테마가 있으면 해당 테마 적용
+	// 아니면 os에 해당하는 테마 적용
+	let currentTheme =
+		savedTheme || (prefersDarkScheme.matches ? "dark" : "light");
+
+	document.getElementById("darkModeToggle").checked = currentTheme === "dark";
+
+	const icons = document.querySelectorAll(
+		".logo-container img, .middle-container img, .bottom-container img, .mode-menu img, .dropdown-menu img, .min-bottom-btn img, .left-sidebar-min-header img, .search-box-icon img"
+	); //sidebar의 아이콘 변경
+
+	// 아이콘 다크모드 변경
+	icons.forEach((icon) => {
+		const originSrc = icon.getAttribute("src");
+		if (currentTheme === "dark") {
+			icon.setAttribute("src", originSrc.replace("icons/", "icons/dark_"));
+		} else {
+			icon.setAttribute("src", originSrc.replace("icons/dark_", "icons/"));
+		}
 	});
 }
 
