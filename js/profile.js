@@ -1,4 +1,5 @@
 import { loadButtonActions } from "./sidebar.js";
+import { toggleDarkModeHandler } from "./sidebar.js";
 
 document.addEventListener("DOMContentLoaded", () => {
 	toggleNavContainer();
@@ -26,6 +27,7 @@ function renderHTML(id, html) {
 
 			if (id === "right-side-bar") {
 				loadButtonActions();
+				toggleDarkModeHandler();
 			}
 		})
 		.catch((error) => {
