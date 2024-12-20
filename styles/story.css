@@ -10,7 +10,7 @@ body {
 /* 큰 사이즈 스토리 */
 #story-container {
 	width: 100%;
-	height: 100%;
+	height: 100vh;
 	position: relative;
 	z-index: 1;
 }
@@ -536,7 +536,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	position: absolute;
-	bottom: 5%;
+	bottom: 10%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 2000;
