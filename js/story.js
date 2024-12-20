@@ -650,23 +650,23 @@ function adjustStoriesForLargeScreens() {
     let sideStoryWidth = centerStoryWidth * 0.4;
     let sideStoryHeight = sideStoryWidth / aspectRatio;
 
-		[leftStory1, leftStory2, rightStory3, rightStory4].forEach((story) => {
-			if (story) {
-				story.style.width = `${sideStoryWidth}px`;
-				story.style.height = `${sideStoryHeight}px`;
-				story.style.display = "flex";
-				story.style.alignItems = "center";
-				story.style.justifyContent = "center";
-				story.style.overflow = "hidden";
-				
-				const img = story.querySelector("img");
-				if (img) {
-					img.style.width = "100%";
-					img.style.height = "100%";
-					img.style.objectFit = "contain";
-				}
-			}
-		});
+    [leftStory1, leftStory2, rightStory3, rightStory4].forEach((story) => {
+      if (story) {
+        story.style.width = `${sideStoryWidth}px`;
+        story.style.height = `${sideStoryHeight}px`;
+        story.style.display = "flex";
+        story.style.alignItems = "center";
+        story.style.justifyContent = "center";
+        story.style.overflow = "hidden";
+
+        const img = story.querySelector("img");
+        if (img) {
+          img.style.width = "100%";
+          img.style.height = "100%";
+          img.style.objectFit = "contain";
+        }
+      }
+    });
   }
 }
 
@@ -714,6 +714,8 @@ function adjustStoriesForSmallScreens() {
   const storyPlayButton = document.getElementById("story-btn-play");
 
   if (windowWidth <= 767) {
+    quickEmotion.classList.add("quickemotion-hidden");
+
     let storyWidth, storyHeight;
 
     if (windowWidth / windowHeight > aspectRatio) {
@@ -736,6 +738,12 @@ function adjustStoriesForSmallScreens() {
       storyPlayButton.innerHTML = `<svg aria-label="일시 정지" class="x1lliihq x1n2onr6 xq3z1fi" fill="currentColor" height="16" role="img" viewBox="0 0 48 48" width="16"><title>일시 정지</title><path d="M15 1c-3.3 0-6 1.3-6 3v40c0 1.7 2.7 3 6 3s6-1.3 6-3V4c0-1.7-2.7-3-6-3zm18 0c-3.3 0-6 1.3-6 3v40c0 1.7 2.7 3 6 3s6-1.3 6-3V4c0-1.7-2.7-3-6-3z"></path></svg>`;
     }
   }
+
+  centerStory.addEventListener("click", () => {
+    if (window.innerWidth <= 767) {
+      quickEmotion.classList.toggle("quickemotion-hidden");
+    }
+  });
 }
 
 function centerElements() {
