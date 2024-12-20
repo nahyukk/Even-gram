@@ -1,6 +1,8 @@
+import { initializeDarkMode } from "./darkModeManager.js";
 import { toggleDarkMode } from "./darkModeManager.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+	initializeDarkMode();
 	loadButtonActions();
 	toggleDarkModeHandler();
 });

@@ -1,7 +1,9 @@
 import { loadButtonActions } from "./sidebar.js";
 import { toggleDarkModeHandler } from "./sidebar.js";
+import { initializeDarkMode } from "./darkModeManager.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+	initializeDarkMode();
 	toggleNavContainer();
 	renderHTML("right-side-bar", "components/sidebar.html");
 	renderHTML("footer-container", "components/footer.html");
@@ -22,7 +24,6 @@ function renderHTML(id, html) {
 		})
 		.then((html) => {
 			const container = document.getElementById(id);
-			console.log(id);
 			container.innerHTML = html;
 
 			if (id === "right-side-bar") {
